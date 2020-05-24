@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Leetcode995 Minimum Number of K Consecutive Bit Flips | Jungle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Leetcode995 Minimum Number of K Consecutive Bit Flips##题目描述In an array A containing only 0s and 1s, a K-bit flip consists of choosing a (contiguous) subarray of length K and simultaneously changing ev">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode995 Minimum Number of K Consecutive Bit Flips">
+<meta property="og:url" content="http://yoursite.com/2020/05/23/Leetcode995/index.html">
+<meta property="og:site_name" content="Jungle">
+<meta property="og:description" content="Leetcode995 Minimum Number of K Consecutive Bit Flips##题目描述In an array A containing only 0s and 1s, a K-bit flip consists of choosing a (contiguous) subarray of length K and simultaneously changing ev">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-24T01:42:13.000Z">
+<meta property="article:modified_time" content="2020-05-24T01:47:53.153Z">
+<meta property="article:author" content="Jungle">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Jungle" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jungle</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Leetcode995" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/23/Leetcode995/" class="article-date">
+  <time datetime="2020-05-24T01:42:13.000Z" itemprop="datePublished">2020-05-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Leetcode995 Minimum Number of K Consecutive Bit Flips
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Leetcode995-Minimum-Number-of-K-Consecutive-Bit-Flips"><a href="#Leetcode995-Minimum-Number-of-K-Consecutive-Bit-Flips" class="headerlink" title="Leetcode995 Minimum Number of K Consecutive Bit Flips"></a>Leetcode995 Minimum Number of K Consecutive Bit Flips</h1><p>##题目描述<br>In an array <code>A</code> containing only 0s and 1s, a <em><code>K</code>-bit flip</em> consists of choosing a (contiguous) subarray of length <code>K</code> and simultaneously changing every 0 in the subarray to 1, and every 1 in the subarray to 0.</p>
+<p>Return the minimum number of <code>K</code>-bit flips required so that there is no 0 in the array. If it is not possible, return <code>-1</code>.</p>
+<a id="more"></a>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: A &#x3D; [0,1,0], K &#x3D; 1</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: Flip A[0], then flip A[2].</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: A &#x3D; [1,1,0], K &#x3D; 2</span><br><span class="line">Output: -1</span><br><span class="line">Explanation: No matter how we flip subarrays of size 2, we can&#39;t make the array become [1,1,1].</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: A &#x3D; [0,0,0,1,0,1,1,0], K &#x3D; 3</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">Flip A[0],A[1],A[2]: A becomes [1,1,1,1,0,1,1,0]</span><br><span class="line">Flip A[4],A[5],A[6]: A becomes [1,1,1,1,1,0,0,0]</span><br><span class="line">Flip A[5],A[6],A[7]: A becomes [1,1,1,1,1,1,1,1]</span><br></pre></td></tr></table></figure>
+<p>##思路<br>思路：先找到第一个0，找到第一个0以后，如果第一个0的位置i，i+k&gt;当前数组的长度，则返回-1. 反之，在K循环里，对当前值进行按位异或(^=)且轮数加一。最后返回轮数。<br>##代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minKBitFlips</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;A.length)&#123;</span><br><span class="line">            <span class="keyword">if</span>(A[i]==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i+K&gt;A.length)</span><br><span class="line">                    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;K;j++)&#123;</span><br><span class="line">                        A[i+j]^=<span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    result++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span></span><br><span class="line">                i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/23/Leetcode995/" data-id="ckal45kp40015plkghp7caj78" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/23/Leetcode993/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Leetcode993 Cousins in Binary Tree
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/23/LeetCode20/">Leetcode20 Valid Parentheses</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/LeetCode1/">Leetcode1 Two sum</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/LeetCode5/">Leetcode5 Longest Palindromic Substrings</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/LeetCode994/">LeetCode994 Rotting Oranges</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Leetcode121/">Leetcode121 Best Time to Buy and Sell Stock</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Jungle<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

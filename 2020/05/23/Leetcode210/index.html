@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Leetcode210 Course ScheduleII | Jungle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Leetcode210 Course ScheduleII题目描述There are a total of n courses you have to take, labeled from 0 to n-1. Some courses may have prerequisites, for example to take course 0 you have to first take course">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode210 Course ScheduleII">
+<meta property="og:url" content="http://yoursite.com/2020/05/23/Leetcode210/index.html">
+<meta property="og:site_name" content="Jungle">
+<meta property="og:description" content="Leetcode210 Course ScheduleII题目描述There are a total of n courses you have to take, labeled from 0 to n-1. Some courses may have prerequisites, for example to take course 0 you have to first take course">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-24T01:42:13.000Z">
+<meta property="article:modified_time" content="2020-05-24T01:48:55.310Z">
+<meta property="article:author" content="Jungle">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Jungle" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jungle</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Leetcode210" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/23/Leetcode210/" class="article-date">
+  <time datetime="2020-05-24T01:42:13.000Z" itemprop="datePublished">2020-05-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Leetcode210 Course ScheduleII
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Leetcode210-Course-ScheduleII"><a href="#Leetcode210-Course-ScheduleII" class="headerlink" title="Leetcode210 Course ScheduleII"></a>Leetcode210 Course ScheduleII</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>There are a total of <em>n</em> courses you have to take, labeled from <code>0</code> to <code>n-1</code>.</p>
+<p>Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: <code>[0,1]</code></p>
+<p>Given the total number of courses and a list of prerequisite <strong>pairs</strong>, return the ordering of courses you should take to finish all courses.</p>
+<p>There may be multiple correct orders, you just need to return one of them. If it is impossible to finish all courses, return an empty array.</p>
+<a id="more"></a>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: 2, [[1,0]] </span><br><span class="line">Output: [0,1]</span><br><span class="line">Explanation: There are a total of 2 courses to take. To take course 1 you should have finished   </span><br><span class="line">             course 0. So the correct course order is [0,1] .</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: 4, [[1,0],[2,0],[3,1],[3,2]]</span><br><span class="line">Output: [0,1,2,3] or [0,2,1,3]</span><br><span class="line">Explanation: There are a total of 4 courses to take. To take course 3 you should have finished both     </span><br><span class="line">             courses 1 and 2. Both courses 1 and 2 should be taken after you finished course 0. </span><br><span class="line">             So one correct course order is [0,1,2,3]. Another correct ordering is [0,2,1,3] .</span><br></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>DFS。两个表，正在访问visiting和已访问过visited。每一门课与他的前置课连接，形成graph。如果访问过则返回true，直到形成闭环，再将节点变为未访问过。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] findOrder(<span class="keyword">int</span> numCourses, <span class="keyword">int</span>[][] prerequisites) &#123;</span><br><span class="line">        ArrayList&lt;ArrayList&lt;Integer&gt;&gt; graph = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;numCourses;i++)&#123;</span><br><span class="line">            graph.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;prerequisites.length;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> course = prerequisites[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> prerequisite =prerequisites[i][<span class="number">1</span>];</span><br><span class="line">            graph.get(course).add(prerequisite);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] visited = <span class="keyword">new</span> <span class="keyword">int</span>[numCourses];</span><br><span class="line">        List&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Integer index = numCourses;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;numCourses;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(dfs(i,graph,visited,ans))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] array = <span class="keyword">new</span> <span class="keyword">int</span>[ans.size()];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ans.size();i++)&#123;</span><br><span class="line">            array[i] = ans.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> array;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> cur, ArrayList&lt;ArrayList&lt;Integer&gt;&gt; graph,<span class="keyword">int</span>[] visited, List&lt;Integer&gt; ans)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(visited[cur]==<span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(visited[cur]==<span class="number">2</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        visited[cur] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i: graph.get(cur))</span><br><span class="line">            <span class="keyword">if</span>(dfs(i,graph,visited,ans))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        visited[cur]=<span class="number">2</span>;</span><br><span class="line">        ans.add(cur);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/23/Leetcode210/" data-id="ckal45kou000hplkgedi7b284" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/23/Leetcode21/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Leetcode21.Merge Two Sorted Lists
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/05/23/Leetcode240/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Leetcode240 Search a 2D Matrix II</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/23/LeetCode20/">Leetcode20 Valid Parentheses</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/LeetCode1/">Leetcode1 Two sum</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/LeetCode5/">Leetcode5 Longest Palindromic Substrings</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/LeetCode994/">LeetCode994 Rotting Oranges</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Leetcode121/">Leetcode121 Best Time to Buy and Sell Stock</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Jungle<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

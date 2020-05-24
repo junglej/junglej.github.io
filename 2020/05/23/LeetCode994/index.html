@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>LeetCode994 Rotting Oranges | Jungle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="LeetCode994 Rotting Oranges题目描述In a given grid, each cell can have one of three values:  the value 0 representing an empty cell; the value 1 representing a fresh orange; the value 2 representing a rot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode994 Rotting Oranges">
+<meta property="og:url" content="http://yoursite.com/2020/05/23/LeetCode994/index.html">
+<meta property="og:site_name" content="Jungle">
+<meta property="og:description" content="LeetCode994 Rotting Oranges题目描述In a given grid, each cell can have one of three values:  the value 0 representing an empty cell; the value 1 representing a fresh orange; the value 2 representing a rot">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2019/02/16/oranges.png">
+<meta property="article:published_time" content="2020-05-24T01:42:13.000Z">
+<meta property="article:modified_time" content="2020-05-24T01:48:04.146Z">
+<meta property="article:author" content="Jungle">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2019/02/16/oranges.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Jungle" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jungle</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-LeetCode994" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/23/LeetCode994/" class="article-date">
+  <time datetime="2020-05-24T01:42:13.000Z" itemprop="datePublished">2020-05-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      LeetCode994 Rotting Oranges
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="LeetCode994-Rotting-Oranges"><a href="#LeetCode994-Rotting-Oranges" class="headerlink" title="LeetCode994 Rotting Oranges"></a>LeetCode994 Rotting Oranges</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>In a given grid, each cell can have one of three values:</p>
+<ul>
+<li>the value <code>0</code> representing an empty cell;</li>
+<li>the value <code>1</code> representing a fresh orange;</li>
+<li>the value <code>2</code> representing a rotten orange.</li>
+</ul>
+<p>Every minute, any fresh orange that is adjacent (4-directionally) to a rotten orange becomes rotten.</p>
+<p>Return the minimum number of minutes that must elapse until no cell has a fresh orange. If this is impossible, return <code>-1</code> instead.</p>
+<a id="more"></a>
+<p><strong>Example 1:</strong></p>
+<p><strong><img src="https://assets.leetcode.com/uploads/2019/02/16/oranges.png" alt="img"></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [[2,1,1],[1,1,0],[0,1,1]]</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [[2,1,1],[0,1,1],[1,0,1]]</span><br><span class="line">Output: -1</span><br><span class="line">Explanation:  The orange in the bottom left corner (row 2, column 0) is never rotten, because rotting only happens 4-directionally.</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [[0,2]]</span><br><span class="line">Output: 0</span><br><span class="line">Explanation:  Since there are already no fresh oranges at minute 0, the answer is just 0.</span><br></pre></td></tr></table></figure>
+
+<p><strong>Note:</strong></p>
+<ol>
+<li><code>1 &lt;= grid.length &lt;= 10</code></li>
+<li><code>1 &lt;= grid[0].length &lt;= 10</code></li>
+<li><code>grid[i][j]</code> is only <code>0</code>, <code>1</code>, or <code>2</code>.</li>
+</ol>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h4 id="Step1-统计数组中的新鲜橘子的个数，统计腐败橘子并记录腐败橘子的位置，将记录的值放入数组中。"><a href="#Step1-统计数组中的新鲜橘子的个数，统计腐败橘子并记录腐败橘子的位置，将记录的值放入数组中。" class="headerlink" title="Step1: 统计数组中的新鲜橘子的个数，统计腐败橘子并记录腐败橘子的位置，将记录的值放入数组中。"></a>Step1: 统计数组中的新鲜橘子的个数，统计腐败橘子并记录腐败橘子的位置，将记录的值放入数组中。</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> fresh=<span class="number">0</span>;</span><br><span class="line">Queue&lt;<span class="keyword">int</span>[]&gt; q = <span class="keyword">new</span> LinkedList();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>;x&lt;grid.length;x++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> y=<span class="number">0</span>;y&lt;grid[<span class="number">0</span>].length;y++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(grid[x][y]==<span class="number">1</span>)</span><br><span class="line">            fresh++;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(grid[x][y]==<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> array[]=&#123;x,y&#125;;</span><br><span class="line">            q.add(array);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Step2-设定方向数组direction-1-0-1-0-1-因为每个腐败橘子会让其上下左右腐败，根据方向进行BFS。"><a href="#Step2-设定方向数组direction-1-0-1-0-1-因为每个腐败橘子会让其上下左右腐败，根据方向进行BFS。" class="headerlink" title="Step2: 设定方向数组direction[1,0,-1,0,1] 因为每个腐败橘子会让其上下左右腐败，根据方向进行BFS。"></a>Step2: 设定方向数组direction[1,0,-1,0,1] 因为每个腐败橘子会让其上下左右腐败，根据方向进行BFS。</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> minutes=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> direction[]=&#123;<span class="number">1</span>,<span class="number">0</span>,-<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">while</span>(fresh!=<span class="number">0</span> &amp;&amp; !q.isEmpty())&#123;</span><br><span class="line">    <span class="keyword">int</span> size = q.size();</span><br><span class="line">    <span class="keyword">while</span>(size!=<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> arr[]=q.remove();</span><br><span class="line">        <span class="keyword">int</span> x=arr[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> y=arr[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> dx=x+direction[i];</span><br><span class="line">            <span class="keyword">int</span> dy=y+direction[i+<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span>(dx&lt;<span class="number">0</span>||dx&gt;=grid.length||dy&lt;<span class="number">0</span>||dy&gt;=grid[<span class="number">0</span>].length||grid[dx][dy]!=<span class="number">1</span>)</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            fresh--;</span><br><span class="line">            grid[dx][dy]=<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span> n[]=&#123;dx,dy&#125;;</span><br><span class="line">            q.add(n);</span><br><span class="line">        &#125;</span><br><span class="line">        size--;</span><br><span class="line">    &#125;</span><br><span class="line">    minutes++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Step3：因为会存在与腐败橘子不相邻的新鲜橘子，因此当fresh不为0时，返回-1"><a href="#Step3：因为会存在与腐败橘子不相邻的新鲜橘子，因此当fresh不为0时，返回-1" class="headerlink" title="Step3：因为会存在与腐败橘子不相邻的新鲜橘子，因此当fresh不为0时，返回-1."></a>Step3：因为会存在与腐败橘子不相邻的新鲜橘子，因此当fresh不为0时，返回-1.</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(fresh==<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> minutes;</span><br><span class="line"><span class="keyword">return</span> -<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/23/LeetCode994/" data-id="ckal45kon0004plkghptl08b0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/23/LeetCode5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Leetcode5 Longest Palindromic Substrings
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/05/23/Leetcode121/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Leetcode121 Best Time to Buy and Sell Stock</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/23/LeetCode20/">Leetcode20 Valid Parentheses</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/LeetCode1/">Leetcode1 Two sum</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/LeetCode5/">Leetcode5 Longest Palindromic Substrings</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/LeetCode994/">LeetCode994 Rotting Oranges</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/23/Leetcode121/">Leetcode121 Best Time to Buy and Sell Stock</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Jungle<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
