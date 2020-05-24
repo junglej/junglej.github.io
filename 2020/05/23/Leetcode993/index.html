@@ -191,7 +191,21 @@
                 </span>
             </span>
 
-          <br>
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/05/23/Leetcode993/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/23/Leetcode993/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
             <span class="post-meta-item" title="Symbols count in article">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -249,12 +263,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/05/23/Leetcode995/" rel="prev" title="Leetcode995 Minimum Number of K Consecutive Bit Flips">
-      <i class="fa fa-chevron-left"></i> Leetcode995 Minimum Number of K Consecutive Bit Flips
+    <a href="/2020/05/23/Leetcode79/" rel="prev" title="Leetcode79 Word Search">
+      <i class="fa fa-chevron-left"></i> Leetcode79 Word Search
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/05/23/Leetcode79/" rel="next" title="Leetcode79 Word Search">
-      Leetcode79 Word Search <i class="fa fa-chevron-right"></i>
+    <a href="/2020/05/23/Leetcode692/" rel="next" title="Leetcode692 Top K Frequent Words">
+      Leetcode692 Top K Frequent Words <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -268,6 +282,13 @@
 
           </div>
           
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -431,6 +452,37 @@
   
 
   
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://JungleBlog.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://yoursite.com/2020/05/23/Leetcode993/";
+    this.page.identifier = "2020/05/23/Leetcode993/";
+    this.page.title = "Leetcode993 Cousins in Binary Tree";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://JungleBlog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
 
 
 </body>
