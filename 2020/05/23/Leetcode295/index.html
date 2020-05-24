@@ -27,12 +27,12 @@
 <meta property="og:site_name" content="Jungle">
 <meta property="og:description" content="Leetcode295 Find Median from Data Stream题目描述Median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median is the mean of the two middl">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="c:%5CUsers%5Cwangq%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200510102429767.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/23/Leetcode295/C:%5CUsers%5Cwangq%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200510102429767.png">
 <meta property="article:published_time" content="2020-05-24T01:42:13.000Z">
 <meta property="article:modified_time" content="2020-05-24T01:48:43.076Z">
 <meta property="article:author" content="Jungle">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:%5CUsers%5Cwangq%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200510102429767.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/05/23/Leetcode295/C:%5CUsers%5Cwangq%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200510102429767.png">
 
 <link rel="canonical" href="http://yoursite.com/2020/05/23/Leetcode295/">
 
@@ -227,9 +227,9 @@
 <p><strong>Example:</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">addNum(1)</span><br><span class="line">addNum(2)</span><br><span class="line">findMedian() -&gt; 1.5</span><br><span class="line">addNum(3) </span><br><span class="line">findMedian() -&gt; 2</span><br></pre></td></tr></table></figure>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>两个priority queue，一个queue存较大部分一个queue寸较小部分</p>
-<p><img src="C:%5CUsers%5Cwangq%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200510102429767.png" alt="image-20200510102429767"></p>
-<p>较小部分：small = new PriorityQueue<Integer>((a,b) -&gt; a - b);</p>
-<p>较大部分：large = new PriorityQueue<Integer>((a,b) -&gt; b - a);</p>
+<p><img src="/2020/05/23/Leetcode295/C:%5CUsers%5Cwangq%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200510102429767.png" alt="image-20200510102429767"></p>
+<p>较小部分：small = new PriorityQueue<Integer>((a,b) -&gt; a - b);</Integer></p>
+<p>较大部分：large = new PriorityQueue<Integer>((a,b) -&gt; b - a);</Integer></p>
 <p>加入元素：如果large部分为空或者num数大于large的最小元素，则将num加入到large中，反之加入small中。加入后，比较large和small的大小，两个队列的size差不能超多1</p>
 <p>计算中位数：如果small和large的大小相同，则取small的最大和large的最小值相加除以2.0；如果small的数量多，则取small数组的最大的那个。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MedianFinder</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    Queue&lt;Integer&gt; small;</span><br><span class="line">    Queue&lt;Integer&gt; large;</span><br><span class="line">    <span class="comment">/** initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MedianFinder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        small = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;((a,b) -&gt; b - a);</span><br><span class="line">        large = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;((a,b) -&gt; a - b);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addNum</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(small.isEmpty()||num&lt;=small.peek())&#123;</span><br><span class="line">            small.add(num);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            large.add(num);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//balance left and right</span></span><br><span class="line">        <span class="keyword">if</span>(small.size()-large.size()&gt;<span class="number">1</span>)&#123;</span><br><span class="line">            large.add(small.poll());</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(small.size()&lt;large.size())&#123;</span><br><span class="line">            small.add(large.poll());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">findMedian</span><span class="params">()</span> </span>&#123;;</span><br><span class="line">        <span class="keyword">double</span> media =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(large.size()==small.size())</span><br><span class="line">            media = (small.peek()+large.peek())/<span class="number">2.0</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            media = small.peek();</span><br><span class="line">        <span class="keyword">return</span> media;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MedianFinder object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MedianFinder obj = new MedianFinder();</span></span><br><span class="line"><span class="comment"> * obj.addNum(num);</span></span><br><span class="line"><span class="comment"> * double param_2 = obj.findMedian();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
@@ -248,12 +248,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/05/23/Leetcode54/" rel="prev" title="Leetcode54. Spiral Matrix">
-      <i class="fa fa-chevron-left"></i> Leetcode54. Spiral Matrix
+    <a href="/2020/05/23/Leetcode240/" rel="prev" title="Leetcode240 Search a 2D Matrix II">
+      <i class="fa fa-chevron-left"></i> Leetcode240 Search a 2D Matrix II
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/05/23/Leetcode380/" rel="next" title="Leetcode380 Insert Delete GetRandom O(1)">
-      Leetcode380 Insert Delete GetRandom O(1) <i class="fa fa-chevron-right"></i>
+    <a href="/2020/05/23/Leetcode21/" rel="next" title="Leetcode21.Merge Two Sorted Lists">
+      Leetcode21.Merge Two Sorted Lists <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
