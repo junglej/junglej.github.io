@@ -61,7 +61,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG59.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG60.png">
 <meta property="article:published_time" content="2020-05-24T23:43:00.000Z">
-<meta property="article:modified_time" content="2020-05-26T21:45:38.057Z">
+<meta property="article:modified_time" content="2020-05-26T21:51:07.811Z">
 <meta property="article:author" content="Jungle">
 <meta property="article:tag" content="PCB">
 <meta name="twitter:card" content="summary">
@@ -227,7 +227,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-26 17:45:38" itemprop="dateModified" datetime="2020-05-26T17:45:38-04:00">2020-05-26</time>
+                <time title="Modified: 2020-05-26 17:51:07" itemprop="dateModified" datetime="2020-05-26T17:51:07-04:00">2020-05-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -283,94 +283,94 @@
 
       
         <h1 id="PCB封装库的创建-89C51"><a href="#PCB封装库的创建-89C51" class="headerlink" title="PCB封装库的创建(89C51)"></a>PCB封装库的创建(89C51)</h1><h2 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h2><p>使用Altium Designer绘制89C51的PCB封装库<br>本文以89C51芯片为例</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG25.png" class title="原理图">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG25.png" class>
 <h2 id="本文使用的工具"><a href="#本文使用的工具" class="headerlink" title="本文使用的工具"></a>本文使用的工具</h2><p>Altium Designer 20.1.8<br>学习视频：凡亿PCB</p>
 <a id="more"></a>
 
 <h2 id="添加元件"><a href="#添加元件" class="headerlink" title="添加元件"></a>添加元件</h2><p>在PCBLibrary窗口中点击Add</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG22.png" class title="添加">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG22.png" class>
 
 <p>然后对元件进行重命名</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG21.png" class title="最终效果图">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG21.png" class>
 
-<h2 id="焊盘"><a href="#焊盘" class="headerlink" title="焊盘"></a>焊盘</h2><img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG26.png" class title="最终效果图">
+<h2 id="焊盘"><a href="#焊盘" class="headerlink" title="焊盘"></a>焊盘</h2><img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG26.png" class>
 
 <p>根据芯片手册可知，焊盘的孔径应为1.04 - 1.65 mm之间。图中可以看到两个孔径大小，我们选择较大的部分。</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG24.png" class title="最终效果图">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG24.png" class>
 
 <p>在图中位置修改参数，其中Hole Size为孔径，(X/Y)一般修改为孔径大小加1左右。 例如我的孔径大小设置为1.2mm(AD20会自动更改为mil)，(X/Y) 设置为2mm，2mm</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG23.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG23.png" class>
 
 <h2 id="放置焊盘"><a href="#放置焊盘" class="headerlink" title="放置焊盘"></a>放置焊盘</h2><p>每个焊盘之间的间距一般为2.54mm，这里直接采用快捷复制的方法，Ctrl+C, Ctrl+V, 点击Edit，选中Paste Special， 如图</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG31.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG31.png" class>
 
 <p>然后根据图纸更改参数</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG30.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG30.png" class>
 
 <p>这样就放置好了左边的20个焊盘</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG32.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG32.png" class>
 
 <p>看图，左右两边的焊盘间距16mm，因此，我们复制其中一个焊盘，然后Set Location</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG33.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG33.png" class>
 
 <p>然后点击快捷键M，选择Move Selection by X/Y… </p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG28.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG28.png" class>
 
 <p>由于是向右移动，因此参数修改如图</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG34.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG34.png" class>
 
 <p>这样就建立好了右边的一个焊盘</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG35.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG35.png" class>
 
 <p>以同样的方式粘贴右边20个焊盘，根据向上粘贴还是向下粘贴更改正负号，这里我使用的是+2.54mm，效果图如下</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG36.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG36.png" class>
 
 <h2 id="丝印层"><a href="#丝印层" class="headerlink" title="丝印层"></a>丝印层</h2><p>设置Location在Center位置</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG38.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG38.png" class>
 
 <p>切换至丝印层</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG40.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG40.png" class>
 
 <p> 在中心位置绘制一根线，大概长度就好，因为整个芯片的长度取较大的那个数值，也就是52.6mm，因此，将中心位置的线上下镜像到26.3mm的位置，效果如图：</p>
- <img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG42.png" class title="参数修改">
+ <img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG42.png" class>
 
 <p> 同水平线画法，以中心点纵向绘制一根线，从center位置到之前水平线的位置，大致如图</p>
-  <img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG43.png" class title="参数修改">
+  <img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG43.png" class>
 
 <p>  以同样的Move Selection by X/Y… 方式，将线移动，这时，图中显示的间距大致为13.5-14.4之间，因此我们大致选择6.75的样子，以确保线不会压住焊盘。效果如图：</p>
-  <img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG44.png" class title="参数修改">
+  <img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG44.png" class>
 
 <p>  绘制圆弧，在工具栏中找到画圆工具，然后在顶部画一个圆，再将多余的半圆清除即可，效果如图</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG45.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG45.png" class>
 
 <p>注: 将鼠标放到图片位置，然后进行拖动即可将剩下的半圆清除</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG47.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG47.png" class>
 
 <p>第一脚要方便识别，将其更改为方形</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG49.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG49.png" class>
 
 <h2 id="利用向导创建器件"><a href="#利用向导创建器件" class="headerlink" title="利用向导创建器件"></a>利用向导创建器件</h2><p>在之前创建的Component的地方右键点击Footprint Wizard</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG50.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG50.png" class>
 
 <p>得到以下界面</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG51.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG51.png" class>
 
 <p>根据上面手工创建89C51芯片的参数，在以下步骤中设置参数，89C51芯片是一个DIP，因此在此处选择DIP</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG62.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG62.png" class>
 
 <p>随后设置过孔焊盘的大小，下图显示三层，分别为顶层，内层和外层</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG55.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG55.png" class>
 
 <p>设置间距</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG56.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG56.png" class>
 
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG57.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG57.png" class>
 
 <p>设置焊盘的个数</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG59.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG59.png" class>
 
 <p>重命名后finish即可</p>
-<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG60.png" class title="参数修改">
+<img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG60.png" class>
 
 <p>这里也可以直接复制已经画好的封装到自己的工程中，需要的可以点击<a href="https://pan.baidu.com/s/1FptFn88xGNhajm-9BqdOFg" target="_blank" rel="noopener">这里</a> 提取码为rtej</p>
 
