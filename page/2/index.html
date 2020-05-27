@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/23/Leetcode121/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/23/Leetcode127/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -207,7 +207,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/23/Leetcode121/" class="post-title-link" itemprop="url">Leetcode121 Best Time to Buy and Sell Stock</a>
+            <a href="/2020/05/23/Leetcode127/" class="post-title-link" itemprop="url">Leetcode127. Ladder</a>
         </h2>
 
         <div class="post-meta">
@@ -224,7 +224,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-26 10:55:01" itemprop="dateModified" datetime="2020-05-26T10:55:01-04:00">2020-05-26</time>
+                <time title="Modified: 2020-05-26 10:55:55" itemprop="dateModified" datetime="2020-05-26T10:55:55-04:00">2020-05-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -246,14 +246,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>899</span>
+              <span>2.7k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
+              <span>2 mins.</span>
             </span>
 
         </div>
@@ -265,16 +265,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Leetcode121-Best-Time-to-Buy-and-Sell-Stock"><a href="#Leetcode121-Best-Time-to-Buy-and-Sell-Stock" class="headerlink" title="Leetcode121 Best Time to Buy and Sell Stock"></a>Leetcode121 Best Time to Buy and Sell Stock</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [7,1,5,3,6,4]</span><br><span class="line">Output: 5</span><br><span class="line">Explanation: Buy on day 2 (price &#x3D; 1) and sell on day 5 (price &#x3D; 6), profit &#x3D; 6-1 &#x3D; 5.</span><br><span class="line">             Not 7-1 &#x3D; 6, as selling price needs to be larger than buying price.</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/23/Leetcode121/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h1 id="Leetcode127-Ladder"><a href="#Leetcode127-Ladder" class="headerlink" title="Leetcode127. Ladder"></a>Leetcode127. Ladder</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">Given two words (beginWord and endWord), and a dictionary&#39;s word list, find the length of shortest transformation sequence from beginWord to endWord, such that:</span><br><span class="line"></span><br><span class="line">Only one letter can be changed at a time.</span><br><span class="line">Each transformed word must exist in the word list.</span><br><span class="line">Note:</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line">Return 0 if there is no such transformation sequence.</span><br><span class="line">All words have the same length.</span><br><span class="line">All words contain only lowercase alphabetic characters.</span><br><span class="line">You may assume no duplicates in the word list.</span><br><span class="line">You may assume beginWord and endWord are non-empty and are not the same.</span><br><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">beginWord &#x3D; &quot;hit&quot;,</span><br><span class="line">endWord &#x3D; &quot;cog&quot;,</span><br><span class="line">wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]</span><br><span class="line"></span><br><span class="line">Output: 5</span><br><span class="line"></span><br><span class="line">Explanation: As one shortest transformation is &quot;hit&quot; -&gt; &quot;hot&quot; -&gt; &quot;dot&quot; -&gt; &quot;dog&quot; -&gt; &quot;cog&quot;,</span><br><span class="line">return its length 5.</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">beginWord &#x3D; &quot;hit&quot;</span><br><span class="line">endWord &#x3D; &quot;cog&quot;</span><br><span class="line">wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;]</span><br><span class="line"></span><br><span class="line">Output: 0</span><br><span class="line"></span><br><span class="line">Explanation: The endWord &quot;cog&quot; is not in wordList, therefore no possible transformation.</span><br></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>两种方法：<br>BFS使用队列；使用双向BFS，使用HashSet<br>双向BFS:<br>将wordlist放入HashSet中，如果最后的endword不在wordlist中，直接返回0。将startword和endword放入HashSet中，设step为0，当start 和end不为空时进入循环，当进入到循环后，step++，为保证平衡，当start的size大于end的size，交换end和star。设定一个临时的hashset。根据start里的word，每个位置替换26个字母，如果新的word在endword当中存在，返回step+1.如果wordlist没有新的word，继续循环。否则代表还没到end且wordlist中含有新的word，则将wordlist中的该元素去除（如若重复使用，长度必将增大），result中加入新的word。最后将word改回原来的值并将暂时的result作为start开启下一轮循环。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//BFS使用队列</span></span><br><span class="line"><span class="comment">//使用双向BFS，使用HashSet</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">ladderLength</span><span class="params">(String beginWord, String endWord, List&lt;String&gt; wordList)</span> </span>&#123;</span><br><span class="line">        HashSet&lt;String&gt; wordlist= <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(String word: wordList)&#123;</span><br><span class="line">            wordlist.add(word);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!wordlist.contains(endWord))</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        HashSet&lt;String&gt; start = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">        HashSet&lt;String&gt; end = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">        <span class="keyword">int</span> step=<span class="number">0</span>;</span><br><span class="line">        start.add(beginWord);</span><br><span class="line">        end.add(endWord);</span><br><span class="line">        <span class="keyword">while</span>(!start.isEmpty()&amp;&amp;!end.isEmpty())&#123;</span><br><span class="line">            ++step;</span><br><span class="line">            <span class="keyword">if</span>(start.size()&gt;end.size())&#123;<span class="comment">//当start的大小比end大时，交换两个set以保证平衡</span></span><br><span class="line">                HashSet&lt;String&gt; cur = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">                cur = end;</span><br><span class="line">                end = start;</span><br><span class="line">                start = cur;</span><br><span class="line">            &#125;</span><br><span class="line">            HashSet&lt;String&gt; result = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">            <span class="keyword">for</span>(String word: start)&#123;</span><br><span class="line">                <span class="keyword">char</span>[] ch = word.toCharArray();</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;beginWord.length();i++)&#123;</span><br><span class="line">                    <span class="keyword">char</span> c = ch[i];</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">char</span> j=<span class="string">'a'</span>;j&lt;=<span class="string">'z'</span>;j++)&#123;</span><br><span class="line">                        ch[i]=j;</span><br><span class="line">                        String w = <span class="keyword">new</span> String(ch);</span><br><span class="line">                        <span class="keyword">if</span>(end.contains(w)) <span class="keyword">return</span> step+<span class="number">1</span>;</span><br><span class="line">                        <span class="keyword">if</span>(!wordlist.contains(w)) <span class="keyword">continue</span>;</span><br><span class="line">                        wordlist.remove(w);</span><br><span class="line">                        result.add(w);</span><br><span class="line">                    &#125;</span><br><span class="line">                    ch[i]=c;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            start = result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -414,6 +409,113 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/23/Leetcode200/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Jungle">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jungle">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/23/Leetcode200/" class="post-title-link" itemprop="url">Leetcode200 Number of Islands</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-05-23 21:42:13" itemprop="dateCreated datePublished" datetime="2020-05-23T21:42:13-04:00">2020-05-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-05-26 10:56:14" itemprop="dateModified" datetime="2020-05-26T10:56:14-04:00">2020-05-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode/Medium/" itemprop="url" rel="index"><span itemprop="name">Medium</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>984</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Leetcode200-Number-of-Islands"><a href="#Leetcode200-Number-of-Islands" class="headerlink" title="Leetcode200 Number of Islands"></a>Leetcode200 Number of Islands</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given a 2d grid map of <code>&#39;1&#39;</code>s (land) and <code>&#39;0&#39;</code>s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/05/23/Leetcode200/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+    
+    <div>
+          
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/23/Leetcode139/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -494,113 +596,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/05/23/Leetcode139/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-    
-    <div>
-          
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/23/Leetcode200/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Jungle">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jungle">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/23/Leetcode200/" class="post-title-link" itemprop="url">Leetcode200 Number of Islands</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-05-23 21:42:13" itemprop="dateCreated datePublished" datetime="2020-05-23T21:42:13-04:00">2020-05-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-26 10:56:14" itemprop="dateModified" datetime="2020-05-26T10:56:14-04:00">2020-05-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/Medium/" itemprop="url" rel="index"><span itemprop="name">Medium</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>984</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Leetcode200-Number-of-Islands"><a href="#Leetcode200-Number-of-Islands" class="headerlink" title="Leetcode200 Number of Islands"></a>Leetcode200 Number of Islands</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given a 2d grid map of <code>&#39;1&#39;</code>s (land) and <code>&#39;0&#39;</code>s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/23/Leetcode200/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1173,7 +1168,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/23/Leetcode347/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/23/Leetcode380/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -1187,7 +1182,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/23/Leetcode347/" class="post-title-link" itemprop="url">Leetcode347 Top K Frequent Elements</a>
+            <a href="/2020/05/23/Leetcode380/" class="post-title-link" itemprop="url">Leetcode380 Insert Delete GetRandom O(1)</a>
         </h2>
 
         <div class="post-meta">
@@ -1204,7 +1199,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-26 10:00:18" itemprop="dateModified" datetime="2020-05-26T10:00:18-04:00">2020-05-26</time>
+                <time title="Modified: 2020-05-26 10:07:03" itemprop="dateModified" datetime="2020-05-26T10:07:03-04:00">2020-05-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1226,14 +1221,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>901</span>
+              <span>2.4k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
+              <span>2 mins.</span>
             </span>
 
         </div>
@@ -1245,12 +1240,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Leetcode347-Top-K-Frequent-Elements"><a href="#Leetcode347-Top-K-Frequent-Elements" class="headerlink" title="Leetcode347 Top K Frequent Elements"></a>Leetcode347 Top K Frequent Elements</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given a non-empty array of integers, return the <strong><em>k\</em></strong> most frequent elements.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums &#x3D; [1,1,1,2,2,3], k &#x3D; 2</span><br><span class="line">Output: [1,2]</span><br></pre></td></tr></table></figure>
+          <h1 id="Leetcode380-Insert-Delete-GetRandom-O-1"><a href="#Leetcode380-Insert-Delete-GetRandom-O-1" class="headerlink" title="Leetcode380 Insert Delete GetRandom O(1)"></a>Leetcode380 Insert Delete GetRandom O(1)</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Design a data structure that supports all following operations in <em>average</em> <strong>O(1)</strong> time.</p>
+<ol>
+<li><code>insert(val)</code>: Inserts an item val to the set if not already present.</li>
+<li><code>remove(val)</code>: Removes an item val from the set if present.</li>
+<li><code>getRandom</code>: Returns a random element from current set of elements. Each element must have the <strong>same probability</strong> of being returned.</li></ol>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/05/23/Leetcode347/#more" rel="contents">
+              <a class="btn" href="/2020/05/23/Leetcode380/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
