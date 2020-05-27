@@ -1239,4 +1239,63 @@
         <tag>计算机网络自顶向下方法</tag>
       </tags>
   </entry>
+  <entry>
+    <title>PCB的导入及前期处理</title>
+    <url>/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/</url>
+    <content><![CDATA[<h1 id="PCB的导入及前期处理"><a href="#PCB的导入及前期处理" class="headerlink" title="PCB的导入及前期处理"></a>PCB的导入及前期处理</h1><h1 id="1-对原理图的封装进行添加"><a href="#1-对原理图的封装进行添加" class="headerlink" title="1. 对原理图的封装进行添加"></a>1. 对原理图的封装进行添加</h1><h2 id="两种添加分装的方式（以7805为例）"><a href="#两种添加分装的方式（以7805为例）" class="headerlink" title="两种添加分装的方式（以7805为例）"></a>两种添加分装的方式（以7805为例）</h2><h3 id="1-双击器件，在Parameters窗口点击Add"><a href="#1-双击器件，在Parameters窗口点击Add" class="headerlink" title="1. 双击器件，在Parameters窗口点击Add"></a>1. 双击器件，在Parameters窗口点击Add</h3>   <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG22.png" class>
+
+<p>   选中Add中的Footprint</p>
+   <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG23.png" class>
+
+<p>   再打开的PCBModel中点击Browse，因为之前已经创建过PCB的封装库，这里直接浏览选择即可。找到7805对应的封装，即3P_7805。</p>
+   <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG24.png" class>
+
+<h3 id="2-批量加入Footprint"><a href="#2-批量加入Footprint" class="headerlink" title="2. 批量加入Footprint"></a>2. 批量加入Footprint</h3><p>   在Tools中找到Footprint Manager…</p>
+   
+
+<p>   选中电容，然后点击add</p>
+   <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG30.png" class>
+
+<p>  以同样的方式修改其他的器件，最后点击Accept Changes</p>
+  <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG31.png" class>
+
+<p>  随后点击Exeute Changes</p>
+   <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG13.png" class>
+
+<h1 id="2-将原理图导入PCB"><a href="#2-将原理图导入PCB" class="headerlink" title="2. 将原理图导入PCB"></a>2. 将原理图导入PCB</h1><p>在原理图界面中，点击Design，选中Update</p>
+<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG16.png" class>
+
+<p>Room我们一般不需要导入，把前面的勾去掉就好</p>
+<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG19.png" class>
+
+<p>下图中有两个按钮我们需要知道：第一个按钮为check状态，第二个按钮为执行更改。</p>
+<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG20.png" class>
+
+<p>先check器件状态然后点击执行更改，最后得到下图</p>
+<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG4.png" class>
+
+<p>为了确认器件，我们通常要导入两次，在PCB文件中，点击Design，然后点击Import Changes From 89C51.PrjPcb</p>
+<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG32.png" class>
+
+<p>导入完全会有以下提示信息：</p>
+<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG33.png" class>
+
+<p>我们可以将器件的名称放在器件的中心位置，选中器件，点击Find Similar，在String type中选中same，然后快捷键A，点击Position Component Text   </p>
+<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG34.png" class>
+
+<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG35.png" class>
+
+<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG36.png" class>
+
+<h1 id="最后的效果图"><a href="#最后的效果图" class="headerlink" title="最后的效果图"></a>最后的效果图</h1><img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG37.png" class>
+
+]]></content>
+      <categories>
+        <category>PCB学习笔记</category>
+        <category>89C51</category>
+      </categories>
+      <tags>
+        <tag>PCB</tag>
+      </tags>
+  </entry>
 </search>
