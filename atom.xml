@@ -147,31 +147,6 @@
   </entry>
   
   <entry>
-    <title>Leetcode1 Two sum</title>
-    <link href="http://yoursite.com/2020/05/23/LeetCode1/"/>
-    <id>http://yoursite.com/2020/05/23/LeetCode1/</id>
-    <published>2020-05-24T01:42:13.000Z</published>
-    <updated>2020-05-26T14:43:22.456Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Leetcode1-Two-sum"><a href="#Leetcode1-Two-sum" class="headerlink" title="Leetcode1 Two sum"></a>Leetcode1 Two sum</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Given nums &#x3D; [2, 7, 11, 15], target &#x3D; 9,</span><br><span class="line"></span><br><span class="line">Because nums[0] + nums[1] &#x3D; 2 + 7 &#x3D; 9,</span><br><span class="line">return [0, 1].</span><br></pre></td></tr></table></figure><a id="more"></a><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;nums.length;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i]+nums[j]==target)</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i,j&#125;;       </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"NO TWO SUM SOLUTION"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Leetcode1-Two-sum&quot;&gt;&lt;a href=&quot;#Leetcode1-Two-sum&quot; class=&quot;headerlink&quot; title=&quot;Leetcode1 Two sum&quot;&gt;&lt;/a&gt;Leetcode1 Two sum&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Given nums &amp;#x3D; [2, 7, 11, 15], target &amp;#x3D; 9,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Because nums[0] + nums[1] &amp;#x3D; 2 + 7 &amp;#x3D; 9,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;return [0, 1].&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-      <category term="Easy" scheme="http://yoursite.com/categories/LeetCode/Easy/"/>
-    
-    
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Leetcode20 Valid Parentheses</title>
     <link href="http://yoursite.com/2020/05/23/LeetCode20/"/>
     <id>http://yoursite.com/2020/05/23/LeetCode20/</id>
@@ -195,6 +170,31 @@
       <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
       <category term="Stack" scheme="http://yoursite.com/tags/Stack/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Leetcode1 Two sum</title>
+    <link href="http://yoursite.com/2020/05/23/LeetCode1/"/>
+    <id>http://yoursite.com/2020/05/23/LeetCode1/</id>
+    <published>2020-05-24T01:42:13.000Z</published>
+    <updated>2020-05-26T14:43:22.456Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Leetcode1-Two-sum"><a href="#Leetcode1-Two-sum" class="headerlink" title="Leetcode1 Two sum"></a>Leetcode1 Two sum</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Given nums &#x3D; [2, 7, 11, 15], target &#x3D; 9,</span><br><span class="line"></span><br><span class="line">Because nums[0] + nums[1] &#x3D; 2 + 7 &#x3D; 9,</span><br><span class="line">return [0, 1].</span><br></pre></td></tr></table></figure><a id="more"></a><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;nums.length;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i]+nums[j]==target)</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i,j&#125;;       </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"NO TWO SUM SOLUTION"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Leetcode1-Two-sum&quot;&gt;&lt;a href=&quot;#Leetcode1-Two-sum&quot; class=&quot;headerlink&quot; title=&quot;Leetcode1 Two sum&quot;&gt;&lt;/a&gt;Leetcode1 Two sum&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Given nums &amp;#x3D; [2, 7, 11, 15], target &amp;#x3D; 9,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Because nums[0] + nums[1] &amp;#x3D; 2 + 7 &amp;#x3D; 9,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;return [0, 1].&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/categories/LeetCode/Easy/"/>
+    
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
     
   </entry>
   
@@ -262,34 +262,6 @@
   </entry>
   
   <entry>
-    <title>Leetcode121 Best Time to Buy and Sell Stock</title>
-    <link href="http://yoursite.com/2020/05/23/Leetcode121/"/>
-    <id>http://yoursite.com/2020/05/23/Leetcode121/</id>
-    <published>2020-05-24T01:42:13.000Z</published>
-    <updated>2020-05-26T14:55:01.358Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Leetcode121-Best-Time-to-Buy-and-Sell-Stock"><a href="#Leetcode121-Best-Time-to-Buy-and-Sell-Stock" class="headerlink" title="Leetcode121 Best Time to Buy and Sell Stock"></a>Leetcode121 Best Time to Buy and Sell Stock</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><strong>Example 1:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [7,1,5,3,6,4]</span><br><span class="line">Output: 5</span><br><span class="line">Explanation: Buy on day 2 (price &#x3D; 1) and sell on day 5 (price &#x3D; 6), profit &#x3D; 6-1 &#x3D; 5.</span><br><span class="line">             Not 7-1 &#x3D; 6, as selling price needs to be larger than buying price.</span><br></pre></td></tr></table></figure><a id="more"></a><p><strong>Example 2:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [7,6,4,3,1]</span><br><span class="line">Output: 0</span><br><span class="line">Explanation: In this case, no transaction is done, i.e. max profit &#x3D; 0.</span><br></pre></td></tr></table></figure><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>思路：两个数组，一个数组储存最低价格，一个数组储存最高价格，最大的价格对应的位置要比最小的价格对应的位置靠后（值大），最小数组的值是当前值与最小数组里的最后一个元素比较，更小的那一个放入最小价格数组；当前位置的价格与最大数组的最后一个元素比较，较大的价格放入最大数组中。直接返回最最大价格数组里的最后一个元素。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.length&lt;<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] lowprice= <span class="keyword">new</span> <span class="keyword">int</span>[prices.length];</span><br><span class="line">        <span class="keyword">int</span>[] highprice= <span class="keyword">new</span> <span class="keyword">int</span>[prices.length];</span><br><span class="line">        lowprice[<span class="number">0</span>]=prices[<span class="number">0</span>];</span><br><span class="line">        highprice[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;prices.length;i++)&#123;</span><br><span class="line">            lowprice[i]=Math.min(prices[i],lowprice[i-<span class="number">1</span>]);</span><br><span class="line">            highprice[i]=Math.max(highprice[i-<span class="number">1</span>],prices[i]-lowprice[i-<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> highprice[prices.length-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Leetcode121-Best-Time-to-Buy-and-Sell-Stock&quot;&gt;&lt;a href=&quot;#Leetcode121-Best-Time-to-Buy-and-Sell-Stock&quot; class=&quot;headerlink&quot; title=&quot;Leetcode121 Best Time to Buy and Sell Stock&quot;&gt;&lt;/a&gt;Leetcode121 Best Time to Buy and Sell Stock&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Example 1:&lt;/strong&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Input: [7,1,5,3,6,4]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Output: 5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Explanation: Buy on day 2 (price &amp;#x3D; 1) and sell on day 5 (price &amp;#x3D; 6), profit &amp;#x3D; 6-1 &amp;#x3D; 5.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;             Not 7-1 &amp;#x3D; 6, as selling price needs to be larger than buying price.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/categories/LeetCode/Medium/"/>
-    
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="DFS" scheme="http://yoursite.com/tags/DFS/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Leetcode127. Ladder</title>
     <link href="http://yoursite.com/2020/05/23/Leetcode127/"/>
     <id>http://yoursite.com/2020/05/23/Leetcode127/</id>
@@ -318,6 +290,34 @@
       <category term="BFS" scheme="http://yoursite.com/tags/BFS/"/>
     
       <category term="HashSet" scheme="http://yoursite.com/tags/HashSet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Leetcode121 Best Time to Buy and Sell Stock</title>
+    <link href="http://yoursite.com/2020/05/23/Leetcode121/"/>
+    <id>http://yoursite.com/2020/05/23/Leetcode121/</id>
+    <published>2020-05-24T01:42:13.000Z</published>
+    <updated>2020-05-26T14:55:01.358Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Leetcode121-Best-Time-to-Buy-and-Sell-Stock"><a href="#Leetcode121-Best-Time-to-Buy-and-Sell-Stock" class="headerlink" title="Leetcode121 Best Time to Buy and Sell Stock"></a>Leetcode121 Best Time to Buy and Sell Stock</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><strong>Example 1:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [7,1,5,3,6,4]</span><br><span class="line">Output: 5</span><br><span class="line">Explanation: Buy on day 2 (price &#x3D; 1) and sell on day 5 (price &#x3D; 6), profit &#x3D; 6-1 &#x3D; 5.</span><br><span class="line">             Not 7-1 &#x3D; 6, as selling price needs to be larger than buying price.</span><br></pre></td></tr></table></figure><a id="more"></a><p><strong>Example 2:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [7,6,4,3,1]</span><br><span class="line">Output: 0</span><br><span class="line">Explanation: In this case, no transaction is done, i.e. max profit &#x3D; 0.</span><br></pre></td></tr></table></figure><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>思路：两个数组，一个数组储存最低价格，一个数组储存最高价格，最大的价格对应的位置要比最小的价格对应的位置靠后（值大），最小数组的值是当前值与最小数组里的最后一个元素比较，更小的那一个放入最小价格数组；当前位置的价格与最大数组的最后一个元素比较，较大的价格放入最大数组中。直接返回最最大价格数组里的最后一个元素。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.length&lt;<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] lowprice= <span class="keyword">new</span> <span class="keyword">int</span>[prices.length];</span><br><span class="line">        <span class="keyword">int</span>[] highprice= <span class="keyword">new</span> <span class="keyword">int</span>[prices.length];</span><br><span class="line">        lowprice[<span class="number">0</span>]=prices[<span class="number">0</span>];</span><br><span class="line">        highprice[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;prices.length;i++)&#123;</span><br><span class="line">            lowprice[i]=Math.min(prices[i],lowprice[i-<span class="number">1</span>]);</span><br><span class="line">            highprice[i]=Math.max(highprice[i-<span class="number">1</span>],prices[i]-lowprice[i-<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> highprice[prices.length-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Leetcode121-Best-Time-to-Buy-and-Sell-Stock&quot;&gt;&lt;a href=&quot;#Leetcode121-Best-Time-to-Buy-and-Sell-Stock&quot; class=&quot;headerlink&quot; title=&quot;Leetcode121 Best Time to Buy and Sell Stock&quot;&gt;&lt;/a&gt;Leetcode121 Best Time to Buy and Sell Stock&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Example 1:&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Input: [7,1,5,3,6,4]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Output: 5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Explanation: Buy on day 2 (price &amp;#x3D; 1) and sell on day 5 (price &amp;#x3D; 6), profit &amp;#x3D; 6-1 &amp;#x3D; 5.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;             Not 7-1 &amp;#x3D; 6, as selling price needs to be larger than buying price.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/categories/LeetCode/Medium/"/>
+    
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="DFS" scheme="http://yoursite.com/tags/DFS/"/>
     
   </entry>
   
@@ -449,35 +449,6 @@
   </entry>
   
   <entry>
-    <title>Leetcode21.Merge Two Sorted Lists</title>
-    <link href="http://yoursite.com/2020/05/23/Leetcode21/"/>
-    <id>http://yoursite.com/2020/05/23/Leetcode21/</id>
-    <published>2020-05-24T01:42:13.000Z</published>
-    <updated>2020-05-26T14:51:12.778Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Leetcode21-Merge-Two-Sorted-Lists"><a href="#Leetcode21-Merge-Two-Sorted-Lists" class="headerlink" title="Leetcode21.Merge Two Sorted Lists"></a>Leetcode21.Merge Two Sorted Lists</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Merge two sorted linked lists and return it as a new list. </span><br><span class="line">The new list should be made by splicing together the nodes of the first two lists.</span><br><span class="line">Example:</span><br><span class="line">Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4</span><br><span class="line">Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</span><br></pre></td></tr></table></figure><a id="more"></a><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>思路：两个指着（程序中直接使用ListNode）如果当前l1的value大于l2的value则将l2的值赋给result，<br>然后递归比较l1和l2.next。如果当前l1的value小于l2的value则将l1的值赋给result，然后递归比较l2和l1.next。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l1==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        <span class="keyword">if</span>(l2==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        ListNode result;</span><br><span class="line">         <span class="keyword">if</span>(l1.val&lt;l2.val)&#123;</span><br><span class="line">             result=l1;</span><br><span class="line">             result.next=mergeTwoLists(l1.next,l2);</span><br><span class="line">         &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">             result = l2;</span><br><span class="line">             result.next = mergeTwoLists(l1,l2.next);</span><br><span class="line">         &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Leetcode21-Merge-Two-Sorted-Lists&quot;&gt;&lt;a href=&quot;#Leetcode21-Merge-Two-Sorted-Lists&quot; class=&quot;headerlink&quot; title=&quot;Leetcode21.Merge Two Sorted Lists&quot;&gt;&lt;/a&gt;Leetcode21.Merge Two Sorted Lists&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Merge two sorted linked lists and return it as a new list. &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;The new list should be made by splicing together the nodes of the first two lists.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Example:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Input: 1-&amp;gt;2-&amp;gt;4, 1-&amp;gt;3-&amp;gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Output: 1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-      <category term="Easy" scheme="http://yoursite.com/categories/LeetCode/Easy/"/>
-    
-    
-      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
-    
-      <category term="ListNode" scheme="http://yoursite.com/tags/ListNode/"/>
-    
-      <category term="Recursive" scheme="http://yoursite.com/tags/Recursive/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Leetcode240 Search a 2D Matrix II</title>
     <link href="http://yoursite.com/2020/05/23/Leetcode240/"/>
     <id>http://yoursite.com/2020/05/23/Leetcode240/</id>
@@ -504,6 +475,35 @@
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
     
       <category term="Two Pointers" scheme="http://yoursite.com/tags/Two-Pointers/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Leetcode21.Merge Two Sorted Lists</title>
+    <link href="http://yoursite.com/2020/05/23/Leetcode21/"/>
+    <id>http://yoursite.com/2020/05/23/Leetcode21/</id>
+    <published>2020-05-24T01:42:13.000Z</published>
+    <updated>2020-05-26T14:51:12.778Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Leetcode21-Merge-Two-Sorted-Lists"><a href="#Leetcode21-Merge-Two-Sorted-Lists" class="headerlink" title="Leetcode21.Merge Two Sorted Lists"></a>Leetcode21.Merge Two Sorted Lists</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Merge two sorted linked lists and return it as a new list. </span><br><span class="line">The new list should be made by splicing together the nodes of the first two lists.</span><br><span class="line">Example:</span><br><span class="line">Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4</span><br><span class="line">Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</span><br></pre></td></tr></table></figure><a id="more"></a><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>思路：两个指着（程序中直接使用ListNode）如果当前l1的value大于l2的value则将l2的值赋给result，<br>然后递归比较l1和l2.next。如果当前l1的value小于l2的value则将l1的值赋给result，然后递归比较l2和l1.next。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l1==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        <span class="keyword">if</span>(l2==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        ListNode result;</span><br><span class="line">         <span class="keyword">if</span>(l1.val&lt;l2.val)&#123;</span><br><span class="line">             result=l1;</span><br><span class="line">             result.next=mergeTwoLists(l1.next,l2);</span><br><span class="line">         &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">             result = l2;</span><br><span class="line">             result.next = mergeTwoLists(l1,l2.next);</span><br><span class="line">         &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Leetcode21-Merge-Two-Sorted-Lists&quot;&gt;&lt;a href=&quot;#Leetcode21-Merge-Two-Sorted-Lists&quot; class=&quot;headerlink&quot; title=&quot;Leetcode21.Merge Two Sorted Lists&quot;&gt;&lt;/a&gt;Leetcode21.Merge Two Sorted Lists&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Merge two sorted linked lists and return it as a new list. &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;The new list should be made by splicing together the nodes of the first two lists.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Example:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Input: 1-&amp;gt;2-&amp;gt;4, 1-&amp;gt;3-&amp;gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Output: 1-&amp;gt;1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+      <category term="Easy" scheme="http://yoursite.com/categories/LeetCode/Easy/"/>
+    
+    
+      <category term="Easy" scheme="http://yoursite.com/tags/Easy/"/>
+    
+      <category term="ListNode" scheme="http://yoursite.com/tags/ListNode/"/>
+    
+      <category term="Recursive" scheme="http://yoursite.com/tags/Recursive/"/>
     
   </entry>
   
@@ -535,6 +535,35 @@
   </entry>
   
   <entry>
+    <title>Leetcode295 Find Median from Data Stream</title>
+    <link href="http://yoursite.com/2020/05/23/Leetcode295/"/>
+    <id>http://yoursite.com/2020/05/23/Leetcode295/</id>
+    <published>2020-05-24T01:42:13.000Z</published>
+    <updated>2020-05-26T14:59:20.980Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Leetcode295-Find-Median-from-Data-Stream"><a href="#Leetcode295-Find-Median-from-Data-Stream" class="headerlink" title="Leetcode295 Find Median from Data Stream"></a>Leetcode295 Find Median from Data Stream</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median is the mean of the two middle value.</p><a id="more"></a><p>For example,</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[2,3,4]&#96;, the median is &#96;3</span><br><span class="line">[2,3]&#96;, the median is &#96;(2 + 3) &#x2F; 2 &#x3D; 2.5</span><br></pre></td></tr></table></figure><!-- more --><p>Design a data structure that supports the following two operations:</p><ul><li>void addNum(int num) - Add a integer number from the data stream to the data structure.</li><li>double findMedian() - Return the median of all elements so far.</li></ul><p><strong>Example:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">addNum(1)</span><br><span class="line">addNum(2)</span><br><span class="line">findMedian() -&gt; 1.5</span><br><span class="line">addNum(3) </span><br><span class="line">findMedian() -&gt; 2</span><br></pre></td></tr></table></figure><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>两个priority queue，一个queue存较大部分一个queue寸较小部分</p><p><img src="/2020/05/23/Leetcode295/C:%5CUsers%5Cwangq%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200510102429767.png" alt="image-20200510102429767"></p><p>较小部分：small = new PriorityQueue<Integer>((a,b) -&gt; a - b);</Integer></p><p>较大部分：large = new PriorityQueue<Integer>((a,b) -&gt; b - a);</Integer></p><p>加入元素：如果large部分为空或者num数大于large的最小元素，则将num加入到large中，反之加入small中。加入后，比较large和small的大小，两个队列的size差不能超多1</p><p>计算中位数：如果small和large的大小相同，则取small的最大和large的最小值相加除以2.0；如果small的数量多，则取small数组的最大的那个。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MedianFinder</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    Queue&lt;Integer&gt; small;</span><br><span class="line">    Queue&lt;Integer&gt; large;</span><br><span class="line">    <span class="comment">/** initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MedianFinder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        small = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;((a,b) -&gt; b - a);</span><br><span class="line">        large = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;((a,b) -&gt; a - b);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addNum</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(small.isEmpty()||num&lt;=small.peek())&#123;</span><br><span class="line">            small.add(num);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            large.add(num);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//balance left and right</span></span><br><span class="line">        <span class="keyword">if</span>(small.size()-large.size()&gt;<span class="number">1</span>)&#123;</span><br><span class="line">            large.add(small.poll());</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(small.size()&lt;large.size())&#123;</span><br><span class="line">            small.add(large.poll());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">findMedian</span><span class="params">()</span> </span>&#123;;</span><br><span class="line">        <span class="keyword">double</span> media =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(large.size()==small.size())</span><br><span class="line">            media = (small.peek()+large.peek())/<span class="number">2.0</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            media = small.peek();</span><br><span class="line">        <span class="keyword">return</span> media;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MedianFinder object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MedianFinder obj = new MedianFinder();</span></span><br><span class="line"><span class="comment"> * obj.addNum(num);</span></span><br><span class="line"><span class="comment"> * double param_2 = obj.findMedian();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Leetcode295-Find-Median-from-Data-Stream&quot;&gt;&lt;a href=&quot;#Leetcode295-Find-Median-from-Data-Stream&quot; class=&quot;headerlink&quot; title=&quot;Leetcode295 Find Median from Data Stream&quot;&gt;&lt;/a&gt;Leetcode295 Find Median from Data Stream&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;Median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median is the mean of the two middle value.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+      <category term="Medium" scheme="http://yoursite.com/categories/LeetCode/Medium/"/>
+    
+    
+      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
+    
+      <category term="BFS" scheme="http://yoursite.com/tags/BFS/"/>
+    
+      <category term="Priority Queue" scheme="http://yoursite.com/tags/Priority-Queue/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Leetcode347 Top K Frequent Elements</title>
     <link href="http://yoursite.com/2020/05/23/Leetcode347/"/>
     <id>http://yoursite.com/2020/05/23/Leetcode347/</id>
@@ -562,35 +591,6 @@
       <category term="Hash" scheme="http://yoursite.com/tags/Hash/"/>
     
       <category term="Bucket" scheme="http://yoursite.com/tags/Bucket/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode295 Find Median from Data Stream</title>
-    <link href="http://yoursite.com/2020/05/23/Leetcode295/"/>
-    <id>http://yoursite.com/2020/05/23/Leetcode295/</id>
-    <published>2020-05-24T01:42:13.000Z</published>
-    <updated>2020-05-26T14:59:20.980Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Leetcode295-Find-Median-from-Data-Stream"><a href="#Leetcode295-Find-Median-from-Data-Stream" class="headerlink" title="Leetcode295 Find Median from Data Stream"></a>Leetcode295 Find Median from Data Stream</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median is the mean of the two middle value.</p><a id="more"></a><p>For example,</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[2,3,4]&#96;, the median is &#96;3</span><br><span class="line">[2,3]&#96;, the median is &#96;(2 + 3) &#x2F; 2 &#x3D; 2.5</span><br></pre></td></tr></table></figure><!-- more --><p>Design a data structure that supports the following two operations:</p><ul><li>void addNum(int num) - Add a integer number from the data stream to the data structure.</li><li>double findMedian() - Return the median of all elements so far.</li></ul><p><strong>Example:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">addNum(1)</span><br><span class="line">addNum(2)</span><br><span class="line">findMedian() -&gt; 1.5</span><br><span class="line">addNum(3) </span><br><span class="line">findMedian() -&gt; 2</span><br></pre></td></tr></table></figure><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>两个priority queue，一个queue存较大部分一个queue寸较小部分</p><p><img src="/2020/05/23/Leetcode295/C:%5CUsers%5Cwangq%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200510102429767.png" alt="image-20200510102429767"></p><p>较小部分：small = new PriorityQueue<Integer>((a,b) -&gt; a - b);</Integer></p><p>较大部分：large = new PriorityQueue<Integer>((a,b) -&gt; b - a);</Integer></p><p>加入元素：如果large部分为空或者num数大于large的最小元素，则将num加入到large中，反之加入small中。加入后，比较large和small的大小，两个队列的size差不能超多1</p><p>计算中位数：如果small和large的大小相同，则取small的最大和large的最小值相加除以2.0；如果small的数量多，则取small数组的最大的那个。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MedianFinder</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    Queue&lt;Integer&gt; small;</span><br><span class="line">    Queue&lt;Integer&gt; large;</span><br><span class="line">    <span class="comment">/** initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MedianFinder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        small = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;((a,b) -&gt; b - a);</span><br><span class="line">        large = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;((a,b) -&gt; a - b);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addNum</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(small.isEmpty()||num&lt;=small.peek())&#123;</span><br><span class="line">            small.add(num);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            large.add(num);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//balance left and right</span></span><br><span class="line">        <span class="keyword">if</span>(small.size()-large.size()&gt;<span class="number">1</span>)&#123;</span><br><span class="line">            large.add(small.poll());</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(small.size()&lt;large.size())&#123;</span><br><span class="line">            small.add(large.poll());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">findMedian</span><span class="params">()</span> </span>&#123;;</span><br><span class="line">        <span class="keyword">double</span> media =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(large.size()==small.size())</span><br><span class="line">            media = (small.peek()+large.peek())/<span class="number">2.0</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            media = small.peek();</span><br><span class="line">        <span class="keyword">return</span> media;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MedianFinder object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MedianFinder obj = new MedianFinder();</span></span><br><span class="line"><span class="comment"> * obj.addNum(num);</span></span><br><span class="line"><span class="comment"> * double param_2 = obj.findMedian();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Leetcode295-Find-Median-from-Data-Stream&quot;&gt;&lt;a href=&quot;#Leetcode295-Find-Median-from-Data-Stream&quot; class=&quot;headerlink&quot; title=&quot;Leetcode295 Find Median from Data Stream&quot;&gt;&lt;/a&gt;Leetcode295 Find Median from Data Stream&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;Median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median is the mean of the two middle value.&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/categories/LeetCode/Medium/"/>
-    
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="BFS" scheme="http://yoursite.com/tags/BFS/"/>
-    
-      <category term="Priority Queue" scheme="http://yoursite.com/tags/Priority-Queue/"/>
     
   </entry>
   
