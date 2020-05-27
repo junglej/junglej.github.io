@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Leetcode5 Longest Palindromic Substrings</title>
-    <url>/2020/05/23/LeetCode5/</url>
-    <content><![CDATA[<h1 id="Leetcode5-Longest-Palindromic-Substrings"><a href="#Leetcode5-Longest-Palindromic-Substrings" class="headerlink" title="Leetcode5 Longest Palindromic Substrings"></a>Leetcode5 Longest Palindromic Substrings</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given a string s, find the longest palindromic substring in s.</span><br><span class="line">You may assume that the maximum length of s is 1000.</span><br><span class="line"></span><br><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: &quot;babad&quot;</span><br><span class="line">Output: &quot;bab&quot;</span><br><span class="line">Note: &quot;aba&quot; is also a valid answer.</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: &quot;cbbd&quot;</span><br><span class="line">Output: &quot;bb&quot;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>如果len为n的string是回文字符那么长度为n-2的string也是回文字符。 </p>
-<p>abcbc -&gt; bcb-&gt;c</p>
-<p>abba -&gt; bb</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">longestPalindrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> star=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();++i)&#123;</span><br><span class="line">            <span class="keyword">int</span> cur = Math.max(getLen(s,i,i),getLen(s,i,i+<span class="number">1</span>));</span><br><span class="line">            <span class="keyword">if</span>(cur&gt; len)&#123;</span><br><span class="line">                len=cur;</span><br><span class="line">                star =i - (cur-<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.substring(star,star+len);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getLen</span><span class="params">(String s, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    	<span class="keyword">while</span>(l&gt;=<span class="number">0</span>&amp;&amp;r&lt;s.length()&amp;&amp;s.charAt(l)==s.charAt(r))&#123;</span><br><span class="line">       		--l;</span><br><span class="line">        	++r;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> r-l-<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Medium</category>
-      </categories>
-      <tags>
-        <tag>Medium</tag>
-        <tag>String</tag>
-        <tag>DP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode1 Two sum</title>
     <url>/2020/05/23/LeetCode1/</url>
     <content><![CDATA[<h1 id="Leetcode1-Two-sum"><a href="#Leetcode1-Two-sum" class="headerlink" title="Leetcode1 Two sum"></a>Leetcode1 Two sum</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given nums &#x3D; [2, 7, 11, 15], target &#x3D; 9,</span><br><span class="line"></span><br><span class="line">Because nums[0] + nums[1] &#x3D; 2 + 7 &#x3D; 9,</span><br><span class="line">return [0, 1].</span><br></pre></td></tr></table></figure>
@@ -53,16 +33,14 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode121 Best Time to Buy and Sell Stock</title>
-    <url>/2020/05/23/Leetcode121/</url>
-    <content><![CDATA[<h1 id="Leetcode121-Best-Time-to-Buy-and-Sell-Stock"><a href="#Leetcode121-Best-Time-to-Buy-and-Sell-Stock" class="headerlink" title="Leetcode121 Best Time to Buy and Sell Stock"></a>Leetcode121 Best Time to Buy and Sell Stock</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [7,1,5,3,6,4]</span><br><span class="line">Output: 5</span><br><span class="line">Explanation: Buy on day 2 (price &#x3D; 1) and sell on day 5 (price &#x3D; 6), profit &#x3D; 6-1 &#x3D; 5.</span><br><span class="line">             Not 7-1 &#x3D; 6, as selling price needs to be larger than buying price.</span><br></pre></td></tr></table></figure>
+    <title>Leetcode5 Longest Palindromic Substrings</title>
+    <url>/2020/05/23/LeetCode5/</url>
+    <content><![CDATA[<h1 id="Leetcode5-Longest-Palindromic-Substrings"><a href="#Leetcode5-Longest-Palindromic-Substrings" class="headerlink" title="Leetcode5 Longest Palindromic Substrings"></a>Leetcode5 Longest Palindromic Substrings</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given a string s, find the longest palindromic substring in s.</span><br><span class="line">You may assume that the maximum length of s is 1000.</span><br><span class="line"></span><br><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: &quot;babad&quot;</span><br><span class="line">Output: &quot;bab&quot;</span><br><span class="line">Note: &quot;aba&quot; is also a valid answer.</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: &quot;cbbd&quot;</span><br><span class="line">Output: &quot;bb&quot;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [7,6,4,3,1]</span><br><span class="line">Output: 0</span><br><span class="line">Explanation: In this case, no transaction is done, i.e. max profit &#x3D; 0.</span><br></pre></td></tr></table></figure>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>思路：两个数组，一个数组储存最低价格，一个数组储存最高价格，最大的价格对应的位置要比最小的价格对应的位置靠后（值大），最小数组的值是当前值与最小数组里的最后一个元素比较，更小的那一个放入最小价格数组；当前位置的价格与最大数组的最后一个元素比较，较大的价格放入最大数组中。直接返回最最大价格数组里的最后一个元素。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.length&lt;<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] lowprice= <span class="keyword">new</span> <span class="keyword">int</span>[prices.length];</span><br><span class="line">        <span class="keyword">int</span>[] highprice= <span class="keyword">new</span> <span class="keyword">int</span>[prices.length];</span><br><span class="line">        lowprice[<span class="number">0</span>]=prices[<span class="number">0</span>];</span><br><span class="line">        highprice[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;prices.length;i++)&#123;</span><br><span class="line">            lowprice[i]=Math.min(prices[i],lowprice[i-<span class="number">1</span>]);</span><br><span class="line">            highprice[i]=Math.max(highprice[i-<span class="number">1</span>],prices[i]-lowprice[i-<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> highprice[prices.length-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>如果len为n的string是回文字符那么长度为n-2的string也是回文字符。 </p>
+<p>abcbc -&gt; bcb-&gt;c</p>
+<p>abba -&gt; bb</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">longestPalindrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> star=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();++i)&#123;</span><br><span class="line">            <span class="keyword">int</span> cur = Math.max(getLen(s,i,i),getLen(s,i,i+<span class="number">1</span>));</span><br><span class="line">            <span class="keyword">if</span>(cur&gt; len)&#123;</span><br><span class="line">                len=cur;</span><br><span class="line">                star =i - (cur-<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.substring(star,star+len);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getLen</span><span class="params">(String s, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    	<span class="keyword">while</span>(l&gt;=<span class="number">0</span>&amp;&amp;r&lt;s.length()&amp;&amp;s.charAt(l)==s.charAt(r))&#123;</span><br><span class="line">       		--l;</span><br><span class="line">        	++r;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> r-l-<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>LeetCode</category>
@@ -70,7 +48,8 @@
       </categories>
       <tags>
         <tag>Medium</tag>
-        <tag>DFS</tag>
+        <tag>String</tag>
+        <tag>DP</tag>
       </tags>
   </entry>
   <entry>
@@ -135,6 +114,45 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode121 Best Time to Buy and Sell Stock</title>
+    <url>/2020/05/23/Leetcode121/</url>
+    <content><![CDATA[<h1 id="Leetcode121-Best-Time-to-Buy-and-Sell-Stock"><a href="#Leetcode121-Best-Time-to-Buy-and-Sell-Stock" class="headerlink" title="Leetcode121 Best Time to Buy and Sell Stock"></a>Leetcode121 Best Time to Buy and Sell Stock</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [7,1,5,3,6,4]</span><br><span class="line">Output: 5</span><br><span class="line">Explanation: Buy on day 2 (price &#x3D; 1) and sell on day 5 (price &#x3D; 6), profit &#x3D; 6-1 &#x3D; 5.</span><br><span class="line">             Not 7-1 &#x3D; 6, as selling price needs to be larger than buying price.</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [7,6,4,3,1]</span><br><span class="line">Output: 0</span><br><span class="line">Explanation: In this case, no transaction is done, i.e. max profit &#x3D; 0.</span><br></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>思路：两个数组，一个数组储存最低价格，一个数组储存最高价格，最大的价格对应的位置要比最小的价格对应的位置靠后（值大），最小数组的值是当前值与最小数组里的最后一个元素比较，更小的那一个放入最小价格数组；当前位置的价格与最大数组的最后一个元素比较，较大的价格放入最大数组中。直接返回最最大价格数组里的最后一个元素。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.length&lt;<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] lowprice= <span class="keyword">new</span> <span class="keyword">int</span>[prices.length];</span><br><span class="line">        <span class="keyword">int</span>[] highprice= <span class="keyword">new</span> <span class="keyword">int</span>[prices.length];</span><br><span class="line">        lowprice[<span class="number">0</span>]=prices[<span class="number">0</span>];</span><br><span class="line">        highprice[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;prices.length;i++)&#123;</span><br><span class="line">            lowprice[i]=Math.min(prices[i],lowprice[i-<span class="number">1</span>]);</span><br><span class="line">            highprice[i]=Math.max(highprice[i-<span class="number">1</span>],prices[i]-lowprice[i-<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> highprice[prices.length-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Medium</category>
+      </categories>
+      <tags>
+        <tag>Medium</tag>
+        <tag>DFS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode21.Merge Two Sorted Lists</title>
+    <url>/2020/05/23/Leetcode21/</url>
+    <content><![CDATA[<h1 id="Leetcode21-Merge-Two-Sorted-Lists"><a href="#Leetcode21-Merge-Two-Sorted-Lists" class="headerlink" title="Leetcode21.Merge Two Sorted Lists"></a>Leetcode21.Merge Two Sorted Lists</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Merge two sorted linked lists and return it as a new list. </span><br><span class="line">The new list should be made by splicing together the nodes of the first two lists.</span><br><span class="line">Example:</span><br><span class="line">Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4</span><br><span class="line">Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>思路：两个指着（程序中直接使用ListNode）如果当前l1的value大于l2的value则将l2的值赋给result，<br>然后递归比较l1和l2.next。如果当前l1的value小于l2的value则将l1的值赋给result，然后递归比较l2和l1.next。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l1==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        <span class="keyword">if</span>(l2==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        ListNode result;</span><br><span class="line">         <span class="keyword">if</span>(l1.val&lt;l2.val)&#123;</span><br><span class="line">             result=l1;</span><br><span class="line">             result.next=mergeTwoLists(l1.next,l2);</span><br><span class="line">         &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">             result = l2;</span><br><span class="line">             result.next = mergeTwoLists(l1,l2.next);</span><br><span class="line">         &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Easy</category>
+      </categories>
+      <tags>
+        <tag>Easy</tag>
+        <tag>ListNode</tag>
+        <tag>Recursive</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode138. Copy List with Random Pointer</title>
     <url>/2020/05/23/Leetcode138/</url>
     <content><![CDATA[<h1 id="Leetcode138-Copy-List-with-Random-Pointer"><a href="#Leetcode138-Copy-List-with-Random-Pointer" class="headerlink" title="Leetcode138. Copy List with Random Pointer"></a>Leetcode138. Copy List with Random Pointer</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.</p>
@@ -176,29 +194,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode200 Number of Islands</title>
-    <url>/2020/05/23/Leetcode200/</url>
-    <content><![CDATA[<h1 id="Leetcode200-Number-of-Islands"><a href="#Leetcode200-Number-of-Islands" class="headerlink" title="Leetcode200 Number of Islands"></a>Leetcode200 Number of Islands</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given a 2d grid map of <code>&#39;1&#39;</code>s (land) and <code>&#39;0&#39;</code>s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</p>
-<a id="more"></a>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input:</span><br><span class="line">11110</span><br><span class="line">11010</span><br><span class="line">11000</span><br><span class="line">00000</span><br><span class="line"></span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input:</span><br><span class="line">11000</span><br><span class="line">11000</span><br><span class="line">00100</span><br><span class="line">00011</span><br><span class="line"></span><br><span class="line">Output: 3</span><br></pre></td></tr></table></figure>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>深度优先搜索。首先找到岛（即找到1），然后深度优先查找他周围的是否存在岛屿，如果存在，将他沉没（即将1变为0）,递归搜索，直到char二维数组中的元素全部为0即将所有岛屿全部沉没。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numIslands</span><span class="params">(<span class="keyword">char</span>[][] grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(grid.length==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>;x&lt;grid.length;x++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> y=<span class="number">0</span>;y&lt;grid[<span class="number">0</span>].length;y++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(grid[x][y]==<span class="string">'1'</span>)&#123;</span><br><span class="line">                    ans +=<span class="number">1</span>;</span><br><span class="line">                    search(grid,x,y);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">search</span><span class="params">(<span class="keyword">char</span>[][] grid, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x&lt;<span class="number">0</span>||y&lt;<span class="number">0</span>||x&gt;=grid.length||y&gt;=grid[<span class="number">0</span>].length||grid[x][y]==<span class="string">'0'</span>) </span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        grid[x][y]=<span class="string">'0'</span>;</span><br><span class="line">        search(grid,x+<span class="number">1</span>,y);</span><br><span class="line">        search(grid,x,y+<span class="number">1</span>);</span><br><span class="line">        search(grid,x-<span class="number">1</span>,y);</span><br><span class="line">        search(grid,x,y-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Medium</category>
-      </categories>
-      <tags>
-        <tag>Medium</tag>
-        <tag>DFS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode139 WordBreak</title>
     <url>/2020/05/23/Leetcode139/</url>
     <content><![CDATA[<h1 id="Leetcode139-WordBreak"><a href="#Leetcode139-WordBreak" class="headerlink" title="Leetcode139 WordBreak"></a>Leetcode139 WordBreak</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given a <strong>non-empty</strong> string <em>s</em> and a dictionary <em>wordDict</em> containing a list of <strong>non-empty</strong> words, determine if <em>s</em> can be segmented into a space-separated sequence of one or more dictionary words.</p>
@@ -227,6 +222,29 @@
         <tag>Medium</tag>
         <tag>DP</tag>
         <tag>HashMap</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode200 Number of Islands</title>
+    <url>/2020/05/23/Leetcode200/</url>
+    <content><![CDATA[<h1 id="Leetcode200-Number-of-Islands"><a href="#Leetcode200-Number-of-Islands" class="headerlink" title="Leetcode200 Number of Islands"></a>Leetcode200 Number of Islands</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given a 2d grid map of <code>&#39;1&#39;</code>s (land) and <code>&#39;0&#39;</code>s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</p>
+<a id="more"></a>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input:</span><br><span class="line">11110</span><br><span class="line">11010</span><br><span class="line">11000</span><br><span class="line">00000</span><br><span class="line"></span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input:</span><br><span class="line">11000</span><br><span class="line">11000</span><br><span class="line">00100</span><br><span class="line">00011</span><br><span class="line"></span><br><span class="line">Output: 3</span><br></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>深度优先搜索。首先找到岛（即找到1），然后深度优先查找他周围的是否存在岛屿，如果存在，将他沉没（即将1变为0）,递归搜索，直到char二维数组中的元素全部为0即将所有岛屿全部沉没。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numIslands</span><span class="params">(<span class="keyword">char</span>[][] grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(grid.length==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>;x&lt;grid.length;x++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> y=<span class="number">0</span>;y&lt;grid[<span class="number">0</span>].length;y++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(grid[x][y]==<span class="string">'1'</span>)&#123;</span><br><span class="line">                    ans +=<span class="number">1</span>;</span><br><span class="line">                    search(grid,x,y);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">search</span><span class="params">(<span class="keyword">char</span>[][] grid, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x&lt;<span class="number">0</span>||y&lt;<span class="number">0</span>||x&gt;=grid.length||y&gt;=grid[<span class="number">0</span>].length||grid[x][y]==<span class="string">'0'</span>) </span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        grid[x][y]=<span class="string">'0'</span>;</span><br><span class="line">        search(grid,x+<span class="number">1</span>,y);</span><br><span class="line">        search(grid,x,y+<span class="number">1</span>);</span><br><span class="line">        search(grid,x-<span class="number">1</span>,y);</span><br><span class="line">        search(grid,x,y-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Medium</category>
+      </categories>
+      <tags>
+        <tag>Medium</tag>
+        <tag>DFS</tag>
       </tags>
   </entry>
   <entry>
@@ -281,24 +299,6 @@
       <tags>
         <tag>Medium</tag>
         <tag>Two Pointers</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode21.Merge Two Sorted Lists</title>
-    <url>/2020/05/23/Leetcode21/</url>
-    <content><![CDATA[<h1 id="Leetcode21-Merge-Two-Sorted-Lists"><a href="#Leetcode21-Merge-Two-Sorted-Lists" class="headerlink" title="Leetcode21.Merge Two Sorted Lists"></a>Leetcode21.Merge Two Sorted Lists</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Merge two sorted linked lists and return it as a new list. </span><br><span class="line">The new list should be made by splicing together the nodes of the first two lists.</span><br><span class="line">Example:</span><br><span class="line">Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4</span><br><span class="line">Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>思路：两个指着（程序中直接使用ListNode）如果当前l1的value大于l2的value则将l2的值赋给result，<br>然后递归比较l1和l2.next。如果当前l1的value小于l2的value则将l1的值赋给result，然后递归比较l2和l1.next。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l1==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        <span class="keyword">if</span>(l2==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        ListNode result;</span><br><span class="line">         <span class="keyword">if</span>(l1.val&lt;l2.val)&#123;</span><br><span class="line">             result=l1;</span><br><span class="line">             result.next=mergeTwoLists(l1.next,l2);</span><br><span class="line">         &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">             result = l2;</span><br><span class="line">             result.next = mergeTwoLists(l1,l2.next);</span><br><span class="line">         &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Easy</category>
-      </categories>
-      <tags>
-        <tag>Easy</tag>
-        <tag>ListNode</tag>
-        <tag>Recursive</tag>
       </tags>
   </entry>
   <entry>
@@ -411,29 +411,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode54. Spiral Matrix</title>
-    <url>/2020/05/23/Leetcode54/</url>
-    <content><![CDATA[<h1 id="Leetcode54-Spiral-Matrix"><a href="#Leetcode54-Spiral-Matrix" class="headerlink" title="Leetcode54. Spiral Matrix"></a>Leetcode54. Spiral Matrix</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Input:</span><br><span class="line">[</span><br><span class="line"> [ 1, 2, 3 ],</span><br><span class="line"> [ 4, 5, 6 ],</span><br><span class="line"> [ 7, 8, 9 ]</span><br><span class="line">]</span><br><span class="line">Output: [1,2,3,6,9,8,7,4,5]</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>有四个方向right, left, top, bottom.</p>
-<ol>
-<li>direction=”right”， 当到达最右边界时，代表本行输出结束，top++，</li>
-<li>direction=”bottom”，当到达最下边界时, right–, </li>
-<li>direction = “left”，当到达最左边界是 bottom–,</li>
-<li>direction=”top”，当到达top时候，left++，direction=”right”.</li>
-</ol>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">spiralOrder</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">         <span class="comment">//result</span></span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&amp;lt;&amp;gt;();</span><br><span class="line">        <span class="keyword">if</span> (matrix.length == <span class="number">0</span>) <span class="keyword">return</span> result;</span><br><span class="line">        <span class="comment">//获取行数---Y行</span></span><br><span class="line">        <span class="keyword">int</span> lenY =matrix.length;</span><br><span class="line">        <span class="comment">//获取列数---X列</span></span><br><span class="line">        <span class="keyword">int</span> lenX = matrix[<span class="number">0</span>].length;</span><br><span class="line">        String direction = &amp;quot;right&amp;quot;;</span><br><span class="line">        <span class="keyword">int</span> left=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = lenX-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> down =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> up = lenY-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left&amp;lt;=right &amp;amp;&amp;amp; down&amp;lt;=up)&#123;</span><br><span class="line">            <span class="keyword">if</span>(direction == &amp;quot;right&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=left;i&amp;lt;=right;i++)&#123;</span><br><span class="line">                    result.add(matrix[down][i]);</span><br><span class="line">                &#125;</span><br><span class="line">                down++;</span><br><span class="line">                direction = &amp;quot;down&amp;quot;;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(direction==&amp;quot;down&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=down;i&amp;lt;=up;i++)&#123;</span><br><span class="line">                    result.add(matrix[i][right]);</span><br><span class="line">                &#125;</span><br><span class="line">                right--;</span><br><span class="line">                direction = &amp;quot;left&amp;quot;;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(direction==&amp;quot;left&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=right;i&amp;gt;=left;i--)&#123;</span><br><span class="line">                    result.add(matrix[up][i]);</span><br><span class="line">                &#125;</span><br><span class="line">                up--;</span><br><span class="line">                direction =&amp;quot;up&amp;quot;;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(direction==&amp;quot;up&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=up;i&amp;gt;=down;i--)&#123;</span><br><span class="line">                    result.add(matrix[i][left]);</span><br><span class="line">                &#125;</span><br><span class="line">                left++;</span><br><span class="line">                direction = &amp;quot;right&amp;quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Medium</category>
-      </categories>
-      <tags>
-        <tag>Medium</tag>
-        <tag>Simulation</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode572 Subtree of Another Tree</title>
     <url>/2020/05/23/Leetcode572/</url>
     <content><![CDATA[<h1 id="Leetcode572-Subtree-of-Another-Tree"><a href="#Leetcode572-Subtree-of-Another-Tree" class="headerlink" title="Leetcode572 Subtree of Another Tree"></a>Leetcode572 Subtree of Another Tree</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given two <strong>non-empty</strong> binary trees <strong>s</strong> and <strong>t</strong>, check whether tree <strong>t</strong> has exactly the same structure and node values with a subtree of <strong>s</strong>. A subtree of <strong>s</strong> is a tree consists of a node in <strong>s</strong> and all of this node’s descendants. The tree <strong>s</strong> could also be considered as a subtree of itself.</p>
@@ -463,6 +440,29 @@
       <tags>
         <tag>Medium</tag>
         <tag>Recursion</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode54. Spiral Matrix</title>
+    <url>/2020/05/23/Leetcode54/</url>
+    <content><![CDATA[<h1 id="Leetcode54-Spiral-Matrix"><a href="#Leetcode54-Spiral-Matrix" class="headerlink" title="Leetcode54. Spiral Matrix"></a>Leetcode54. Spiral Matrix</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Input:</span><br><span class="line">[</span><br><span class="line"> [ 1, 2, 3 ],</span><br><span class="line"> [ 4, 5, 6 ],</span><br><span class="line"> [ 7, 8, 9 ]</span><br><span class="line">]</span><br><span class="line">Output: [1,2,3,6,9,8,7,4,5]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>有四个方向right, left, top, bottom.</p>
+<ol>
+<li>direction=”right”， 当到达最右边界时，代表本行输出结束，top++，</li>
+<li>direction=”bottom”，当到达最下边界时, right–, </li>
+<li>direction = “left”，当到达最左边界是 bottom–,</li>
+<li>direction=”top”，当到达top时候，left++，direction=”right”.</li>
+</ol>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">spiralOrder</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">         <span class="comment">//result</span></span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&amp;lt;&amp;gt;();</span><br><span class="line">        <span class="keyword">if</span> (matrix.length == <span class="number">0</span>) <span class="keyword">return</span> result;</span><br><span class="line">        <span class="comment">//获取行数---Y行</span></span><br><span class="line">        <span class="keyword">int</span> lenY =matrix.length;</span><br><span class="line">        <span class="comment">//获取列数---X列</span></span><br><span class="line">        <span class="keyword">int</span> lenX = matrix[<span class="number">0</span>].length;</span><br><span class="line">        String direction = &amp;quot;right&amp;quot;;</span><br><span class="line">        <span class="keyword">int</span> left=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = lenX-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> down =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> up = lenY-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left&amp;lt;=right &amp;amp;&amp;amp; down&amp;lt;=up)&#123;</span><br><span class="line">            <span class="keyword">if</span>(direction == &amp;quot;right&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=left;i&amp;lt;=right;i++)&#123;</span><br><span class="line">                    result.add(matrix[down][i]);</span><br><span class="line">                &#125;</span><br><span class="line">                down++;</span><br><span class="line">                direction = &amp;quot;down&amp;quot;;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(direction==&amp;quot;down&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=down;i&amp;lt;=up;i++)&#123;</span><br><span class="line">                    result.add(matrix[i][right]);</span><br><span class="line">                &#125;</span><br><span class="line">                right--;</span><br><span class="line">                direction = &amp;quot;left&amp;quot;;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(direction==&amp;quot;left&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=right;i&amp;gt;=left;i--)&#123;</span><br><span class="line">                    result.add(matrix[up][i]);</span><br><span class="line">                &#125;</span><br><span class="line">                up--;</span><br><span class="line">                direction =&amp;quot;up&amp;quot;;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(direction==&amp;quot;up&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=up;i&amp;gt;=down;i--)&#123;</span><br><span class="line">                    result.add(matrix[i][left]);</span><br><span class="line">                &#125;</span><br><span class="line">                left++;</span><br><span class="line">                direction = &amp;quot;right&amp;quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Medium</category>
+      </categories>
+      <tags>
+        <tag>Medium</tag>
+        <tag>Simulation</tag>
       </tags>
   </entry>
   <entry>
@@ -520,6 +520,37 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode993 Cousins in Binary Tree</title>
+    <url>/2020/05/23/Leetcode993/</url>
+    <content><![CDATA[<h1 id="Leetcode993-Cousins-in-Binary-Tree"><a href="#Leetcode993-Cousins-in-Binary-Tree" class="headerlink" title="Leetcode993 Cousins in Binary Tree"></a>Leetcode993 Cousins in Binary Tree</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>In a binary tree, the root node is at depth <code>0</code>, and children of each depth <code>k</code> node are at depth <code>k+1</code>.</p>
+<p>Two nodes of a binary tree are <em>cousins</em> if they have the same depth, but have <strong>different parents</strong>.</p>
+<p>We are given the <code>root</code> of a binary tree with unique values, and the values <code>x</code> and <code>y</code> of two different nodes in the tree.</p>
+<p>Return <code>true</code> if and only if the nodes corresponding to the values <code>x</code> and <code>y</code> are cousins.</p>
+<a id="more"></a>
+<p><strong>Example 1:<br><img src="https://assets.leetcode.com/uploads/2019/02/12/q1248-01.png" alt="img"></strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,4], x &#x3D; 4, y &#x3D; 3</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2:<br><img src="https://assets.leetcode.com/uploads/2019/02/12/q1248-02.png" alt="img"></strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,null,4,null,5], x &#x3D; 5, y &#x3D; 4</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 3:</strong></p>
+<p><strong><img src="https://assets.leetcode.com/uploads/2019/02/13/q1248-03.png" alt="img"></strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,null,4], x &#x3D; 2, y &#x3D; 3</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>判断条件：亲代不是同一个节点且深度相同。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> j;</span><br><span class="line">    <span class="keyword">static</span> TreeNode dx;</span><br><span class="line">    <span class="keyword">static</span> TreeNode dy;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isCousins</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        preorder(root,x, y, <span class="keyword">null</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> dx!=dy&amp;&amp;i==j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">preorder</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> y, TreeNode p, <span class="keyword">int</span> d)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(root.val==x)&#123;</span><br><span class="line">            dx=p;</span><br><span class="line">            i=d;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root.val==y)&#123;</span><br><span class="line">            dy=p;</span><br><span class="line">            j=d;</span><br><span class="line">        &#125;</span><br><span class="line">        preorder(root.left,x,y,root,d+<span class="number">1</span>);</span><br><span class="line">        preorder(root.right,x,y,root,d+<span class="number">1</span>);</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Easy</category>
+      </categories>
+      <tags>
+        <tag>Easy</tag>
+        <tag>Preorder traversal</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode79 Word Search</title>
     <url>/2020/05/23/Leetcode79/</url>
     <content><![CDATA[<h1 id="Leetcode79-Word-Search"><a href="#Leetcode79-Word-Search" class="headerlink" title="Leetcode79 Word Search"></a>Leetcode79 Word Search</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">board =[  [<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'E'</span>],  </span><br><span class="line">          [<span class="string">'S'</span>,<span class="string">'F'</span>,<span class="string">'C'</span>,<span class="string">'S'</span>],  </span><br><span class="line">          [<span class="string">'A'</span>,<span class="string">'D'</span>,<span class="string">'E'</span>,<span class="string">'E'</span>]]​</span><br><span class="line">Given word = <span class="string">"ABCCED"</span>, <span class="built_in">return</span> <span class="literal">true</span>.</span><br><span class="line">Given word = <span class="string">"SEE"</span>, <span class="built_in">return</span> <span class="literal">true</span>.</span><br><span class="line">Given word = <span class="string">"ABCB"</span>, <span class="built_in">return</span> <span class="literal">false</span>.</span><br></pre></td></tr></table></figure>
@@ -574,37 +605,6 @@
       <tags>
         <tag>Greedy</tag>
         <tag>Hard</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode993 Cousins in Binary Tree</title>
-    <url>/2020/05/23/Leetcode993/</url>
-    <content><![CDATA[<h1 id="Leetcode993-Cousins-in-Binary-Tree"><a href="#Leetcode993-Cousins-in-Binary-Tree" class="headerlink" title="Leetcode993 Cousins in Binary Tree"></a>Leetcode993 Cousins in Binary Tree</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>In a binary tree, the root node is at depth <code>0</code>, and children of each depth <code>k</code> node are at depth <code>k+1</code>.</p>
-<p>Two nodes of a binary tree are <em>cousins</em> if they have the same depth, but have <strong>different parents</strong>.</p>
-<p>We are given the <code>root</code> of a binary tree with unique values, and the values <code>x</code> and <code>y</code> of two different nodes in the tree.</p>
-<p>Return <code>true</code> if and only if the nodes corresponding to the values <code>x</code> and <code>y</code> are cousins.</p>
-<a id="more"></a>
-<p><strong>Example 1:<br><img src="https://assets.leetcode.com/uploads/2019/02/12/q1248-01.png" alt="img"></strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,4], x &#x3D; 4, y &#x3D; 3</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2:<br><img src="https://assets.leetcode.com/uploads/2019/02/12/q1248-02.png" alt="img"></strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,null,4,null,5], x &#x3D; 5, y &#x3D; 4</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 3:</strong></p>
-<p><strong><img src="https://assets.leetcode.com/uploads/2019/02/13/q1248-03.png" alt="img"></strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,null,4], x &#x3D; 2, y &#x3D; 3</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>判断条件：亲代不是同一个节点且深度相同。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> j;</span><br><span class="line">    <span class="keyword">static</span> TreeNode dx;</span><br><span class="line">    <span class="keyword">static</span> TreeNode dy;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isCousins</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        preorder(root,x, y, <span class="keyword">null</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> dx!=dy&amp;&amp;i==j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">preorder</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> y, TreeNode p, <span class="keyword">int</span> d)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(root.val==x)&#123;</span><br><span class="line">            dx=p;</span><br><span class="line">            i=d;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root.val==y)&#123;</span><br><span class="line">            dy=p;</span><br><span class="line">            j=d;</span><br><span class="line">        &#125;</span><br><span class="line">        preorder(root.left,x,y,root,d+<span class="number">1</span>);</span><br><span class="line">        preorder(root.right,x,y,root,d+<span class="number">1</span>);</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Easy</category>
-      </categories>
-      <tags>
-        <tag>Easy</tag>
-        <tag>Preorder traversal</tag>
       </tags>
   </entry>
   <entry>
@@ -783,6 +783,40 @@
 <p>7805:</p>
 <img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG23.png" class>
 
+]]></content>
+      <categories>
+        <category>PCB学习笔记</category>
+        <category>89C51</category>
+      </categories>
+      <tags>
+        <tag>PCB</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>原理图的绘制(89C51为例)</title>
+    <url>/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/</url>
+    <content><![CDATA[<h1 id="原理图的绘制-89C51为例"><a href="#原理图的绘制-89C51为例" class="headerlink" title="原理图的绘制(89C51为例)"></a>原理图的绘制(89C51为例)</h1><h2 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h2><p>使用Altium Designer绘制89C51的原理图<br>本文以89C51原理图为例</p>
+<img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG31.png" class title="原理图">
+<h2 id="本文使用的工具"><a href="#本文使用的工具" class="headerlink" title="本文使用的工具"></a>本文使用的工具</h2><p>Altium Designer 20.1.8</p>
+<a id="more"></a>
+<h2 id="Step1-分析原理图"><a href="#Step1-分析原理图" class="headerlink" title="Step1: 分析原理图"></a>Step1: 分析原理图</h2><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG31.png" class title="原理图">
+<p>左半部分，电源端子为电源的入口，随之进入LDO。<br><strong>LDO</strong>：<br>在当所设计的电路对分路电源有以下要求时，设计电路时使用LDO作为电源芯片：</p>
+<ol>
+<li>高的噪音和纹波抑制</li>
+<li>占用PCB板面积小</li>
+<li>电路电源不允许使用电感器</li>
+<li>电源需要具有瞬时校准和输出状态自检功能</li>
+<li>要求稳压器低压降，自身功耗低；</li>
+<li>要求线路成本低和方案简单；</li>
+</ol>
+<p><strong>DC/DC</strong>: 在升压场合中，使用DC/DC。因为LDO只使用降压场合。</p>
+<h2 id="Step2-使用原理图库绘制好的Component放置到原理图中-89C51-SchDoc"><a href="#Step2-使用原理图库绘制好的Component放置到原理图中-89C51-SchDoc" class="headerlink" title="Step2: 使用原理图库绘制好的Component放置到原理图中(89C51.SchDoc)"></a>Step2: 使用原理图库绘制好的Component放置到原理图中(89C51.SchDoc)</h2><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG5.png" class title="摆放图">
+
+<h2 id="Step3-使用Place-Wire工具将器件按照电路连接起来"><a href="#Step3-使用Place-Wire工具将器件按照电路连接起来" class="headerlink" title="Step3: 使用Place Wire工具将器件按照电路连接起来"></a>Step3: 使用Place Wire工具将器件按照电路连接起来</h2><p>这里使用Wire就可以了</p>
+<img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG36.png" class title="Component">
+<img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG38.png" class title="Component">
+
+<h2 id="此时，原理图就画好了："><a href="#此时，原理图就画好了：" class="headerlink" title="此时，原理图就画好了："></a>此时，原理图就画好了：</h2><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG31.png" class title="Line">
 ]]></content>
       <categories>
         <category>PCB学习笔记</category>
@@ -1203,40 +1237,6 @@
       </categories>
       <tags>
         <tag>计算机网络自顶向下方法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>原理图的绘制(89C51为例)</title>
-    <url>/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/</url>
-    <content><![CDATA[<h1 id="原理图的绘制-89C51为例"><a href="#原理图的绘制-89C51为例" class="headerlink" title="原理图的绘制(89C51为例)"></a>原理图的绘制(89C51为例)</h1><h2 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h2><p>使用Altium Designer绘制89C51的原理图<br>本文以89C51原理图为例</p>
-<img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG31.png" class title="原理图">
-<h2 id="本文使用的工具"><a href="#本文使用的工具" class="headerlink" title="本文使用的工具"></a>本文使用的工具</h2><p>Altium Designer 20.1.8</p>
-<a id="more"></a>
-<h2 id="Step1-分析原理图"><a href="#Step1-分析原理图" class="headerlink" title="Step1: 分析原理图"></a>Step1: 分析原理图</h2><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG31.png" class title="原理图">
-<p>左半部分，电源端子为电源的入口，随之进入LDO。<br><strong>LDO</strong>：<br>在当所设计的电路对分路电源有以下要求时，设计电路时使用LDO作为电源芯片：</p>
-<ol>
-<li>高的噪音和纹波抑制</li>
-<li>占用PCB板面积小</li>
-<li>电路电源不允许使用电感器</li>
-<li>电源需要具有瞬时校准和输出状态自检功能</li>
-<li>要求稳压器低压降，自身功耗低；</li>
-<li>要求线路成本低和方案简单；</li>
-</ol>
-<p><strong>DC/DC</strong>: 在升压场合中，使用DC/DC。因为LDO只使用降压场合。</p>
-<h2 id="Step2-使用原理图库绘制好的Component放置到原理图中-89C51-SchDoc"><a href="#Step2-使用原理图库绘制好的Component放置到原理图中-89C51-SchDoc" class="headerlink" title="Step2: 使用原理图库绘制好的Component放置到原理图中(89C51.SchDoc)"></a>Step2: 使用原理图库绘制好的Component放置到原理图中(89C51.SchDoc)</h2><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG5.png" class title="摆放图">
-
-<h2 id="Step3-使用Place-Wire工具将器件按照电路连接起来"><a href="#Step3-使用Place-Wire工具将器件按照电路连接起来" class="headerlink" title="Step3: 使用Place Wire工具将器件按照电路连接起来"></a>Step3: 使用Place Wire工具将器件按照电路连接起来</h2><p>这里使用Wire就可以了</p>
-<img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG36.png" class title="Component">
-<img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG38.png" class title="Component">
-
-<h2 id="此时，原理图就画好了："><a href="#此时，原理图就画好了：" class="headerlink" title="此时，原理图就画好了："></a>此时，原理图就画好了：</h2><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG31.png" class title="Line">
-]]></content>
-      <categories>
-        <category>PCB学习笔记</category>
-        <category>89C51</category>
-      </categories>
-      <tags>
-        <tag>PCB</tag>
       </tags>
   </entry>
 </search>
