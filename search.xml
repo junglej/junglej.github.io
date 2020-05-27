@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Leetcode5 Longest Palindromic Substrings</title>
+    <url>/2020/05/23/LeetCode5/</url>
+    <content><![CDATA[<h1 id="Leetcode5-Longest-Palindromic-Substrings"><a href="#Leetcode5-Longest-Palindromic-Substrings" class="headerlink" title="Leetcode5 Longest Palindromic Substrings"></a>Leetcode5 Longest Palindromic Substrings</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given a string s, find the longest palindromic substring in s.</span><br><span class="line">You may assume that the maximum length of s is 1000.</span><br><span class="line"></span><br><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: &quot;babad&quot;</span><br><span class="line">Output: &quot;bab&quot;</span><br><span class="line">Note: &quot;aba&quot; is also a valid answer.</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: &quot;cbbd&quot;</span><br><span class="line">Output: &quot;bb&quot;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>如果len为n的string是回文字符那么长度为n-2的string也是回文字符。 </p>
+<p>abcbc -&gt; bcb-&gt;c</p>
+<p>abba -&gt; bb</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">longestPalindrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> star=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();++i)&#123;</span><br><span class="line">            <span class="keyword">int</span> cur = Math.max(getLen(s,i,i),getLen(s,i,i+<span class="number">1</span>));</span><br><span class="line">            <span class="keyword">if</span>(cur&gt; len)&#123;</span><br><span class="line">                len=cur;</span><br><span class="line">                star =i - (cur-<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.substring(star,star+len);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getLen</span><span class="params">(String s, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    	<span class="keyword">while</span>(l&gt;=<span class="number">0</span>&amp;&amp;r&lt;s.length()&amp;&amp;s.charAt(l)==s.charAt(r))&#123;</span><br><span class="line">       		--l;</span><br><span class="line">        	++r;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> r-l-<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Medium</category>
+      </categories>
+      <tags>
+        <tag>Medium</tag>
+        <tag>String</tag>
+        <tag>DP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode1 Two sum</title>
     <url>/2020/05/23/LeetCode1/</url>
     <content><![CDATA[<h1 id="Leetcode1-Two-sum"><a href="#Leetcode1-Two-sum" class="headerlink" title="Leetcode1 Two sum"></a>Leetcode1 Two sum</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given nums &#x3D; [2, 7, 11, 15], target &#x3D; 9,</span><br><span class="line"></span><br><span class="line">Because nums[0] + nums[1] &#x3D; 2 + 7 &#x3D; 9,</span><br><span class="line">return [0, 1].</span><br></pre></td></tr></table></figure>
@@ -30,26 +50,6 @@
       <tags>
         <tag>Easy</tag>
         <tag>Stack</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode5 Longest Palindromic Substrings</title>
-    <url>/2020/05/23/LeetCode5/</url>
-    <content><![CDATA[<h1 id="Leetcode5-Longest-Palindromic-Substrings"><a href="#Leetcode5-Longest-Palindromic-Substrings" class="headerlink" title="Leetcode5 Longest Palindromic Substrings"></a>Leetcode5 Longest Palindromic Substrings</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given a string s, find the longest palindromic substring in s.</span><br><span class="line">You may assume that the maximum length of s is 1000.</span><br><span class="line"></span><br><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: &quot;babad&quot;</span><br><span class="line">Output: &quot;bab&quot;</span><br><span class="line">Note: &quot;aba&quot; is also a valid answer.</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: &quot;cbbd&quot;</span><br><span class="line">Output: &quot;bb&quot;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>如果len为n的string是回文字符那么长度为n-2的string也是回文字符。 </p>
-<p>abcbc -&gt; bcb-&gt;c</p>
-<p>abba -&gt; bb</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">longestPalindrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> star=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();++i)&#123;</span><br><span class="line">            <span class="keyword">int</span> cur = Math.max(getLen(s,i,i),getLen(s,i,i+<span class="number">1</span>));</span><br><span class="line">            <span class="keyword">if</span>(cur&gt; len)&#123;</span><br><span class="line">                len=cur;</span><br><span class="line">                star =i - (cur-<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.substring(star,star+len);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getLen</span><span class="params">(String s, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    	<span class="keyword">while</span>(l&gt;=<span class="number">0</span>&amp;&amp;r&lt;s.length()&amp;&amp;s.charAt(l)==s.charAt(r))&#123;</span><br><span class="line">       		--l;</span><br><span class="line">        	++r;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> r-l-<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Medium</category>
-      </categories>
-      <tags>
-        <tag>Medium</tag>
-        <tag>String</tag>
-        <tag>DP</tag>
       </tags>
   </entry>
   <entry>
@@ -434,6 +434,60 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode692 Top K Frequent Words</title>
+    <url>/2020/05/23/Leetcode692/</url>
+    <content><![CDATA[<h1 id="Leetcode692-Top-K-Frequent-Words"><a href="#Leetcode692-Top-K-Frequent-Words" class="headerlink" title="Leetcode692 Top K Frequent Words"></a>Leetcode692 Top K Frequent Words</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>example:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [&quot;i&quot;, &quot;love&quot;, &quot;leetcode&quot;, &quot;i&quot;, &quot;love&quot;, &quot;coding&quot;], k &#x3D; 2</span><br><span class="line">Output: [&quot;i&quot;, &quot;love&quot;]</span><br><span class="line">Explanation: &quot;i&quot; and &quot;love&quot; are the two most frequent words.</span><br><span class="line">    Note that &quot;i&quot; comes before &quot;love&quot; due to a lower alphabetical order.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [&quot;the&quot;, &quot;day&quot;, &quot;is&quot;, &quot;sunny&quot;, &quot;the&quot;, &quot;the&quot;, &quot;the&quot;, &quot;sunny&quot;, &quot;is&quot;, &quot;is&quot;], k &#x3D; 4</span><br><span class="line">Output: [&quot;the&quot;, &quot;is&quot;, &quot;sunny&quot;, &quot;day&quot;]</span><br><span class="line">Explanation: &quot;the&quot;, &quot;is&quot;, &quot;sunny&quot; and &quot;day&quot; are the four most frequent words,</span><br><span class="line">    with the number of occurrence being 4, 3, 2 and 1 respectively.</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h2><h4 id="Step1-统计词频："><a href="#Step1-统计词频：" class="headerlink" title="Step1:  统计词频："></a>Step1:  统计词频：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">	Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line">    <span class="keyword">for</span> (String word: words) &#123;</span><br><span class="line">        map.put(word, map.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">或：</span><br><span class="line">    HashMap&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span>(String word: words)&#123;</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(word))&#123;</span><br><span class="line">            map.put(word,map.get(word)+<span class="number">1</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">            map.put(word,<span class="number">1</span>); </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Step2-比较："><a href="#Step2-比较：" class="headerlink" title="Step2: 比较："></a>Step2: 比较：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span>(String key : map.keySet())&#123;</span><br><span class="line">   result.add(key);</span><br><span class="line">&#125;</span><br><span class="line">Collections.sort(result,(word1,word2)-&gt;map.get(word1).equals(map.get(word2))?</span><br><span class="line">                 word1.compareTo(word2):map.get(word2)-map.get(word1));</span><br></pre></td></tr></table></figure>
+<h4 id="Step3-输出："><a href="#Step3-输出：" class="headerlink" title="Step3: 输出："></a>Step3: 输出：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> result.subList(<span class="number">0</span>,k);</span><br></pre></td></tr></table></figure>
+<h2 id="最优解：Heap"><a href="#最优解：Heap" class="headerlink" title="最优解：Heap"></a>最优解：Heap</h2><h4 id="Step1-统计词频：-1"><a href="#Step1-统计词频：-1" class="headerlink" title="Step1: 统计词频："></a>Step1: 统计词频：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line"><span class="keyword">for</span> (String word: words) &#123;</span><br><span class="line">    map.put(word, map.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Step2-PriorityQueue"><a href="#Step2-PriorityQueue" class="headerlink" title="Step2: PriorityQueue:"></a>Step2: PriorityQueue:</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">PriorityQueue&lt;String&gt; heap = <span class="keyword">new</span> PriorityQueue&lt;String&gt;(</span><br><span class="line">                (w1, w2) -&gt; count.get(w1).equals(count.get(w2)) ?</span><br><span class="line">                w2.compareTo(w1) : count.get(w1) - count.get(w2) );</span><br></pre></td></tr></table></figure>
+
+<h4 id="Step3-从heap提取前k个值，然后倒序输出"><a href="#Step3-从heap提取前k个值，然后倒序输出" class="headerlink" title="Step3: 从heap提取前k个值，然后倒序输出"></a>Step3: 从heap提取前k个值，然后倒序输出</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (String word: count.keySet()) &#123;</span><br><span class="line">           heap.offer(word);</span><br><span class="line">           <span class="keyword">if</span> (heap.size() &gt; k) heap.poll();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       List&lt;String&gt; ans = <span class="keyword">new</span> ArrayList();</span><br><span class="line">       <span class="keyword">while</span> (!heap.isEmpty()) ans.add(heap.poll());</span><br><span class="line">       Collections.reverse(ans);</span><br><span class="line">       <span class="keyword">return</span> ans;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Medium</category>
+      </categories>
+      <tags>
+        <tag>Medium</tag>
+        <tag>Hash</tag>
+        <tag>Heap</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode763 Partition Labels</title>
+    <url>/2020/05/23/Leetcode763/</url>
+    <content><![CDATA[<h1 id="Leetcode763-Partition-Labels"><a href="#Leetcode763-Partition-Labels" class="headerlink" title="Leetcode763 Partition Labels"></a>Leetcode763 Partition Labels</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>A string <code>S</code> of lowercase letters is given. We want to partition this string into as many parts as possible so that each letter appears in at most one part, and return a list of integers representing the size of these parts.</p>
+<a id="more"></a>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: S &#x3D; &quot;ababcbacadefegdehijhklij&quot;</span><br><span class="line">Output: [9,7,8]</span><br><span class="line">Explanation:</span><br><span class="line">The partition is &quot;ababcbaca&quot;, &quot;defegde&quot;, &quot;hijhklij&quot;.</span><br><span class="line">This is a partition so that each letter appears in at most one part.</span><br><span class="line">A partition like &quot;ababcbacadefegde&quot;, &quot;hijhklij&quot; is incorrect, because it splits S into less parts.</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>将每一个字符与其对应的位置放入HashMap中，两个指针，start和end，end取end本身和所处理字符的位置中较大的那个值。如果i==end，则说明该字符串截取完毕，end-start+1为当前字符串得分长度并放入ans（list）中，直到最后一个字符循环结束。</p>
+<p><img src="/2020/05/23/Leetcode763/C:%5CUsers%5Cwangq%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200517211029939.png" alt="image-20200517211029939"></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">partitionLabels</span><span class="params">(String S)</span> </span>&#123;</span><br><span class="line">        HashMap&lt;Character, Integer&gt; map =  <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;S.length();i++)&#123;</span><br><span class="line">            map.put(S.charAt(i),i);</span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;Integer&gt; ans =  <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> end = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;S.length();i++)&#123;</span><br><span class="line">            end = Math.max(end,map.get(S.charAt(i)));</span><br><span class="line">            <span class="keyword">if</span>(i == end)&#123;</span><br><span class="line">                ans.add(end - start + <span class="number">1</span>);</span><br><span class="line">                start = end +<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Note:</strong></p>
+<ol>
+<li><code>S</code> will have length in range <code>[1, 500]</code>.</li>
+<li><code>S</code> will consist of lowercase letters (<code>&#39;a&#39;</code> to <code>&#39;z&#39;</code>) only.</li>
+</ol>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Easy</category>
+      </categories>
+      <tags>
+        <tag>Easy</tag>
+        <tag>Hashtable</tag>
+        <tag>Greedy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode572 Subtree of Another Tree</title>
     <url>/2020/05/23/Leetcode572/</url>
     <content><![CDATA[<h1 id="Leetcode572-Subtree-of-Another-Tree"><a href="#Leetcode572-Subtree-of-Another-Tree" class="headerlink" title="Leetcode572 Subtree of Another Tree"></a>Leetcode572 Subtree of Another Tree</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given two <strong>non-empty</strong> binary trees <strong>s</strong> and <strong>t</strong>, check whether tree <strong>t</strong> has exactly the same structure and node values with a subtree of <strong>s</strong>. A subtree of <strong>s</strong> is a tree consists of a node in <strong>s</strong> and all of this node’s descendants. The tree <strong>s</strong> could also be considered as a subtree of itself.</p>
@@ -466,34 +520,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode763 Partition Labels</title>
-    <url>/2020/05/23/Leetcode763/</url>
-    <content><![CDATA[<h1 id="Leetcode763-Partition-Labels"><a href="#Leetcode763-Partition-Labels" class="headerlink" title="Leetcode763 Partition Labels"></a>Leetcode763 Partition Labels</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>A string <code>S</code> of lowercase letters is given. We want to partition this string into as many parts as possible so that each letter appears in at most one part, and return a list of integers representing the size of these parts.</p>
-<a id="more"></a>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: S &#x3D; &quot;ababcbacadefegdehijhklij&quot;</span><br><span class="line">Output: [9,7,8]</span><br><span class="line">Explanation:</span><br><span class="line">The partition is &quot;ababcbaca&quot;, &quot;defegde&quot;, &quot;hijhklij&quot;.</span><br><span class="line">This is a partition so that each letter appears in at most one part.</span><br><span class="line">A partition like &quot;ababcbacadefegde&quot;, &quot;hijhklij&quot; is incorrect, because it splits S into less parts.</span><br></pre></td></tr></table></figure>
-
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>将每一个字符与其对应的位置放入HashMap中，两个指针，start和end，end取end本身和所处理字符的位置中较大的那个值。如果i==end，则说明该字符串截取完毕，end-start+1为当前字符串得分长度并放入ans（list）中，直到最后一个字符循环结束。</p>
-<p><img src="/2020/05/23/Leetcode763/C:%5CUsers%5Cwangq%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200517211029939.png" alt="image-20200517211029939"></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">partitionLabels</span><span class="params">(String S)</span> </span>&#123;</span><br><span class="line">        HashMap&lt;Character, Integer&gt; map =  <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;S.length();i++)&#123;</span><br><span class="line">            map.put(S.charAt(i),i);</span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;Integer&gt; ans =  <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> end = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;S.length();i++)&#123;</span><br><span class="line">            end = Math.max(end,map.get(S.charAt(i)));</span><br><span class="line">            <span class="keyword">if</span>(i == end)&#123;</span><br><span class="line">                ans.add(end - start + <span class="number">1</span>);</span><br><span class="line">                start = end +<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Note:</strong></p>
-<ol>
-<li><code>S</code> will have length in range <code>[1, 500]</code>.</li>
-<li><code>S</code> will consist of lowercase letters (<code>&#39;a&#39;</code> to <code>&#39;z&#39;</code>) only.</li>
-</ol>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Easy</category>
-      </categories>
-      <tags>
-        <tag>Easy</tag>
-        <tag>Hashtable</tag>
-        <tag>Greedy</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode79 Word Search</title>
     <url>/2020/05/23/Leetcode79/</url>
     <content><![CDATA[<h1 id="Leetcode79-Word-Search"><a href="#Leetcode79-Word-Search" class="headerlink" title="Leetcode79 Word Search"></a>Leetcode79 Word Search</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">board =[  [<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'E'</span>],  </span><br><span class="line">          [<span class="string">'S'</span>,<span class="string">'F'</span>,<span class="string">'C'</span>,<span class="string">'S'</span>],  </span><br><span class="line">          [<span class="string">'A'</span>,<span class="string">'D'</span>,<span class="string">'E'</span>,<span class="string">'E'</span>]]​</span><br><span class="line">Given word = <span class="string">"ABCCED"</span>, <span class="built_in">return</span> <span class="literal">true</span>.</span><br><span class="line">Given word = <span class="string">"SEE"</span>, <span class="built_in">return</span> <span class="literal">true</span>.</span><br><span class="line">Given word = <span class="string">"ABCB"</span>, <span class="built_in">return</span> <span class="literal">false</span>.</span><br></pre></td></tr></table></figure>
@@ -509,63 +535,6 @@
       <tags>
         <tag>Medium</tag>
         <tag>Recursive</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode692 Top K Frequent Words</title>
-    <url>/2020/05/23/Leetcode692/</url>
-    <content><![CDATA[<h1 id="Leetcode692-Top-K-Frequent-Words"><a href="#Leetcode692-Top-K-Frequent-Words" class="headerlink" title="Leetcode692 Top K Frequent Words"></a>Leetcode692 Top K Frequent Words</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>example:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [&quot;i&quot;, &quot;love&quot;, &quot;leetcode&quot;, &quot;i&quot;, &quot;love&quot;, &quot;coding&quot;], k &#x3D; 2</span><br><span class="line">Output: [&quot;i&quot;, &quot;love&quot;]</span><br><span class="line">Explanation: &quot;i&quot; and &quot;love&quot; are the two most frequent words.</span><br><span class="line">    Note that &quot;i&quot; comes before &quot;love&quot; due to a lower alphabetical order.</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [&quot;the&quot;, &quot;day&quot;, &quot;is&quot;, &quot;sunny&quot;, &quot;the&quot;, &quot;the&quot;, &quot;the&quot;, &quot;sunny&quot;, &quot;is&quot;, &quot;is&quot;], k &#x3D; 4</span><br><span class="line">Output: [&quot;the&quot;, &quot;is&quot;, &quot;sunny&quot;, &quot;day&quot;]</span><br><span class="line">Explanation: &quot;the&quot;, &quot;is&quot;, &quot;sunny&quot; and &quot;day&quot; are the four most frequent words,</span><br><span class="line">    with the number of occurrence being 4, 3, 2 and 1 respectively.</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h2><h4 id="Step1-统计词频："><a href="#Step1-统计词频：" class="headerlink" title="Step1:  统计词频："></a>Step1:  统计词频：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">	Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line">    <span class="keyword">for</span> (String word: words) &#123;</span><br><span class="line">        map.put(word, map.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">或：</span><br><span class="line">    HashMap&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span>(String word: words)&#123;</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(word))&#123;</span><br><span class="line">            map.put(word,map.get(word)+<span class="number">1</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">            map.put(word,<span class="number">1</span>); </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Step2-比较："><a href="#Step2-比较：" class="headerlink" title="Step2: 比较："></a>Step2: 比较：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span>(String key : map.keySet())&#123;</span><br><span class="line">   result.add(key);</span><br><span class="line">&#125;</span><br><span class="line">Collections.sort(result,(word1,word2)-&gt;map.get(word1).equals(map.get(word2))?</span><br><span class="line">                 word1.compareTo(word2):map.get(word2)-map.get(word1));</span><br></pre></td></tr></table></figure>
-<h4 id="Step3-输出："><a href="#Step3-输出：" class="headerlink" title="Step3: 输出："></a>Step3: 输出：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> result.subList(<span class="number">0</span>,k);</span><br></pre></td></tr></table></figure>
-<h2 id="最优解：Heap"><a href="#最优解：Heap" class="headerlink" title="最优解：Heap"></a>最优解：Heap</h2><h4 id="Step1-统计词频：-1"><a href="#Step1-统计词频：-1" class="headerlink" title="Step1: 统计词频："></a>Step1: 统计词频：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line"><span class="keyword">for</span> (String word: words) &#123;</span><br><span class="line">    map.put(word, map.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Step2-PriorityQueue"><a href="#Step2-PriorityQueue" class="headerlink" title="Step2: PriorityQueue:"></a>Step2: PriorityQueue:</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">PriorityQueue&lt;String&gt; heap = <span class="keyword">new</span> PriorityQueue&lt;String&gt;(</span><br><span class="line">                (w1, w2) -&gt; count.get(w1).equals(count.get(w2)) ?</span><br><span class="line">                w2.compareTo(w1) : count.get(w1) - count.get(w2) );</span><br></pre></td></tr></table></figure>
-
-<h4 id="Step3-从heap提取前k个值，然后倒序输出"><a href="#Step3-从heap提取前k个值，然后倒序输出" class="headerlink" title="Step3: 从heap提取前k个值，然后倒序输出"></a>Step3: 从heap提取前k个值，然后倒序输出</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (String word: count.keySet()) &#123;</span><br><span class="line">           heap.offer(word);</span><br><span class="line">           <span class="keyword">if</span> (heap.size() &gt; k) heap.poll();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       List&lt;String&gt; ans = <span class="keyword">new</span> ArrayList();</span><br><span class="line">       <span class="keyword">while</span> (!heap.isEmpty()) ans.add(heap.poll());</span><br><span class="line">       Collections.reverse(ans);</span><br><span class="line">       <span class="keyword">return</span> ans;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Medium</category>
-      </categories>
-      <tags>
-        <tag>Medium</tag>
-        <tag>Hash</tag>
-        <tag>Heap</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode993 Cousins in Binary Tree</title>
-    <url>/2020/05/23/Leetcode993/</url>
-    <content><![CDATA[<h1 id="Leetcode993-Cousins-in-Binary-Tree"><a href="#Leetcode993-Cousins-in-Binary-Tree" class="headerlink" title="Leetcode993 Cousins in Binary Tree"></a>Leetcode993 Cousins in Binary Tree</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>In a binary tree, the root node is at depth <code>0</code>, and children of each depth <code>k</code> node are at depth <code>k+1</code>.</p>
-<p>Two nodes of a binary tree are <em>cousins</em> if they have the same depth, but have <strong>different parents</strong>.</p>
-<p>We are given the <code>root</code> of a binary tree with unique values, and the values <code>x</code> and <code>y</code> of two different nodes in the tree.</p>
-<p>Return <code>true</code> if and only if the nodes corresponding to the values <code>x</code> and <code>y</code> are cousins.</p>
-<a id="more"></a>
-<p><strong>Example 1:<br><img src="https://assets.leetcode.com/uploads/2019/02/12/q1248-01.png" alt="img"></strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,4], x &#x3D; 4, y &#x3D; 3</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2:<br><img src="https://assets.leetcode.com/uploads/2019/02/12/q1248-02.png" alt="img"></strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,null,4,null,5], x &#x3D; 5, y &#x3D; 4</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 3:</strong></p>
-<p><strong><img src="https://assets.leetcode.com/uploads/2019/02/13/q1248-03.png" alt="img"></strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,null,4], x &#x3D; 2, y &#x3D; 3</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>判断条件：亲代不是同一个节点且深度相同。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> j;</span><br><span class="line">    <span class="keyword">static</span> TreeNode dx;</span><br><span class="line">    <span class="keyword">static</span> TreeNode dy;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isCousins</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        preorder(root,x, y, <span class="keyword">null</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> dx!=dy&amp;&amp;i==j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">preorder</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> y, TreeNode p, <span class="keyword">int</span> d)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(root.val==x)&#123;</span><br><span class="line">            dx=p;</span><br><span class="line">            i=d;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root.val==y)&#123;</span><br><span class="line">            dy=p;</span><br><span class="line">            j=d;</span><br><span class="line">        &#125;</span><br><span class="line">        preorder(root.left,x,y,root,d+<span class="number">1</span>);</span><br><span class="line">        preorder(root.right,x,y,root,d+<span class="number">1</span>);</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Easy</category>
-      </categories>
-      <tags>
-        <tag>Easy</tag>
-        <tag>Preorder traversal</tag>
       </tags>
   </entry>
   <entry>
@@ -708,6 +677,37 @@
       </categories>
       <tags>
         <tag>PCB</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode993 Cousins in Binary Tree</title>
+    <url>/2020/05/23/Leetcode993/</url>
+    <content><![CDATA[<h1 id="Leetcode993-Cousins-in-Binary-Tree"><a href="#Leetcode993-Cousins-in-Binary-Tree" class="headerlink" title="Leetcode993 Cousins in Binary Tree"></a>Leetcode993 Cousins in Binary Tree</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>In a binary tree, the root node is at depth <code>0</code>, and children of each depth <code>k</code> node are at depth <code>k+1</code>.</p>
+<p>Two nodes of a binary tree are <em>cousins</em> if they have the same depth, but have <strong>different parents</strong>.</p>
+<p>We are given the <code>root</code> of a binary tree with unique values, and the values <code>x</code> and <code>y</code> of two different nodes in the tree.</p>
+<p>Return <code>true</code> if and only if the nodes corresponding to the values <code>x</code> and <code>y</code> are cousins.</p>
+<a id="more"></a>
+<p><strong>Example 1:<br><img src="https://assets.leetcode.com/uploads/2019/02/12/q1248-01.png" alt="img"></strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,4], x &#x3D; 4, y &#x3D; 3</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2:<br><img src="https://assets.leetcode.com/uploads/2019/02/12/q1248-02.png" alt="img"></strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,null,4,null,5], x &#x3D; 5, y &#x3D; 4</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 3:</strong></p>
+<p><strong><img src="https://assets.leetcode.com/uploads/2019/02/13/q1248-03.png" alt="img"></strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,null,4], x &#x3D; 2, y &#x3D; 3</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>判断条件：亲代不是同一个节点且深度相同。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> j;</span><br><span class="line">    <span class="keyword">static</span> TreeNode dx;</span><br><span class="line">    <span class="keyword">static</span> TreeNode dy;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isCousins</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        preorder(root,x, y, <span class="keyword">null</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> dx!=dy&amp;&amp;i==j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">preorder</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> y, TreeNode p, <span class="keyword">int</span> d)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(root.val==x)&#123;</span><br><span class="line">            dx=p;</span><br><span class="line">            i=d;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root.val==y)&#123;</span><br><span class="line">            dy=p;</span><br><span class="line">            j=d;</span><br><span class="line">        &#125;</span><br><span class="line">        preorder(root.left,x,y,root,d+<span class="number">1</span>);</span><br><span class="line">        preorder(root.right,x,y,root,d+<span class="number">1</span>);</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Easy</category>
+      </categories>
+      <tags>
+        <tag>Easy</tag>
+        <tag>Preorder traversal</tag>
       </tags>
   </entry>
   <entry>
