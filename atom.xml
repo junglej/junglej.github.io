@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-27T16:37:29.249Z</updated>
+  <updated>2020-05-28T02:19:58.265Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>板块的绘制及布局处理(89C51为例)</title>
+    <link href="http://yoursite.com/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/"/>
+    <id>http://yoursite.com/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/</id>
+    <published>2020-05-28T01:19:45.000Z</published>
+    <updated>2020-05-28T02:19:58.265Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="板块的绘制及布局处理-89C51为例"><a href="#板块的绘制及布局处理-89C51为例" class="headerlink" title="板块的绘制及布局处理(89C51为例)"></a>板块的绘制及布局处理(89C51为例)</h1><h2 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h2><p>使用Altium Designer绘制89C51的PCB<br>本文以89C51原理图为例</p><img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG31.png" class title="原理图"><h2 id="本文使用的工具"><a href="#本文使用的工具" class="headerlink" title="本文使用的工具"></a>本文使用的工具</h2><p>Altium Designer 20.1.8</p><a id="more"></a><h2 id="自定义板框"><a href="#自定义板框" class="headerlink" title="自定义板框"></a>自定义板框</h2><p>通常Keep-Out Layer设置板框</p><img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/1.png" class><p>设置原点1,如图</p><img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/2.png" class><p>将元器件拖动，设置75mm*75mm的板框</p><img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/3.png" class><h2 id="设置交互式布局"><a href="#设置交互式布局" class="headerlink" title="设置交互式布局"></a>设置交互式布局</h2><p>在原理图界面设置交互式布局，这样点中原理图的某个元器件，PCB中也会选中</p><img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/4.png" class><p>这样点中原理图的某个元器件，PCB中也会选中，效果如图</p><img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/5.png" class><p>在原理图中选中，然后放置在选择Arrange Within Rectangle</p><img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/6.png" class><p>在界面处画一个Rectangle，便可将选中的元件放在指定区域</p><img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/7.png" class><h2 id="模块化布局"><a href="#模块化布局" class="headerlink" title="模块化布局"></a>模块化布局</h2><p>要遵循先大后小的原则，也就是说先安排大且核心的器件然后与之想连的器件</p><img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/8.png" class><p>固定电源端子，靠边防止</p><img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/9.png" class><p>晶振采用使用Π形布局，则右半部分的布局如下图</p><img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/11.png" class><p>参照原理图，进行剩下的布局， 如图：</p><img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/10.png" class><h2 id="增加定为孔"><a href="#增加定为孔" class="headerlink" title="增加定为孔"></a>增加定为孔</h2><p>放置3mm的焊盘，且要非金属化，如下配置：</p><img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/12.png" class><h2 id="布局后的最终效果图"><a href="#布局后的最终效果图" class="headerlink" title="布局后的最终效果图"></a>布局后的最终效果图</h2><img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/13.png" class><h2 id="放置定为孔后的效果图"><a href="#放置定为孔后的效果图" class="headerlink" title="放置定为孔后的效果图"></a>放置定为孔后的效果图</h2><img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/14.png" class><p>如果觉得板子太尖，可以将板子圆弧化，具体做法在板角处画圆弧，先将线移动1mm</p><img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/15.png" class><p>圆弧化后，对板子进行重新定义，使用快捷键D-&gt;board shape-&gt; define from selected object，</p><img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/16.png" class><p>增加尺寸</p><img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/17.png" class>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;板块的绘制及布局处理-89C51为例&quot;&gt;&lt;a href=&quot;#板块的绘制及布局处理-89C51为例&quot; class=&quot;headerlink&quot; title=&quot;板块的绘制及布局处理(89C51为例)&quot;&gt;&lt;/a&gt;板块的绘制及布局处理(89C51为例)&lt;/h1&gt;&lt;h2 id=&quot;本文概述：&quot;&gt;&lt;a href=&quot;#本文概述：&quot; class=&quot;headerlink&quot; title=&quot;本文概述：&quot;&gt;&lt;/a&gt;本文概述：&lt;/h2&gt;&lt;p&gt;使用Altium Designer绘制89C51的PCB&lt;br&gt;本文以89C51原理图为例&lt;/p&gt;
+&lt;img src=&quot;/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG31.png&quot; class title=&quot;原理图&quot;&gt;
+&lt;h2 id=&quot;本文使用的工具&quot;&gt;&lt;a href=&quot;#本文使用的工具&quot; class=&quot;headerlink&quot; title=&quot;本文使用的工具&quot;&gt;&lt;/a&gt;本文使用的工具&lt;/h2&gt;&lt;p&gt;Altium Designer 20.1.8&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="PCB学习笔记" scheme="http://yoursite.com/categories/PCB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="89C51" scheme="http://yoursite.com/categories/PCB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/89C51/"/>
+    
+    
+      <category term="PCB" scheme="http://yoursite.com/tags/PCB/"/>
+    
+  </entry>
   
   <entry>
     <title>PCB的导入及前期处理</title>
@@ -558,35 +585,6 @@
       <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
     
       <category term="Recursion" scheme="http://yoursite.com/tags/Recursion/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode295 Find Median from Data Stream</title>
-    <link href="http://yoursite.com/2020/05/23/Leetcode295/"/>
-    <id>http://yoursite.com/2020/05/23/Leetcode295/</id>
-    <published>2020-05-24T01:42:13.000Z</published>
-    <updated>2020-05-26T14:59:20.980Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Leetcode295-Find-Median-from-Data-Stream"><a href="#Leetcode295-Find-Median-from-Data-Stream" class="headerlink" title="Leetcode295 Find Median from Data Stream"></a>Leetcode295 Find Median from Data Stream</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median is the mean of the two middle value.</p><a id="more"></a><p>For example,</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[2,3,4]&#96;, the median is &#96;3</span><br><span class="line">[2,3]&#96;, the median is &#96;(2 + 3) &#x2F; 2 &#x3D; 2.5</span><br></pre></td></tr></table></figure><!-- more --><p>Design a data structure that supports the following two operations:</p><ul><li>void addNum(int num) - Add a integer number from the data stream to the data structure.</li><li>double findMedian() - Return the median of all elements so far.</li></ul><p><strong>Example:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">addNum(1)</span><br><span class="line">addNum(2)</span><br><span class="line">findMedian() -&gt; 1.5</span><br><span class="line">addNum(3) </span><br><span class="line">findMedian() -&gt; 2</span><br></pre></td></tr></table></figure><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>两个priority queue，一个queue存较大部分一个queue寸较小部分</p><p><img src="/2020/05/23/Leetcode295/C:%5CUsers%5Cwangq%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200510102429767.png" alt="image-20200510102429767"></p><p>较小部分：small = new PriorityQueue<Integer>((a,b) -&gt; a - b);</Integer></p><p>较大部分：large = new PriorityQueue<Integer>((a,b) -&gt; b - a);</Integer></p><p>加入元素：如果large部分为空或者num数大于large的最小元素，则将num加入到large中，反之加入small中。加入后，比较large和small的大小，两个队列的size差不能超多1</p><p>计算中位数：如果small和large的大小相同，则取small的最大和large的最小值相加除以2.0；如果small的数量多，则取small数组的最大的那个。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MedianFinder</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    Queue&lt;Integer&gt; small;</span><br><span class="line">    Queue&lt;Integer&gt; large;</span><br><span class="line">    <span class="comment">/** initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MedianFinder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        small = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;((a,b) -&gt; b - a);</span><br><span class="line">        large = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;((a,b) -&gt; a - b);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addNum</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(small.isEmpty()||num&lt;=small.peek())&#123;</span><br><span class="line">            small.add(num);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            large.add(num);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//balance left and right</span></span><br><span class="line">        <span class="keyword">if</span>(small.size()-large.size()&gt;<span class="number">1</span>)&#123;</span><br><span class="line">            large.add(small.poll());</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(small.size()&lt;large.size())&#123;</span><br><span class="line">            small.add(large.poll());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">findMedian</span><span class="params">()</span> </span>&#123;;</span><br><span class="line">        <span class="keyword">double</span> media =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(large.size()==small.size())</span><br><span class="line">            media = (small.peek()+large.peek())/<span class="number">2.0</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            media = small.peek();</span><br><span class="line">        <span class="keyword">return</span> media;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MedianFinder object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MedianFinder obj = new MedianFinder();</span></span><br><span class="line"><span class="comment"> * obj.addNum(num);</span></span><br><span class="line"><span class="comment"> * double param_2 = obj.findMedian();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Leetcode295-Find-Median-from-Data-Stream&quot;&gt;&lt;a href=&quot;#Leetcode295-Find-Median-from-Data-Stream&quot; class=&quot;headerlink&quot; title=&quot;Leetcode295 Find Median from Data Stream&quot;&gt;&lt;/a&gt;Leetcode295 Find Median from Data Stream&lt;/h1&gt;&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;Median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median is the mean of the two middle value.&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
-    
-      <category term="Medium" scheme="http://yoursite.com/categories/LeetCode/Medium/"/>
-    
-    
-      <category term="Medium" scheme="http://yoursite.com/tags/Medium/"/>
-    
-      <category term="BFS" scheme="http://yoursite.com/tags/BFS/"/>
-    
-      <category term="Priority Queue" scheme="http://yoursite.com/tags/Priority-Queue/"/>
     
   </entry>
   

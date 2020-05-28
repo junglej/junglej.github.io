@@ -1303,4 +1303,71 @@
         <tag>计算机网络自顶向下方法</tag>
       </tags>
   </entry>
+  <entry>
+    <title>板块的绘制及布局处理(89C51为例)</title>
+    <url>/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/</url>
+    <content><![CDATA[<h1 id="板块的绘制及布局处理-89C51为例"><a href="#板块的绘制及布局处理-89C51为例" class="headerlink" title="板块的绘制及布局处理(89C51为例)"></a>板块的绘制及布局处理(89C51为例)</h1><h2 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h2><p>使用Altium Designer绘制89C51的PCB<br>本文以89C51原理图为例</p>
+<img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG31.png" class title="原理图">
+<h2 id="本文使用的工具"><a href="#本文使用的工具" class="headerlink" title="本文使用的工具"></a>本文使用的工具</h2><p>Altium Designer 20.1.8</p>
+<a id="more"></a>
+<h2 id="自定义板框"><a href="#自定义板框" class="headerlink" title="自定义板框"></a>自定义板框</h2><p>通常Keep-Out Layer设置板框</p>
+<img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/1.png" class>
+
+<p>设置原点1,如图</p>
+<img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/2.png" class>
+
+<p>将元器件拖动，设置75mm*75mm的板框</p>
+<img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/3.png" class>
+
+<h2 id="设置交互式布局"><a href="#设置交互式布局" class="headerlink" title="设置交互式布局"></a>设置交互式布局</h2><p>在原理图界面设置交互式布局，这样点中原理图的某个元器件，PCB中也会选中</p>
+<img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/4.png" class>
+
+<p>这样点中原理图的某个元器件，PCB中也会选中，效果如图</p>
+<img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/5.png" class>
+
+<p>在原理图中选中，然后放置在选择Arrange Within Rectangle</p>
+<img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/6.png" class>
+
+<p>在界面处画一个Rectangle，便可将选中的元件放在指定区域</p>
+<img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/7.png" class>
+
+<h2 id="模块化布局"><a href="#模块化布局" class="headerlink" title="模块化布局"></a>模块化布局</h2><p>要遵循先大后小的原则，也就是说先安排大且核心的器件然后与之想连的器件</p>
+<img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/8.png" class>
+
+<p>固定电源端子，靠边防止</p>
+<img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/9.png" class>
+
+<p>晶振采用使用Π形布局，则右半部分的布局如下图</p>
+<img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/11.png" class>
+
+<p>参照原理图，进行剩下的布局， 如图：</p>
+<img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/10.png" class>
+
+<h2 id="增加定为孔"><a href="#增加定为孔" class="headerlink" title="增加定为孔"></a>增加定为孔</h2><p>放置3mm的焊盘，且要非金属化，如下配置：</p>
+<img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/12.png" class>
+
+<h2 id="布局后的最终效果图"><a href="#布局后的最终效果图" class="headerlink" title="布局后的最终效果图"></a>布局后的最终效果图</h2><img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/13.png" class>
+
+<h2 id="放置定为孔后的效果图"><a href="#放置定为孔后的效果图" class="headerlink" title="放置定为孔后的效果图"></a>放置定为孔后的效果图</h2><img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/14.png" class>
+
+<p>如果觉得板子太尖，可以将板子圆弧化，具体做法在板角处画圆弧，先将线移动1mm</p>
+<img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/15.png" class>
+
+<p>圆弧化后，对板子进行重新定义，使用快捷键D-&gt;board shape-&gt; define from selected object，</p>
+<img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/16.png" class>
+
+<p>增加尺寸</p>
+<img src="/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/17.png" class>
+
+
+
+]]></content>
+      <categories>
+        <category>PCB学习笔记</category>
+        <category>89C51</category>
+      </categories>
+      <tags>
+        <tag>PCB</tag>
+      </tags>
+  </entry>
 </search>
