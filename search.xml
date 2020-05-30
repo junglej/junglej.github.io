@@ -1885,7 +1885,6 @@
 ]]></content>
       <categories>
         <category>Java多线程</category>
-        <category>Java多线程基础</category>
       </categories>
       <tags>
         <tag>Java</tag>
@@ -1927,7 +1926,6 @@
 ]]></content>
       <categories>
         <category>Java多线程</category>
-        <category>创建新的线程</category>
       </categories>
       <tags>
         <tag>Java</tag>
@@ -1935,7 +1933,7 @@
       </tags>
   </entry>
   <entry>
-    <title>创建新的线程</title>
+    <title>线程的状态</title>
     <url>/2020/05/30/%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81/</url>
     <content><![CDATA[<h1 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h1><p>Java多线程基础知识，线程的状态</p>
 <a id="more"></a>
@@ -1978,7 +1976,6 @@
 ]]></content>
       <categories>
         <category>Java多线程</category>
-        <category>线程的状态</category>
       </categories>
       <tags>
         <tag>Java</tag>
