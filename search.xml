@@ -1892,4 +1892,97 @@
         <tag>多线程</tag>
       </tags>
   </entry>
+  <entry>
+    <title>创建新的线程</title>
+    <url>/2020/05/30/%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E7%BA%BF%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h1><p>Java多线程基础知识，如何创建一个线程</p>
+<a id="more"></a>
+
+<h2 id="创建新的线程"><a href="#创建新的线程" class="headerlink" title="创建新的线程"></a>创建新的线程</h2><p>Java语言设置了多线程支持。当Java程序启动的时候，实际上是启动了一个JVM进程，然后，JVM启动住线程来执行main()方法。在main()方法中国呢，可以启动其他线程。</p>
+<h2 id="创建：实例化一个Thread实例，然后调用star-方法："><a href="#创建：实例化一个Thread实例，然后调用star-方法：" class="headerlink" title="创建：实例化一个Thread实例，然后调用star()方法："></a>创建：实例化一个Thread实例，然后调用star()方法：</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		Thread t = <span class="keyword">new</span> Thread();</span><br><span class="line">		t.star(); <span class="comment">//启动多线程</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="新线程能执行指定的代码"><a href="#新线程能执行指定的代码" class="headerlink" title="新线程能执行指定的代码"></a>新线程能执行指定的代码</h2><ul>
+<li>从Thread派生一个自定义类，然后覆盖run()方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Thread t = <span class="keyword">new</span> MyThread();</span><br><span class="line">       t.start(); <span class="comment">// 启动新线程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"start new thread!"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建Thread实例是，传入一个Runnable实例：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread t = <span class="keyword">new</span> Thread(<span class="keyword">new</span> MyRunnable());</span><br><span class="line">        t.start(); <span class="comment">// 启动新线程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"start new thread!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Lambda语法：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread t = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">"start new thread!"</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">        t.start(); <span class="comment">// 启动新线程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="线程的优先级："><a href="#线程的优先级：" class="headerlink" title="线程的优先级："></a>线程的优先级：</h2><ul>
+<li>设定优先级：<br>Thread.setPriority(int n) // 1~10, 默认值5<br>优先级高的线程被操作系统调度的优先级较高，操作系统对高优先级线程可能调度更频繁，但我们决不能通过设置优先级来确保</li>
+</ul>
+<h2 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h2><ol>
+<li>Java用Thread对象表示一个线程，通过调用start()启动一个新线程；</li>
+<li>一个线程对象只能调用一次start()方法；</li>
+<li>线程的执行代码写在run()方法中；</li>
+<li>线程调度由操作系统决定，程序本身无法决定调度顺序；</li>
+<li>Thread.sleep()可以把当前线程暂停一段时间。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java多线程</category>
+        <category>创建新的线程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>创建新的线程</title>
+    <url>/2020/05/30/%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<h1 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h1><p>Java多线程基础知识，线程的状态</p>
+<a id="more"></a>
+
+<h1 id="线程的状态："><a href="#线程的状态：" class="headerlink" title="线程的状态："></a>线程的状态：</h1><ul>
+<li><p>一个线程对象只能调用一次start()方法启动新线程，并在新线程中执行run()方法。</p>
+</li>
+<li><p>一旦run()方法执行完毕，线程就结束了。因此，Java线程的状态有以下几种：</p>
+<ol>
+<li>New: 新创建的线程，尚未执行；</li>
+<li>Runnable: 运行中的线程，正在执行run()方法的代码；</li>
+<li>Blocked: 运行中的线程，因为某些操作被阻塞而挂起；</li>
+<li>Waiting: 运行中的线程，因为某些操作在等待中；</li>
+<li>Timed Waiting: 运行中的线程，因为执行sleep()方法正在计时等待；</li>
+<li>Terminated：线程已终止，因为run()方法执行完毕。</li>
+<li>状态转移图：</li>
+<li>当线程启动后，他可以在Runnable，Blocked，Waiting和Timed Waiting这几个状态之间切换，知道最后变成Terminated状态，线程终止。</li>
+<li>线程终止的原因有：<ol>
+<li>线程正常终止：run()方法执行到return语句返回；</li>
+<li>线程意外终止：run()方法因为未捕获的异常导致线程终止；</li>
+<li>对某个线程 的Thread实例调用stop()方法强制终止；</li>
+</ol>
+</li>
+<li>一个线程还可以等待另一个线程直到其运行结束。例如：main线程在启动t线程后，可以通过t.join()等待t线程结束后再运行：</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        Thread t = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">"hello"</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">        System.out.println(<span class="string">"start"</span>);</span><br><span class="line">        t.start();</span><br><span class="line">        t.join();</span><br><span class="line">        System.out.println(<span class="string">"end"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>当main线程对线程对象t调用join()方法时，主线程将等待变量t表示的线程运行结束，即join就是指等待该线程结束，然后才继续往下执行自身线程。所以上述代码打印顺序可以肯定是main线程先打印star，t线程在打印hello，main线程最后在打印end。</li>
+<li>如果t线程已经结束，对实例t调用join()会立刻返回。此外，join(long)的重载方法也可以指定一个等待时间，超过等待时间后就不再继续等待。</li>
+</ul>
+<h1 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h1><ul>
+<li><p>Java线程对象Thread的状态包括：New、Runnable、Blocked、Waiting、Timed Waiting和Terminate；</p>
+</li>
+<li><p>通过对另一个线程对象调用join()方法可以等待其执行结束；<br>可以指定等待时间，超过等待时间线程仍然没有结束就不再等待；<br>对已经运行结束的线程调用join()方法会立刻返回。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java多线程</category>
+        <category>线程的状态</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
 </search>
