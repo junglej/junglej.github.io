@@ -1461,4 +1461,435 @@
         <tag>计算机网络自顶向下方法</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Java基础知识（一）</title>
+    <url>/2020/05/28/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h1><p>本文主要总结常见Java基础知识面试题（一）</p>
+<p>参考<br><a href="https://mp.weixin.qq.com/s/f-qIQGbzwHcW5Ur51rCqgg" target="_blank" rel="noopener">Java基础知识面试题大集合(CodeSheep)</a><br><a href="https://www.javatpoint.com/corejava-interview-questions" target="_blank" rel="noopener">300 Core Java Interview Questions</a><br><a href="https://blog.csdn.net/caoxiaohong1005/article/details/75669874" target="_blank" rel="noopener">java中短路与、逻辑与、短路或、逻辑或</a></p>
+<a id="more"></a>
+
+<h1 id="Java概述（一）"><a href="#Java概述（一）" class="headerlink" title="Java概述（一）"></a>Java概述（一）</h1><h3 id="什么是Java"><a href="#什么是Java" class="headerlink" title="什么是Java"></a>什么是Java</h3><p>Java是高级的，面向对象的，健壮的，安全的编程语言，与平台无关，高性能，多线程和可移植的编程语言。 它由James Gosling于1991年6月开发。由于它提供了自己的JRE和API，因此也可以称为平台。</p>
+<h3 id="Java特点"><a href="#Java特点" class="headerlink" title="Java特点"></a>Java特点</h3><p>简单，面向对象，可移植性，与平台无关，安全性，强大性，Architecture Neutral， 解释器（JIT），高性能，多线程，分布式，动态性</p>
+<h3 id="C-VS-Java"><a href="#C-VS-Java" class="headerlink" title="C++ VS Java"></a>C++ VS Java</h3><table>
+<thead>
+<tr>
+<th>比较项</th>
+<th>C++</th>
+<th>Java</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>平台</td>
+<td>平台相关</td>
+<td>平台无关</td>
+</tr>
+<tr>
+<td>主要用途</td>
+<td>系统编程</td>
+<td>应用程序编程，广泛用于窗口，web等</td>
+</tr>
+<tr>
+<td>多继承</td>
+<td>支持</td>
+<td>不支持多继承，在Java中使用接口实现多继承</td>
+</tr>
+<tr>
+<td>运算符重载</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>指针</td>
+<td>可编写指针程序</td>
+<td>Java内部支持指针，但不能编写相应的指针程序</td>
+</tr>
+<tr>
+<td>编译器和解释器</td>
+<td>仅使用编译器，将源代码转换为机器代码，C++依赖平台</td>
+<td>Java源代码在编译时会转换为bytecode。解释器在运行时执行此bytecode并输出。</td>
+</tr>
+</tbody></table>
+<h3 id="JVM、JRE和JDK的关系"><a href="#JVM、JRE和JDK的关系" class="headerlink" title="JVM、JRE和JDK的关系"></a>JVM、JRE和JDK的关系</h3><h4 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h4><p>JVM是使计算机能够运行Java程序的虚拟机。 JVM的作用类似于运行时引擎，该引擎调用Java代码中存在的main方法。 JVM是必须在计算机系统中实现的规范。 JVM将Java代码编译为一个Bytecode，该Bytecode与机器无关，并且与本机代码接近。Java语言可以实现跨平台。</p>
+<h4 id="JRE"><a href="#JRE" class="headerlink" title="JRE"></a>JRE</h4><p>JRE代表Java Runtime Environment。它是JVM的实现。 Java运行时环境是用于开发Java应用程序的一组软件工具。它用于提供运行时环境。它是JVM的实现。它实际上存在。它包含JVM在运行时使用的一组库+其他文件</p>
+<h4 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h4><p>JDK是Java Development Kit的首字母缩写。这是一个软件开发环境，用于开发Java应用程序和小程序。它实际上存在。它包含JRE +开发工具。 JDK是Oracle公司发布的以下给定Java平台中的任何一个的实现：</p>
+<ul>
+<li>标准版Java平台</li>
+<li>企业版Java平台</li>
+<li>微型版Java平台</li>
+</ul>
+<p>关系图如下：</p>
+<img src="/2020/05/28/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%88%E4%B8%80%EF%BC%89/%E5%85%B3%E7%B3%BB%E5%9B%BE.png" class title="关系">
+
+<h2 id="JVM分配多少类型的内存区域"><a href="#JVM分配多少类型的内存区域" class="headerlink" title="JVM分配多少类型的内存区域"></a>JVM分配多少类型的内存区域</h2><p>Class: 类区域存储每个类的结构，例如运行时常量池，字段，方法数据和方法代码。<br>Heap：这是运行时数据区，在其中将内存分配给对象<br>Stack：Java堆栈存储框架。 它保存局部变量和部分结果，并在方法调用和返回中起作用。 每个线程都有一个与该线程同时创建的私有JVM堆栈。 每次调用方法时都会创建一个新框架。 当框架的方法调用完成时，该框架将被销毁。<br>Program Counter Register: PC（程序计数器）寄存器包含当前正在执行的Java虚拟机指令的地址。<br>Native Method Stack: 它包含应用程序中使用的所有本机方法。</p>
+<h2 id="什么是跨平台性？原理是什么"><a href="#什么是跨平台性？原理是什么" class="headerlink" title="什么是跨平台性？原理是什么"></a>什么是跨平台性？原理是什么</h2><p>java语言编写的程序，一次编译后，可以在多个系统平台上运行。<br>实现原理：Java程序是通过java虚拟机在系统平台上运行的，只要该系统可以安装相应的java虚拟机，该系统就可以运行java程序。</p>
+<h2 id="ClassLoader"><a href="#ClassLoader" class="headerlink" title="ClassLoader"></a>ClassLoader</h2><p>Classloader是JVM的子系统，用于加载类文件。 每当我们运行Java程序时，它都会由类加载器首先加载。 Java中有三个内置的类加载器。</p>
+<ul>
+<li>Bootstrap ClassLoader：这是第一个类加载器，它是Extension类加载器的超类。 它加载rt.jar文件，该文件包含Java Standard Edition的所有类文件，例如java.lang包类，java.net包类，java.util包类，java.io包类，java.sql包类等。</li>
+<li>Extension ClassLoader：这是Bootstrap的子类加载器，是System类加载器的父类加载器。 它加载$ JAVA_HOME / jre / lib / ext目录中的jar文件。</li>
+<li>System/Application ClassLoader：这是扩展类加载器的子类加载器。 它从类路径加载类文件。 默认情况下，classpath设置为当前目录。 您可以使用“ -cp”或“ -classpath”开关更改类路径。 也称为应用程序类加载器。</li>
+</ul>
+<h2 id="什么是Bytecode？好处？"><a href="#什么是Bytecode？好处？" class="headerlink" title="什么是Bytecode？好处？"></a>什么是Bytecode？好处？</h2><ul>
+<li>Bytecode: Java源代码经过虚拟机编译器编译后产生的文件（即扩展为.class的文件），它不面向任何特定的处理器，只面向虚拟机。</li>
+<li>好处: Java语言通过字节码的方式，在一定程度上解决了传统解释型语言执行效率低的问题，同时又保留了解释型语言可移植的特点。所以Java程序运行时比较高效，而且，由于字节码并不专对一种特定的机器，因此，Java程序无须重新编译便可在多种不同的计算机上运行。</li>
+</ul>
+<h2 id="Java有哪些数据类型"><a href="#Java有哪些数据类型" class="headerlink" title="Java有哪些数据类型"></a>Java有哪些数据类型</h2><ul>
+<li>基本数据类型：<ul>
+<li>整型byte, short, int, long</li>
+<li>浮点类型float, double</li>
+<li>数值型</li>
+<li>字符型</li>
+<li>布尔型</li>
+</ul>
+</li>
+<li>引用数据类型<ul>
+<li>类class</li>
+<li>接口interface</li>
+<li>数组[]</li>
+</ul>
+</li>
+</ul>
+<h2 id="基本数据类型总结"><a href="#基本数据类型总结" class="headerlink" title="基本数据类型总结"></a>基本数据类型总结</h2><table>
+<thead>
+<tr>
+<th>整型</th>
+<th>类型名称</th>
+<th>关键字</th>
+<th>占用内存</th>
+<th>取值范围</th>
+<th>作为成员变量的默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>整型</td>
+<td>字节型</td>
+<td>byte</td>
+<td>1字节</td>
+<td>-2^7 ~2^7-</td>
+<td>0</td>
+</tr>
+<tr>
+<td>整型</td>
+<td>短整型</td>
+<td>short</td>
+<td>2字节</td>
+<td>-2^15 ~2^15-1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>整型</td>
+<td>整型</td>
+<td>int</td>
+<td>4字节</td>
+<td>-2^31 ~2^31-1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>整型</td>
+<td>长整型</td>
+<td>long</td>
+<td>8字节</td>
+<td>-2^63 ~2^63-1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>浮点型</td>
+<td>单精度浮点型</td>
+<td>float</td>
+<td>4字节</td>
+<td>-3.403E308～ 3.403E308</td>
+<td>0F</td>
+</tr>
+<tr>
+<td>浮点型</td>
+<td>双精度浮点型</td>
+<td>double</td>
+<td>8字节</td>
+<td>-1.798E308～ 1.798E308</td>
+<td>0D</td>
+</tr>
+<tr>
+<td>字符型</td>
+<td>字符型</td>
+<td>char</td>
+<td>2字节</td>
+<td>表示一个字符</td>
+<td>‘\u0000’</td>
+</tr>
+<tr>
+<td>布尔型</td>
+<td>布尔型</td>
+<td>boolean</td>
+<td>1字节</td>
+<td>true/false</td>
+<td>false</td>
+</tr>
+</tbody></table>
+<h2 id="用最有效率的方法计算-2-乘以-8"><a href="#用最有效率的方法计算-2-乘以-8" class="headerlink" title="用最有效率的方法计算 2 乘以 8"></a>用最有效率的方法计算 2 乘以 8</h2><p>2 &lt;&lt; 3（左移 3 位相当于乘以 2 的 3 次方，右移 3 位相当于除以 2 的 3 次方）。</p>
+<h2 id="float-f-3-4-是否正确"><a href="#float-f-3-4-是否正确" class="headerlink" title="float f=3.4;是否正确"></a>float f=3.4;是否正确</h2><p>不正确。3.4 是双精度数，将双精度型（double）赋值给浮点型（float）属于下转型（down-casting，也称为窄化）会造成精度损失，因此需要强制类型转换float f =(float)3.4; 或者写成 float f =3.4F;。</p>
+<p>#short s1 = 1; s1 = s1 + 1;有错吗?short s1 = 1; s1 += 1;有错吗</p>
+<p>对于 short s1 = 1; s1 = s1 + 1;由于 1 是 int 类型，因此 s1+1 运算结果也是 int型，需要强制转换类型才能赋值给 short 型。</p>
+<p>而 short s1 = 1; s1 += 1;可以正确编译，因为 s1+= 1;相当于 s1 = (short(s1 + 1);其中有隐含的强制类型转换。</p>
+<h2 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h2><p>在Java中，访问修饰符是关键字，用于定义方法，类或变量的访问范围。 在Java中，下面给出了四个访问说明符。</p>
+<ul>
+<li>public：定义为公共的类，方法或变量可以由任何类或方法访问。</li>
+<li>protected：受保护的可以通过同一包的类，此类的子类或在同一类内进行访问。</li>
+<li>default：默认值仅在包内可用。 默认情况下，所有类，方法和变量都属于默认范围。</li>
+<li>private: 只能在该类内访问定义为私有的私有类，方法或变量。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>当前类</th>
+<th>同包</th>
+<th>子类</th>
+<th>其他包</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>private</td>
+<td>✔️</td>
+<td>✖️</td>
+<td>✖️</td>
+<td>✖️</td>
+</tr>
+<tr>
+<td>default</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>✖️</td>
+<td>✖️</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>✖️</td>
+</tr>
+<tr>
+<td>public</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>✔️</td>
+<td>✔️</td>
+</tr>
+</tbody></table>
+<h2 id="amp-和-amp-amp"><a href="#amp-和-amp-amp" class="headerlink" title="&amp;和&amp;&amp;"></a>&amp;和&amp;&amp;</h2><ul>
+<li>&amp;运算符有两种用法：(1)按位与；(2)逻辑与。条件1 &amp;&amp; 条件2  ,执行过程:如果条件1成立,则继续计算条件2;如果条件1不成立,则条件2不再计算,直接返回false.</li>
+<li>&amp;&amp;运算符是短路与运算。逻辑与跟短路与的差别是非常巨大的，虽然二者都要求运算符左右两端的布尔值都是true 整个表达式的值才是 true。&amp;&amp;之所以称为短路运算，是因为如果&amp;&amp;左边的表达式的值是 false，右边的表达式会被直接短路掉，不会进行运算。</li>
+</ul>
+<h2 id="和"><a href="#和" class="headerlink" title="| 和 ||"></a>| 和 ||</h2><ul>
+<li>短路或 ||：条件1 || 条件2  ,执行过程:如果条件1成立,则条件2不再计算,直接返回true;如果条件1不成立,继续计算条件2,如果条件2成立,则返回ture,否则返回false.</li>
+<li>逻辑或 | :条件1 | 条件2  ,执行过程:如果条件1成立,条件2继续计算,不论条件2是否成立,都返回true;如果条件1不成立,条件2继续计算,如果条件2成立,返回true,如果条件2不成立,返回false.</li>
+</ul>
+<h2 id="关键字final"><a href="#关键字final" class="headerlink" title="关键字final"></a>关键字final</h2><p>在Java中，final 用于限制用户对其进行更新。 如果初始化最终变量，则无法更改其值。 换句话说，我们可以说最终变量一旦分配给一个值，之后就再也不能更改了。 未分配任何值的最终变量只能通过类构造函数分配。</p>
+<p>用于修饰类、属性和方法；</p>
+<ul>
+<li>被final修饰的类不可以被继承</li>
+<li>被final修饰的方法不可以被重写</li>
+<li>被final修饰的变量不可以被改变，被final修饰不可变的是变量的引用，而不是引用指向的内容，引用指向的内容是可以改变的</li>
+</ul>
+<h2 id="final-finally-finalize区别"><a href="#final-finally-finalize区别" class="headerlink" title="final finally finalize区别"></a>final finally finalize区别</h2><ul>
+<li>final可以修饰类、变量、方法，修饰类表示该类不能被继承、修饰方法表示该方法不能被重写、修饰变量表<br>示该变量是一个常量不能被重新赋值。</li>
+<li>finally一般作用在try-catch代码块中，在处理异常的时候，通常我们将一定要执行的代码方法finally代码块<br>中，表示不管是否出现异常，该代码块都会执行，一般用来存放一些关闭资源的代码。</li>
+<li>finalize是一个方法，属于Object类的一个方法，而Object类是所有类的父类，该方法一般由垃圾回收器来调<br>用，当我们调用System.gc() 方法的时候，由垃圾回收器调用finalize()，回收垃圾，一个对象是否可回收的<br>最后判断。</li>
+</ul>
+<h2 id="this-关键字"><a href="#this-关键字" class="headerlink" title="this 关键字"></a>this 关键字</h2><ul>
+<li><p>this 引用当前对象的引用变量</p>
+</li>
+<li><p>直接引用，this指向当前对象本身</p>
+</li>
+<li><p>形参与成员名字崇明，用this来区分</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String name, <span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.name = name;</span><br><span class="line">	<span class="keyword">this</span>.id = id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引用本类的构造函数</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String name, <span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(name);</span><br><span class="line">        <span class="keyword">this</span>,id = id;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h2 id="super-关键字"><a href="#super-关键字" class="headerlink" title="super 关键字"></a>super 关键字</h2><p>super可以理解为指向自己父类对象的一个指针，而这个父类指的是离自己最近的一个父类。</p>
+<ul>
+<li><p>直接引用父类实例变量</p>
+<p>使用super访问父类的数据成员</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;  </span><br><span class="line">    String color=<span class="string">"white"</span>;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;  </span><br><span class="line">    String color=<span class="string">"black"</span>;  </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">printColor</span><span class="params">()</span></span>&#123;  </span><br><span class="line">        System.out.println(color);<span class="comment">//prints color of Dog class  </span></span><br><span class="line">        System.out.println(<span class="keyword">super</span>.color);<span class="comment">//prints color of Animal class  </span></span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestSuper1</span></span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;  </span><br><span class="line">        Dog d=<span class="keyword">new</span> Dog();  </span><br><span class="line">        d.printColor();  </span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Output：</span><br><span class="line">black</span><br><span class="line">white</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用父类方法</p>
+<p>当子类包含和父类同样的方法时，super可以调用父类方法。换句话说方法被重写时可以调用父类方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;System.out.println(<span class="string">"eating..."</span>);&#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;System.out.println(<span class="string">"eating bread..."</span>);&#125;  </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">bark</span><span class="params">()</span></span>&#123;System.out.println(<span class="string">"barking..."</span>);&#125;  </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span>&#123;  </span><br><span class="line">        <span class="keyword">super</span>.eat();  </span><br><span class="line">        bark();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestSuper2</span></span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;  </span><br><span class="line">        Dog d=<span class="keyword">new</span> Dog(); </span><br><span class="line">        d.work();  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Output：</span><br><span class="line">eating...</span><br><span class="line">barking...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用父类构造器</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;  </span><br><span class="line">	Animal()&#123;System.out.println(<span class="string">"animal is created"</span>);&#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;  </span><br><span class="line">	Dog()&#123;  </span><br><span class="line">	<span class="keyword">super</span>();  </span><br><span class="line">	System.out.println(<span class="string">"dog is created"</span>);  </span><br><span class="line">	&#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestSuper3</span></span>&#123;  </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;  </span><br><span class="line">        Dog d=<span class="keyword">new</span> Dog();  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Output：</span><br><span class="line">animal is created</span><br><span class="line">dog is created</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="this与super的区别"><a href="#this与super的区别" class="headerlink" title="this与super的区别"></a>this与super的区别</h2><ul>
+<li>super始终指向父类上下文，this始终指向当前类上下文</li>
+<li>super关键字用于初始化派生类构造函数中的基类变量，this主要用于在传递给类构造函数时区分局部变量和实例变量。</li>
+<li>super()和this()类似,区别是，super()在子类中调用父类的构造方法，this()在本类内调用本类的其它构造方法。</li>
+<li>super()和this()均需放在构造方法内第一行。</li>
+<li>尽管可以用this调用一个构造器，但却不能调用两个。</li>
+<li>this和super不能同时出现在一个构造函数里面，因为this必然会调用其它的构造函数，其它的构造函数必然也会有super语句的存在，所以在同一个构造函数里面有相同的语句，就失去了语句的意义，编译器也不会通过。</li>
+<li>this()和super()都指的是对象，所以，均不可以在static环境中使用。包括：static变量,static方法，static语句块。</li>
+<li>从本质上讲，this是一个指向本对象的指针, 然而super是一个Java关键字。</li>
+</ul>
+<h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><ul>
+<li><p>Java中的static关键字主要用于内存管理。 我们可以将static关键字与变量，方法，块和嵌套类一起使用。 static关键字属于类，而不是类的实例。</p>
+</li>
+<li><p>static可以是变量，方法，块，嵌套类。</p>
+</li>
+<li><p>主要意义是在于创建独立于具体对象的域变量或者方法。<strong>以致于即使没有创建对象，也能使用属性和调用方法</strong>！</p>
+</li>
+<li><p>static关键字还有一个比较关键的作用就是 <strong>用来形成静态代码块以优化程序性能</strong>。static块可以置于类中的任何地方，类中可以有多个static块。在类初次被加载的时候，会按照static块的顺序来执行每个static块，并且只会执行一次。</p>
+</li>
+<li><p>只会在类加载的时候执行一次。因此，很多时候会将一些只需要进行一次的初始化操作都放在static代码块中进行。</p>
+</li>
+<li><p>因为static是被类的实例对象所共享，因此如果<strong>某个成员变量是被所有对象所共享的，那么这个成员变量就应该定义为静态变量</strong>。</p>
+</li>
+<li><p>因此比较常见的static应用场景有：1、修饰成员变量 2、修饰成员方法 3、静态代码块 4、修饰类（只能修饰内部类也就是静态内部类） 5、静态导包</p>
+</li>
+</ul>
+<h2 id="break-continue-return-的区别及作用"><a href="#break-continue-return-的区别及作用" class="headerlink" title="break ,continue ,return 的区别及作用"></a>break ,continue ,return 的区别及作用</h2><ul>
+<li>break 跳出上一层循环，不再执行循环，结束当前循环</li>
+<li>continue 跳出本次循环，继续执行下次循环，结束正在执行的循环，进入下一个循环条件</li>
+<li>return 程序返回，不再执行下面的代码，结束当前方法，直接返回</li>
+</ul>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><ul>
+<li>构造函数是类似于该方法的代码块。创建<a href="https://www.javatpoint.com/object-and-class-in-java" target="_blank" rel="noopener">类</a>的实例时调用它。在调用构造函数时，将在内存中分配对象的内存。每次使用new()关键字创建对象是，都会至少调用一个构造函数。如果类中没有可用的构造函数，它将调用默认构造函数，在这种情况下，Java编译器默认提供默认的构造函数</li>
+<li>默认构造函数: 不接受任何值的构造函数。默认构造函数主要用于使用默认值初始化实例变量，它也可以用于执行一些有关对象创建的有用任务。如果类中没有定义构造函数，则编译器会隐式调用默认构造函数。</li>
+</ul>
+<ul>
+<li><p>默认构造函数的目的是为对象分配默认值。如果类中没有构造函数，则Java编译器会隐式创建一个默认的构造函数</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student3</span></span>&#123;  </span><br><span class="line">	<span class="keyword">int</span> id;  </span><br><span class="line">	String name;  </span><br><span class="line">  </span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(id+<span class="string">" "</span>+name);</span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;  </span><br><span class="line">		Student3 s1=<span class="keyword">new</span> Student3();  </span><br><span class="line">		Student3 s2=<span class="keyword">new</span> Student3();  </span><br><span class="line">		s1.display();  </span><br><span class="line">		s2.display();  </span><br><span class="line">	&#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Output：</span><br><span class="line">0 null</span><br><span class="line">0 null</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参数化构造函数：参数化构造函数是可以使用给定值初始化实例变量的构造函数。换句话说，可以说可以接受参数的构造函数称为参数化构造函数。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student4</span></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> id;  </span><br><span class="line">    String name;  </span><br><span class="line">    <span class="comment">//creating a parameterized constructor  </span></span><br><span class="line">    Student4(<span class="keyword">int</span> i,String n)&#123;  </span><br><span class="line">    id = i;  </span><br><span class="line">    name = n;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="comment">//method to display the values  </span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span>&#123;System.out.println(id+<span class="string">" "</span>+name);&#125;  </span><br><span class="line">   </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;  </span><br><span class="line">    <span class="comment">//creating objects and passing values  </span></span><br><span class="line">    Student4 s1 = <span class="keyword">new</span> Student4(<span class="number">111</span>,<span class="string">"Karan"</span>);  </span><br><span class="line">    Student4 s2 = <span class="keyword">new</span> Student4(<span class="number">222</span>,<span class="string">"Aryan"</span>);  </span><br><span class="line">    <span class="comment">//calling method to display the values of object  </span></span><br><span class="line">    s1.display();  </span><br><span class="line">    s2.display();  </span><br><span class="line">   &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Output：</span><br><span class="line">111 Karan</span><br><span class="line">222 Aryan</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为构造函数定义了两个规则。</p>
+<ol>
+<li>构造函数名称必须与其类名称相同</li>
+<li>构造函数必须没有显式的返回类型</li>
+<li>Java构造函数不能是抽象的，静态的，最终的和同步的</li>
+</ol>
+</li>
+<li><p>构造函数重载</p>
+<p>在Java中，构造函数就像方法一样，但是没有返回类型。它也可以像Java方法一样重载。</p>
+<p><a href="https://www.javatpoint.com/method-overloading-in-java" target="_blank" rel="noopener">Java</a>中的构造函数<a href="https://www.javatpoint.com/method-overloading-in-java" target="_blank" rel="noopener">重载</a>是一种具有多个具有不同参数列表的构造函数的技术。它们的排列方式使每个构造函数执行不同的任务。编译器通过列表中的参数数量及其类型来区分它们 </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student5</span></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> id;  </span><br><span class="line">    String name;  </span><br><span class="line">    <span class="keyword">int</span> age;  </span><br><span class="line">    <span class="comment">//creating two arg constructor  </span></span><br><span class="line">    Student5(<span class="keyword">int</span> i,String n)&#123;  </span><br><span class="line">    	id = i;  </span><br><span class="line">    	name = n;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="comment">//creating three arg constructor  </span></span><br><span class="line">    Student5(<span class="keyword">int</span> i,String n,<span class="keyword">int</span> a)&#123;  </span><br><span class="line">   		id = i;  </span><br><span class="line">    	name = n;  </span><br><span class="line">    	age=a;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span></span>&#123;System.out.println(id+<span class="string">" "</span>+name+<span class="string">" "</span>+age);&#125;  </span><br><span class="line">   </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;  </span><br><span class="line">    	Student5 s1 = <span class="keyword">new</span> Student5(<span class="number">111</span>,<span class="string">"Karan"</span>);  </span><br><span class="line">    	Student5 s2 = <span class="keyword">new</span> Student5(<span class="number">222</span>,<span class="string">"Aryan"</span>,<span class="number">25</span>);  </span><br><span class="line">    	s1.display();  </span><br><span class="line">    	s2.display();  </span><br><span class="line">   &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Output：</span><br><span class="line">111 Karan 0</span><br><span class="line">222 Aryan 25</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Java构造函数和方法的区别</p>
+<table>
+<thead>
+<tr>
+<th>Java构造函数</th>
+<th>Java方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用于初始化对象的状态</td>
+<td>一种方法用于公开对象的行为</td>
+</tr>
+<tr>
+<td>不得有返回类型</td>
+<td>必须具有返回类型</td>
+</tr>
+<tr>
+<td>被隐式调用</td>
+<td>显示调用</td>
+</tr>
+<tr>
+<td>如果您的类中没有任何构造函数，则Java编译器会提供默认构造函数。</td>
+<td>该方法在任何情况下都不由编译器提供。</td>
+</tr>
+<tr>
+<td>构造函数名称必须与类名称相同。</td>
+<td>方法名称可以与类名称相同或不同。</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<ul>
+<li><p>构造函数是否返回任何值？</p>
+<p>是的，它是当前的类实例，不能使用返回类型，但它会返回一个值</p>
+</li>
+<li><p>构造函数可以只能怪其他任务而不是初始化吗？</p>
+<p>是的，例如对象创建，启动线程，调用方法等。您可以像在方法中执行操作一样在构造函数中执行任何操作</p>
+</li>
+<li><p>Java中有构造函数类吗？</p>
+<p>是</p>
+</li>
+<li><p>构造器类的目的是什么</p>
+<p>提供一个Constructor类，该类可用于获取类中构造函数的内部信息，在java.lang.reflect包中可以找到它。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java面试</category>
+        <category>Java基础知识</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java多线程基础</title>
+    <url>/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h1><p>Java多线程基础知识，包括进程，线程以及他们的关系</p>
+<a id="more"></a>
+
+<h1 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h1><ul>
+<li>进程：一个任务称为一个进程。</li>
+<li>进程内同时执行多个子任务，子任务称为线程。</li>
+<li>进程和线程的关系：一个进程可以包含一个或多个线程，但至少会有一个线程。</li>
+</ul>
+<p>具体如图所示：</p>
+<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B.png" class title="进程与线程">
+
+<h2 id="多进程模式"><a href="#多进程模式" class="headerlink" title="多进程模式"></a>多进程模式</h2><p>即每个进程只有一个线程</p>
+<p>如图所示：</p>
+<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%BC%8F.png" class title="多进程模式">
+
+<h2 id="多线程模式"><a href="#多线程模式" class="headerlink" title="多线程模式"></a>多线程模式</h2><p>即一个进程有多个线程</p>
+<p>如图所示：</p>
+<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%BC%8F.png" class title="多线程模式">
+
+<h2 id="多线程-多进程模式（复杂度最高）"><a href="#多线程-多进程模式（复杂度最高）" class="headerlink" title="多线程+多进程模式（复杂度最高）"></a>多线程+多进程模式（复杂度最高）</h2><p>多进程和多线程混合模式</p>
+<p>如图所示</p>
+<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%A4%9A%E7%BA%BF%E7%A8%8B+%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%BC%8F.png" class title="多线程+多进程模式">
+
+<h2 id="进程VS线程"><a href="#进程VS线程" class="headerlink" title="进程VS线程"></a>进程VS线程</h2><ol>
+<li>进程和线程是包含关系，但是多任务既可以由多进程实现，也可以由单进程内的多线程实现，还可以混合多线程+多进程。</li>
+<li>和多线程相相比，多进程的缺点：创建进程比创建线程开销大，尤其是在windows上；进程间通信比线程的通信要慢，因为线程见通信就是读写同一个变量，速度快。</li>
+<li>多进程的优点：多进程稳定性比多线程高，因为在多进程的情况下，一个进程崩溃不会影响到其他进程，而在多线程的情况下，任何一个线程崩溃会直接导致整个进程崩溃。</li>
+</ol>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><ol>
+<li>Java语言内置了多线程支持：一个Java程序实际上是一个JVM进程，JVM进程用一个主线程来执行main()方法，在main()方法内部，我们又可以启动多个线程。此外，JVM还有负责垃圾回收的其他工作线程等。使用多线程实现多任务。</li>
+<li>和单线程相比，多线程编程的特点在于：多想成经常需要读写共享数据，并且需要同步。多线程编程复杂度更高，调试更困难。</li>
+<li>多线程的特点：多线程模型是Java程序最基本的并发模型；后续读写网络，数据库，Web开发等都依赖Java多线程模型。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java多线程</category>
+        <category>Java多线程基础</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
 </search>
