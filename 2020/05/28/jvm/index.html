@@ -25,28 +25,28 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="PCB工程文件的创建本文概述：如何使用Altium Designer建立PCB工程。 本文使用的工具Altium Designer 20.1.8">
+  <meta name="description" content="本文概述Java虚拟机JVM总结 参考： Understanding Java Memory Model">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PCB工程文件的创建">
-<meta property="og:url" content="http://yoursite.com/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/index.html">
+<meta property="og:title" content="Java基础知识（一）">
+<meta property="og:url" content="http://yoursite.com/2020/05/28/jvm/index.html">
 <meta property="og:site_name" content="Jungle">
-<meta property="og:description" content="PCB工程文件的创建本文概述：如何使用Altium Designer建立PCB工程。 本文使用的工具Altium Designer 20.1.8">
+<meta property="og:description" content="本文概述Java虚拟机JVM总结 参考： Understanding Java Memory Model">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/PCB%E5%88%9B%E5%BB%BA%E5%B7%A5%E7%A8%8B.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E9%80%89%E6%8B%A9projecttype.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524151653.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524151836.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524151956.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524152118.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/FInalResult.png">
-<meta property="article:published_time" content="2020-05-24T15:30:00.000Z">
-<meta property="article:modified_time" content="2020-05-26T22:15:52.669Z">
+<meta property="og:image" content="http://yoursite.com/2020/05/28/jvm/jvm.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/28/jvm/memory.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/28/jvm/HeapMemory.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/28/jvm/%E9%9D%9E%E5%A0%86%E5%86%85%E5%AD%98.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/28/jvm/StackVSHeap.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/28/jvm/%E5%AF%B9%E6%AF%94.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/28/jvm/example.jpg">
+<meta property="article:published_time" content="2020-05-28T14:55:10.000Z">
+<meta property="article:modified_time" content="2020-05-30T19:35:36.964Z">
 <meta property="article:author" content="Jungle">
-<meta property="article:tag" content="PCB">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/PCB%E5%88%9B%E5%BB%BA%E5%B7%A5%E7%A8%8B.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/05/28/jvm/jvm.png">
 
-<link rel="canonical" href="http://yoursite.com/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/">
+<link rel="canonical" href="http://yoursite.com/2020/05/28/jvm/">
 
 
 <script id="page-configurations">
@@ -59,7 +59,7 @@
   };
 </script>
 
-  <title>PCB工程文件的创建 | Jungle</title>
+  <title>Java基础知识（一） | Jungle</title>
   
 
 
@@ -207,7 +207,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/28/jvm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -220,7 +220,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          PCB工程文件的创建
+          Java基础知识（一）
         </h1>
 
         <div class="post-meta">
@@ -230,14 +230,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2020-05-24 11:30:00" itemprop="dateCreated datePublished" datetime="2020-05-24T11:30:00-04:00">2020-05-24</time>
+              <time title="Created: 2020-05-28 10:55:10" itemprop="dateCreated datePublished" datetime="2020-05-28T10:55:10-04:00">2020-05-28</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-05-26 18:15:52" itemprop="dateModified" datetime="2020-05-26T18:15:52-04:00">2020-05-26</time>
+                <time title="Modified: 2020-05-30 15:35:36" itemprop="dateModified" datetime="2020-05-30T15:35:36-04:00">2020-05-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -245,11 +245,11 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PCB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">PCB学习笔记</span></a>
+                  <a href="/categories/Java%E9%9D%A2%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">Java面试</span></a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PCB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/89C51/" itemprop="url" rel="index"><span itemprop="name">89C51</span></a>
+                  <a href="/categories/Java%E9%9D%A2%E8%AF%95/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">Java基础知识</span></a>
                 </span>
             </span>
 
@@ -259,14 +259,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>244</span>
+              <span>2.4k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
+              <span>2 mins.</span>
             </span>
 
         </div>
@@ -278,21 +278,140 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="PCB工程文件的创建"><a href="#PCB工程文件的创建" class="headerlink" title="PCB工程文件的创建"></a>PCB工程文件的创建</h1><h2 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h2><p>如何使用Altium Designer建立PCB工程。</p>
-<h2 id="本文使用的工具"><a href="#本文使用的工具" class="headerlink" title="本文使用的工具"></a>本文使用的工具</h2><p>Altium Designer 20.1.8</p>
+        <h1 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h1><p>Java虚拟机JVM总结</p>
+<p>参考：</p>
+<p><a href="https://medium.com/platform-engineer/understanding-java-memory-model-1d0863f6d973" target="_blank" rel="noopener">Understanding Java Memory Model</a></p>
 <a id="more"></a>
-<h2 id="Step1-创建新的工程：File-–-gt-New–-gt-Project"><a href="#Step1-创建新的工程：File-–-gt-New–-gt-Project" class="headerlink" title="Step1: 创建新的工程：File –&gt; New–&gt;Project"></a>Step1: 创建新的工程：File –&gt; New–&gt;Project</h2><img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/PCB%E5%88%9B%E5%BB%BA%E5%B7%A5%E7%A8%8B.png" class title="创建新的工程">
 
-<h2 id="Step2-选择Project-Type-这里选择默认的就好，Project-Name自定义就好。"><a href="#Step2-选择Project-Type-这里选择默认的就好，Project-Name自定义就好。" class="headerlink" title="Step2: 选择Project Type: 这里选择默认的就好，Project Name自定义就好。"></a>Step2: 选择Project Type: 这里选择默认的就好，Project Name自定义就好。</h2><img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E9%80%89%E6%8B%A9projecttype.png" class title="This is an example image">
-<h2 id="Step3-绘制PCB四个基本文件-原理图，原理图库，PCB，PCB库"><a href="#Step3-绘制PCB四个基本文件-原理图，原理图库，PCB，PCB库" class="headerlink" title="Step3: 绘制PCB四个基本文件(原理图，原理图库，PCB，PCB库)"></a>Step3: 绘制PCB四个基本文件(原理图，原理图库，PCB，PCB库)</h2><ol>
-<li>原理图<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524151653.png" class title="原理图"></li>
-<li>原理图库<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524151836.png" class title="原理图库"></li>
-<li>PCB<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524151956.png" class title="PCB"></li>
-<li>PCB图库<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524152118.png" class title="PCB图库">
-
+<h1 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>JVM为Java虚拟机，包括一套字节码指令集，一组寄存器，一个栈，一个垃圾回收，堆和一个存储方法域。JVM运行在操作系统之上的，他与硬件没有直接的交互</p>
+<ul>
+<li>java代码的执行<ul>
+<li>代码编译为class -&gt; javac</li>
+<li>装载class -&gt; ClassLoader</li>
+<li>执行class<ul>
+<li>解释执行</li>
+<li>编译执行： client compiler/ server compiler</li>
+</ul>
 </li>
-</ol>
-<h2 id="此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例："><a href="#此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例：" class="headerlink" title="此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例："></a>此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例：</h2><img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/FInalResult.png" class title="最终效果图">
+</ul>
+</li>
+<li>内存管理<ul>
+<li>内存空间<ul>
+<li>方法区</li>
+<li>方法栈</li>
+<li>堆</li>
+<li>本地方法栈</li>
+<li>pc寄存器</li>
+</ul>
+</li>
+<li>内存分配<ul>
+<li>堆上分配</li>
+<li>TLAB分配</li>
+<li>栈上分配</li>
+</ul>
+</li>
+<li>内存回收<ul>
+<li>算法（Copy / Mark-Sweep / Mark-Compact）</li>
+<li>Sun JDK<ul>
+<li>分代回收<ul>
+<li>新生代可用的GC（串行copying，并行回收copying，并行copying）</li>
+<li>Minor GC触发机制以及日志格式</li>
+<li>旧生代可用的GC（串行Mark-Sweep-Compact，并行Compacting，并发Mark-Sweep）</li>
+<li>Full GC触发机制以及日志格式</li>
+</ul>
+</li>
+<li>GC参数</li>
+<li>G1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>内存状况分析（jconsole， visualvm，jstat，jmap，MAT）</li>
+</ul>
+</li>
+<li>线程资源同步和交互机制<ul>
+<li>线程资源同步<ul>
+<li>线程资源执行机制</li>
+<li>线程资源同步机制（Synchronized, lock/ unlock）</li>
+</ul>
+</li>
+<li>线程交互机制<ul>
+<li>wait, notify, notifyAll, double check pattern</li>
+<li>并发包提供的交互机制（semaphore，CountwnLatch）</li>
+</ul>
+</li>
+<li>线程状态及分析方法（jstack，TDA）</li>
+</ul>
+</li>
+</ul>
+<h2 id="运行过程"><a href="#运行过程" class="headerlink" title="运行过程"></a>运行过程</h2><p>java源文件 –&gt;  编译器 –&gt; 字节码文件</p>
+<p>字节码文件 –&gt; JVM –&gt; 机器码、</p>
+<p>当一个程序从开始运行，这时虚拟机开始实例化，多个程序启动就存在多个虚拟机实例，程序退出或者关闭，则虚拟机实例小王，多个虚拟机实例之间数据不能共享。</p>
+<img src="/2020/05/28/jvm/jvm.png" class title="jvm">
+
+<p>JVM允许一个应用并发执行多个线程。Hotspot JVM中的Java线程与原生操作系统线程有直接的映射关系。当本地存储，缓冲区分配，同步对象，栈，程序计数器等准备好以后，就会创建一个操作系统原生线程。Java线程结束，原生线程随之被回收 。操作系统负责调度所有的线程，并把他们分配到任何可用的CPU上，当原生线程初始化完毕，就会调用Java线程的run()方法，当线程结束时，会释放原生线程和Java的所有资源。</p>
+<h2 id="JVM-Memory-Model"><a href="#JVM-Memory-Model" class="headerlink" title="JVM Memory Model"></a>JVM Memory Model</h2><p>运行资源密集型Java程序时，您必须使用一下某些JVM内存配置</p>
+<ul>
+<li>XmsSetting – 初始堆大小</li>
+<li>XmxSetting – 最大堆大小</li>
+<li>XX: NewSizeSetting – 新一代堆大熊啊</li>
+<li>XX：MaxNewSizeSetting —最大新一代堆大小</li>
+<li>XX：MaxPermGenSetting —永久生成的最大大小</li>
+<li>XX：SurvivorRatioSetting-新的堆大小比率（例如，如果Young Gen大小为10m并且内存开关为–XX：SurvivorRatio = 2，则将为Eden空间保留5m，为两个Survivor空间分别保留2.5m，默认值= 8）</li>
+<li>XX：NewRatio —提供新旧大小的比率（默认值= 2）</li>
+</ul>
+<img src="/2020/05/28/jvm/memory.png" class title="主机操作系统内存和JVM">
+
+<h3 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h3><ul>
+<li>堆内存分为年轻一代和老一代</li>
+<li>JVM启动时分配堆</li>
+<li>应用程序运行时堆大小增加或减少</li>
+<li>最大大小： -Xms</li>
+</ul>
+<img src="/2020/05/28/jvm/HeapMemory.png" class title="JVM堆内存">
+
+<h4 id="年轻一代"><a href="#年轻一代" class="headerlink" title="年轻一代"></a>年轻一代</h4><ul>
+<li>保留用于包含新分配的对象</li>
+<li>Young Gen包括三个部分-Eden Memory 和两个Survivor Memory空间（S0，S1）</li>
+<li>大多数新创建的对象进入Eden Memory</li>
+<li>当Eden Memory 空间中充满对象时，将执行MinorGC（又称Young Collection），并将所有幸存对象移动到其中一个幸存者空间。</li>
+<li>Minor GC还检查survivor 对象并将其移至其他survivor 空间。因此，其中一个survivor空间经常是空的。</li>
+<li>在许多次GC循环后，仍然存在的对象将移至旧代存储空间。通常，可以通过设置年轻一代对象的年龄阈值，然后再有资格晋升为老一代</li>
+</ul>
+<h3 id="老一代"><a href="#老一代" class="headerlink" title="老一代"></a>老一代</h3><ul>
+<li>这是为了包含可能在多次循环在GC中存货下来长寿命的对象而保留的</li>
+<li>当旧一代空间已满时，将执行Major GC（又称Old Collection），需要的时间更长</li>
+</ul>
+<h2 id="非堆内存"><a href="#非堆内存" class="headerlink" title="非堆内存"></a>非堆内存</h2><ul>
+<li>包括永久生成</li>
+<li>Perm Gen存储每个类的结构，例如运行时常量池，字段和方法数据，以及方法和构造函数的代码，内部字符串</li>
+<li>可以使用-XX: PermSize和-XX: MaxPermSize更改其大小</li>
+</ul>
+<img src="/2020/05/28/jvm/%E9%9D%9E%E5%A0%86%E5%86%85%E5%AD%98.png" class title="非堆内存">
+
+<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><ul>
+<li>代码缓存</li>
+<li>存储由JIT编译器生成的已编译代码，JVM内部结构，已加载的探查气代理代码和数据等。</li>
+<li>当代码缓存超过阈值时，他将被刷新，并且GC不会从新定位对象。</li>
+</ul>
+<h2 id="Stack-VS-Heap"><a href="#Stack-VS-Heap" class="headerlink" title="Stack VS Heap"></a>Stack VS Heap</h2><img src="/2020/05/28/jvm/StackVSHeap.png" class title="StackVSHeap">
+
+
+
+<p>Java Stack内存用于执行线程，它包含方法特定的值以及对Heap中其他对象的引用：</p>
+<img src="/2020/05/28/jvm/%E5%AF%B9%E6%AF%94.png" class title="对比">
+
+
+
+<p><strong>例:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> pid;</span><br><span class="line">    String name;</span><br><span class="line"><span class="comment">// constructor, setters/getters</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Driver</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> id = <span class="number">23</span>;</span><br><span class="line">        String pName = <span class="string">"Jon"</span>;</span><br><span class="line">        Person p = <span class="keyword">null</span>;</span><br><span class="line">        p = <span class="keyword">new</span> Person(id, pName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/05/28/jvm/example.jpg" class title="example">
+
+<h2 id="新版Java引入以下新的内存空间"><a href="#新版Java引入以下新的内存空间" class="headerlink" title="新版Java引入以下新的内存空间"></a>新版Java引入以下新的内存空间</h2><ul>
+<li><strong>Keep Area</strong>- Young Generation中的新存储空间，用于包含最近分配的对象，直到下一代Young才执行GC。该区域可防止仅由于在开始young collection之前就已经分配对象</li>
+<li><strong>Metaspace</strong>：Metaspace替代Permanent Generation。即使Perm Gen始终具有固定大小，它也可以自动增加其大小从而达到基础操作系统所提供的大小。只要classloader 处于活跃装填，Metadata保持活跃且无法释放。</li>
+</ul>
 
     </div>
     
@@ -316,12 +435,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/">PCB工程文件的创建</a></p>
+  <p><span>本文标题:</span><a href="/2020/05/28/jvm/">Java基础知识（一）</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Jungle 的个人博客">Jungle</a></p>
-  <p><span>发布时间:</span>2020年05月24日 - 11:30</p>
-  <p><span>最后更新:</span>2020年05月26日 - 18:15</p>
-  <p><span>原始链接:</span><a href="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/" title="PCB工程文件的创建">http://yoursite.com/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2020年05月28日 - 10:55</p>
+  <p><span>最后更新:</span>2020年05月30日 - 15:35</p>
+  <p><span>原始链接:</span><a href="/2020/05/28/jvm/" title="Java基础知识（一）">http://yoursite.com/2020/05/28/jvm/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2020/05/28/jvm/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
 </div>
@@ -368,7 +487,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/PCB/" rel="tag"><i class="fa fa-tag"></i>PCB</a>
+              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i>Java</a>
           </div>
 
         
@@ -377,12 +496,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/05/23/LeetCode1/" rel="prev" title="Leetcode1 Two sum">
-      <i class="fa fa-chevron-left"></i> Leetcode1 Two sum
+    <a href="/2020/05/27/%E5%B8%B8%E7%94%A8%E8%A7%84%E5%88%99%E8%AE%BE%E7%BD%AE%E4%B8%8E%E5%B8%83%E7%BA%BF(89C51%E4%B8%BA%E4%BE%8B)/" rel="prev" title="常用规则设置与布线(89C51为例)">
+      <i class="fa fa-chevron-left"></i> 常用规则设置与布线(89C51为例)
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/" rel="next" title="原理图库的创建(89C51为例)">
-      原理图库的创建(89C51为例) <i class="fa fa-chevron-right"></i>
+    <a href="/2020/05/28/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%88%E4%B8%80%EF%BC%89/" rel="next" title="Java基础知识（一）">
+      Java基础知识（一） <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -447,7 +566,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PCB工程文件的创建"><span class="nav-number">1.</span> <span class="nav-text">PCB工程文件的创建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#本文概述："><span class="nav-number">1.1.</span> <span class="nav-text">本文概述：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本文使用的工具"><span class="nav-number">1.2.</span> <span class="nav-text">本文使用的工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step1-创建新的工程：File-–-gt-New–-gt-Project"><span class="nav-number">1.3.</span> <span class="nav-text">Step1: 创建新的工程：File –&gt; New–&gt;Project</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step2-选择Project-Type-这里选择默认的就好，Project-Name自定义就好。"><span class="nav-number">1.4.</span> <span class="nav-text">Step2: 选择Project Type: 这里选择默认的就好，Project Name自定义就好。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step3-绘制PCB四个基本文件-原理图，原理图库，PCB，PCB库"><span class="nav-number">1.5.</span> <span class="nav-text">Step3: 绘制PCB四个基本文件(原理图，原理图库，PCB，PCB库)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例："><span class="nav-number">1.6.</span> <span class="nav-text">此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例：</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#本文概述"><span class="nav-number">1.</span> <span class="nav-text">本文概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JVM"><span class="nav-number">2.</span> <span class="nav-text">JVM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">2.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行过程"><span class="nav-number">2.2.</span> <span class="nav-text">运行过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM-Memory-Model"><span class="nav-number">2.3.</span> <span class="nav-text">JVM Memory Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#堆内存"><span class="nav-number">2.3.1.</span> <span class="nav-text">堆内存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#年轻一代"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">年轻一代</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#老一代"><span class="nav-number">2.3.2.</span> <span class="nav-text">老一代</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非堆内存"><span class="nav-number">2.4.</span> <span class="nav-text">非堆内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存"><span class="nav-number">2.5.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stack-VS-Heap"><span class="nav-number">2.6.</span> <span class="nav-text">Stack VS Heap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新版Java引入以下新的内存空间"><span class="nav-number">2.7.</span> <span class="nav-text">新版Java引入以下新的内存空间</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
