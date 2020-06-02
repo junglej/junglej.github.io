@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java多线程基础</title>
+    <url>/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h1><p>Java多线程基础知识，包括进程，线程以及他们的关系</p>
+<a id="more"></a>
+
+<h1 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h1><ul>
+<li>进程：一个任务称为一个进程。</li>
+<li>进程内同时执行多个子任务，子任务称为线程。</li>
+<li>进程和线程的关系：一个进程可以包含一个或多个线程，但至少会有一个线程。</li>
+</ul>
+<p>具体如图所示：</p>
+<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B.png" class title="进程与线程">
+
+<h2 id="多进程模式"><a href="#多进程模式" class="headerlink" title="多进程模式"></a>多进程模式</h2><p>即每个进程只有一个线程</p>
+<p>如图所示：</p>
+<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%BC%8F.png" class title="多进程模式">
+
+<h2 id="多线程模式"><a href="#多线程模式" class="headerlink" title="多线程模式"></a>多线程模式</h2><p>即一个进程有多个线程</p>
+<p>如图所示：</p>
+<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%BC%8F.png" class title="多线程模式">
+
+<h2 id="多线程-多进程模式（复杂度最高）"><a href="#多线程-多进程模式（复杂度最高）" class="headerlink" title="多线程+多进程模式（复杂度最高）"></a>多线程+多进程模式（复杂度最高）</h2><p>多进程和多线程混合模式</p>
+<p>如图所示</p>
+<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%A4%9A%E7%BA%BF%E7%A8%8B+%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%BC%8F.png" class title="多线程+多进程模式">
+
+<h2 id="进程VS线程"><a href="#进程VS线程" class="headerlink" title="进程VS线程"></a>进程VS线程</h2><ol>
+<li>进程和线程是包含关系，但是多任务既可以由多进程实现，也可以由单进程内的多线程实现，还可以混合多线程+多进程。</li>
+<li>和多线程相相比，多进程的缺点：创建进程比创建线程开销大，尤其是在windows上；进程间通信比线程的通信要慢，因为线程见通信就是读写同一个变量，速度快。</li>
+<li>多进程的优点：多进程稳定性比多线程高，因为在多进程的情况下，一个进程崩溃不会影响到其他进程，而在多线程的情况下，任何一个线程崩溃会直接导致整个进程崩溃。</li>
+</ol>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><ol>
+<li>Java语言内置了多线程支持：一个Java程序实际上是一个JVM进程，JVM进程用一个主线程来执行main()方法，在main()方法内部，我们又可以启动多个线程。此外，JVM还有负责垃圾回收的其他工作线程等。使用多线程实现多任务。</li>
+<li>和单线程相比，多线程编程的特点在于：多想成经常需要读写共享数据，并且需要同步。多线程编程复杂度更高，调试更困难。</li>
+<li>多线程的特点：多线程模型是Java程序最基本的并发模型；后续读写网络，数据库，Web开发等都依赖Java多线程模型。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java多线程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java基础知识（一）</title>
     <url>/2020/05/28/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<h1 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h1><p>本文主要总结常见Java基础知识面试题（一）</p>
@@ -401,68 +446,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java多线程基础</title>
-    <url>/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<h1 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h1><p>Java多线程基础知识，包括进程，线程以及他们的关系</p>
-<a id="more"></a>
-
-<h1 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h1><ul>
-<li>进程：一个任务称为一个进程。</li>
-<li>进程内同时执行多个子任务，子任务称为线程。</li>
-<li>进程和线程的关系：一个进程可以包含一个或多个线程，但至少会有一个线程。</li>
-</ul>
-<p>具体如图所示：</p>
-<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B.png" class title="进程与线程">
-
-<h2 id="多进程模式"><a href="#多进程模式" class="headerlink" title="多进程模式"></a>多进程模式</h2><p>即每个进程只有一个线程</p>
-<p>如图所示：</p>
-<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%BC%8F.png" class title="多进程模式">
-
-<h2 id="多线程模式"><a href="#多线程模式" class="headerlink" title="多线程模式"></a>多线程模式</h2><p>即一个进程有多个线程</p>
-<p>如图所示：</p>
-<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%BC%8F.png" class title="多线程模式">
-
-<h2 id="多线程-多进程模式（复杂度最高）"><a href="#多线程-多进程模式（复杂度最高）" class="headerlink" title="多线程+多进程模式（复杂度最高）"></a>多线程+多进程模式（复杂度最高）</h2><p>多进程和多线程混合模式</p>
-<p>如图所示</p>
-<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%A4%9A%E7%BA%BF%E7%A8%8B+%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%BC%8F.png" class title="多线程+多进程模式">
-
-<h2 id="进程VS线程"><a href="#进程VS线程" class="headerlink" title="进程VS线程"></a>进程VS线程</h2><ol>
-<li>进程和线程是包含关系，但是多任务既可以由多进程实现，也可以由单进程内的多线程实现，还可以混合多线程+多进程。</li>
-<li>和多线程相相比，多进程的缺点：创建进程比创建线程开销大，尤其是在windows上；进程间通信比线程的通信要慢，因为线程见通信就是读写同一个变量，速度快。</li>
-<li>多进程的优点：多进程稳定性比多线程高，因为在多进程的情况下，一个进程崩溃不会影响到其他进程，而在多线程的情况下，任何一个线程崩溃会直接导致整个进程崩溃。</li>
-</ol>
-<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><ol>
-<li>Java语言内置了多线程支持：一个Java程序实际上是一个JVM进程，JVM进程用一个主线程来执行main()方法，在main()方法内部，我们又可以启动多个线程。此外，JVM还有负责垃圾回收的其他工作线程等。使用多线程实现多任务。</li>
-<li>和单线程相比，多线程编程的特点在于：多想成经常需要读写共享数据，并且需要同步。多线程编程复杂度更高，调试更困难。</li>
-<li>多线程的特点：多线程模型是Java程序最基本的并发模型；后续读写网络，数据库，Web开发等都依赖Java多线程模型。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java多线程</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>多线程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode20 Valid Parentheses</title>
-    <url>/2020/05/23/LeetCode20/</url>
-    <content><![CDATA[<h1 id="Leetcode20-Valid-Parentheses"><a href="#Leetcode20-Valid-Parentheses" class="headerlink" title="Leetcode20 Valid Parentheses"></a>Leetcode20 Valid Parentheses</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given a string containing just the characters &#39;(&#39;, &#39;)&#39;, &#39;&#123;&#39;, &#39;&#125;&#39;, &#39;[&#39; and &#39;]&#39;, </span><br><span class="line">determine if the input string is valid.</span><br><span class="line"></span><br><span class="line">An input string is valid if:</span><br><span class="line"></span><br><span class="line">Open brackets must be closed by the same type of brackets.</span><br><span class="line">Open brackets must be closed in the correct order.</span><br><span class="line">Note that an empty string is also considered valid.</span><br><span class="line"></span><br><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: &quot;()&quot;</span><br><span class="line">Output: true</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: &quot;()[]&#123;&#125;&quot;</span><br><span class="line">Output: true</span><br><span class="line">Example 3:</span><br><span class="line"></span><br><span class="line">Input: &quot;(]&quot;</span><br><span class="line">Output: false</span><br><span class="line">Example 4:</span><br><span class="line"></span><br><span class="line">Input: &quot;([)]&quot;</span><br><span class="line">Output: false</span><br><span class="line">Example 5:</span><br><span class="line"></span><br><span class="line">Input: &quot;&#123;[]&#125;&quot;</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>每一个]对应一个[,一个}对应一个{，一个)对应一个(，将对应关系放入map中。<br>遍历字符串中的字符，如果是{([,那么将该字符放入stack中，<br>如果不是，应当与栈顶元素进行匹配，通过map找到对应的字符，然后与栈顶元素进行匹配。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// if(s.length()==1) return false;</span></span><br><span class="line">        Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        HashMap&lt;Character,Character&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">')'</span>,<span class="string">'('</span>);</span><br><span class="line">        map.put(<span class="string">']'</span>,<span class="string">'['</span>);</span><br><span class="line">        map.put(<span class="string">'&#125;'</span>,<span class="string">'&#123;'</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s.charAt(i)==<span class="string">'('</span>||s.charAt(i)==<span class="string">'&#123;'</span>||s.charAt(i)==<span class="string">'['</span>)</span><br><span class="line">                stack.add(s.charAt(i));</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(stack.empty()||map.get(s.charAt(i))!=stack.peek())&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                stack.pop();</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(stack.empty())</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Easy</category>
-      </categories>
-      <tags>
-        <tag>Easy</tag>
-        <tag>Stack</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode5 Longest Palindromic Substrings</title>
     <url>/2020/05/23/LeetCode5/</url>
     <content><![CDATA[<h1 id="Leetcode5-Longest-Palindromic-Substrings"><a href="#Leetcode5-Longest-Palindromic-Substrings" class="headerlink" title="Leetcode5 Longest Palindromic Substrings"></a>Leetcode5 Longest Palindromic Substrings</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given a string s, find the longest palindromic substring in s.</span><br><span class="line">You may assume that the maximum length of s is 1000.</span><br><span class="line"></span><br><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: &quot;babad&quot;</span><br><span class="line">Output: &quot;bab&quot;</span><br><span class="line">Note: &quot;aba&quot; is also a valid answer.</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: &quot;cbbd&quot;</span><br><span class="line">Output: &quot;bb&quot;</span><br></pre></td></tr></table></figure>
@@ -480,6 +463,23 @@
         <tag>Medium</tag>
         <tag>String</tag>
         <tag>DP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode20 Valid Parentheses</title>
+    <url>/2020/05/23/LeetCode20/</url>
+    <content><![CDATA[<h1 id="Leetcode20-Valid-Parentheses"><a href="#Leetcode20-Valid-Parentheses" class="headerlink" title="Leetcode20 Valid Parentheses"></a>Leetcode20 Valid Parentheses</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given a string containing just the characters &#39;(&#39;, &#39;)&#39;, &#39;&#123;&#39;, &#39;&#125;&#39;, &#39;[&#39; and &#39;]&#39;, </span><br><span class="line">determine if the input string is valid.</span><br><span class="line"></span><br><span class="line">An input string is valid if:</span><br><span class="line"></span><br><span class="line">Open brackets must be closed by the same type of brackets.</span><br><span class="line">Open brackets must be closed in the correct order.</span><br><span class="line">Note that an empty string is also considered valid.</span><br><span class="line"></span><br><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: &quot;()&quot;</span><br><span class="line">Output: true</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: &quot;()[]&#123;&#125;&quot;</span><br><span class="line">Output: true</span><br><span class="line">Example 3:</span><br><span class="line"></span><br><span class="line">Input: &quot;(]&quot;</span><br><span class="line">Output: false</span><br><span class="line">Example 4:</span><br><span class="line"></span><br><span class="line">Input: &quot;([)]&quot;</span><br><span class="line">Output: false</span><br><span class="line">Example 5:</span><br><span class="line"></span><br><span class="line">Input: &quot;&#123;[]&#125;&quot;</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>每一个]对应一个[,一个}对应一个{，一个)对应一个(，将对应关系放入map中。<br>遍历字符串中的字符，如果是{([,那么将该字符放入stack中，<br>如果不是，应当与栈顶元素进行匹配，通过map找到对应的字符，然后与栈顶元素进行匹配。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// if(s.length()==1) return false;</span></span><br><span class="line">        Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        HashMap&lt;Character,Character&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">')'</span>,<span class="string">'('</span>);</span><br><span class="line">        map.put(<span class="string">']'</span>,<span class="string">'['</span>);</span><br><span class="line">        map.put(<span class="string">'&#125;'</span>,<span class="string">'&#123;'</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s.charAt(i)==<span class="string">'('</span>||s.charAt(i)==<span class="string">'&#123;'</span>||s.charAt(i)==<span class="string">'['</span>)</span><br><span class="line">                stack.add(s.charAt(i));</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(stack.empty()||map.get(s.charAt(i))!=stack.peek())&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                stack.pop();</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(stack.empty())</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Easy</category>
+      </categories>
+      <tags>
+        <tag>Easy</tag>
+        <tag>Stack</tag>
       </tags>
   </entry>
   <entry>
@@ -550,6 +550,27 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode121 Best Time to Buy and Sell Stock</title>
+    <url>/2020/05/23/Leetcode121/</url>
+    <content><![CDATA[<h1 id="Leetcode121-Best-Time-to-Buy-and-Sell-Stock"><a href="#Leetcode121-Best-Time-to-Buy-and-Sell-Stock" class="headerlink" title="Leetcode121 Best Time to Buy and Sell Stock"></a>Leetcode121 Best Time to Buy and Sell Stock</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [7,1,5,3,6,4]</span><br><span class="line">Output: 5</span><br><span class="line">Explanation: Buy on day 2 (price &#x3D; 1) and sell on day 5 (price &#x3D; 6), profit &#x3D; 6-1 &#x3D; 5.</span><br><span class="line">             Not 7-1 &#x3D; 6, as selling price needs to be larger than buying price.</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [7,6,4,3,1]</span><br><span class="line">Output: 0</span><br><span class="line">Explanation: In this case, no transaction is done, i.e. max profit &#x3D; 0.</span><br></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>思路：两个数组，一个数组储存最低价格，一个数组储存最高价格，最大的价格对应的位置要比最小的价格对应的位置靠后（值大），最小数组的值是当前值与最小数组里的最后一个元素比较，更小的那一个放入最小价格数组；当前位置的价格与最大数组的最后一个元素比较，较大的价格放入最大数组中。直接返回最最大价格数组里的最后一个元素。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.length&lt;<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] lowprice= <span class="keyword">new</span> <span class="keyword">int</span>[prices.length];</span><br><span class="line">        <span class="keyword">int</span>[] highprice= <span class="keyword">new</span> <span class="keyword">int</span>[prices.length];</span><br><span class="line">        lowprice[<span class="number">0</span>]=prices[<span class="number">0</span>];</span><br><span class="line">        highprice[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;prices.length;i++)&#123;</span><br><span class="line">            lowprice[i]=Math.min(prices[i],lowprice[i-<span class="number">1</span>]);</span><br><span class="line">            highprice[i]=Math.max(highprice[i-<span class="number">1</span>],prices[i]-lowprice[i-<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> highprice[prices.length-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Medium</category>
+      </categories>
+      <tags>
+        <tag>Medium</tag>
+        <tag>DFS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>June Leetcoding Challenge(6.2)</title>
     <url>/2020/06/02/LeetCodeJune2nd/</url>
     <content><![CDATA[<h1 id="Delete-Node-in-a-Linked-List"><a href="#Delete-Node-in-a-Linked-List" class="headerlink" title="Delete Node in a Linked List"></a>Delete Node in a Linked List</h1><p>Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.</p>
@@ -585,27 +606,6 @@
       <tags>
         <tag>LeetCode</tag>
         <tag>June Leetcoding Challenge</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode121 Best Time to Buy and Sell Stock</title>
-    <url>/2020/05/23/Leetcode121/</url>
-    <content><![CDATA[<h1 id="Leetcode121-Best-Time-to-Buy-and-Sell-Stock"><a href="#Leetcode121-Best-Time-to-Buy-and-Sell-Stock" class="headerlink" title="Leetcode121 Best Time to Buy and Sell Stock"></a>Leetcode121 Best Time to Buy and Sell Stock</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [7,1,5,3,6,4]</span><br><span class="line">Output: 5</span><br><span class="line">Explanation: Buy on day 2 (price &#x3D; 1) and sell on day 5 (price &#x3D; 6), profit &#x3D; 6-1 &#x3D; 5.</span><br><span class="line">             Not 7-1 &#x3D; 6, as selling price needs to be larger than buying price.</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [7,6,4,3,1]</span><br><span class="line">Output: 0</span><br><span class="line">Explanation: In this case, no transaction is done, i.e. max profit &#x3D; 0.</span><br></pre></td></tr></table></figure>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>思路：两个数组，一个数组储存最低价格，一个数组储存最高价格，最大的价格对应的位置要比最小的价格对应的位置靠后（值大），最小数组的值是当前值与最小数组里的最后一个元素比较，更小的那一个放入最小价格数组；当前位置的价格与最大数组的最后一个元素比较，较大的价格放入最大数组中。直接返回最最大价格数组里的最后一个元素。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.length&lt;<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] lowprice= <span class="keyword">new</span> <span class="keyword">int</span>[prices.length];</span><br><span class="line">        <span class="keyword">int</span>[] highprice= <span class="keyword">new</span> <span class="keyword">int</span>[prices.length];</span><br><span class="line">        lowprice[<span class="number">0</span>]=prices[<span class="number">0</span>];</span><br><span class="line">        highprice[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;prices.length;i++)&#123;</span><br><span class="line">            lowprice[i]=Math.min(prices[i],lowprice[i-<span class="number">1</span>]);</span><br><span class="line">            highprice[i]=Math.max(highprice[i-<span class="number">1</span>],prices[i]-lowprice[i-<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> highprice[prices.length-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Medium</category>
-      </categories>
-      <tags>
-        <tag>Medium</tag>
-        <tag>DFS</tag>
       </tags>
   </entry>
   <entry>
@@ -767,6 +767,33 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode240 Search a 2D Matrix II</title>
+    <url>/2020/05/23/Leetcode240/</url>
+    <content><![CDATA[<h1 id="Leetcode240-Search-a-2D-Matrix-II"><a href="#Leetcode240-Search-a-2D-Matrix-II" class="headerlink" title="Leetcode240 Search a 2D Matrix II"></a>Leetcode240 Search a 2D Matrix II</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Write an efficient algorithm that searches for a value in an <em>m</em> x <em>n</em> matrix. This matrix has the following properties:</p>
+<ul>
+<li>Integers in each row are sorted in ascending from left to right.</li>
+<li>Integers in each column are sorted in ascending from top to bottom.<a id="more"></a></li>
+</ul>
+<p><strong>Example:</strong></p>
+<p>Consider the following matrix:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[</span><br><span class="line">  [1,   4,  7, 11, 15],</span><br><span class="line">  [2,   5,  8, 12, 19],</span><br><span class="line">  [3,   6,  9, 16, 22],</span><br><span class="line">  [10, 13, 14, 17, 24],</span><br><span class="line">  [18, 21, 23, 26, 30]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>Given target = <code>5</code>, return <code>true</code>.</p>
+<p>Given target = <code>20</code>, return <code>false</code>.</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>两个指针，一个控制row，一个控制column，因为整个Matrix是有序的，则如果该数比最后一个column（即每一行最大的数）小，则column指针向左移动，如果该数比第一个row大（即每一行最小的数）则row指针向下移动。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">searchMatrix</span><span class="params">(<span class="keyword">int</span>[][] matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>( matrix.length==<span class="number">0</span>||matrix[<span class="number">0</span>].length==<span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> m = matrix.length;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> r=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> c=matrix[<span class="number">0</span>].length-<span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(r&lt;m&amp;&amp;c&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(target==matrix[r][c])</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(target&lt;matrix[r][c])</span><br><span class="line">                c--;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                r++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Medium</category>
+      </categories>
+      <tags>
+        <tag>Medium</tag>
+        <tag>Two Pointers</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode273 Integer to English Words</title>
     <url>/2020/05/23/Leetcode273/</url>
     <content><![CDATA[<h1 id="Leetcode273-Integer-to-English-Words"><a href="#Leetcode273-Integer-to-English-Words" class="headerlink" title="Leetcode273 Integer to English Words"></a>Leetcode273 Integer to English Words</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Convert a non-negative integer to its English words representation. Given input is guaranteed to be less than 2的31 - 1.</p>
@@ -795,22 +822,27 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode240 Search a 2D Matrix II</title>
-    <url>/2020/05/23/Leetcode240/</url>
-    <content><![CDATA[<h1 id="Leetcode240-Search-a-2D-Matrix-II"><a href="#Leetcode240-Search-a-2D-Matrix-II" class="headerlink" title="Leetcode240 Search a 2D Matrix II"></a>Leetcode240 Search a 2D Matrix II</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Write an efficient algorithm that searches for a value in an <em>m</em> x <em>n</em> matrix. This matrix has the following properties:</p>
+    <title>Leetcode295 Find Median from Data Stream</title>
+    <url>/2020/05/23/Leetcode295/</url>
+    <content><![CDATA[<h1 id="Leetcode295-Find-Median-from-Data-Stream"><a href="#Leetcode295-Find-Median-from-Data-Stream" class="headerlink" title="Leetcode295 Find Median from Data Stream"></a>Leetcode295 Find Median from Data Stream</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median is the mean of the two middle value.</p>
+<a id="more"></a>
+<p>For example,</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[2,3,4]&#96;, the median is &#96;3</span><br><span class="line">[2,3]&#96;, the median is &#96;(2 + 3) &#x2F; 2 &#x3D; 2.5</span><br></pre></td></tr></table></figure>
+<!-- more -->
+<p>Design a data structure that supports the following two operations:</p>
 <ul>
-<li>Integers in each row are sorted in ascending from left to right.</li>
-<li>Integers in each column are sorted in ascending from top to bottom.<a id="more"></a></li>
+<li>void addNum(int num) - Add a integer number from the data stream to the data structure.</li>
+<li>double findMedian() - Return the median of all elements so far.</li>
 </ul>
 <p><strong>Example:</strong></p>
-<p>Consider the following matrix:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[</span><br><span class="line">  [1,   4,  7, 11, 15],</span><br><span class="line">  [2,   5,  8, 12, 19],</span><br><span class="line">  [3,   6,  9, 16, 22],</span><br><span class="line">  [10, 13, 14, 17, 24],</span><br><span class="line">  [18, 21, 23, 26, 30]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p>Given target = <code>5</code>, return <code>true</code>.</p>
-<p>Given target = <code>20</code>, return <code>false</code>.</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>两个指针，一个控制row，一个控制column，因为整个Matrix是有序的，则如果该数比最后一个column（即每一行最大的数）小，则column指针向左移动，如果该数比第一个row大（即每一行最小的数）则row指针向下移动。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">searchMatrix</span><span class="params">(<span class="keyword">int</span>[][] matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>( matrix.length==<span class="number">0</span>||matrix[<span class="number">0</span>].length==<span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> m = matrix.length;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> r=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> c=matrix[<span class="number">0</span>].length-<span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(r&lt;m&amp;&amp;c&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(target==matrix[r][c])</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(target&lt;matrix[r][c])</span><br><span class="line">                c--;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                r++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">addNum(1)</span><br><span class="line">addNum(2)</span><br><span class="line">findMedian() -&gt; 1.5</span><br><span class="line">addNum(3) </span><br><span class="line">findMedian() -&gt; 2</span><br></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>两个priority queue，一个queue存较大部分一个queue寸较小部分</p>
+<p><img src="/2020/05/23/Leetcode295/C:%5CUsers%5Cwangq%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200510102429767.png" alt="image-20200510102429767"></p>
+<p>较小部分：small = new PriorityQueue<Integer>((a,b) -&gt; a - b);</Integer></p>
+<p>较大部分：large = new PriorityQueue<Integer>((a,b) -&gt; b - a);</Integer></p>
+<p>加入元素：如果large部分为空或者num数大于large的最小元素，则将num加入到large中，反之加入small中。加入后，比较large和small的大小，两个队列的size差不能超多1</p>
+<p>计算中位数：如果small和large的大小相同，则取small的最大和large的最小值相加除以2.0；如果small的数量多，则取small数组的最大的那个。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MedianFinder</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    Queue&lt;Integer&gt; small;</span><br><span class="line">    Queue&lt;Integer&gt; large;</span><br><span class="line">    <span class="comment">/** initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MedianFinder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        small = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;((a,b) -&gt; b - a);</span><br><span class="line">        large = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;((a,b) -&gt; a - b);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addNum</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(small.isEmpty()||num&lt;=small.peek())&#123;</span><br><span class="line">            small.add(num);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            large.add(num);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//balance left and right</span></span><br><span class="line">        <span class="keyword">if</span>(small.size()-large.size()&gt;<span class="number">1</span>)&#123;</span><br><span class="line">            large.add(small.poll());</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(small.size()&lt;large.size())&#123;</span><br><span class="line">            small.add(large.poll());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">findMedian</span><span class="params">()</span> </span>&#123;;</span><br><span class="line">        <span class="keyword">double</span> media =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(large.size()==small.size())</span><br><span class="line">            media = (small.peek()+large.peek())/<span class="number">2.0</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            media = small.peek();</span><br><span class="line">        <span class="keyword">return</span> media;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MedianFinder object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MedianFinder obj = new MedianFinder();</span></span><br><span class="line"><span class="comment"> * obj.addNum(num);</span></span><br><span class="line"><span class="comment"> * double param_2 = obj.findMedian();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>LeetCode</category>
@@ -818,7 +850,8 @@
       </categories>
       <tags>
         <tag>Medium</tag>
-        <tag>Two Pointers</tag>
+        <tag>BFS</tag>
+        <tag>Priority Queue</tag>
       </tags>
   </entry>
   <entry>
@@ -870,39 +903,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode295 Find Median from Data Stream</title>
-    <url>/2020/05/23/Leetcode295/</url>
-    <content><![CDATA[<h1 id="Leetcode295-Find-Median-from-Data-Stream"><a href="#Leetcode295-Find-Median-from-Data-Stream" class="headerlink" title="Leetcode295 Find Median from Data Stream"></a>Leetcode295 Find Median from Data Stream</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median is the mean of the two middle value.</p>
-<a id="more"></a>
-<p>For example,</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[2,3,4]&#96;, the median is &#96;3</span><br><span class="line">[2,3]&#96;, the median is &#96;(2 + 3) &#x2F; 2 &#x3D; 2.5</span><br></pre></td></tr></table></figure>
-<!-- more -->
-<p>Design a data structure that supports the following two operations:</p>
-<ul>
-<li>void addNum(int num) - Add a integer number from the data stream to the data structure.</li>
-<li>double findMedian() - Return the median of all elements so far.</li>
-</ul>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">addNum(1)</span><br><span class="line">addNum(2)</span><br><span class="line">findMedian() -&gt; 1.5</span><br><span class="line">addNum(3) </span><br><span class="line">findMedian() -&gt; 2</span><br></pre></td></tr></table></figure>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>两个priority queue，一个queue存较大部分一个queue寸较小部分</p>
-<p><img src="/2020/05/23/Leetcode295/C:%5CUsers%5Cwangq%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200510102429767.png" alt="image-20200510102429767"></p>
-<p>较小部分：small = new PriorityQueue<Integer>((a,b) -&gt; a - b);</Integer></p>
-<p>较大部分：large = new PriorityQueue<Integer>((a,b) -&gt; b - a);</Integer></p>
-<p>加入元素：如果large部分为空或者num数大于large的最小元素，则将num加入到large中，反之加入small中。加入后，比较large和small的大小，两个队列的size差不能超多1</p>
-<p>计算中位数：如果small和large的大小相同，则取small的最大和large的最小值相加除以2.0；如果small的数量多，则取small数组的最大的那个。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MedianFinder</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    Queue&lt;Integer&gt; small;</span><br><span class="line">    Queue&lt;Integer&gt; large;</span><br><span class="line">    <span class="comment">/** initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MedianFinder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        small = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;((a,b) -&gt; b - a);</span><br><span class="line">        large = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;((a,b) -&gt; a - b);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addNum</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(small.isEmpty()||num&lt;=small.peek())&#123;</span><br><span class="line">            small.add(num);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            large.add(num);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//balance left and right</span></span><br><span class="line">        <span class="keyword">if</span>(small.size()-large.size()&gt;<span class="number">1</span>)&#123;</span><br><span class="line">            large.add(small.poll());</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(small.size()&lt;large.size())&#123;</span><br><span class="line">            small.add(large.poll());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">findMedian</span><span class="params">()</span> </span>&#123;;</span><br><span class="line">        <span class="keyword">double</span> media =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(large.size()==small.size())</span><br><span class="line">            media = (small.peek()+large.peek())/<span class="number">2.0</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            media = small.peek();</span><br><span class="line">        <span class="keyword">return</span> media;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MedianFinder object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MedianFinder obj = new MedianFinder();</span></span><br><span class="line"><span class="comment"> * obj.addNum(num);</span></span><br><span class="line"><span class="comment"> * double param_2 = obj.findMedian();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Medium</category>
-      </categories>
-      <tags>
-        <tag>Medium</tag>
-        <tag>BFS</tag>
-        <tag>Priority Queue</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode54. Spiral Matrix</title>
     <url>/2020/05/23/Leetcode54/</url>
     <content><![CDATA[<h1 id="Leetcode54-Spiral-Matrix"><a href="#Leetcode54-Spiral-Matrix" class="headerlink" title="Leetcode54. Spiral Matrix"></a>Leetcode54. Spiral Matrix</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Input:</span><br><span class="line">[</span><br><span class="line"> [ 1, 2, 3 ],</span><br><span class="line"> [ 4, 5, 6 ],</span><br><span class="line"> [ 7, 8, 9 ]</span><br><span class="line">]</span><br><span class="line">Output: [1,2,3,6,9,8,7,4,5]</span><br></pre></td></tr></table></figure>
@@ -923,6 +923,32 @@
       <tags>
         <tag>Medium</tag>
         <tag>Simulation</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode692 Top K Frequent Words</title>
+    <url>/2020/05/23/Leetcode692/</url>
+    <content><![CDATA[<h1 id="Leetcode692-Top-K-Frequent-Words"><a href="#Leetcode692-Top-K-Frequent-Words" class="headerlink" title="Leetcode692 Top K Frequent Words"></a>Leetcode692 Top K Frequent Words</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>example:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [&quot;i&quot;, &quot;love&quot;, &quot;leetcode&quot;, &quot;i&quot;, &quot;love&quot;, &quot;coding&quot;], k &#x3D; 2</span><br><span class="line">Output: [&quot;i&quot;, &quot;love&quot;]</span><br><span class="line">Explanation: &quot;i&quot; and &quot;love&quot; are the two most frequent words.</span><br><span class="line">    Note that &quot;i&quot; comes before &quot;love&quot; due to a lower alphabetical order.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [&quot;the&quot;, &quot;day&quot;, &quot;is&quot;, &quot;sunny&quot;, &quot;the&quot;, &quot;the&quot;, &quot;the&quot;, &quot;sunny&quot;, &quot;is&quot;, &quot;is&quot;], k &#x3D; 4</span><br><span class="line">Output: [&quot;the&quot;, &quot;is&quot;, &quot;sunny&quot;, &quot;day&quot;]</span><br><span class="line">Explanation: &quot;the&quot;, &quot;is&quot;, &quot;sunny&quot; and &quot;day&quot; are the four most frequent words,</span><br><span class="line">    with the number of occurrence being 4, 3, 2 and 1 respectively.</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h2><h4 id="Step1-统计词频："><a href="#Step1-统计词频：" class="headerlink" title="Step1:  统计词频："></a>Step1:  统计词频：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">	Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line">    <span class="keyword">for</span> (String word: words) &#123;</span><br><span class="line">        map.put(word, map.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">或：</span><br><span class="line">    HashMap&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span>(String word: words)&#123;</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(word))&#123;</span><br><span class="line">            map.put(word,map.get(word)+<span class="number">1</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">            map.put(word,<span class="number">1</span>); </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Step2-比较："><a href="#Step2-比较：" class="headerlink" title="Step2: 比较："></a>Step2: 比较：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span>(String key : map.keySet())&#123;</span><br><span class="line">   result.add(key);</span><br><span class="line">&#125;</span><br><span class="line">Collections.sort(result,(word1,word2)-&gt;map.get(word1).equals(map.get(word2))?</span><br><span class="line">                 word1.compareTo(word2):map.get(word2)-map.get(word1));</span><br></pre></td></tr></table></figure>
+<h4 id="Step3-输出："><a href="#Step3-输出：" class="headerlink" title="Step3: 输出："></a>Step3: 输出：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> result.subList(<span class="number">0</span>,k);</span><br></pre></td></tr></table></figure>
+<h2 id="最优解：Heap"><a href="#最优解：Heap" class="headerlink" title="最优解：Heap"></a>最优解：Heap</h2><h4 id="Step1-统计词频：-1"><a href="#Step1-统计词频：-1" class="headerlink" title="Step1: 统计词频："></a>Step1: 统计词频：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line"><span class="keyword">for</span> (String word: words) &#123;</span><br><span class="line">    map.put(word, map.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Step2-PriorityQueue"><a href="#Step2-PriorityQueue" class="headerlink" title="Step2: PriorityQueue:"></a>Step2: PriorityQueue:</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">PriorityQueue&lt;String&gt; heap = <span class="keyword">new</span> PriorityQueue&lt;String&gt;(</span><br><span class="line">                (w1, w2) -&gt; count.get(w1).equals(count.get(w2)) ?</span><br><span class="line">                w2.compareTo(w1) : count.get(w1) - count.get(w2) );</span><br></pre></td></tr></table></figure>
+
+<h4 id="Step3-从heap提取前k个值，然后倒序输出"><a href="#Step3-从heap提取前k个值，然后倒序输出" class="headerlink" title="Step3: 从heap提取前k个值，然后倒序输出"></a>Step3: 从heap提取前k个值，然后倒序输出</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (String word: count.keySet()) &#123;</span><br><span class="line">           heap.offer(word);</span><br><span class="line">           <span class="keyword">if</span> (heap.size() &gt; k) heap.poll();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       List&lt;String&gt; ans = <span class="keyword">new</span> ArrayList();</span><br><span class="line">       <span class="keyword">while</span> (!heap.isEmpty()) ans.add(heap.poll());</span><br><span class="line">       Collections.reverse(ans);</span><br><span class="line">       <span class="keyword">return</span> ans;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Medium</category>
+      </categories>
+      <tags>
+        <tag>Medium</tag>
+        <tag>Hash</tag>
+        <tag>Heap</tag>
       </tags>
   </entry>
   <entry>
@@ -955,32 +981,6 @@
       <tags>
         <tag>Medium</tag>
         <tag>Recursion</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode692 Top K Frequent Words</title>
-    <url>/2020/05/23/Leetcode692/</url>
-    <content><![CDATA[<h1 id="Leetcode692-Top-K-Frequent-Words"><a href="#Leetcode692-Top-K-Frequent-Words" class="headerlink" title="Leetcode692 Top K Frequent Words"></a>Leetcode692 Top K Frequent Words</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>example:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [&quot;i&quot;, &quot;love&quot;, &quot;leetcode&quot;, &quot;i&quot;, &quot;love&quot;, &quot;coding&quot;], k &#x3D; 2</span><br><span class="line">Output: [&quot;i&quot;, &quot;love&quot;]</span><br><span class="line">Explanation: &quot;i&quot; and &quot;love&quot; are the two most frequent words.</span><br><span class="line">    Note that &quot;i&quot; comes before &quot;love&quot; due to a lower alphabetical order.</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [&quot;the&quot;, &quot;day&quot;, &quot;is&quot;, &quot;sunny&quot;, &quot;the&quot;, &quot;the&quot;, &quot;the&quot;, &quot;sunny&quot;, &quot;is&quot;, &quot;is&quot;], k &#x3D; 4</span><br><span class="line">Output: [&quot;the&quot;, &quot;is&quot;, &quot;sunny&quot;, &quot;day&quot;]</span><br><span class="line">Explanation: &quot;the&quot;, &quot;is&quot;, &quot;sunny&quot; and &quot;day&quot; are the four most frequent words,</span><br><span class="line">    with the number of occurrence being 4, 3, 2 and 1 respectively.</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h2><h4 id="Step1-统计词频："><a href="#Step1-统计词频：" class="headerlink" title="Step1:  统计词频："></a>Step1:  统计词频：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">	Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line">    <span class="keyword">for</span> (String word: words) &#123;</span><br><span class="line">        map.put(word, map.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">或：</span><br><span class="line">    HashMap&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span>(String word: words)&#123;</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(word))&#123;</span><br><span class="line">            map.put(word,map.get(word)+<span class="number">1</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">            map.put(word,<span class="number">1</span>); </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Step2-比较："><a href="#Step2-比较：" class="headerlink" title="Step2: 比较："></a>Step2: 比较：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span>(String key : map.keySet())&#123;</span><br><span class="line">   result.add(key);</span><br><span class="line">&#125;</span><br><span class="line">Collections.sort(result,(word1,word2)-&gt;map.get(word1).equals(map.get(word2))?</span><br><span class="line">                 word1.compareTo(word2):map.get(word2)-map.get(word1));</span><br></pre></td></tr></table></figure>
-<h4 id="Step3-输出："><a href="#Step3-输出：" class="headerlink" title="Step3: 输出："></a>Step3: 输出：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> result.subList(<span class="number">0</span>,k);</span><br></pre></td></tr></table></figure>
-<h2 id="最优解：Heap"><a href="#最优解：Heap" class="headerlink" title="最优解：Heap"></a>最优解：Heap</h2><h4 id="Step1-统计词频：-1"><a href="#Step1-统计词频：-1" class="headerlink" title="Step1: 统计词频："></a>Step1: 统计词频：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line"><span class="keyword">for</span> (String word: words) &#123;</span><br><span class="line">    map.put(word, map.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Step2-PriorityQueue"><a href="#Step2-PriorityQueue" class="headerlink" title="Step2: PriorityQueue:"></a>Step2: PriorityQueue:</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">PriorityQueue&lt;String&gt; heap = <span class="keyword">new</span> PriorityQueue&lt;String&gt;(</span><br><span class="line">                (w1, w2) -&gt; count.get(w1).equals(count.get(w2)) ?</span><br><span class="line">                w2.compareTo(w1) : count.get(w1) - count.get(w2) );</span><br></pre></td></tr></table></figure>
-
-<h4 id="Step3-从heap提取前k个值，然后倒序输出"><a href="#Step3-从heap提取前k个值，然后倒序输出" class="headerlink" title="Step3: 从heap提取前k个值，然后倒序输出"></a>Step3: 从heap提取前k个值，然后倒序输出</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (String word: count.keySet()) &#123;</span><br><span class="line">           heap.offer(word);</span><br><span class="line">           <span class="keyword">if</span> (heap.size() &gt; k) heap.poll();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       List&lt;String&gt; ans = <span class="keyword">new</span> ArrayList();</span><br><span class="line">       <span class="keyword">while</span> (!heap.isEmpty()) ans.add(heap.poll());</span><br><span class="line">       Collections.reverse(ans);</span><br><span class="line">       <span class="keyword">return</span> ans;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Medium</category>
-      </categories>
-      <tags>
-        <tag>Medium</tag>
-        <tag>Hash</tag>
-        <tag>Heap</tag>
       </tags>
   </entry>
   <entry>
@@ -1058,45 +1058,6 @@
       <tags>
         <tag>Easy</tag>
         <tag>Preorder traversal</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode995 Minimum Number of K Consecutive Bit Flips</title>
-    <url>/2020/05/23/Leetcode995/</url>
-    <content><![CDATA[<h1 id="Leetcode995-Minimum-Number-of-K-Consecutive-Bit-Flips"><a href="#Leetcode995-Minimum-Number-of-K-Consecutive-Bit-Flips" class="headerlink" title="Leetcode995 Minimum Number of K Consecutive Bit Flips"></a>Leetcode995 Minimum Number of K Consecutive Bit Flips</h1><p>##题目描述<br>In an array <code>A</code> containing only 0s and 1s, a <em><code>K</code>-bit flip</em> consists of choosing a (contiguous) subarray of length <code>K</code> and simultaneously changing every 0 in the subarray to 1, and every 1 in the subarray to 0.</p>
-<p>Return the minimum number of <code>K</code>-bit flips required so that there is no 0 in the array. If it is not possible, return <code>-1</code>.</p>
-<a id="more"></a>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A &#x3D; [0,1,0], K &#x3D; 1</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: Flip A[0], then flip A[2].</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A &#x3D; [1,1,0], K &#x3D; 2</span><br><span class="line">Output: -1</span><br><span class="line">Explanation: No matter how we flip subarrays of size 2, we can&#39;t make the array become [1,1,1].</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A &#x3D; [0,0,0,1,0,1,1,0], K &#x3D; 3</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">Flip A[0],A[1],A[2]: A becomes [1,1,1,1,0,1,1,0]</span><br><span class="line">Flip A[4],A[5],A[6]: A becomes [1,1,1,1,1,0,0,0]</span><br><span class="line">Flip A[5],A[6],A[7]: A becomes [1,1,1,1,1,1,1,1]</span><br></pre></td></tr></table></figure>
-<p>##思路<br>思路：先找到第一个0，找到第一个0以后，如果第一个0的位置i，i+k&gt;当前数组的长度，则返回-1. 反之，在K循环里，对当前值进行按位异或(^=)且轮数加一。最后返回轮数。<br>##代码</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minKBitFlips</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;A.length)&#123;</span><br><span class="line">            <span class="keyword">if</span>(A[i]==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i+K&gt;A.length)</span><br><span class="line">                    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;K;j++)&#123;</span><br><span class="line">                        A[i+j]^=<span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    result++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span></span><br><span class="line">                i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Hard</category>
-      </categories>
-      <tags>
-        <tag>Greedy</tag>
-        <tag>Hard</tag>
       </tags>
   </entry>
   <entry>
@@ -1550,6 +1511,45 @@ where....</code></pre></li>
       </categories>
       <tags>
         <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode995 Minimum Number of K Consecutive Bit Flips</title>
+    <url>/2020/05/23/Leetcode995/</url>
+    <content><![CDATA[<h1 id="Leetcode995-Minimum-Number-of-K-Consecutive-Bit-Flips"><a href="#Leetcode995-Minimum-Number-of-K-Consecutive-Bit-Flips" class="headerlink" title="Leetcode995 Minimum Number of K Consecutive Bit Flips"></a>Leetcode995 Minimum Number of K Consecutive Bit Flips</h1><p>##题目描述<br>In an array <code>A</code> containing only 0s and 1s, a <em><code>K</code>-bit flip</em> consists of choosing a (contiguous) subarray of length <code>K</code> and simultaneously changing every 0 in the subarray to 1, and every 1 in the subarray to 0.</p>
+<p>Return the minimum number of <code>K</code>-bit flips required so that there is no 0 in the array. If it is not possible, return <code>-1</code>.</p>
+<a id="more"></a>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A &#x3D; [0,1,0], K &#x3D; 1</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: Flip A[0], then flip A[2].</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A &#x3D; [1,1,0], K &#x3D; 2</span><br><span class="line">Output: -1</span><br><span class="line">Explanation: No matter how we flip subarrays of size 2, we can&#39;t make the array become [1,1,1].</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A &#x3D; [0,0,0,1,0,1,1,0], K &#x3D; 3</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">Flip A[0],A[1],A[2]: A becomes [1,1,1,1,0,1,1,0]</span><br><span class="line">Flip A[4],A[5],A[6]: A becomes [1,1,1,1,1,0,0,0]</span><br><span class="line">Flip A[5],A[6],A[7]: A becomes [1,1,1,1,1,1,1,1]</span><br></pre></td></tr></table></figure>
+<p>##思路<br>思路：先找到第一个0，找到第一个0以后，如果第一个0的位置i，i+k&gt;当前数组的长度，则返回-1. 反之，在K循环里，对当前值进行按位异或(^=)且轮数加一。最后返回轮数。<br>##代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minKBitFlips</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;A.length)&#123;</span><br><span class="line">            <span class="keyword">if</span>(A[i]==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i+K&gt;A.length)</span><br><span class="line">                    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;K;j++)&#123;</span><br><span class="line">                        A[i+j]^=<span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    result++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span></span><br><span class="line">                i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Hard</category>
+      </categories>
+      <tags>
+        <tag>Greedy</tag>
+        <tag>Hard</tag>
       </tags>
   </entry>
   <entry>
