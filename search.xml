@@ -2627,6 +2627,8 @@ where....</code></pre></li>
 <li>The given node will not be the tail and it will always be a valid node of the linked list.</li>
 <li>Do not return anything from your function.</li>
 </ul>
+<a id="more"></a>
+
 <p>思路：</p>
 <p>由于题中给出的方法的参数中只提供了要删除节点，因此，只要将当前节点的value值改为下一个节点的value，将当前节点的next指向下一个节点的next。即例子中删除node=5，将5节点的value值改为1，节点next值指向节点9。</p>
 <p>代码：</p>
