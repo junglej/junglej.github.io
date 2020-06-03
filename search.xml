@@ -1,66 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Java多线程基础</title>
-    <url>/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<h1 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h1><p>Java多线程基础知识，包括进程，线程以及他们的关系</p>
-<a id="more"></a>
-
-<h1 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h1><ul>
-<li>进程：一个任务称为一个进程。</li>
-<li>进程内同时执行多个子任务，子任务称为线程。</li>
-<li>进程和线程的关系：一个进程可以包含一个或多个线程，但至少会有一个线程。</li>
-</ul>
-<p>具体如图所示：</p>
-<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B.png" class title="进程与线程">
-
-<h2 id="多进程模式"><a href="#多进程模式" class="headerlink" title="多进程模式"></a>多进程模式</h2><p>即每个进程只有一个线程</p>
-<p>如图所示：</p>
-<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%BC%8F.png" class title="多进程模式">
-
-<h2 id="多线程模式"><a href="#多线程模式" class="headerlink" title="多线程模式"></a>多线程模式</h2><p>即一个进程有多个线程</p>
-<p>如图所示：</p>
-<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%BC%8F.png" class title="多线程模式">
-
-<h2 id="多线程-多进程模式（复杂度最高）"><a href="#多线程-多进程模式（复杂度最高）" class="headerlink" title="多线程+多进程模式（复杂度最高）"></a>多线程+多进程模式（复杂度最高）</h2><p>多进程和多线程混合模式</p>
-<p>如图所示</p>
-<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%A4%9A%E7%BA%BF%E7%A8%8B+%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%BC%8F.png" class title="多线程+多进程模式">
-
-<h2 id="进程VS线程"><a href="#进程VS线程" class="headerlink" title="进程VS线程"></a>进程VS线程</h2><ol>
-<li>进程和线程是包含关系，但是多任务既可以由多进程实现，也可以由单进程内的多线程实现，还可以混合多线程+多进程。</li>
-<li>和多线程相相比，多进程的缺点：创建进程比创建线程开销大，尤其是在windows上；进程间通信比线程的通信要慢，因为线程见通信就是读写同一个变量，速度快。</li>
-<li>多进程的优点：多进程稳定性比多线程高，因为在多进程的情况下，一个进程崩溃不会影响到其他进程，而在多线程的情况下，任何一个线程崩溃会直接导致整个进程崩溃。</li>
-</ol>
-<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><ol>
-<li>Java语言内置了多线程支持：一个Java程序实际上是一个JVM进程，JVM进程用一个主线程来执行main()方法，在main()方法内部，我们又可以启动多个线程。此外，JVM还有负责垃圾回收的其他工作线程等。使用多线程实现多任务。</li>
-<li>和单线程相比，多线程编程的特点在于：多想成经常需要读写共享数据，并且需要同步。多线程编程复杂度更高，调试更困难。</li>
-<li>多线程的特点：多线程模型是Java程序最基本的并发模型；后续读写网络，数据库，Web开发等都依赖Java多线程模型。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java多线程</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>多线程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode1 Two sum</title>
-    <url>/2020/05/23/LeetCode1/</url>
-    <content><![CDATA[<h1 id="Leetcode1-Two-sum"><a href="#Leetcode1-Two-sum" class="headerlink" title="Leetcode1 Two sum"></a>Leetcode1 Two sum</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given nums &#x3D; [2, 7, 11, 15], target &#x3D; 9,</span><br><span class="line"></span><br><span class="line">Because nums[0] + nums[1] &#x3D; 2 + 7 &#x3D; 9,</span><br><span class="line">return [0, 1].</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;nums.length;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i]+nums[j]==target)</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i,j&#125;;       </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"NO TWO SUM SOLUTION"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Easy</category>
-      </categories>
-      <tags>
-        <tag>Easy</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java基础知识（一）</title>
     <url>/2020/05/28/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<h1 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h1><p>本文主要总结常见Java基础知识面试题（一）</p>
@@ -446,6 +386,103 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode1 Two sum</title>
+    <url>/2020/05/23/LeetCode1/</url>
+    <content><![CDATA[<h1 id="Leetcode1-Two-sum"><a href="#Leetcode1-Two-sum" class="headerlink" title="Leetcode1 Two sum"></a>Leetcode1 Two sum</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given nums &#x3D; [2, 7, 11, 15], target &#x3D; 9,</span><br><span class="line"></span><br><span class="line">Because nums[0] + nums[1] &#x3D; 2 + 7 &#x3D; 9,</span><br><span class="line">return [0, 1].</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;nums.length;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i]+nums[j]==target)</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i,j&#125;;       </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"NO TWO SUM SOLUTION"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Easy</category>
+      </categories>
+      <tags>
+        <tag>Easy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java多线程基础</title>
+    <url>/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h1><p>Java多线程基础知识，包括进程，线程以及他们的关系</p>
+<a id="more"></a>
+
+<h1 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h1><ul>
+<li>进程：一个任务称为一个进程。</li>
+<li>进程内同时执行多个子任务，子任务称为线程。</li>
+<li>进程和线程的关系：一个进程可以包含一个或多个线程，但至少会有一个线程。</li>
+</ul>
+<p>具体如图所示：</p>
+<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B.png" class title="进程与线程">
+
+<h2 id="多进程模式"><a href="#多进程模式" class="headerlink" title="多进程模式"></a>多进程模式</h2><p>即每个进程只有一个线程</p>
+<p>如图所示：</p>
+<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%BC%8F.png" class title="多进程模式">
+
+<h2 id="多线程模式"><a href="#多线程模式" class="headerlink" title="多线程模式"></a>多线程模式</h2><p>即一个进程有多个线程</p>
+<p>如图所示：</p>
+<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%BC%8F.png" class title="多线程模式">
+
+<h2 id="多线程-多进程模式（复杂度最高）"><a href="#多线程-多进程模式（复杂度最高）" class="headerlink" title="多线程+多进程模式（复杂度最高）"></a>多线程+多进程模式（复杂度最高）</h2><p>多进程和多线程混合模式</p>
+<p>如图所示</p>
+<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%A4%9A%E7%BA%BF%E7%A8%8B+%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%BC%8F.png" class title="多线程+多进程模式">
+
+<h2 id="进程VS线程"><a href="#进程VS线程" class="headerlink" title="进程VS线程"></a>进程VS线程</h2><ol>
+<li>进程和线程是包含关系，但是多任务既可以由多进程实现，也可以由单进程内的多线程实现，还可以混合多线程+多进程。</li>
+<li>和多线程相相比，多进程的缺点：创建进程比创建线程开销大，尤其是在windows上；进程间通信比线程的通信要慢，因为线程见通信就是读写同一个变量，速度快。</li>
+<li>多进程的优点：多进程稳定性比多线程高，因为在多进程的情况下，一个进程崩溃不会影响到其他进程，而在多线程的情况下，任何一个线程崩溃会直接导致整个进程崩溃。</li>
+</ol>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><ol>
+<li>Java语言内置了多线程支持：一个Java程序实际上是一个JVM进程，JVM进程用一个主线程来执行main()方法，在main()方法内部，我们又可以启动多个线程。此外，JVM还有负责垃圾回收的其他工作线程等。使用多线程实现多任务。</li>
+<li>和单线程相比，多线程编程的特点在于：多想成经常需要读写共享数据，并且需要同步。多线程编程复杂度更高，调试更困难。</li>
+<li>多线程的特点：多线程模型是Java程序最基本的并发模型；后续读写网络，数据库，Web开发等都依赖Java多线程模型。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java多线程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode20 Valid Parentheses</title>
+    <url>/2020/05/23/LeetCode20/</url>
+    <content><![CDATA[<h1 id="Leetcode20-Valid-Parentheses"><a href="#Leetcode20-Valid-Parentheses" class="headerlink" title="Leetcode20 Valid Parentheses"></a>Leetcode20 Valid Parentheses</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given a string containing just the characters &#39;(&#39;, &#39;)&#39;, &#39;&#123;&#39;, &#39;&#125;&#39;, &#39;[&#39; and &#39;]&#39;, </span><br><span class="line">determine if the input string is valid.</span><br><span class="line"></span><br><span class="line">An input string is valid if:</span><br><span class="line"></span><br><span class="line">Open brackets must be closed by the same type of brackets.</span><br><span class="line">Open brackets must be closed in the correct order.</span><br><span class="line">Note that an empty string is also considered valid.</span><br><span class="line"></span><br><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: &quot;()&quot;</span><br><span class="line">Output: true</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: &quot;()[]&#123;&#125;&quot;</span><br><span class="line">Output: true</span><br><span class="line">Example 3:</span><br><span class="line"></span><br><span class="line">Input: &quot;(]&quot;</span><br><span class="line">Output: false</span><br><span class="line">Example 4:</span><br><span class="line"></span><br><span class="line">Input: &quot;([)]&quot;</span><br><span class="line">Output: false</span><br><span class="line">Example 5:</span><br><span class="line"></span><br><span class="line">Input: &quot;&#123;[]&#125;&quot;</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>每一个]对应一个[,一个}对应一个{，一个)对应一个(，将对应关系放入map中。<br>遍历字符串中的字符，如果是{([,那么将该字符放入stack中，<br>如果不是，应当与栈顶元素进行匹配，通过map找到对应的字符，然后与栈顶元素进行匹配。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// if(s.length()==1) return false;</span></span><br><span class="line">        Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        HashMap&lt;Character,Character&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">')'</span>,<span class="string">'('</span>);</span><br><span class="line">        map.put(<span class="string">']'</span>,<span class="string">'['</span>);</span><br><span class="line">        map.put(<span class="string">'&#125;'</span>,<span class="string">'&#123;'</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s.charAt(i)==<span class="string">'('</span>||s.charAt(i)==<span class="string">'&#123;'</span>||s.charAt(i)==<span class="string">'['</span>)</span><br><span class="line">                stack.add(s.charAt(i));</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(stack.empty()||map.get(s.charAt(i))!=stack.peek())&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                stack.pop();</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(stack.empty())</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Easy</category>
+      </categories>
+      <tags>
+        <tag>Easy</tag>
+        <tag>Stack</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode5 Longest Palindromic Substrings</title>
+    <url>/2020/05/23/LeetCode5/</url>
+    <content><![CDATA[<h1 id="Leetcode5-Longest-Palindromic-Substrings"><a href="#Leetcode5-Longest-Palindromic-Substrings" class="headerlink" title="Leetcode5 Longest Palindromic Substrings"></a>Leetcode5 Longest Palindromic Substrings</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given a string s, find the longest palindromic substring in s.</span><br><span class="line">You may assume that the maximum length of s is 1000.</span><br><span class="line"></span><br><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: &quot;babad&quot;</span><br><span class="line">Output: &quot;bab&quot;</span><br><span class="line">Note: &quot;aba&quot; is also a valid answer.</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: &quot;cbbd&quot;</span><br><span class="line">Output: &quot;bb&quot;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>如果len为n的string是回文字符那么长度为n-2的string也是回文字符。 </p>
+<p>abcbc -&gt; bcb-&gt;c</p>
+<p>abba -&gt; bb</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">longestPalindrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> star=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();++i)&#123;</span><br><span class="line">            <span class="keyword">int</span> cur = Math.max(getLen(s,i,i),getLen(s,i,i+<span class="number">1</span>));</span><br><span class="line">            <span class="keyword">if</span>(cur&gt; len)&#123;</span><br><span class="line">                len=cur;</span><br><span class="line">                star =i - (cur-<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.substring(star,star+len);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getLen</span><span class="params">(String s, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    	<span class="keyword">while</span>(l&gt;=<span class="number">0</span>&amp;&amp;r&lt;s.length()&amp;&amp;s.charAt(l)==s.charAt(r))&#123;</span><br><span class="line">       		--l;</span><br><span class="line">        	++r;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> r-l-<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Medium</category>
+      </categories>
+      <tags>
+        <tag>Medium</tag>
+        <tag>String</tag>
+        <tag>DP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetCode994 Rotting Oranges</title>
     <url>/2020/05/23/LeetCode994/</url>
     <content><![CDATA[<h1 id="LeetCode994-Rotting-Oranges"><a href="#LeetCode994-Rotting-Oranges" class="headerlink" title="LeetCode994 Rotting Oranges"></a>LeetCode994 Rotting Oranges</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>In a given grid, each cell can have one of three values:</p>
@@ -486,43 +523,6 @@
       <tags>
         <tag>Medium</tag>
         <tag>BFS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode20 Valid Parentheses</title>
-    <url>/2020/05/23/LeetCode20/</url>
-    <content><![CDATA[<h1 id="Leetcode20-Valid-Parentheses"><a href="#Leetcode20-Valid-Parentheses" class="headerlink" title="Leetcode20 Valid Parentheses"></a>Leetcode20 Valid Parentheses</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given a string containing just the characters &#39;(&#39;, &#39;)&#39;, &#39;&#123;&#39;, &#39;&#125;&#39;, &#39;[&#39; and &#39;]&#39;, </span><br><span class="line">determine if the input string is valid.</span><br><span class="line"></span><br><span class="line">An input string is valid if:</span><br><span class="line"></span><br><span class="line">Open brackets must be closed by the same type of brackets.</span><br><span class="line">Open brackets must be closed in the correct order.</span><br><span class="line">Note that an empty string is also considered valid.</span><br><span class="line"></span><br><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: &quot;()&quot;</span><br><span class="line">Output: true</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: &quot;()[]&#123;&#125;&quot;</span><br><span class="line">Output: true</span><br><span class="line">Example 3:</span><br><span class="line"></span><br><span class="line">Input: &quot;(]&quot;</span><br><span class="line">Output: false</span><br><span class="line">Example 4:</span><br><span class="line"></span><br><span class="line">Input: &quot;([)]&quot;</span><br><span class="line">Output: false</span><br><span class="line">Example 5:</span><br><span class="line"></span><br><span class="line">Input: &quot;&#123;[]&#125;&quot;</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>每一个]对应一个[,一个}对应一个{，一个)对应一个(，将对应关系放入map中。<br>遍历字符串中的字符，如果是{([,那么将该字符放入stack中，<br>如果不是，应当与栈顶元素进行匹配，通过map找到对应的字符，然后与栈顶元素进行匹配。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// if(s.length()==1) return false;</span></span><br><span class="line">        Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        HashMap&lt;Character,Character&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">')'</span>,<span class="string">'('</span>);</span><br><span class="line">        map.put(<span class="string">']'</span>,<span class="string">'['</span>);</span><br><span class="line">        map.put(<span class="string">'&#125;'</span>,<span class="string">'&#123;'</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s.charAt(i)==<span class="string">'('</span>||s.charAt(i)==<span class="string">'&#123;'</span>||s.charAt(i)==<span class="string">'['</span>)</span><br><span class="line">                stack.add(s.charAt(i));</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(stack.empty()||map.get(s.charAt(i))!=stack.peek())&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                stack.pop();</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(stack.empty())</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Easy</category>
-      </categories>
-      <tags>
-        <tag>Easy</tag>
-        <tag>Stack</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode5 Longest Palindromic Substrings</title>
-    <url>/2020/05/23/LeetCode5/</url>
-    <content><![CDATA[<h1 id="Leetcode5-Longest-Palindromic-Substrings"><a href="#Leetcode5-Longest-Palindromic-Substrings" class="headerlink" title="Leetcode5 Longest Palindromic Substrings"></a>Leetcode5 Longest Palindromic Substrings</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given a string s, find the longest palindromic substring in s.</span><br><span class="line">You may assume that the maximum length of s is 1000.</span><br><span class="line"></span><br><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: &quot;babad&quot;</span><br><span class="line">Output: &quot;bab&quot;</span><br><span class="line">Note: &quot;aba&quot; is also a valid answer.</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: &quot;cbbd&quot;</span><br><span class="line">Output: &quot;bb&quot;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>如果len为n的string是回文字符那么长度为n-2的string也是回文字符。 </p>
-<p>abcbc -&gt; bcb-&gt;c</p>
-<p>abba -&gt; bb</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">longestPalindrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> star=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();++i)&#123;</span><br><span class="line">            <span class="keyword">int</span> cur = Math.max(getLen(s,i,i),getLen(s,i,i+<span class="number">1</span>));</span><br><span class="line">            <span class="keyword">if</span>(cur&gt; len)&#123;</span><br><span class="line">                len=cur;</span><br><span class="line">                star =i - (cur-<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.substring(star,star+len);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getLen</span><span class="params">(String s, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    	<span class="keyword">while</span>(l&gt;=<span class="number">0</span>&amp;&amp;r&lt;s.length()&amp;&amp;s.charAt(l)==s.charAt(r))&#123;</span><br><span class="line">       		--l;</span><br><span class="line">        	++r;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> r-l-<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Medium</category>
-      </categories>
-      <tags>
-        <tag>Medium</tag>
-        <tag>String</tag>
-        <tag>DP</tag>
       </tags>
   </entry>
   <entry>
@@ -646,6 +646,24 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode127. Ladder</title>
+    <url>/2020/05/23/Leetcode127/</url>
+    <content><![CDATA[<h1 id="Leetcode127-Ladder"><a href="#Leetcode127-Ladder" class="headerlink" title="Leetcode127. Ladder"></a>Leetcode127. Ladder</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given two words (beginWord and endWord), and a dictionary&#39;s word list, find the length of shortest transformation sequence from beginWord to endWord, such that:</span><br><span class="line"></span><br><span class="line">Only one letter can be changed at a time.</span><br><span class="line">Each transformed word must exist in the word list.</span><br><span class="line">Note:</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line">Return 0 if there is no such transformation sequence.</span><br><span class="line">All words have the same length.</span><br><span class="line">All words contain only lowercase alphabetic characters.</span><br><span class="line">You may assume no duplicates in the word list.</span><br><span class="line">You may assume beginWord and endWord are non-empty and are not the same.</span><br><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">beginWord &#x3D; &quot;hit&quot;,</span><br><span class="line">endWord &#x3D; &quot;cog&quot;,</span><br><span class="line">wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]</span><br><span class="line"></span><br><span class="line">Output: 5</span><br><span class="line"></span><br><span class="line">Explanation: As one shortest transformation is &quot;hit&quot; -&gt; &quot;hot&quot; -&gt; &quot;dot&quot; -&gt; &quot;dog&quot; -&gt; &quot;cog&quot;,</span><br><span class="line">return its length 5.</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">beginWord &#x3D; &quot;hit&quot;</span><br><span class="line">endWord &#x3D; &quot;cog&quot;</span><br><span class="line">wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;]</span><br><span class="line"></span><br><span class="line">Output: 0</span><br><span class="line"></span><br><span class="line">Explanation: The endWord &quot;cog&quot; is not in wordList, therefore no possible transformation.</span><br></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>两种方法：<br>BFS使用队列；使用双向BFS，使用HashSet<br>双向BFS:<br>将wordlist放入HashSet中，如果最后的endword不在wordlist中，直接返回0。将startword和endword放入HashSet中，设step为0，当start 和end不为空时进入循环，当进入到循环后，step++，为保证平衡，当start的size大于end的size，交换end和star。设定一个临时的hashset。根据start里的word，每个位置替换26个字母，如果新的word在endword当中存在，返回step+1.如果wordlist没有新的word，继续循环。否则代表还没到end且wordlist中含有新的word，则将wordlist中的该元素去除（如若重复使用，长度必将增大），result中加入新的word。最后将word改回原来的值并将暂时的result作为start开启下一轮循环。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//BFS使用队列</span></span><br><span class="line"><span class="comment">//使用双向BFS，使用HashSet</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">ladderLength</span><span class="params">(String beginWord, String endWord, List&lt;String&gt; wordList)</span> </span>&#123;</span><br><span class="line">        HashSet&lt;String&gt; wordlist= <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(String word: wordList)&#123;</span><br><span class="line">            wordlist.add(word);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!wordlist.contains(endWord))</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        HashSet&lt;String&gt; start = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">        HashSet&lt;String&gt; end = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">        <span class="keyword">int</span> step=<span class="number">0</span>;</span><br><span class="line">        start.add(beginWord);</span><br><span class="line">        end.add(endWord);</span><br><span class="line">        <span class="keyword">while</span>(!start.isEmpty()&amp;&amp;!end.isEmpty())&#123;</span><br><span class="line">            ++step;</span><br><span class="line">            <span class="keyword">if</span>(start.size()&gt;end.size())&#123;<span class="comment">//当start的大小比end大时，交换两个set以保证平衡</span></span><br><span class="line">                HashSet&lt;String&gt; cur = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">                cur = end;</span><br><span class="line">                end = start;</span><br><span class="line">                start = cur;</span><br><span class="line">            &#125;</span><br><span class="line">            HashSet&lt;String&gt; result = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">            <span class="keyword">for</span>(String word: start)&#123;</span><br><span class="line">                <span class="keyword">char</span>[] ch = word.toCharArray();</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;beginWord.length();i++)&#123;</span><br><span class="line">                    <span class="keyword">char</span> c = ch[i];</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">char</span> j=<span class="string">'a'</span>;j&lt;=<span class="string">'z'</span>;j++)&#123;</span><br><span class="line">                        ch[i]=j;</span><br><span class="line">                        String w = <span class="keyword">new</span> String(ch);</span><br><span class="line">                        <span class="keyword">if</span>(end.contains(w)) <span class="keyword">return</span> step+<span class="number">1</span>;</span><br><span class="line">                        <span class="keyword">if</span>(!wordlist.contains(w)) <span class="keyword">continue</span>;</span><br><span class="line">                        wordlist.remove(w);</span><br><span class="line">                        result.add(w);</span><br><span class="line">                    &#125;</span><br><span class="line">                    ch[i]=c;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            start = result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Medium</category>
+      </categories>
+      <tags>
+        <tag>Medium</tag>
+        <tag>BFS</tag>
+        <tag>HashSet</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode138. Copy List with Random Pointer</title>
     <url>/2020/05/23/Leetcode138/</url>
     <content><![CDATA[<h1 id="Leetcode138-Copy-List-with-Random-Pointer"><a href="#Leetcode138-Copy-List-with-Random-Pointer" class="headerlink" title="Leetcode138. Copy List with Random Pointer"></a>Leetcode138. Copy List with Random Pointer</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.</p>
@@ -684,24 +702,6 @@
         <tag>Medium</tag>
         <tag>ListNode</tag>
         <tag>HashMap</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode127. Ladder</title>
-    <url>/2020/05/23/Leetcode127/</url>
-    <content><![CDATA[<h1 id="Leetcode127-Ladder"><a href="#Leetcode127-Ladder" class="headerlink" title="Leetcode127. Ladder"></a>Leetcode127. Ladder</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given two words (beginWord and endWord), and a dictionary&#39;s word list, find the length of shortest transformation sequence from beginWord to endWord, such that:</span><br><span class="line"></span><br><span class="line">Only one letter can be changed at a time.</span><br><span class="line">Each transformed word must exist in the word list.</span><br><span class="line">Note:</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line">Return 0 if there is no such transformation sequence.</span><br><span class="line">All words have the same length.</span><br><span class="line">All words contain only lowercase alphabetic characters.</span><br><span class="line">You may assume no duplicates in the word list.</span><br><span class="line">You may assume beginWord and endWord are non-empty and are not the same.</span><br><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">beginWord &#x3D; &quot;hit&quot;,</span><br><span class="line">endWord &#x3D; &quot;cog&quot;,</span><br><span class="line">wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]</span><br><span class="line"></span><br><span class="line">Output: 5</span><br><span class="line"></span><br><span class="line">Explanation: As one shortest transformation is &quot;hit&quot; -&gt; &quot;hot&quot; -&gt; &quot;dot&quot; -&gt; &quot;dog&quot; -&gt; &quot;cog&quot;,</span><br><span class="line">return its length 5.</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">beginWord &#x3D; &quot;hit&quot;</span><br><span class="line">endWord &#x3D; &quot;cog&quot;</span><br><span class="line">wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;]</span><br><span class="line"></span><br><span class="line">Output: 0</span><br><span class="line"></span><br><span class="line">Explanation: The endWord &quot;cog&quot; is not in wordList, therefore no possible transformation.</span><br></pre></td></tr></table></figure>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>两种方法：<br>BFS使用队列；使用双向BFS，使用HashSet<br>双向BFS:<br>将wordlist放入HashSet中，如果最后的endword不在wordlist中，直接返回0。将startword和endword放入HashSet中，设step为0，当start 和end不为空时进入循环，当进入到循环后，step++，为保证平衡，当start的size大于end的size，交换end和star。设定一个临时的hashset。根据start里的word，每个位置替换26个字母，如果新的word在endword当中存在，返回step+1.如果wordlist没有新的word，继续循环。否则代表还没到end且wordlist中含有新的word，则将wordlist中的该元素去除（如若重复使用，长度必将增大），result中加入新的word。最后将word改回原来的值并将暂时的result作为start开启下一轮循环。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//BFS使用队列</span></span><br><span class="line"><span class="comment">//使用双向BFS，使用HashSet</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">ladderLength</span><span class="params">(String beginWord, String endWord, List&lt;String&gt; wordList)</span> </span>&#123;</span><br><span class="line">        HashSet&lt;String&gt; wordlist= <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(String word: wordList)&#123;</span><br><span class="line">            wordlist.add(word);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!wordlist.contains(endWord))</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        HashSet&lt;String&gt; start = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">        HashSet&lt;String&gt; end = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">        <span class="keyword">int</span> step=<span class="number">0</span>;</span><br><span class="line">        start.add(beginWord);</span><br><span class="line">        end.add(endWord);</span><br><span class="line">        <span class="keyword">while</span>(!start.isEmpty()&amp;&amp;!end.isEmpty())&#123;</span><br><span class="line">            ++step;</span><br><span class="line">            <span class="keyword">if</span>(start.size()&gt;end.size())&#123;<span class="comment">//当start的大小比end大时，交换两个set以保证平衡</span></span><br><span class="line">                HashSet&lt;String&gt; cur = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">                cur = end;</span><br><span class="line">                end = start;</span><br><span class="line">                start = cur;</span><br><span class="line">            &#125;</span><br><span class="line">            HashSet&lt;String&gt; result = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">            <span class="keyword">for</span>(String word: start)&#123;</span><br><span class="line">                <span class="keyword">char</span>[] ch = word.toCharArray();</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;beginWord.length();i++)&#123;</span><br><span class="line">                    <span class="keyword">char</span> c = ch[i];</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">char</span> j=<span class="string">'a'</span>;j&lt;=<span class="string">'z'</span>;j++)&#123;</span><br><span class="line">                        ch[i]=j;</span><br><span class="line">                        String w = <span class="keyword">new</span> String(ch);</span><br><span class="line">                        <span class="keyword">if</span>(end.contains(w)) <span class="keyword">return</span> step+<span class="number">1</span>;</span><br><span class="line">                        <span class="keyword">if</span>(!wordlist.contains(w)) <span class="keyword">continue</span>;</span><br><span class="line">                        wordlist.remove(w);</span><br><span class="line">                        result.add(w);</span><br><span class="line">                    &#125;</span><br><span class="line">                    ch[i]=c;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            start = result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Medium</category>
-      </categories>
-      <tags>
-        <tag>Medium</tag>
-        <tag>BFS</tag>
-        <tag>HashSet</tag>
       </tags>
   </entry>
   <entry>
@@ -774,6 +774,33 @@
         <tag>Easy</tag>
         <tag>ListNode</tag>
         <tag>Recursive</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode210 Course ScheduleII</title>
+    <url>/2020/05/23/Leetcode210/</url>
+    <content><![CDATA[<h1 id="Leetcode210-Course-ScheduleII"><a href="#Leetcode210-Course-ScheduleII" class="headerlink" title="Leetcode210 Course ScheduleII"></a>Leetcode210 Course ScheduleII</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>There are a total of <em>n</em> courses you have to take, labeled from <code>0</code> to <code>n-1</code>.</p>
+<p>Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: <code>[0,1]</code></p>
+<p>Given the total number of courses and a list of prerequisite <strong>pairs</strong>, return the ordering of courses you should take to finish all courses.</p>
+<p>There may be multiple correct orders, you just need to return one of them. If it is impossible to finish all courses, return an empty array.</p>
+<a id="more"></a>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: 2, [[1,0]] </span><br><span class="line">Output: [0,1]</span><br><span class="line">Explanation: There are a total of 2 courses to take. To take course 1 you should have finished   </span><br><span class="line">             course 0. So the correct course order is [0,1] .</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: 4, [[1,0],[2,0],[3,1],[3,2]]</span><br><span class="line">Output: [0,1,2,3] or [0,2,1,3]</span><br><span class="line">Explanation: There are a total of 4 courses to take. To take course 3 you should have finished both     </span><br><span class="line">             courses 1 and 2. Both courses 1 and 2 should be taken after you finished course 0. </span><br><span class="line">             So one correct course order is [0,1,2,3]. Another correct ordering is [0,2,1,3] .</span><br></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>DFS。两个表，正在访问visiting和已访问过visited。每一门课与他的前置课连接，形成graph。如果访问过则返回true，直到形成闭环，再将节点变为未访问过。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] findOrder(<span class="keyword">int</span> numCourses, <span class="keyword">int</span>[][] prerequisites) &#123;</span><br><span class="line">        ArrayList&lt;ArrayList&lt;Integer&gt;&gt; graph = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;numCourses;i++)&#123;</span><br><span class="line">            graph.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;prerequisites.length;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> course = prerequisites[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> prerequisite =prerequisites[i][<span class="number">1</span>];</span><br><span class="line">            graph.get(course).add(prerequisite);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] visited = <span class="keyword">new</span> <span class="keyword">int</span>[numCourses];</span><br><span class="line">        List&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Integer index = numCourses;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;numCourses;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(dfs(i,graph,visited,ans))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] array = <span class="keyword">new</span> <span class="keyword">int</span>[ans.size()];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ans.size();i++)&#123;</span><br><span class="line">            array[i] = ans.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> array;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> cur, ArrayList&lt;ArrayList&lt;Integer&gt;&gt; graph,<span class="keyword">int</span>[] visited, List&lt;Integer&gt; ans)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(visited[cur]==<span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(visited[cur]==<span class="number">2</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        visited[cur] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i: graph.get(cur))</span><br><span class="line">            <span class="keyword">if</span>(dfs(i,graph,visited,ans))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        visited[cur]=<span class="number">2</span>;</span><br><span class="line">        ans.add(cur);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Medium</category>
+      </categories>
+      <tags>
+        <tag>Medium</tag>
+        <tag>Graph</tag>
+        <tag>Topological sorting</tag>
       </tags>
   </entry>
   <entry>
@@ -888,33 +915,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode210 Course ScheduleII</title>
-    <url>/2020/05/23/Leetcode210/</url>
-    <content><![CDATA[<h1 id="Leetcode210-Course-ScheduleII"><a href="#Leetcode210-Course-ScheduleII" class="headerlink" title="Leetcode210 Course ScheduleII"></a>Leetcode210 Course ScheduleII</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>There are a total of <em>n</em> courses you have to take, labeled from <code>0</code> to <code>n-1</code>.</p>
-<p>Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: <code>[0,1]</code></p>
-<p>Given the total number of courses and a list of prerequisite <strong>pairs</strong>, return the ordering of courses you should take to finish all courses.</p>
-<p>There may be multiple correct orders, you just need to return one of them. If it is impossible to finish all courses, return an empty array.</p>
-<a id="more"></a>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: 2, [[1,0]] </span><br><span class="line">Output: [0,1]</span><br><span class="line">Explanation: There are a total of 2 courses to take. To take course 1 you should have finished   </span><br><span class="line">             course 0. So the correct course order is [0,1] .</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: 4, [[1,0],[2,0],[3,1],[3,2]]</span><br><span class="line">Output: [0,1,2,3] or [0,2,1,3]</span><br><span class="line">Explanation: There are a total of 4 courses to take. To take course 3 you should have finished both     </span><br><span class="line">             courses 1 and 2. Both courses 1 and 2 should be taken after you finished course 0. </span><br><span class="line">             So one correct course order is [0,1,2,3]. Another correct ordering is [0,2,1,3] .</span><br></pre></td></tr></table></figure>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>DFS。两个表，正在访问visiting和已访问过visited。每一门课与他的前置课连接，形成graph。如果访问过则返回true，直到形成闭环，再将节点变为未访问过。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] findOrder(<span class="keyword">int</span> numCourses, <span class="keyword">int</span>[][] prerequisites) &#123;</span><br><span class="line">        ArrayList&lt;ArrayList&lt;Integer&gt;&gt; graph = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;numCourses;i++)&#123;</span><br><span class="line">            graph.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;prerequisites.length;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> course = prerequisites[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> prerequisite =prerequisites[i][<span class="number">1</span>];</span><br><span class="line">            graph.get(course).add(prerequisite);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] visited = <span class="keyword">new</span> <span class="keyword">int</span>[numCourses];</span><br><span class="line">        List&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Integer index = numCourses;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;numCourses;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(dfs(i,graph,visited,ans))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] array = <span class="keyword">new</span> <span class="keyword">int</span>[ans.size()];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ans.size();i++)&#123;</span><br><span class="line">            array[i] = ans.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> array;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> cur, ArrayList&lt;ArrayList&lt;Integer&gt;&gt; graph,<span class="keyword">int</span>[] visited, List&lt;Integer&gt; ans)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(visited[cur]==<span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(visited[cur]==<span class="number">2</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        visited[cur] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i: graph.get(cur))</span><br><span class="line">            <span class="keyword">if</span>(dfs(i,graph,visited,ans))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        visited[cur]=<span class="number">2</span>;</span><br><span class="line">        ans.add(cur);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Medium</category>
-      </categories>
-      <tags>
-        <tag>Medium</tag>
-        <tag>Graph</tag>
-        <tag>Topological sorting</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode380 Insert Delete GetRandom O(1)</title>
     <url>/2020/05/23/Leetcode380/</url>
     <content><![CDATA[<h1 id="Leetcode380-Insert-Delete-GetRandom-O-1"><a href="#Leetcode380-Insert-Delete-GetRandom-O-1" class="headerlink" title="Leetcode380 Insert Delete GetRandom O(1)"></a>Leetcode380 Insert Delete GetRandom O(1)</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Design a data structure that supports all following operations in <em>average</em> <strong>O(1)</strong> time.</p>
@@ -940,20 +940,18 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode692 Top K Frequent Words</title>
-    <url>/2020/05/23/Leetcode692/</url>
-    <content><![CDATA[<h1 id="Leetcode692-Top-K-Frequent-Words"><a href="#Leetcode692-Top-K-Frequent-Words" class="headerlink" title="Leetcode692 Top K Frequent Words"></a>Leetcode692 Top K Frequent Words</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>example:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [&quot;i&quot;, &quot;love&quot;, &quot;leetcode&quot;, &quot;i&quot;, &quot;love&quot;, &quot;coding&quot;], k &#x3D; 2</span><br><span class="line">Output: [&quot;i&quot;, &quot;love&quot;]</span><br><span class="line">Explanation: &quot;i&quot; and &quot;love&quot; are the two most frequent words.</span><br><span class="line">    Note that &quot;i&quot; comes before &quot;love&quot; due to a lower alphabetical order.</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [&quot;the&quot;, &quot;day&quot;, &quot;is&quot;, &quot;sunny&quot;, &quot;the&quot;, &quot;the&quot;, &quot;the&quot;, &quot;sunny&quot;, &quot;is&quot;, &quot;is&quot;], k &#x3D; 4</span><br><span class="line">Output: [&quot;the&quot;, &quot;is&quot;, &quot;sunny&quot;, &quot;day&quot;]</span><br><span class="line">Explanation: &quot;the&quot;, &quot;is&quot;, &quot;sunny&quot; and &quot;day&quot; are the four most frequent words,</span><br><span class="line">    with the number of occurrence being 4, 3, 2 and 1 respectively.</span><br></pre></td></tr></table></figure>
+    <title>Leetcode54. Spiral Matrix</title>
+    <url>/2020/05/23/Leetcode54/</url>
+    <content><![CDATA[<h1 id="Leetcode54-Spiral-Matrix"><a href="#Leetcode54-Spiral-Matrix" class="headerlink" title="Leetcode54. Spiral Matrix"></a>Leetcode54. Spiral Matrix</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Input:</span><br><span class="line">[</span><br><span class="line"> [ 1, 2, 3 ],</span><br><span class="line"> [ 4, 5, 6 ],</span><br><span class="line"> [ 7, 8, 9 ]</span><br><span class="line">]</span><br><span class="line">Output: [1,2,3,6,9,8,7,4,5]</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h2><h4 id="Step1-统计词频："><a href="#Step1-统计词频：" class="headerlink" title="Step1:  统计词频："></a>Step1:  统计词频：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">	Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line">    <span class="keyword">for</span> (String word: words) &#123;</span><br><span class="line">        map.put(word, map.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">或：</span><br><span class="line">    HashMap&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span>(String word: words)&#123;</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(word))&#123;</span><br><span class="line">            map.put(word,map.get(word)+<span class="number">1</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">            map.put(word,<span class="number">1</span>); </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Step2-比较："><a href="#Step2-比较：" class="headerlink" title="Step2: 比较："></a>Step2: 比较：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span>(String key : map.keySet())&#123;</span><br><span class="line">   result.add(key);</span><br><span class="line">&#125;</span><br><span class="line">Collections.sort(result,(word1,word2)-&gt;map.get(word1).equals(map.get(word2))?</span><br><span class="line">                 word1.compareTo(word2):map.get(word2)-map.get(word1));</span><br></pre></td></tr></table></figure>
-<h4 id="Step3-输出："><a href="#Step3-输出：" class="headerlink" title="Step3: 输出："></a>Step3: 输出：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> result.subList(<span class="number">0</span>,k);</span><br></pre></td></tr></table></figure>
-<h2 id="最优解：Heap"><a href="#最优解：Heap" class="headerlink" title="最优解：Heap"></a>最优解：Heap</h2><h4 id="Step1-统计词频：-1"><a href="#Step1-统计词频：-1" class="headerlink" title="Step1: 统计词频："></a>Step1: 统计词频：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line"><span class="keyword">for</span> (String word: words) &#123;</span><br><span class="line">    map.put(word, map.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Step2-PriorityQueue"><a href="#Step2-PriorityQueue" class="headerlink" title="Step2: PriorityQueue:"></a>Step2: PriorityQueue:</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">PriorityQueue&lt;String&gt; heap = <span class="keyword">new</span> PriorityQueue&lt;String&gt;(</span><br><span class="line">                (w1, w2) -&gt; count.get(w1).equals(count.get(w2)) ?</span><br><span class="line">                w2.compareTo(w1) : count.get(w1) - count.get(w2) );</span><br></pre></td></tr></table></figure>
-
-<h4 id="Step3-从heap提取前k个值，然后倒序输出"><a href="#Step3-从heap提取前k个值，然后倒序输出" class="headerlink" title="Step3: 从heap提取前k个值，然后倒序输出"></a>Step3: 从heap提取前k个值，然后倒序输出</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (String word: count.keySet()) &#123;</span><br><span class="line">           heap.offer(word);</span><br><span class="line">           <span class="keyword">if</span> (heap.size() &gt; k) heap.poll();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       List&lt;String&gt; ans = <span class="keyword">new</span> ArrayList();</span><br><span class="line">       <span class="keyword">while</span> (!heap.isEmpty()) ans.add(heap.poll());</span><br><span class="line">       Collections.reverse(ans);</span><br><span class="line">       <span class="keyword">return</span> ans;</span><br></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>有四个方向right, left, top, bottom.</p>
+<ol>
+<li>direction=”right”， 当到达最右边界时，代表本行输出结束，top++，</li>
+<li>direction=”bottom”，当到达最下边界时, right–, </li>
+<li>direction = “left”，当到达最左边界是 bottom–,</li>
+<li>direction=”top”，当到达top时候，left++，direction=”right”.</li>
+</ol>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">spiralOrder</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">         <span class="comment">//result</span></span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&amp;lt;&amp;gt;();</span><br><span class="line">        <span class="keyword">if</span> (matrix.length == <span class="number">0</span>) <span class="keyword">return</span> result;</span><br><span class="line">        <span class="comment">//获取行数---Y行</span></span><br><span class="line">        <span class="keyword">int</span> lenY =matrix.length;</span><br><span class="line">        <span class="comment">//获取列数---X列</span></span><br><span class="line">        <span class="keyword">int</span> lenX = matrix[<span class="number">0</span>].length;</span><br><span class="line">        String direction = &amp;quot;right&amp;quot;;</span><br><span class="line">        <span class="keyword">int</span> left=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = lenX-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> down =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> up = lenY-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left&amp;lt;=right &amp;amp;&amp;amp; down&amp;lt;=up)&#123;</span><br><span class="line">            <span class="keyword">if</span>(direction == &amp;quot;right&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=left;i&amp;lt;=right;i++)&#123;</span><br><span class="line">                    result.add(matrix[down][i]);</span><br><span class="line">                &#125;</span><br><span class="line">                down++;</span><br><span class="line">                direction = &amp;quot;down&amp;quot;;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(direction==&amp;quot;down&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=down;i&amp;lt;=up;i++)&#123;</span><br><span class="line">                    result.add(matrix[i][right]);</span><br><span class="line">                &#125;</span><br><span class="line">                right--;</span><br><span class="line">                direction = &amp;quot;left&amp;quot;;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(direction==&amp;quot;left&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=right;i&amp;gt;=left;i--)&#123;</span><br><span class="line">                    result.add(matrix[up][i]);</span><br><span class="line">                &#125;</span><br><span class="line">                up--;</span><br><span class="line">                direction =&amp;quot;up&amp;quot;;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(direction==&amp;quot;up&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=up;i&amp;gt;=down;i--)&#123;</span><br><span class="line">                    result.add(matrix[i][left]);</span><br><span class="line">                &#125;</span><br><span class="line">                left++;</span><br><span class="line">                direction = &amp;quot;right&amp;quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>LeetCode</category>
@@ -961,8 +959,7 @@
       </categories>
       <tags>
         <tag>Medium</tag>
-        <tag>Hash</tag>
-        <tag>Heap</tag>
+        <tag>Simulation</tag>
       </tags>
   </entry>
   <entry>
@@ -998,18 +995,20 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode54. Spiral Matrix</title>
-    <url>/2020/05/23/Leetcode54/</url>
-    <content><![CDATA[<h1 id="Leetcode54-Spiral-Matrix"><a href="#Leetcode54-Spiral-Matrix" class="headerlink" title="Leetcode54. Spiral Matrix"></a>Leetcode54. Spiral Matrix</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Input:</span><br><span class="line">[</span><br><span class="line"> [ 1, 2, 3 ],</span><br><span class="line"> [ 4, 5, 6 ],</span><br><span class="line"> [ 7, 8, 9 ]</span><br><span class="line">]</span><br><span class="line">Output: [1,2,3,6,9,8,7,4,5]</span><br></pre></td></tr></table></figure>
+    <title>Leetcode692 Top K Frequent Words</title>
+    <url>/2020/05/23/Leetcode692/</url>
+    <content><![CDATA[<h1 id="Leetcode692-Top-K-Frequent-Words"><a href="#Leetcode692-Top-K-Frequent-Words" class="headerlink" title="Leetcode692 Top K Frequent Words"></a>Leetcode692 Top K Frequent Words</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>example:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [&quot;i&quot;, &quot;love&quot;, &quot;leetcode&quot;, &quot;i&quot;, &quot;love&quot;, &quot;coding&quot;], k &#x3D; 2</span><br><span class="line">Output: [&quot;i&quot;, &quot;love&quot;]</span><br><span class="line">Explanation: &quot;i&quot; and &quot;love&quot; are the two most frequent words.</span><br><span class="line">    Note that &quot;i&quot; comes before &quot;love&quot; due to a lower alphabetical order.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [&quot;the&quot;, &quot;day&quot;, &quot;is&quot;, &quot;sunny&quot;, &quot;the&quot;, &quot;the&quot;, &quot;the&quot;, &quot;sunny&quot;, &quot;is&quot;, &quot;is&quot;], k &#x3D; 4</span><br><span class="line">Output: [&quot;the&quot;, &quot;is&quot;, &quot;sunny&quot;, &quot;day&quot;]</span><br><span class="line">Explanation: &quot;the&quot;, &quot;is&quot;, &quot;sunny&quot; and &quot;day&quot; are the four most frequent words,</span><br><span class="line">    with the number of occurrence being 4, 3, 2 and 1 respectively.</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>有四个方向right, left, top, bottom.</p>
-<ol>
-<li>direction=”right”， 当到达最右边界时，代表本行输出结束，top++，</li>
-<li>direction=”bottom”，当到达最下边界时, right–, </li>
-<li>direction = “left”，当到达最左边界是 bottom–,</li>
-<li>direction=”top”，当到达top时候，left++，direction=”right”.</li>
-</ol>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">spiralOrder</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">         <span class="comment">//result</span></span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&amp;lt;&amp;gt;();</span><br><span class="line">        <span class="keyword">if</span> (matrix.length == <span class="number">0</span>) <span class="keyword">return</span> result;</span><br><span class="line">        <span class="comment">//获取行数---Y行</span></span><br><span class="line">        <span class="keyword">int</span> lenY =matrix.length;</span><br><span class="line">        <span class="comment">//获取列数---X列</span></span><br><span class="line">        <span class="keyword">int</span> lenX = matrix[<span class="number">0</span>].length;</span><br><span class="line">        String direction = &amp;quot;right&amp;quot;;</span><br><span class="line">        <span class="keyword">int</span> left=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = lenX-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> down =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> up = lenY-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left&amp;lt;=right &amp;amp;&amp;amp; down&amp;lt;=up)&#123;</span><br><span class="line">            <span class="keyword">if</span>(direction == &amp;quot;right&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=left;i&amp;lt;=right;i++)&#123;</span><br><span class="line">                    result.add(matrix[down][i]);</span><br><span class="line">                &#125;</span><br><span class="line">                down++;</span><br><span class="line">                direction = &amp;quot;down&amp;quot;;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(direction==&amp;quot;down&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=down;i&amp;lt;=up;i++)&#123;</span><br><span class="line">                    result.add(matrix[i][right]);</span><br><span class="line">                &#125;</span><br><span class="line">                right--;</span><br><span class="line">                direction = &amp;quot;left&amp;quot;;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(direction==&amp;quot;left&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=right;i&amp;gt;=left;i--)&#123;</span><br><span class="line">                    result.add(matrix[up][i]);</span><br><span class="line">                &#125;</span><br><span class="line">                up--;</span><br><span class="line">                direction =&amp;quot;up&amp;quot;;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(direction==&amp;quot;up&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=up;i&amp;gt;=down;i--)&#123;</span><br><span class="line">                    result.add(matrix[i][left]);</span><br><span class="line">                &#125;</span><br><span class="line">                left++;</span><br><span class="line">                direction = &amp;quot;right&amp;quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h2><h4 id="Step1-统计词频："><a href="#Step1-统计词频：" class="headerlink" title="Step1:  统计词频："></a>Step1:  统计词频：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">	Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line">    <span class="keyword">for</span> (String word: words) &#123;</span><br><span class="line">        map.put(word, map.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">或：</span><br><span class="line">    HashMap&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span>(String word: words)&#123;</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(word))&#123;</span><br><span class="line">            map.put(word,map.get(word)+<span class="number">1</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">            map.put(word,<span class="number">1</span>); </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Step2-比较："><a href="#Step2-比较：" class="headerlink" title="Step2: 比较："></a>Step2: 比较：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span>(String key : map.keySet())&#123;</span><br><span class="line">   result.add(key);</span><br><span class="line">&#125;</span><br><span class="line">Collections.sort(result,(word1,word2)-&gt;map.get(word1).equals(map.get(word2))?</span><br><span class="line">                 word1.compareTo(word2):map.get(word2)-map.get(word1));</span><br></pre></td></tr></table></figure>
+<h4 id="Step3-输出："><a href="#Step3-输出：" class="headerlink" title="Step3: 输出："></a>Step3: 输出：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> result.subList(<span class="number">0</span>,k);</span><br></pre></td></tr></table></figure>
+<h2 id="最优解：Heap"><a href="#最优解：Heap" class="headerlink" title="最优解：Heap"></a>最优解：Heap</h2><h4 id="Step1-统计词频：-1"><a href="#Step1-统计词频：-1" class="headerlink" title="Step1: 统计词频："></a>Step1: 统计词频：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line"><span class="keyword">for</span> (String word: words) &#123;</span><br><span class="line">    map.put(word, map.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Step2-PriorityQueue"><a href="#Step2-PriorityQueue" class="headerlink" title="Step2: PriorityQueue:"></a>Step2: PriorityQueue:</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">PriorityQueue&lt;String&gt; heap = <span class="keyword">new</span> PriorityQueue&lt;String&gt;(</span><br><span class="line">                (w1, w2) -&gt; count.get(w1).equals(count.get(w2)) ?</span><br><span class="line">                w2.compareTo(w1) : count.get(w1) - count.get(w2) );</span><br></pre></td></tr></table></figure>
+
+<h4 id="Step3-从heap提取前k个值，然后倒序输出"><a href="#Step3-从heap提取前k个值，然后倒序输出" class="headerlink" title="Step3: 从heap提取前k个值，然后倒序输出"></a>Step3: 从heap提取前k个值，然后倒序输出</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (String word: count.keySet()) &#123;</span><br><span class="line">           heap.offer(word);</span><br><span class="line">           <span class="keyword">if</span> (heap.size() &gt; k) heap.poll();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       List&lt;String&gt; ans = <span class="keyword">new</span> ArrayList();</span><br><span class="line">       <span class="keyword">while</span> (!heap.isEmpty()) ans.add(heap.poll());</span><br><span class="line">       Collections.reverse(ans);</span><br><span class="line">       <span class="keyword">return</span> ans;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>LeetCode</category>
@@ -1017,7 +1016,8 @@
       </categories>
       <tags>
         <tag>Medium</tag>
-        <tag>Simulation</tag>
+        <tag>Hash</tag>
+        <tag>Heap</tag>
       </tags>
   </entry>
   <entry>
@@ -1095,45 +1095,6 @@
       <tags>
         <tag>Easy</tag>
         <tag>Preorder traversal</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode995 Minimum Number of K Consecutive Bit Flips</title>
-    <url>/2020/05/23/Leetcode995/</url>
-    <content><![CDATA[<h1 id="Leetcode995-Minimum-Number-of-K-Consecutive-Bit-Flips"><a href="#Leetcode995-Minimum-Number-of-K-Consecutive-Bit-Flips" class="headerlink" title="Leetcode995 Minimum Number of K Consecutive Bit Flips"></a>Leetcode995 Minimum Number of K Consecutive Bit Flips</h1><p>##题目描述<br>In an array <code>A</code> containing only 0s and 1s, a <em><code>K</code>-bit flip</em> consists of choosing a (contiguous) subarray of length <code>K</code> and simultaneously changing every 0 in the subarray to 1, and every 1 in the subarray to 0.</p>
-<p>Return the minimum number of <code>K</code>-bit flips required so that there is no 0 in the array. If it is not possible, return <code>-1</code>.</p>
-<a id="more"></a>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A &#x3D; [0,1,0], K &#x3D; 1</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: Flip A[0], then flip A[2].</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A &#x3D; [1,1,0], K &#x3D; 2</span><br><span class="line">Output: -1</span><br><span class="line">Explanation: No matter how we flip subarrays of size 2, we can&#39;t make the array become [1,1,1].</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A &#x3D; [0,0,0,1,0,1,1,0], K &#x3D; 3</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">Flip A[0],A[1],A[2]: A becomes [1,1,1,1,0,1,1,0]</span><br><span class="line">Flip A[4],A[5],A[6]: A becomes [1,1,1,1,1,0,0,0]</span><br><span class="line">Flip A[5],A[6],A[7]: A becomes [1,1,1,1,1,1,1,1]</span><br></pre></td></tr></table></figure>
-<p>##思路<br>思路：先找到第一个0，找到第一个0以后，如果第一个0的位置i，i+k&gt;当前数组的长度，则返回-1. 反之，在K循环里，对当前值进行按位异或(^=)且轮数加一。最后返回轮数。<br>##代码</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minKBitFlips</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;A.length)&#123;</span><br><span class="line">            <span class="keyword">if</span>(A[i]==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i+K&gt;A.length)</span><br><span class="line">                    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;K;j++)&#123;</span><br><span class="line">                        A[i+j]^=<span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    result++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span></span><br><span class="line">                i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Hard</category>
-      </categories>
-      <tags>
-        <tag>Greedy</tag>
-        <tag>Hard</tag>
       </tags>
   </entry>
   <entry>
@@ -1590,6 +1551,45 @@ where....</code></pre></li>
       </tags>
   </entry>
   <entry>
+    <title>Leetcode995 Minimum Number of K Consecutive Bit Flips</title>
+    <url>/2020/05/23/Leetcode995/</url>
+    <content><![CDATA[<h1 id="Leetcode995-Minimum-Number-of-K-Consecutive-Bit-Flips"><a href="#Leetcode995-Minimum-Number-of-K-Consecutive-Bit-Flips" class="headerlink" title="Leetcode995 Minimum Number of K Consecutive Bit Flips"></a>Leetcode995 Minimum Number of K Consecutive Bit Flips</h1><p>##题目描述<br>In an array <code>A</code> containing only 0s and 1s, a <em><code>K</code>-bit flip</em> consists of choosing a (contiguous) subarray of length <code>K</code> and simultaneously changing every 0 in the subarray to 1, and every 1 in the subarray to 0.</p>
+<p>Return the minimum number of <code>K</code>-bit flips required so that there is no 0 in the array. If it is not possible, return <code>-1</code>.</p>
+<a id="more"></a>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A &#x3D; [0,1,0], K &#x3D; 1</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: Flip A[0], then flip A[2].</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A &#x3D; [1,1,0], K &#x3D; 2</span><br><span class="line">Output: -1</span><br><span class="line">Explanation: No matter how we flip subarrays of size 2, we can&#39;t make the array become [1,1,1].</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A &#x3D; [0,0,0,1,0,1,1,0], K &#x3D; 3</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">Flip A[0],A[1],A[2]: A becomes [1,1,1,1,0,1,1,0]</span><br><span class="line">Flip A[4],A[5],A[6]: A becomes [1,1,1,1,1,0,0,0]</span><br><span class="line">Flip A[5],A[6],A[7]: A becomes [1,1,1,1,1,1,1,1]</span><br></pre></td></tr></table></figure>
+<p>##思路<br>思路：先找到第一个0，找到第一个0以后，如果第一个0的位置i，i+k&gt;当前数组的长度，则返回-1. 反之，在K循环里，对当前值进行按位异或(^=)且轮数加一。最后返回轮数。<br>##代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minKBitFlips</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;A.length)&#123;</span><br><span class="line">            <span class="keyword">if</span>(A[i]==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i+K&gt;A.length)</span><br><span class="line">                    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;K;j++)&#123;</span><br><span class="line">                        A[i+j]^=<span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    result++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span></span><br><span class="line">                i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Hard</category>
+      </categories>
+      <tags>
+        <tag>Greedy</tag>
+        <tag>Hard</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PCB封装库的创建(89C51)</title>
     <url>/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/</url>
     <content><![CDATA[<h1 id="PCB封装库的创建-89C51"><a href="#PCB封装库的创建-89C51" class="headerlink" title="PCB封装库的创建(89C51)"></a>PCB封装库的创建(89C51)</h1><h2 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h2><p>使用Altium Designer绘制89C51的PCB封装库<br>本文以89C51芯片为例</p>
@@ -1693,33 +1693,6 @@ where....</code></pre></li>
       </tags>
   </entry>
   <entry>
-    <title>PCB工程文件的创建</title>
-    <url>/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/</url>
-    <content><![CDATA[<h1 id="PCB工程文件的创建"><a href="#PCB工程文件的创建" class="headerlink" title="PCB工程文件的创建"></a>PCB工程文件的创建</h1><h2 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h2><p>如何使用Altium Designer建立PCB工程。</p>
-<h2 id="本文使用的工具"><a href="#本文使用的工具" class="headerlink" title="本文使用的工具"></a>本文使用的工具</h2><p>Altium Designer 20.1.8</p>
-<a id="more"></a>
-<h2 id="Step1-创建新的工程：File-–-gt-New–-gt-Project"><a href="#Step1-创建新的工程：File-–-gt-New–-gt-Project" class="headerlink" title="Step1: 创建新的工程：File –&gt; New–&gt;Project"></a>Step1: 创建新的工程：File –&gt; New–&gt;Project</h2><img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/PCB%E5%88%9B%E5%BB%BA%E5%B7%A5%E7%A8%8B.png" class title="创建新的工程">
-
-<h2 id="Step2-选择Project-Type-这里选择默认的就好，Project-Name自定义就好。"><a href="#Step2-选择Project-Type-这里选择默认的就好，Project-Name自定义就好。" class="headerlink" title="Step2: 选择Project Type: 这里选择默认的就好，Project Name自定义就好。"></a>Step2: 选择Project Type: 这里选择默认的就好，Project Name自定义就好。</h2><img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E9%80%89%E6%8B%A9projecttype.png" class title="This is an example image">
-<h2 id="Step3-绘制PCB四个基本文件-原理图，原理图库，PCB，PCB库"><a href="#Step3-绘制PCB四个基本文件-原理图，原理图库，PCB，PCB库" class="headerlink" title="Step3: 绘制PCB四个基本文件(原理图，原理图库，PCB，PCB库)"></a>Step3: 绘制PCB四个基本文件(原理图，原理图库，PCB，PCB库)</h2><ol>
-<li>原理图<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524151653.png" class title="原理图"></li>
-<li>原理图库<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524151836.png" class title="原理图库"></li>
-<li>PCB<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524151956.png" class title="PCB"></li>
-<li>PCB图库<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524152118.png" class title="PCB图库">
-
-</li>
-</ol>
-<h2 id="此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例："><a href="#此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例：" class="headerlink" title="此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例："></a>此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例：</h2><img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/FInalResult.png" class title="最终效果图">
-]]></content>
-      <categories>
-        <category>PCB学习笔记</category>
-        <category>89C51</category>
-      </categories>
-      <tags>
-        <tag>PCB</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PCB的导入及前期处理</title>
     <url>/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/</url>
     <content><![CDATA[<h1 id="PCB的导入及前期处理"><a href="#PCB的导入及前期处理" class="headerlink" title="PCB的导入及前期处理"></a>PCB的导入及前期处理</h1><h2 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h2><p>使用Altium Designer将原理图导入PCB<br>本文以89C51原理图为例</p>
@@ -1774,6 +1747,33 @@ where....</code></pre></li>
 
 <h1 id="最后的效果图"><a href="#最后的效果图" class="headerlink" title="最后的效果图"></a>最后的效果图</h1><img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG37.png" class>
 
+]]></content>
+      <categories>
+        <category>PCB学习笔记</category>
+        <category>89C51</category>
+      </categories>
+      <tags>
+        <tag>PCB</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PCB工程文件的创建</title>
+    <url>/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/</url>
+    <content><![CDATA[<h1 id="PCB工程文件的创建"><a href="#PCB工程文件的创建" class="headerlink" title="PCB工程文件的创建"></a>PCB工程文件的创建</h1><h2 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h2><p>如何使用Altium Designer建立PCB工程。</p>
+<h2 id="本文使用的工具"><a href="#本文使用的工具" class="headerlink" title="本文使用的工具"></a>本文使用的工具</h2><p>Altium Designer 20.1.8</p>
+<a id="more"></a>
+<h2 id="Step1-创建新的工程：File-–-gt-New–-gt-Project"><a href="#Step1-创建新的工程：File-–-gt-New–-gt-Project" class="headerlink" title="Step1: 创建新的工程：File –&gt; New–&gt;Project"></a>Step1: 创建新的工程：File –&gt; New–&gt;Project</h2><img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/PCB%E5%88%9B%E5%BB%BA%E5%B7%A5%E7%A8%8B.png" class title="创建新的工程">
+
+<h2 id="Step2-选择Project-Type-这里选择默认的就好，Project-Name自定义就好。"><a href="#Step2-选择Project-Type-这里选择默认的就好，Project-Name自定义就好。" class="headerlink" title="Step2: 选择Project Type: 这里选择默认的就好，Project Name自定义就好。"></a>Step2: 选择Project Type: 这里选择默认的就好，Project Name自定义就好。</h2><img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E9%80%89%E6%8B%A9projecttype.png" class title="This is an example image">
+<h2 id="Step3-绘制PCB四个基本文件-原理图，原理图库，PCB，PCB库"><a href="#Step3-绘制PCB四个基本文件-原理图，原理图库，PCB，PCB库" class="headerlink" title="Step3: 绘制PCB四个基本文件(原理图，原理图库，PCB，PCB库)"></a>Step3: 绘制PCB四个基本文件(原理图，原理图库，PCB，PCB库)</h2><ol>
+<li>原理图<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524151653.png" class title="原理图"></li>
+<li>原理图库<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524151836.png" class title="原理图库"></li>
+<li>PCB<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524151956.png" class title="PCB"></li>
+<li>PCB图库<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524152118.png" class title="PCB图库">
+
+</li>
+</ol>
+<h2 id="此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例："><a href="#此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例：" class="headerlink" title="此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例："></a>此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例：</h2><img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/FInalResult.png" class title="最终效果图">
 ]]></content>
       <categories>
         <category>PCB学习笔记</category>
