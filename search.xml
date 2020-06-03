@@ -1,6 +1,292 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>JDBC</title>
+    <url>/2020/06/03/JDBC/</url>
+    <content><![CDATA[<h2 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h2><p>JavaWeb学习笔记之JDBC</p>
+<h1 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
+<li>Java Database Connectivity Java数据库连接，Java语言操作数据库。</li>
+<li>定义一套操作所有关系型数据库的接口</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li><p>导入驱动jar包</p>
+</li>
+<li><p>注册驱动 </p>
+<p>Class.forName(“com.mysql.Driver”);</p>
+</li>
+<li><p>获取数据库的连接对象Connection</p>
+<p>Connection conn = DriverManager.getConnection(“jbdc:mysql://localhost:3306/数据库名称”,”root”,”password”);</p>
+</li>
+<li><p>定义sql</p>
+<p>String sql = “”;</p>
+</li>
+<li><p>获取执行sql语句的对象Statement</p>
+<p>Statement stmt = conn.createStatement();</p>
+</li>
+<li><p>执行sql，接收返回的结果</p>
+<p>int count = stmt.executeUpdate(sql); // 根据操作需求</p>
+</li>
+<li><p>处理结果</p>
+</li>
+<li><p>释放资源</p>
+<p>stmt.close();</p>
+<p>conn.close();</p>
+</li>
+</ol>
+<h2 id="详解各个对象"><a href="#详解各个对象" class="headerlink" title="详解各个对象"></a>详解各个对象</h2><ul>
+<li><p>DriverManager驱动管理对象</p>
+<ol>
+<li><p>注册驱动</p>
+<p>static void registerDirver(Dirver driver): 注册给定的驱动程序DriverManager</p>
+<p>写代码用Class.forName(“com.mysql.Driver”);</p>
+<p>mysql5之后的驱动jar包可以省略注册驱动的步骤</p>
+</li>
+<li><p>获取数据库连接</p>
+<p>方法：static Connection getConnection(String url, String user, String password)</p>
+<p>参数： url： 指定连接的路径 ： jbdc:mysql://ip地址:端口号/数据库名称</p>
+<p>​            user/password：用户名和密码</p>
+</li>
+</ol>
+</li>
+<li><p>Connection数据库连接对象</p>
+<ol>
+<li>获取执行sql的对象<ul>
+<li>Statement createStatement();</li>
+<li>PreparedStatement prepareStatement(String sql)</li>
+</ul>
+</li>
+<li>管理事务<ul>
+<li>开启事务： void setAutoCommit(boolean autoCommit): 调用该方法设置参数为false，即开启事务</li>
+<li>提交事务： void commit()</li>
+<li>回滚事务： rollback()</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>Statement执行sql对象</p>
+<ul>
+<li>执行sql<ol>
+<li>boolean execute(String sql): 可以执行任意的sql</li>
+<li>int executeUpdate(String sql): 执行DML(insert, update, delete)语句，DDL(create，alter，drop)语句</li>
+<li>ResultSet executeQuery(String sql): 执行DQL（Select）语句</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>ResultSet结果集对象</p>
+<ul>
+<li><p>next(): 游标向下移动一行</p>
+</li>
+<li><p>getXxx(): 获取数据 </p>
+<ul>
+<li><p>Xxx：代表数据类型</p>
+</li>
+<li><p>参数:</p>
+<ol>
+<li>int: 代表列的编号，编号从1开始</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>String：列名称</li>
+</ol>
+<ul>
+<li>使用步骤<ol>
+<li>游标向下移动一行</li>
+<li>判断是否有数据</li>
+<li>获取数据</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>PrepareStatement执行sql对象</p>
+</li>
+</ul>
+<h2 id="抽取JDBC工具类："><a href="#抽取JDBC工具类：" class="headerlink" title="抽取JDBC工具类："></a>抽取JDBC工具类：</h2><ul>
+<li><p>配置文件</p>
+<pre><code>jdbc.properties
+    url=
+    user=
+    password=</code></pre></li>
+<li><p>代码实现</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JDBCUtils</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String url;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String user;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String password;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String driver;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 文件的读取，只需要读取一次即可拿到这些值。使用静态代码块</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        <span class="comment">//读取资源文件，获取值。</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//1. 创建Properties集合类。</span></span><br><span class="line">            Properties pro = <span class="keyword">new</span> Properties();</span><br><span class="line"></span><br><span class="line">            <span class="comment">//获取src路径下的文件的方式---&gt;ClassLoader 类加载器</span></span><br><span class="line">            ClassLoader classLoader = JDBCUtils<span class="class">.<span class="keyword">class</span>.<span class="title">getClassLoader</span>()</span>;</span><br><span class="line">            URL res  = classLoader.getResource(<span class="string">"jdbc.properties"</span>);</span><br><span class="line">            String path = res.getPath();</span><br><span class="line">            System.out.println(path);<span class="comment">///D:/IdeaProjects/itcast/out/production/day04_jdbc/jdbc.properties</span></span><br><span class="line">            <span class="comment">//2. 加载文件</span></span><br><span class="line">           <span class="comment">// pro.load(new FileReader("D:\\IdeaProjects\\itcast\\day04_jdbc\\src\\jdbc.properties"));</span></span><br><span class="line">            pro.load(<span class="keyword">new</span> FileReader(path));</span><br><span class="line"></span><br><span class="line">            <span class="comment">//3. 获取数据，赋值</span></span><br><span class="line">            url = pro.getProperty(<span class="string">"url"</span>);</span><br><span class="line">            user = pro.getProperty(<span class="string">"user"</span>);</span><br><span class="line">            password = pro.getProperty(<span class="string">"password"</span>);</span><br><span class="line">            driver = pro.getProperty(<span class="string">"driver"</span>);</span><br><span class="line">            <span class="comment">//4. 注册驱动</span></span><br><span class="line">            Class.forName(driver);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取连接</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 连接对象</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> DriverManager.getConnection(url, user, password);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 释放资源</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> stmt</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> conn</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">(Statement stmt,Connection conn)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>( stmt != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                stmt.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>( conn != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                conn.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaWeb学习笔记</category>
+      </categories>
+      <tags>
+        <tag>JavaWeb</tag>
+        <tag>JDBC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Bootstrap</title>
+    <url>/2020/06/03/BootStrap/</url>
+    <content><![CDATA[<h2 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h2><p>JavaWeb学习笔记之Bootstrap</p>
+<h1 id="Bootstrap："><a href="#Bootstrap：" class="headerlink" title="Bootstrap："></a>Bootstrap：</h1><ol>
+<li><p>框架:一个半成品软件，开发人员可以在框架基础上，在进行开发，简化编码。</p>
+</li>
+<li><p>好处：</p>
+<ol>
+<li>定义了很多的css样式和js插件。我们开发人员直接可以使用这些样式和插件得到丰富的页面效果。</li>
+<li>响应式布局。<ul>
+<li>同一套页面可以兼容不同分辨率的设备。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>快速入门</p>
+<ol>
+<li>下载Bootstrap</li>
+<li>在项目中将这三个文件夹复制</li>
+<li>创建html页面，引入必要的资源文件<a id="more"></a>
+
+</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Bootstrap HelloWorld<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Bootstrap --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"css/bootstrap.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery-3.2.1.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/bootstrap.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>你好，世界！<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<p>​<br>            <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) --><br>            <script src="js/jquery-3.2.1.min.js"></script><br>            <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 --><br>            <script src="js/bootstrap.min.js"></script><br>        <br>        <body><br>        <h1>你好，世界！</h1></body></p>
+<pre><code>&lt;/body&gt;
+&lt;/html&gt;</code></pre><h2 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h2><ul>
+<li><p>同一套页面可以兼容不同分辨率的设备。</p>
+</li>
+<li><p>实现：依赖于栅格系统：将一行平均分成12个格子，可以指定元素占几个格子</p>
+</li>
+<li><p>步骤：</p>
+<ol>
+<li>定义容器。相当于之前的table、<ul>
+<li>容器分类：<ol>
+<li>container：两边留白</li>
+<li>container-fluid：每一种设备都是100%宽度</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>定义行。相当于之前的tr   样式：row</li>
+<li>定义元素。指定该元素在不同的设备上，所占的格子数目。样式：col-设备代号-格子数目<ul>
+<li>设备代号：<ol>
+<li>xs：超小屏幕 手机 (&lt;768px)：col-xs-12</li>
+<li>sm：小屏幕 平板 (≥768px)</li>
+<li>md：中等屏幕 桌面显示器 (≥992px)</li>
+<li>lg：大屏幕 大桌面显示器 (≥1200px)</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>注意：<ol>
+<li>一行中如果格子数目超过12，则超出部分自动换行。</li>
+<li>栅格类属性可以向上兼容。栅格类适用于与屏幕宽度大于或等于分界点大小的设备。</li>
+<li>如果真实设备宽度小于了设置栅格类属性的设备代码的最小值，会一个元素沾满一整行。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="CSS样式和JS插件"><a href="#CSS样式和JS插件" class="headerlink" title="CSS样式和JS插件"></a>CSS样式和JS插件</h2><ol>
+<li>全局CSS样式：<ul>
+<li>按钮：class=”btn btn-default”</li>
+<li>图片：<ul>
+<li>class=”img-responsive”：图片在任意尺寸都占100%</li>
+<li>图片形状</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"..."</span> <span class="attr">alt</span>=<span class="string">"..."</span> <span class="attr">class</span>=<span class="string">"img-rounded"</span>&gt;</span>：方形</span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"..."</span> <span class="attr">alt</span>=<span class="string">"..."</span> <span class="attr">class</span>=<span class="string">"img-circle"</span>&gt;</span> ： 圆形</span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"..."</span> <span class="attr">alt</span>=<span class="string">"..."</span> <span class="attr">class</span>=<span class="string">"img-thumbnail"</span>&gt;</span> ：相框</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>表格<pre><code>* table
+* table-bordered 边框
+* table-hover 悬浮效果</code></pre><ul>
+<li>表单<ul>
+<li>给表单项添加：class=”form-control” </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>组件：<ul>
+<li>导航条</li>
+<li>分页条</li>
+</ul>
+</li>
+<li>插件：<ul>
+<li>轮播图</li>
+</ul>
+</li>
+</ol>
+<p>​    </p>
+<p>​    </p>
+]]></content>
+      <categories>
+        <category>JavaWeb学习笔记</category>
+      </categories>
+      <tags>
+        <tag>JavaWeb</tag>
+        <tag>Bootstrap</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java多线程基础</title>
+    <url>/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h1><p>Java多线程基础知识，包括进程，线程以及他们的关系</p>
+<a id="more"></a>
+
+<h1 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h1><ul>
+<li>进程：一个任务称为一个进程。</li>
+<li>进程内同时执行多个子任务，子任务称为线程。</li>
+<li>进程和线程的关系：一个进程可以包含一个或多个线程，但至少会有一个线程。</li>
+</ul>
+<p>具体如图所示：</p>
+<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B.png" class title="进程与线程">
+
+<h2 id="多进程模式"><a href="#多进程模式" class="headerlink" title="多进程模式"></a>多进程模式</h2><p>即每个进程只有一个线程</p>
+<p>如图所示：</p>
+<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%BC%8F.png" class title="多进程模式">
+
+<h2 id="多线程模式"><a href="#多线程模式" class="headerlink" title="多线程模式"></a>多线程模式</h2><p>即一个进程有多个线程</p>
+<p>如图所示：</p>
+<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%BC%8F.png" class title="多线程模式">
+
+<h2 id="多线程-多进程模式（复杂度最高）"><a href="#多线程-多进程模式（复杂度最高）" class="headerlink" title="多线程+多进程模式（复杂度最高）"></a>多线程+多进程模式（复杂度最高）</h2><p>多进程和多线程混合模式</p>
+<p>如图所示</p>
+<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%A4%9A%E7%BA%BF%E7%A8%8B+%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%BC%8F.png" class title="多线程+多进程模式">
+
+<h2 id="进程VS线程"><a href="#进程VS线程" class="headerlink" title="进程VS线程"></a>进程VS线程</h2><ol>
+<li>进程和线程是包含关系，但是多任务既可以由多进程实现，也可以由单进程内的多线程实现，还可以混合多线程+多进程。</li>
+<li>和多线程相相比，多进程的缺点：创建进程比创建线程开销大，尤其是在windows上；进程间通信比线程的通信要慢，因为线程见通信就是读写同一个变量，速度快。</li>
+<li>多进程的优点：多进程稳定性比多线程高，因为在多进程的情况下，一个进程崩溃不会影响到其他进程，而在多线程的情况下，任何一个线程崩溃会直接导致整个进程崩溃。</li>
+</ol>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><ol>
+<li>Java语言内置了多线程支持：一个Java程序实际上是一个JVM进程，JVM进程用一个主线程来执行main()方法，在main()方法内部，我们又可以启动多个线程。此外，JVM还有负责垃圾回收的其他工作线程等。使用多线程实现多任务。</li>
+<li>和单线程相比，多线程编程的特点在于：多想成经常需要读写共享数据，并且需要同步。多线程编程复杂度更高，调试更困难。</li>
+<li>多线程的特点：多线程模型是Java程序最基本的并发模型；后续读写网络，数据库，Web开发等都依赖Java多线程模型。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java多线程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java基础知识（一）</title>
     <url>/2020/05/28/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<h1 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h1><p>本文主要总结常见Java基础知识面试题（一）</p>
@@ -401,51 +687,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java多线程基础</title>
-    <url>/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<h1 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h1><p>Java多线程基础知识，包括进程，线程以及他们的关系</p>
-<a id="more"></a>
-
-<h1 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a>进程与线程</h1><ul>
-<li>进程：一个任务称为一个进程。</li>
-<li>进程内同时执行多个子任务，子任务称为线程。</li>
-<li>进程和线程的关系：一个进程可以包含一个或多个线程，但至少会有一个线程。</li>
-</ul>
-<p>具体如图所示：</p>
-<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B.png" class title="进程与线程">
-
-<h2 id="多进程模式"><a href="#多进程模式" class="headerlink" title="多进程模式"></a>多进程模式</h2><p>即每个进程只有一个线程</p>
-<p>如图所示：</p>
-<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%BC%8F.png" class title="多进程模式">
-
-<h2 id="多线程模式"><a href="#多线程模式" class="headerlink" title="多线程模式"></a>多线程模式</h2><p>即一个进程有多个线程</p>
-<p>如图所示：</p>
-<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%BC%8F.png" class title="多线程模式">
-
-<h2 id="多线程-多进程模式（复杂度最高）"><a href="#多线程-多进程模式（复杂度最高）" class="headerlink" title="多线程+多进程模式（复杂度最高）"></a>多线程+多进程模式（复杂度最高）</h2><p>多进程和多线程混合模式</p>
-<p>如图所示</p>
-<img src="/2020/05/29/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%A4%9A%E7%BA%BF%E7%A8%8B+%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%BC%8F.png" class title="多线程+多进程模式">
-
-<h2 id="进程VS线程"><a href="#进程VS线程" class="headerlink" title="进程VS线程"></a>进程VS线程</h2><ol>
-<li>进程和线程是包含关系，但是多任务既可以由多进程实现，也可以由单进程内的多线程实现，还可以混合多线程+多进程。</li>
-<li>和多线程相相比，多进程的缺点：创建进程比创建线程开销大，尤其是在windows上；进程间通信比线程的通信要慢，因为线程见通信就是读写同一个变量，速度快。</li>
-<li>多进程的优点：多进程稳定性比多线程高，因为在多进程的情况下，一个进程崩溃不会影响到其他进程，而在多线程的情况下，任何一个线程崩溃会直接导致整个进程崩溃。</li>
-</ol>
-<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><ol>
-<li>Java语言内置了多线程支持：一个Java程序实际上是一个JVM进程，JVM进程用一个主线程来执行main()方法，在main()方法内部，我们又可以启动多个线程。此外，JVM还有负责垃圾回收的其他工作线程等。使用多线程实现多任务。</li>
-<li>和单线程相比，多线程编程的特点在于：多想成经常需要读写共享数据，并且需要同步。多线程编程复杂度更高，调试更困难。</li>
-<li>多线程的特点：多线程模型是Java程序最基本的并发模型；后续读写网络，数据库，Web开发等都依赖Java多线程模型。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java多线程</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>多线程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode20 Valid Parentheses</title>
     <url>/2020/05/23/LeetCode20/</url>
     <content><![CDATA[<h1 id="Leetcode20-Valid-Parentheses"><a href="#Leetcode20-Valid-Parentheses" class="headerlink" title="Leetcode20 Valid Parentheses"></a>Leetcode20 Valid Parentheses</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given a string containing just the characters &#39;(&#39;, &#39;)&#39;, &#39;&#123;&#39;, &#39;&#125;&#39;, &#39;[&#39; and &#39;]&#39;, </span><br><span class="line">determine if the input string is valid.</span><br><span class="line"></span><br><span class="line">An input string is valid if:</span><br><span class="line"></span><br><span class="line">Open brackets must be closed by the same type of brackets.</span><br><span class="line">Open brackets must be closed in the correct order.</span><br><span class="line">Note that an empty string is also considered valid.</span><br><span class="line"></span><br><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: &quot;()&quot;</span><br><span class="line">Output: true</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: &quot;()[]&#123;&#125;&quot;</span><br><span class="line">Output: true</span><br><span class="line">Example 3:</span><br><span class="line"></span><br><span class="line">Input: &quot;(]&quot;</span><br><span class="line">Output: false</span><br><span class="line">Example 4:</span><br><span class="line"></span><br><span class="line">Input: &quot;([)]&quot;</span><br><span class="line">Output: false</span><br><span class="line">Example 5:</span><br><span class="line"></span><br><span class="line">Input: &quot;&#123;[]&#125;&quot;</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
@@ -480,49 +721,6 @@
         <tag>Medium</tag>
         <tag>String</tag>
         <tag>DP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode994 Rotting Oranges</title>
-    <url>/2020/05/23/LeetCode994/</url>
-    <content><![CDATA[<h1 id="LeetCode994-Rotting-Oranges"><a href="#LeetCode994-Rotting-Oranges" class="headerlink" title="LeetCode994 Rotting Oranges"></a>LeetCode994 Rotting Oranges</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>In a given grid, each cell can have one of three values:</p>
-<ul>
-<li>the value <code>0</code> representing an empty cell;</li>
-<li>the value <code>1</code> representing a fresh orange;</li>
-<li>the value <code>2</code> representing a rotten orange.</li>
-</ul>
-<p>Every minute, any fresh orange that is adjacent (4-directionally) to a rotten orange becomes rotten.</p>
-<p>Return the minimum number of minutes that must elapse until no cell has a fresh orange. If this is impossible, return <code>-1</code> instead.</p>
-<a id="more"></a>
-<p><strong>Example 1:</strong></p>
-<p><strong><img src="https://assets.leetcode.com/uploads/2019/02/16/oranges.png" alt="img"></strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [[2,1,1],[1,1,0],[0,1,1]]</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [[2,1,1],[0,1,1],[1,0,1]]</span><br><span class="line">Output: -1</span><br><span class="line">Explanation:  The orange in the bottom left corner (row 2, column 0) is never rotten, because rotting only happens 4-directionally.</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [[0,2]]</span><br><span class="line">Output: 0</span><br><span class="line">Explanation:  Since there are already no fresh oranges at minute 0, the answer is just 0.</span><br></pre></td></tr></table></figure>
-
-<p><strong>Note:</strong></p>
-<ol>
-<li><code>1 &lt;= grid.length &lt;= 10</code></li>
-<li><code>1 &lt;= grid[0].length &lt;= 10</code></li>
-<li><code>grid[i][j]</code> is only <code>0</code>, <code>1</code>, or <code>2</code>.</li>
-</ol>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h4 id="Step1-统计数组中的新鲜橘子的个数，统计腐败橘子并记录腐败橘子的位置，将记录的值放入数组中。"><a href="#Step1-统计数组中的新鲜橘子的个数，统计腐败橘子并记录腐败橘子的位置，将记录的值放入数组中。" class="headerlink" title="Step1: 统计数组中的新鲜橘子的个数，统计腐败橘子并记录腐败橘子的位置，将记录的值放入数组中。"></a>Step1: 统计数组中的新鲜橘子的个数，统计腐败橘子并记录腐败橘子的位置，将记录的值放入数组中。</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> fresh=<span class="number">0</span>;</span><br><span class="line">Queue&lt;<span class="keyword">int</span>[]&gt; q = <span class="keyword">new</span> LinkedList();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>;x&lt;grid.length;x++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> y=<span class="number">0</span>;y&lt;grid[<span class="number">0</span>].length;y++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(grid[x][y]==<span class="number">1</span>)</span><br><span class="line">            fresh++;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(grid[x][y]==<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> array[]=&#123;x,y&#125;;</span><br><span class="line">            q.add(array);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Step2-设定方向数组direction-1-0-1-0-1-因为每个腐败橘子会让其上下左右腐败，根据方向进行BFS。"><a href="#Step2-设定方向数组direction-1-0-1-0-1-因为每个腐败橘子会让其上下左右腐败，根据方向进行BFS。" class="headerlink" title="Step2: 设定方向数组direction[1,0,-1,0,1] 因为每个腐败橘子会让其上下左右腐败，根据方向进行BFS。"></a>Step2: 设定方向数组direction[1,0,-1,0,1] 因为每个腐败橘子会让其上下左右腐败，根据方向进行BFS。</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> minutes=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> direction[]=&#123;<span class="number">1</span>,<span class="number">0</span>,-<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">while</span>(fresh!=<span class="number">0</span> &amp;&amp; !q.isEmpty())&#123;</span><br><span class="line">    <span class="keyword">int</span> size = q.size();</span><br><span class="line">    <span class="keyword">while</span>(size!=<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> arr[]=q.remove();</span><br><span class="line">        <span class="keyword">int</span> x=arr[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> y=arr[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> dx=x+direction[i];</span><br><span class="line">            <span class="keyword">int</span> dy=y+direction[i+<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span>(dx&lt;<span class="number">0</span>||dx&gt;=grid.length||dy&lt;<span class="number">0</span>||dy&gt;=grid[<span class="number">0</span>].length||grid[dx][dy]!=<span class="number">1</span>)</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            fresh--;</span><br><span class="line">            grid[dx][dy]=<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span> n[]=&#123;dx,dy&#125;;</span><br><span class="line">            q.add(n);</span><br><span class="line">        &#125;</span><br><span class="line">        size--;</span><br><span class="line">    &#125;</span><br><span class="line">    minutes++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Step3：因为会存在与腐败橘子不相邻的新鲜橘子，因此当fresh不为0时，返回-1"><a href="#Step3：因为会存在与腐败橘子不相邻的新鲜橘子，因此当fresh不为0时，返回-1" class="headerlink" title="Step3：因为会存在与腐败橘子不相邻的新鲜橘子，因此当fresh不为0时，返回-1."></a>Step3：因为会存在与腐败橘子不相邻的新鲜橘子，因此当fresh不为0时，返回-1.</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(fresh==<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> minutes;</span><br><span class="line"><span class="keyword">return</span> -<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Medium</category>
-      </categories>
-      <tags>
-        <tag>Medium</tag>
-        <tag>BFS</tag>
       </tags>
   </entry>
   <entry>
@@ -587,6 +785,49 @@
       </tags>
   </entry>
   <entry>
+    <title>LeetCode994 Rotting Oranges</title>
+    <url>/2020/05/23/LeetCode994/</url>
+    <content><![CDATA[<h1 id="LeetCode994-Rotting-Oranges"><a href="#LeetCode994-Rotting-Oranges" class="headerlink" title="LeetCode994 Rotting Oranges"></a>LeetCode994 Rotting Oranges</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>In a given grid, each cell can have one of three values:</p>
+<ul>
+<li>the value <code>0</code> representing an empty cell;</li>
+<li>the value <code>1</code> representing a fresh orange;</li>
+<li>the value <code>2</code> representing a rotten orange.</li>
+</ul>
+<p>Every minute, any fresh orange that is adjacent (4-directionally) to a rotten orange becomes rotten.</p>
+<p>Return the minimum number of minutes that must elapse until no cell has a fresh orange. If this is impossible, return <code>-1</code> instead.</p>
+<a id="more"></a>
+<p><strong>Example 1:</strong></p>
+<p><strong><img src="https://assets.leetcode.com/uploads/2019/02/16/oranges.png" alt="img"></strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [[2,1,1],[1,1,0],[0,1,1]]</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [[2,1,1],[0,1,1],[1,0,1]]</span><br><span class="line">Output: -1</span><br><span class="line">Explanation:  The orange in the bottom left corner (row 2, column 0) is never rotten, because rotting only happens 4-directionally.</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [[0,2]]</span><br><span class="line">Output: 0</span><br><span class="line">Explanation:  Since there are already no fresh oranges at minute 0, the answer is just 0.</span><br></pre></td></tr></table></figure>
+
+<p><strong>Note:</strong></p>
+<ol>
+<li><code>1 &lt;= grid.length &lt;= 10</code></li>
+<li><code>1 &lt;= grid[0].length &lt;= 10</code></li>
+<li><code>grid[i][j]</code> is only <code>0</code>, <code>1</code>, or <code>2</code>.</li>
+</ol>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h4 id="Step1-统计数组中的新鲜橘子的个数，统计腐败橘子并记录腐败橘子的位置，将记录的值放入数组中。"><a href="#Step1-统计数组中的新鲜橘子的个数，统计腐败橘子并记录腐败橘子的位置，将记录的值放入数组中。" class="headerlink" title="Step1: 统计数组中的新鲜橘子的个数，统计腐败橘子并记录腐败橘子的位置，将记录的值放入数组中。"></a>Step1: 统计数组中的新鲜橘子的个数，统计腐败橘子并记录腐败橘子的位置，将记录的值放入数组中。</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> fresh=<span class="number">0</span>;</span><br><span class="line">Queue&lt;<span class="keyword">int</span>[]&gt; q = <span class="keyword">new</span> LinkedList();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>;x&lt;grid.length;x++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> y=<span class="number">0</span>;y&lt;grid[<span class="number">0</span>].length;y++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(grid[x][y]==<span class="number">1</span>)</span><br><span class="line">            fresh++;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(grid[x][y]==<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> array[]=&#123;x,y&#125;;</span><br><span class="line">            q.add(array);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Step2-设定方向数组direction-1-0-1-0-1-因为每个腐败橘子会让其上下左右腐败，根据方向进行BFS。"><a href="#Step2-设定方向数组direction-1-0-1-0-1-因为每个腐败橘子会让其上下左右腐败，根据方向进行BFS。" class="headerlink" title="Step2: 设定方向数组direction[1,0,-1,0,1] 因为每个腐败橘子会让其上下左右腐败，根据方向进行BFS。"></a>Step2: 设定方向数组direction[1,0,-1,0,1] 因为每个腐败橘子会让其上下左右腐败，根据方向进行BFS。</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> minutes=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> direction[]=&#123;<span class="number">1</span>,<span class="number">0</span>,-<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">while</span>(fresh!=<span class="number">0</span> &amp;&amp; !q.isEmpty())&#123;</span><br><span class="line">    <span class="keyword">int</span> size = q.size();</span><br><span class="line">    <span class="keyword">while</span>(size!=<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> arr[]=q.remove();</span><br><span class="line">        <span class="keyword">int</span> x=arr[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> y=arr[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> dx=x+direction[i];</span><br><span class="line">            <span class="keyword">int</span> dy=y+direction[i+<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span>(dx&lt;<span class="number">0</span>||dx&gt;=grid.length||dy&lt;<span class="number">0</span>||dy&gt;=grid[<span class="number">0</span>].length||grid[dx][dy]!=<span class="number">1</span>)</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            fresh--;</span><br><span class="line">            grid[dx][dy]=<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span> n[]=&#123;dx,dy&#125;;</span><br><span class="line">            q.add(n);</span><br><span class="line">        &#125;</span><br><span class="line">        size--;</span><br><span class="line">    &#125;</span><br><span class="line">    minutes++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Step3：因为会存在与腐败橘子不相邻的新鲜橘子，因此当fresh不为0时，返回-1"><a href="#Step3：因为会存在与腐败橘子不相邻的新鲜橘子，因此当fresh不为0时，返回-1" class="headerlink" title="Step3：因为会存在与腐败橘子不相邻的新鲜橘子，因此当fresh不为0时，返回-1."></a>Step3：因为会存在与腐败橘子不相邻的新鲜橘子，因此当fresh不为0时，返回-1.</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(fresh==<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> minutes;</span><br><span class="line"><span class="keyword">return</span> -<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Medium</category>
+      </categories>
+      <tags>
+        <tag>Medium</tag>
+        <tag>BFS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>June Leetcoding Challenge(6.2)</title>
     <url>/2020/06/02/LeetCodeJune2nd/</url>
     <content><![CDATA[<h1 id="Delete-Node-in-a-Linked-List"><a href="#Delete-Node-in-a-Linked-List" class="headerlink" title="Delete Node in a Linked List"></a>Delete Node in a Linked List</h1><p>Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.</p>
@@ -625,6 +866,24 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode127. Ladder</title>
+    <url>/2020/05/23/Leetcode127/</url>
+    <content><![CDATA[<h1 id="Leetcode127-Ladder"><a href="#Leetcode127-Ladder" class="headerlink" title="Leetcode127. Ladder"></a>Leetcode127. Ladder</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given two words (beginWord and endWord), and a dictionary&#39;s word list, find the length of shortest transformation sequence from beginWord to endWord, such that:</span><br><span class="line"></span><br><span class="line">Only one letter can be changed at a time.</span><br><span class="line">Each transformed word must exist in the word list.</span><br><span class="line">Note:</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line">Return 0 if there is no such transformation sequence.</span><br><span class="line">All words have the same length.</span><br><span class="line">All words contain only lowercase alphabetic characters.</span><br><span class="line">You may assume no duplicates in the word list.</span><br><span class="line">You may assume beginWord and endWord are non-empty and are not the same.</span><br><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">beginWord &#x3D; &quot;hit&quot;,</span><br><span class="line">endWord &#x3D; &quot;cog&quot;,</span><br><span class="line">wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]</span><br><span class="line"></span><br><span class="line">Output: 5</span><br><span class="line"></span><br><span class="line">Explanation: As one shortest transformation is &quot;hit&quot; -&gt; &quot;hot&quot; -&gt; &quot;dot&quot; -&gt; &quot;dog&quot; -&gt; &quot;cog&quot;,</span><br><span class="line">return its length 5.</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">beginWord &#x3D; &quot;hit&quot;</span><br><span class="line">endWord &#x3D; &quot;cog&quot;</span><br><span class="line">wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;]</span><br><span class="line"></span><br><span class="line">Output: 0</span><br><span class="line"></span><br><span class="line">Explanation: The endWord &quot;cog&quot; is not in wordList, therefore no possible transformation.</span><br></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>两种方法：<br>BFS使用队列；使用双向BFS，使用HashSet<br>双向BFS:<br>将wordlist放入HashSet中，如果最后的endword不在wordlist中，直接返回0。将startword和endword放入HashSet中，设step为0，当start 和end不为空时进入循环，当进入到循环后，step++，为保证平衡，当start的size大于end的size，交换end和star。设定一个临时的hashset。根据start里的word，每个位置替换26个字母，如果新的word在endword当中存在，返回step+1.如果wordlist没有新的word，继续循环。否则代表还没到end且wordlist中含有新的word，则将wordlist中的该元素去除（如若重复使用，长度必将增大），result中加入新的word。最后将word改回原来的值并将暂时的result作为start开启下一轮循环。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//BFS使用队列</span></span><br><span class="line"><span class="comment">//使用双向BFS，使用HashSet</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">ladderLength</span><span class="params">(String beginWord, String endWord, List&lt;String&gt; wordList)</span> </span>&#123;</span><br><span class="line">        HashSet&lt;String&gt; wordlist= <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(String word: wordList)&#123;</span><br><span class="line">            wordlist.add(word);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!wordlist.contains(endWord))</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        HashSet&lt;String&gt; start = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">        HashSet&lt;String&gt; end = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">        <span class="keyword">int</span> step=<span class="number">0</span>;</span><br><span class="line">        start.add(beginWord);</span><br><span class="line">        end.add(endWord);</span><br><span class="line">        <span class="keyword">while</span>(!start.isEmpty()&amp;&amp;!end.isEmpty())&#123;</span><br><span class="line">            ++step;</span><br><span class="line">            <span class="keyword">if</span>(start.size()&gt;end.size())&#123;<span class="comment">//当start的大小比end大时，交换两个set以保证平衡</span></span><br><span class="line">                HashSet&lt;String&gt; cur = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">                cur = end;</span><br><span class="line">                end = start;</span><br><span class="line">                start = cur;</span><br><span class="line">            &#125;</span><br><span class="line">            HashSet&lt;String&gt; result = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">            <span class="keyword">for</span>(String word: start)&#123;</span><br><span class="line">                <span class="keyword">char</span>[] ch = word.toCharArray();</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;beginWord.length();i++)&#123;</span><br><span class="line">                    <span class="keyword">char</span> c = ch[i];</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">char</span> j=<span class="string">'a'</span>;j&lt;=<span class="string">'z'</span>;j++)&#123;</span><br><span class="line">                        ch[i]=j;</span><br><span class="line">                        String w = <span class="keyword">new</span> String(ch);</span><br><span class="line">                        <span class="keyword">if</span>(end.contains(w)) <span class="keyword">return</span> step+<span class="number">1</span>;</span><br><span class="line">                        <span class="keyword">if</span>(!wordlist.contains(w)) <span class="keyword">continue</span>;</span><br><span class="line">                        wordlist.remove(w);</span><br><span class="line">                        result.add(w);</span><br><span class="line">                    &#125;</span><br><span class="line">                    ch[i]=c;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            start = result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Medium</category>
+      </categories>
+      <tags>
+        <tag>Medium</tag>
+        <tag>BFS</tag>
+        <tag>HashSet</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode121 Best Time to Buy and Sell Stock</title>
     <url>/2020/05/23/Leetcode121/</url>
     <content><![CDATA[<h1 id="Leetcode121-Best-Time-to-Buy-and-Sell-Stock"><a href="#Leetcode121-Best-Time-to-Buy-and-Sell-Stock" class="headerlink" title="Leetcode121 Best Time to Buy and Sell Stock"></a>Leetcode121 Best Time to Buy and Sell Stock</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><strong>Example 1:</strong></p>
@@ -643,24 +902,6 @@
       <tags>
         <tag>Medium</tag>
         <tag>DFS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode127. Ladder</title>
-    <url>/2020/05/23/Leetcode127/</url>
-    <content><![CDATA[<h1 id="Leetcode127-Ladder"><a href="#Leetcode127-Ladder" class="headerlink" title="Leetcode127. Ladder"></a>Leetcode127. Ladder</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given two words (beginWord and endWord), and a dictionary&#39;s word list, find the length of shortest transformation sequence from beginWord to endWord, such that:</span><br><span class="line"></span><br><span class="line">Only one letter can be changed at a time.</span><br><span class="line">Each transformed word must exist in the word list.</span><br><span class="line">Note:</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line">Return 0 if there is no such transformation sequence.</span><br><span class="line">All words have the same length.</span><br><span class="line">All words contain only lowercase alphabetic characters.</span><br><span class="line">You may assume no duplicates in the word list.</span><br><span class="line">You may assume beginWord and endWord are non-empty and are not the same.</span><br><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">beginWord &#x3D; &quot;hit&quot;,</span><br><span class="line">endWord &#x3D; &quot;cog&quot;,</span><br><span class="line">wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]</span><br><span class="line"></span><br><span class="line">Output: 5</span><br><span class="line"></span><br><span class="line">Explanation: As one shortest transformation is &quot;hit&quot; -&gt; &quot;hot&quot; -&gt; &quot;dot&quot; -&gt; &quot;dog&quot; -&gt; &quot;cog&quot;,</span><br><span class="line">return its length 5.</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">beginWord &#x3D; &quot;hit&quot;</span><br><span class="line">endWord &#x3D; &quot;cog&quot;</span><br><span class="line">wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;]</span><br><span class="line"></span><br><span class="line">Output: 0</span><br><span class="line"></span><br><span class="line">Explanation: The endWord &quot;cog&quot; is not in wordList, therefore no possible transformation.</span><br></pre></td></tr></table></figure>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>两种方法：<br>BFS使用队列；使用双向BFS，使用HashSet<br>双向BFS:<br>将wordlist放入HashSet中，如果最后的endword不在wordlist中，直接返回0。将startword和endword放入HashSet中，设step为0，当start 和end不为空时进入循环，当进入到循环后，step++，为保证平衡，当start的size大于end的size，交换end和star。设定一个临时的hashset。根据start里的word，每个位置替换26个字母，如果新的word在endword当中存在，返回step+1.如果wordlist没有新的word，继续循环。否则代表还没到end且wordlist中含有新的word，则将wordlist中的该元素去除（如若重复使用，长度必将增大），result中加入新的word。最后将word改回原来的值并将暂时的result作为start开启下一轮循环。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//BFS使用队列</span></span><br><span class="line"><span class="comment">//使用双向BFS，使用HashSet</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">ladderLength</span><span class="params">(String beginWord, String endWord, List&lt;String&gt; wordList)</span> </span>&#123;</span><br><span class="line">        HashSet&lt;String&gt; wordlist= <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(String word: wordList)&#123;</span><br><span class="line">            wordlist.add(word);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!wordlist.contains(endWord))</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        HashSet&lt;String&gt; start = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">        HashSet&lt;String&gt; end = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">        <span class="keyword">int</span> step=<span class="number">0</span>;</span><br><span class="line">        start.add(beginWord);</span><br><span class="line">        end.add(endWord);</span><br><span class="line">        <span class="keyword">while</span>(!start.isEmpty()&amp;&amp;!end.isEmpty())&#123;</span><br><span class="line">            ++step;</span><br><span class="line">            <span class="keyword">if</span>(start.size()&gt;end.size())&#123;<span class="comment">//当start的大小比end大时，交换两个set以保证平衡</span></span><br><span class="line">                HashSet&lt;String&gt; cur = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">                cur = end;</span><br><span class="line">                end = start;</span><br><span class="line">                start = cur;</span><br><span class="line">            &#125;</span><br><span class="line">            HashSet&lt;String&gt; result = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">            <span class="keyword">for</span>(String word: start)&#123;</span><br><span class="line">                <span class="keyword">char</span>[] ch = word.toCharArray();</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;beginWord.length();i++)&#123;</span><br><span class="line">                    <span class="keyword">char</span> c = ch[i];</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">char</span> j=<span class="string">'a'</span>;j&lt;=<span class="string">'z'</span>;j++)&#123;</span><br><span class="line">                        ch[i]=j;</span><br><span class="line">                        String w = <span class="keyword">new</span> String(ch);</span><br><span class="line">                        <span class="keyword">if</span>(end.contains(w)) <span class="keyword">return</span> step+<span class="number">1</span>;</span><br><span class="line">                        <span class="keyword">if</span>(!wordlist.contains(w)) <span class="keyword">continue</span>;</span><br><span class="line">                        wordlist.remove(w);</span><br><span class="line">                        result.add(w);</span><br><span class="line">                    &#125;</span><br><span class="line">                    ch[i]=c;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            start = result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Medium</category>
-      </categories>
-      <tags>
-        <tag>Medium</tag>
-        <tag>BFS</tag>
-        <tag>HashSet</tag>
       </tags>
   </entry>
   <entry>
@@ -777,33 +1018,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode210 Course ScheduleII</title>
-    <url>/2020/05/23/Leetcode210/</url>
-    <content><![CDATA[<h1 id="Leetcode210-Course-ScheduleII"><a href="#Leetcode210-Course-ScheduleII" class="headerlink" title="Leetcode210 Course ScheduleII"></a>Leetcode210 Course ScheduleII</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>There are a total of <em>n</em> courses you have to take, labeled from <code>0</code> to <code>n-1</code>.</p>
-<p>Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: <code>[0,1]</code></p>
-<p>Given the total number of courses and a list of prerequisite <strong>pairs</strong>, return the ordering of courses you should take to finish all courses.</p>
-<p>There may be multiple correct orders, you just need to return one of them. If it is impossible to finish all courses, return an empty array.</p>
-<a id="more"></a>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: 2, [[1,0]] </span><br><span class="line">Output: [0,1]</span><br><span class="line">Explanation: There are a total of 2 courses to take. To take course 1 you should have finished   </span><br><span class="line">             course 0. So the correct course order is [0,1] .</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: 4, [[1,0],[2,0],[3,1],[3,2]]</span><br><span class="line">Output: [0,1,2,3] or [0,2,1,3]</span><br><span class="line">Explanation: There are a total of 4 courses to take. To take course 3 you should have finished both     </span><br><span class="line">             courses 1 and 2. Both courses 1 and 2 should be taken after you finished course 0. </span><br><span class="line">             So one correct course order is [0,1,2,3]. Another correct ordering is [0,2,1,3] .</span><br></pre></td></tr></table></figure>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>DFS。两个表，正在访问visiting和已访问过visited。每一门课与他的前置课连接，形成graph。如果访问过则返回true，直到形成闭环，再将节点变为未访问过。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] findOrder(<span class="keyword">int</span> numCourses, <span class="keyword">int</span>[][] prerequisites) &#123;</span><br><span class="line">        ArrayList&lt;ArrayList&lt;Integer&gt;&gt; graph = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;numCourses;i++)&#123;</span><br><span class="line">            graph.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;prerequisites.length;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> course = prerequisites[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> prerequisite =prerequisites[i][<span class="number">1</span>];</span><br><span class="line">            graph.get(course).add(prerequisite);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] visited = <span class="keyword">new</span> <span class="keyword">int</span>[numCourses];</span><br><span class="line">        List&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Integer index = numCourses;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;numCourses;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(dfs(i,graph,visited,ans))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] array = <span class="keyword">new</span> <span class="keyword">int</span>[ans.size()];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ans.size();i++)&#123;</span><br><span class="line">            array[i] = ans.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> array;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> cur, ArrayList&lt;ArrayList&lt;Integer&gt;&gt; graph,<span class="keyword">int</span>[] visited, List&lt;Integer&gt; ans)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(visited[cur]==<span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(visited[cur]==<span class="number">2</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        visited[cur] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i: graph.get(cur))</span><br><span class="line">            <span class="keyword">if</span>(dfs(i,graph,visited,ans))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        visited[cur]=<span class="number">2</span>;</span><br><span class="line">        ans.add(cur);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Medium</category>
-      </categories>
-      <tags>
-        <tag>Medium</tag>
-        <tag>Graph</tag>
-        <tag>Topological sorting</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode240 Search a 2D Matrix II</title>
     <url>/2020/05/23/Leetcode240/</url>
     <content><![CDATA[<h1 id="Leetcode240-Search-a-2D-Matrix-II"><a href="#Leetcode240-Search-a-2D-Matrix-II" class="headerlink" title="Leetcode240 Search a 2D Matrix II"></a>Leetcode240 Search a 2D Matrix II</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Write an efficient algorithm that searches for a value in an <em>m</em> x <em>n</em> matrix. This matrix has the following properties:</p>
@@ -831,23 +1045,21 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode273 Integer to English Words</title>
-    <url>/2020/05/23/Leetcode273/</url>
-    <content><![CDATA[<h1 id="Leetcode273-Integer-to-English-Words"><a href="#Leetcode273-Integer-to-English-Words" class="headerlink" title="Leetcode273 Integer to English Words"></a>Leetcode273 Integer to English Words</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Convert a non-negative integer to its English words representation. Given input is guaranteed to be less than 2的31 - 1.</p>
+    <title>Leetcode210 Course ScheduleII</title>
+    <url>/2020/05/23/Leetcode210/</url>
+    <content><![CDATA[<h1 id="Leetcode210-Course-ScheduleII"><a href="#Leetcode210-Course-ScheduleII" class="headerlink" title="Leetcode210 Course ScheduleII"></a>Leetcode210 Course ScheduleII</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>There are a total of <em>n</em> courses you have to take, labeled from <code>0</code> to <code>n-1</code>.</p>
+<p>Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: <code>[0,1]</code></p>
+<p>Given the total number of courses and a list of prerequisite <strong>pairs</strong>, return the ordering of courses you should take to finish all courses.</p>
+<p>There may be multiple correct orders, you just need to return one of them. If it is impossible to finish all courses, return an empty array.</p>
 <a id="more"></a>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: 123</span><br><span class="line">Output: &quot;One Hundred Twenty Three&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: 2, [[1,0]] </span><br><span class="line">Output: [0,1]</span><br><span class="line">Explanation: There are a total of 2 courses to take. To take course 1 you should have finished   </span><br><span class="line">             course 0. So the correct course order is [0,1] .</span><br></pre></td></tr></table></figure>
 
 <p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: 12345</span><br><span class="line">Output: &quot;Twelve Thousand Three Hundred Forty Five&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: 4, [[1,0],[2,0],[3,1],[3,2]]</span><br><span class="line">Output: [0,1,2,3] or [0,2,1,3]</span><br><span class="line">Explanation: There are a total of 4 courses to take. To take course 3 you should have finished both     </span><br><span class="line">             courses 1 and 2. Both courses 1 and 2 should be taken after you finished course 0. </span><br><span class="line">             So one correct course order is [0,1,2,3]. Another correct ordering is [0,2,1,3] .</span><br></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>DFS。两个表，正在访问visiting和已访问过visited。每一门课与他的前置课连接，形成graph。如果访问过则返回true，直到形成闭环，再将节点变为未访问过。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] findOrder(<span class="keyword">int</span> numCourses, <span class="keyword">int</span>[][] prerequisites) &#123;</span><br><span class="line">        ArrayList&lt;ArrayList&lt;Integer&gt;&gt; graph = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;numCourses;i++)&#123;</span><br><span class="line">            graph.add(<span class="keyword">new</span> ArrayList&lt;Integer&gt;());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;prerequisites.length;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> course = prerequisites[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> prerequisite =prerequisites[i][<span class="number">1</span>];</span><br><span class="line">            graph.get(course).add(prerequisite);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] visited = <span class="keyword">new</span> <span class="keyword">int</span>[numCourses];</span><br><span class="line">        List&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Integer index = numCourses;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;numCourses;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(dfs(i,graph,visited,ans))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] array = <span class="keyword">new</span> <span class="keyword">int</span>[ans.size()];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ans.size();i++)&#123;</span><br><span class="line">            array[i] = ans.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> array;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> cur, ArrayList&lt;ArrayList&lt;Integer&gt;&gt; graph,<span class="keyword">int</span>[] visited, List&lt;Integer&gt; ans)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(visited[cur]==<span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(visited[cur]==<span class="number">2</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        visited[cur] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i: graph.get(cur))</span><br><span class="line">            <span class="keyword">if</span>(dfs(i,graph,visited,ans))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        visited[cur]=<span class="number">2</span>;</span><br><span class="line">        ans.add(cur);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>Example 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: 1234567</span><br><span class="line">Output: &quot;One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven&quot;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 4:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: 1234567891</span><br><span class="line">Output: &quot;One Billion Two Hundred Thirty Four Million Five Hundred Sixty Seven Thousand Eight Hundred Ninety One&quot;</span><br></pre></td></tr></table></figure>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>建立三个数组，第一个string数组保存1-19的English string. 第二个数组保存20，30，40，50，60，70，80，90对应的English String.第三个数组保存hundred，thousand， million，billion，第四个数组中保存100，1000，100* 100， 1000* 1000</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">numberToWords</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(num==<span class="number">0</span>) <span class="keyword">return</span> <span class="string">"Zero"</span>;</span><br><span class="line">        <span class="keyword">return</span> convert(num).substring(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">convert</span><span class="params">(<span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">        String kUnder20[] = &#123;<span class="string">"One"</span>, <span class="string">"Two"</span>, <span class="string">"Three"</span>, <span class="string">"Four"</span>, <span class="string">"Five"</span>, </span><br><span class="line">                               <span class="string">"Six"</span>, <span class="string">"Seven"</span>, <span class="string">"Eight"</span>, <span class="string">"Nine"</span>,<span class="string">"Ten"</span>,</span><br><span class="line">                               <span class="string">"Eleven"</span>, <span class="string">"Twelve"</span>, <span class="string">"Thirteen"</span>, <span class="string">"Fourteen"</span>,</span><br><span class="line">                               <span class="string">"Fifteen"</span>, <span class="string">"Sixteen"</span>, <span class="string">"Seventeen"</span>, <span class="string">"Eighteen"</span>, </span><br><span class="line">                               <span class="string">"Nineteen"</span>&#125;;</span><br><span class="line">        String kUnder100[] = &#123;<span class="string">"Twenty"</span>, <span class="string">"Thirty"</span>, <span class="string">"Forty"</span>, <span class="string">"Fifty"</span>, </span><br><span class="line">                                <span class="string">"Sixty"</span>, <span class="string">"Seventy"</span>, <span class="string">"Eighty"</span>, <span class="string">"Ninety"</span>&#125;;</span><br><span class="line">        String kHTMB[] = &#123;<span class="string">"Hundred"</span>, <span class="string">"Thousand"</span>, <span class="string">"Million"</span>, <span class="string">"Billion"</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> kP[] = &#123;<span class="number">100</span>, <span class="number">1000</span>, <span class="number">1000</span>*<span class="number">1000</span>, <span class="number">1000</span>*<span class="number">1000</span>*<span class="number">1000</span>&#125;;</span><br><span class="line">        <span class="keyword">if</span>(num == <span class="number">0</span>) <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">if</span>(num&lt;<span class="number">20</span>) &#123;</span><br><span class="line">            String result = kUnder20[num-<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(num&gt;=<span class="number">20</span>&amp;&amp;num&lt;<span class="number">100</span>)&#123;</span><br><span class="line">            String result = kUnder100[num/<span class="number">10</span>-<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">if</span>(num%<span class="number">10</span>&gt;<span class="number">0</span>)</span><br><span class="line">                result = result +<span class="string">" "</span>;</span><br><span class="line">            <span class="keyword">return</span> result+convert(num%<span class="number">10</span>);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">3</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">            <span class="keyword">if</span>(num&gt;=kP[i])</span><br><span class="line">                <span class="keyword">return</span> concat(convert(num/kP[i])+<span class="string">" "</span>+ kHTMB[i],convert(num%kP[i]));</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">concat</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s1 == <span class="string">""</span> ? s2 : s2 == <span class="string">""</span> ? s1 : s1 + <span class="string">" "</span> + s2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>LeetCode</category>
@@ -855,7 +1067,8 @@
       </categories>
       <tags>
         <tag>Medium</tag>
-        <tag>Recursion</tag>
+        <tag>Graph</tag>
+        <tag>Topological sorting</tag>
       </tags>
   </entry>
   <entry>
@@ -889,6 +1102,34 @@
         <tag>Medium</tag>
         <tag>BFS</tag>
         <tag>Priority Queue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode273 Integer to English Words</title>
+    <url>/2020/05/23/Leetcode273/</url>
+    <content><![CDATA[<h1 id="Leetcode273-Integer-to-English-Words"><a href="#Leetcode273-Integer-to-English-Words" class="headerlink" title="Leetcode273 Integer to English Words"></a>Leetcode273 Integer to English Words</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Convert a non-negative integer to its English words representation. Given input is guaranteed to be less than 2的31 - 1.</p>
+<a id="more"></a>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: 123</span><br><span class="line">Output: &quot;One Hundred Twenty Three&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: 12345</span><br><span class="line">Output: &quot;Twelve Thousand Three Hundred Forty Five&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: 1234567</span><br><span class="line">Output: &quot;One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 4:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: 1234567891</span><br><span class="line">Output: &quot;One Billion Two Hundred Thirty Four Million Five Hundred Sixty Seven Thousand Eight Hundred Ninety One&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>建立三个数组，第一个string数组保存1-19的English string. 第二个数组保存20，30，40，50，60，70，80，90对应的English String.第三个数组保存hundred，thousand， million，billion，第四个数组中保存100，1000，100* 100， 1000* 1000</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">numberToWords</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(num==<span class="number">0</span>) <span class="keyword">return</span> <span class="string">"Zero"</span>;</span><br><span class="line">        <span class="keyword">return</span> convert(num).substring(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">convert</span><span class="params">(<span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">        String kUnder20[] = &#123;<span class="string">"One"</span>, <span class="string">"Two"</span>, <span class="string">"Three"</span>, <span class="string">"Four"</span>, <span class="string">"Five"</span>, </span><br><span class="line">                               <span class="string">"Six"</span>, <span class="string">"Seven"</span>, <span class="string">"Eight"</span>, <span class="string">"Nine"</span>,<span class="string">"Ten"</span>,</span><br><span class="line">                               <span class="string">"Eleven"</span>, <span class="string">"Twelve"</span>, <span class="string">"Thirteen"</span>, <span class="string">"Fourteen"</span>,</span><br><span class="line">                               <span class="string">"Fifteen"</span>, <span class="string">"Sixteen"</span>, <span class="string">"Seventeen"</span>, <span class="string">"Eighteen"</span>, </span><br><span class="line">                               <span class="string">"Nineteen"</span>&#125;;</span><br><span class="line">        String kUnder100[] = &#123;<span class="string">"Twenty"</span>, <span class="string">"Thirty"</span>, <span class="string">"Forty"</span>, <span class="string">"Fifty"</span>, </span><br><span class="line">                                <span class="string">"Sixty"</span>, <span class="string">"Seventy"</span>, <span class="string">"Eighty"</span>, <span class="string">"Ninety"</span>&#125;;</span><br><span class="line">        String kHTMB[] = &#123;<span class="string">"Hundred"</span>, <span class="string">"Thousand"</span>, <span class="string">"Million"</span>, <span class="string">"Billion"</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> kP[] = &#123;<span class="number">100</span>, <span class="number">1000</span>, <span class="number">1000</span>*<span class="number">1000</span>, <span class="number">1000</span>*<span class="number">1000</span>*<span class="number">1000</span>&#125;;</span><br><span class="line">        <span class="keyword">if</span>(num == <span class="number">0</span>) <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">if</span>(num&lt;<span class="number">20</span>) &#123;</span><br><span class="line">            String result = kUnder20[num-<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(num&gt;=<span class="number">20</span>&amp;&amp;num&lt;<span class="number">100</span>)&#123;</span><br><span class="line">            String result = kUnder100[num/<span class="number">10</span>-<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">if</span>(num%<span class="number">10</span>&gt;<span class="number">0</span>)</span><br><span class="line">                result = result +<span class="string">" "</span>;</span><br><span class="line">            <span class="keyword">return</span> result+convert(num%<span class="number">10</span>);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">3</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">            <span class="keyword">if</span>(num&gt;=kP[i])</span><br><span class="line">                <span class="keyword">return</span> concat(convert(num/kP[i])+<span class="string">" "</span>+ kHTMB[i],convert(num%kP[i]));</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">concat</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s1 == <span class="string">""</span> ? s2 : s2 == <span class="string">""</span> ? s1 : s1 + <span class="string">" "</span> + s2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Medium</category>
+      </categories>
+      <tags>
+        <tag>Medium</tag>
+        <tag>Recursion</tag>
       </tags>
   </entry>
   <entry>
@@ -1067,34 +1308,42 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode993 Cousins in Binary Tree</title>
-    <url>/2020/05/23/Leetcode993/</url>
-    <content><![CDATA[<h1 id="Leetcode993-Cousins-in-Binary-Tree"><a href="#Leetcode993-Cousins-in-Binary-Tree" class="headerlink" title="Leetcode993 Cousins in Binary Tree"></a>Leetcode993 Cousins in Binary Tree</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>In a binary tree, the root node is at depth <code>0</code>, and children of each depth <code>k</code> node are at depth <code>k+1</code>.</p>
-<p>Two nodes of a binary tree are <em>cousins</em> if they have the same depth, but have <strong>different parents</strong>.</p>
-<p>We are given the <code>root</code> of a binary tree with unique values, and the values <code>x</code> and <code>y</code> of two different nodes in the tree.</p>
-<p>Return <code>true</code> if and only if the nodes corresponding to the values <code>x</code> and <code>y</code> are cousins.</p>
+    <title>Leetcode995 Minimum Number of K Consecutive Bit Flips</title>
+    <url>/2020/05/23/Leetcode995/</url>
+    <content><![CDATA[<h1 id="Leetcode995-Minimum-Number-of-K-Consecutive-Bit-Flips"><a href="#Leetcode995-Minimum-Number-of-K-Consecutive-Bit-Flips" class="headerlink" title="Leetcode995 Minimum Number of K Consecutive Bit Flips"></a>Leetcode995 Minimum Number of K Consecutive Bit Flips</h1><p>##题目描述<br>In an array <code>A</code> containing only 0s and 1s, a <em><code>K</code>-bit flip</em> consists of choosing a (contiguous) subarray of length <code>K</code> and simultaneously changing every 0 in the subarray to 1, and every 1 in the subarray to 0.</p>
+<p>Return the minimum number of <code>K</code>-bit flips required so that there is no 0 in the array. If it is not possible, return <code>-1</code>.</p>
 <a id="more"></a>
-<p><strong>Example 1:<br><img src="https://assets.leetcode.com/uploads/2019/02/12/q1248-01.png" alt="img"></strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,4], x &#x3D; 4, y &#x3D; 3</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A &#x3D; [0,1,0], K &#x3D; 1</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: Flip A[0], then flip A[2].</span><br></pre></td></tr></table></figure>
 
-<p><strong>Example 2:<br><img src="https://assets.leetcode.com/uploads/2019/02/12/q1248-02.png" alt="img"></strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,null,4,null,5], x &#x3D; 5, y &#x3D; 4</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A &#x3D; [1,1,0], K &#x3D; 2</span><br><span class="line">Output: -1</span><br><span class="line">Explanation: No matter how we flip subarrays of size 2, we can&#39;t make the array become [1,1,1].</span><br></pre></td></tr></table></figure>
 
 <p><strong>Example 3:</strong></p>
-<p><strong><img src="https://assets.leetcode.com/uploads/2019/02/13/q1248-03.png" alt="img"></strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,null,4], x &#x3D; 2, y &#x3D; 3</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A &#x3D; [0,0,0,1,0,1,1,0], K &#x3D; 3</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">Flip A[0],A[1],A[2]: A becomes [1,1,1,1,0,1,1,0]</span><br><span class="line">Flip A[4],A[5],A[6]: A becomes [1,1,1,1,1,0,0,0]</span><br><span class="line">Flip A[5],A[6],A[7]: A becomes [1,1,1,1,1,1,1,1]</span><br></pre></td></tr></table></figure>
+<p>##思路<br>思路：先找到第一个0，找到第一个0以后，如果第一个0的位置i，i+k&gt;当前数组的长度，则返回-1. 反之，在K循环里，对当前值进行按位异或(^=)且轮数加一。最后返回轮数。<br>##代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minKBitFlips</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;A.length)&#123;</span><br><span class="line">            <span class="keyword">if</span>(A[i]==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i+K&gt;A.length)</span><br><span class="line">                    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;K;j++)&#123;</span><br><span class="line">                        A[i+j]^=<span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    result++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span></span><br><span class="line">                i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>判断条件：亲代不是同一个节点且深度相同。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> j;</span><br><span class="line">    <span class="keyword">static</span> TreeNode dx;</span><br><span class="line">    <span class="keyword">static</span> TreeNode dy;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isCousins</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        preorder(root,x, y, <span class="keyword">null</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> dx!=dy&amp;&amp;i==j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">preorder</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> y, TreeNode p, <span class="keyword">int</span> d)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(root.val==x)&#123;</span><br><span class="line">            dx=p;</span><br><span class="line">            i=d;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root.val==y)&#123;</span><br><span class="line">            dy=p;</span><br><span class="line">            j=d;</span><br><span class="line">        &#125;</span><br><span class="line">        preorder(root.left,x,y,root,d+<span class="number">1</span>);</span><br><span class="line">        preorder(root.right,x,y,root,d+<span class="number">1</span>);</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
 ]]></content>
       <categories>
         <category>LeetCode</category>
-        <category>Easy</category>
+        <category>Hard</category>
       </categories>
       <tags>
-        <tag>Easy</tag>
-        <tag>Preorder traversal</tag>
+        <tag>Greedy</tag>
+        <tag>Hard</tag>
       </tags>
   </entry>
   <entry>
@@ -1551,42 +1800,34 @@ where....</code></pre></li>
       </tags>
   </entry>
   <entry>
-    <title>Leetcode995 Minimum Number of K Consecutive Bit Flips</title>
-    <url>/2020/05/23/Leetcode995/</url>
-    <content><![CDATA[<h1 id="Leetcode995-Minimum-Number-of-K-Consecutive-Bit-Flips"><a href="#Leetcode995-Minimum-Number-of-K-Consecutive-Bit-Flips" class="headerlink" title="Leetcode995 Minimum Number of K Consecutive Bit Flips"></a>Leetcode995 Minimum Number of K Consecutive Bit Flips</h1><p>##题目描述<br>In an array <code>A</code> containing only 0s and 1s, a <em><code>K</code>-bit flip</em> consists of choosing a (contiguous) subarray of length <code>K</code> and simultaneously changing every 0 in the subarray to 1, and every 1 in the subarray to 0.</p>
-<p>Return the minimum number of <code>K</code>-bit flips required so that there is no 0 in the array. If it is not possible, return <code>-1</code>.</p>
+    <title>Leetcode993 Cousins in Binary Tree</title>
+    <url>/2020/05/23/Leetcode993/</url>
+    <content><![CDATA[<h1 id="Leetcode993-Cousins-in-Binary-Tree"><a href="#Leetcode993-Cousins-in-Binary-Tree" class="headerlink" title="Leetcode993 Cousins in Binary Tree"></a>Leetcode993 Cousins in Binary Tree</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>In a binary tree, the root node is at depth <code>0</code>, and children of each depth <code>k</code> node are at depth <code>k+1</code>.</p>
+<p>Two nodes of a binary tree are <em>cousins</em> if they have the same depth, but have <strong>different parents</strong>.</p>
+<p>We are given the <code>root</code> of a binary tree with unique values, and the values <code>x</code> and <code>y</code> of two different nodes in the tree.</p>
+<p>Return <code>true</code> if and only if the nodes corresponding to the values <code>x</code> and <code>y</code> are cousins.</p>
 <a id="more"></a>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A &#x3D; [0,1,0], K &#x3D; 1</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: Flip A[0], then flip A[2].</span><br></pre></td></tr></table></figure>
+<p><strong>Example 1:<br><img src="https://assets.leetcode.com/uploads/2019/02/12/q1248-01.png" alt="img"></strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,4], x &#x3D; 4, y &#x3D; 3</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
 
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A &#x3D; [1,1,0], K &#x3D; 2</span><br><span class="line">Output: -1</span><br><span class="line">Explanation: No matter how we flip subarrays of size 2, we can&#39;t make the array become [1,1,1].</span><br></pre></td></tr></table></figure>
+<p><strong>Example 2:<br><img src="https://assets.leetcode.com/uploads/2019/02/12/q1248-02.png" alt="img"></strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,null,4,null,5], x &#x3D; 5, y &#x3D; 4</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
 
 <p><strong>Example 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: A &#x3D; [0,0,0,1,0,1,1,0], K &#x3D; 3</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">Flip A[0],A[1],A[2]: A becomes [1,1,1,1,0,1,1,0]</span><br><span class="line">Flip A[4],A[5],A[6]: A becomes [1,1,1,1,1,0,0,0]</span><br><span class="line">Flip A[5],A[6],A[7]: A becomes [1,1,1,1,1,1,1,1]</span><br></pre></td></tr></table></figure>
-<p>##思路<br>思路：先找到第一个0，找到第一个0以后，如果第一个0的位置i，i+k&gt;当前数组的长度，则返回-1. 反之，在K循环里，对当前值进行按位异或(^=)且轮数加一。最后返回轮数。<br>##代码</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minKBitFlips</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;A.length)&#123;</span><br><span class="line">            <span class="keyword">if</span>(A[i]==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i+K&gt;A.length)</span><br><span class="line">                    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;K;j++)&#123;</span><br><span class="line">                        A[i+j]^=<span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    result++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span></span><br><span class="line">                i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong><img src="https://assets.leetcode.com/uploads/2019/02/13/q1248-03.png" alt="img"></strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,null,4], x &#x3D; 2, y &#x3D; 3</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
 
 
-
-
-
-
-
-
-
-
-
-
-
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>判断条件：亲代不是同一个节点且深度相同。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> j;</span><br><span class="line">    <span class="keyword">static</span> TreeNode dx;</span><br><span class="line">    <span class="keyword">static</span> TreeNode dy;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isCousins</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        preorder(root,x, y, <span class="keyword">null</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> dx!=dy&amp;&amp;i==j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">preorder</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> y, TreeNode p, <span class="keyword">int</span> d)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(root.val==x)&#123;</span><br><span class="line">            dx=p;</span><br><span class="line">            i=d;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root.val==y)&#123;</span><br><span class="line">            dy=p;</span><br><span class="line">            j=d;</span><br><span class="line">        &#125;</span><br><span class="line">        preorder(root.left,x,y,root,d+<span class="number">1</span>);</span><br><span class="line">        preorder(root.right,x,y,root,d+<span class="number">1</span>);</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>LeetCode</category>
-        <category>Hard</category>
+        <category>Easy</category>
       </categories>
       <tags>
-        <tag>Greedy</tag>
-        <tag>Hard</tag>
+        <tag>Easy</tag>
+        <tag>Preorder traversal</tag>
       </tags>
   </entry>
   <entry>
@@ -1931,47 +2172,6 @@ where....</code></pre></li>
       </tags>
   </entry>
   <entry>
-    <title>创建新的线程</title>
-    <url>/2020/05/30/%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E7%BA%BF%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h1><p>Java多线程基础知识，如何创建一个线程</p>
-<a id="more"></a>
-
-<h2 id="创建新的线程"><a href="#创建新的线程" class="headerlink" title="创建新的线程"></a>创建新的线程</h2><p>Java语言设置了多线程支持。当Java程序启动的时候，实际上是启动了一个JVM进程，然后，JVM启动住线程来执行main()方法。在main()方法中国呢，可以启动其他线程。</p>
-<h2 id="创建：实例化一个Thread实例，然后调用star-方法："><a href="#创建：实例化一个Thread实例，然后调用star-方法：" class="headerlink" title="创建：实例化一个Thread实例，然后调用star()方法："></a>创建：实例化一个Thread实例，然后调用star()方法：</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		Thread t = <span class="keyword">new</span> Thread();</span><br><span class="line">		t.star(); <span class="comment">//启动多线程</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="新线程能执行指定的代码"><a href="#新线程能执行指定的代码" class="headerlink" title="新线程能执行指定的代码"></a>新线程能执行指定的代码</h2><ul>
-<li>从Thread派生一个自定义类，然后覆盖run()方法</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Thread t = <span class="keyword">new</span> MyThread();</span><br><span class="line">       t.start(); <span class="comment">// 启动新线程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"start new thread!"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>创建Thread实例是，传入一个Runnable实例：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread t = <span class="keyword">new</span> Thread(<span class="keyword">new</span> MyRunnable());</span><br><span class="line">        t.start(); <span class="comment">// 启动新线程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"start new thread!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Lambda语法：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread t = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">"start new thread!"</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">        t.start(); <span class="comment">// 启动新线程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="线程的优先级："><a href="#线程的优先级：" class="headerlink" title="线程的优先级："></a>线程的优先级：</h2><ul>
-<li>设定优先级：<br>Thread.setPriority(int n) // 1~10, 默认值5<br>优先级高的线程被操作系统调度的优先级较高，操作系统对高优先级线程可能调度更频繁，但我们决不能通过设置优先级来确保</li>
-</ul>
-<h2 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h2><ol>
-<li>Java用Thread对象表示一个线程，通过调用start()启动一个新线程；</li>
-<li>一个线程对象只能调用一次start()方法；</li>
-<li>线程的执行代码写在run()方法中；</li>
-<li>线程调度由操作系统决定，程序本身无法决定调度顺序；</li>
-<li>Thread.sleep()可以把当前线程暂停一段时间。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java多线程</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>多线程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>原理图库的创建(89C51为例)</title>
     <url>/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/</url>
     <content><![CDATA[<h1 id="原理图库的创建-89C51为例"><a href="#原理图库的创建-89C51为例" class="headerlink" title="原理图库的创建(89C51为例)"></a>原理图库的创建(89C51为例)</h1><h2 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h2><p>使用Altium Designer绘制89C51的原理图库<br>本文以89C51原理图为例</p>
@@ -2058,6 +2258,47 @@ where....</code></pre></li>
       </categories>
       <tags>
         <tag>PCB</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>创建新的线程</title>
+    <url>/2020/05/30/%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E7%BA%BF%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h1><p>Java多线程基础知识，如何创建一个线程</p>
+<a id="more"></a>
+
+<h2 id="创建新的线程"><a href="#创建新的线程" class="headerlink" title="创建新的线程"></a>创建新的线程</h2><p>Java语言设置了多线程支持。当Java程序启动的时候，实际上是启动了一个JVM进程，然后，JVM启动住线程来执行main()方法。在main()方法中国呢，可以启动其他线程。</p>
+<h2 id="创建：实例化一个Thread实例，然后调用star-方法："><a href="#创建：实例化一个Thread实例，然后调用star-方法：" class="headerlink" title="创建：实例化一个Thread实例，然后调用star()方法："></a>创建：实例化一个Thread实例，然后调用star()方法：</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		Thread t = <span class="keyword">new</span> Thread();</span><br><span class="line">		t.star(); <span class="comment">//启动多线程</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="新线程能执行指定的代码"><a href="#新线程能执行指定的代码" class="headerlink" title="新线程能执行指定的代码"></a>新线程能执行指定的代码</h2><ul>
+<li>从Thread派生一个自定义类，然后覆盖run()方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Thread t = <span class="keyword">new</span> MyThread();</span><br><span class="line">       t.start(); <span class="comment">// 启动新线程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"start new thread!"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建Thread实例是，传入一个Runnable实例：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread t = <span class="keyword">new</span> Thread(<span class="keyword">new</span> MyRunnable());</span><br><span class="line">        t.start(); <span class="comment">// 启动新线程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"start new thread!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Lambda语法：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread t = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">"start new thread!"</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">        t.start(); <span class="comment">// 启动新线程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="线程的优先级："><a href="#线程的优先级：" class="headerlink" title="线程的优先级："></a>线程的优先级：</h2><ul>
+<li>设定优先级：<br>Thread.setPriority(int n) // 1~10, 默认值5<br>优先级高的线程被操作系统调度的优先级较高，操作系统对高优先级线程可能调度更频繁，但我们决不能通过设置优先级来确保</li>
+</ul>
+<h2 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h2><ol>
+<li>Java用Thread对象表示一个线程，通过调用start()启动一个新线程；</li>
+<li>一个线程对象只能调用一次start()方法；</li>
+<li>线程的执行代码写在run()方法中；</li>
+<li>线程调度由操作系统决定，程序本身无法决定调度顺序；</li>
+<li>Thread.sleep()可以把当前线程暂停一段时间。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java多线程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>多线程</tag>
       </tags>
   </entry>
   <entry>
@@ -2679,245 +2920,6 @@ where....</code></pre></li>
       </categories>
       <tags>
         <tag>计算机网络自顶向下方法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Bootstrap</title>
-    <url>/2020/06/03/BootStrap/</url>
-    <content><![CDATA[<h1 id="Bootstrap："><a href="#Bootstrap：" class="headerlink" title="Bootstrap："></a>Bootstrap：</h1><ol>
-<li><p>框架:一个半成品软件，开发人员可以在框架基础上，在进行开发，简化编码。</p>
-</li>
-<li><p>好处：</p>
-<ol>
-<li>定义了很多的css样式和js插件。我们开发人员直接可以使用这些样式和插件得到丰富的页面效果。</li>
-<li>响应式布局。<ul>
-<li>同一套页面可以兼容不同分辨率的设备。</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>快速入门</p>
-<ol>
-<li>下载Bootstrap</li>
-<li>在项目中将这三个文件夹复制</li>
-<li>创建html页面，引入必要的资源文件<a id="more"></a>
-
-</li>
-</ol>
-</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Bootstrap HelloWorld<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Bootstrap --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"css/bootstrap.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery-3.2.1.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/bootstrap.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>你好，世界！<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-<p>​<br>            <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) --><br>            <script src="js/jquery-3.2.1.min.js"></script><br>            <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 --><br>            <script src="js/bootstrap.min.js"></script><br>        <br>        <body><br>        <h1>你好，世界！</h1></body></p>
-<pre><code>&lt;/body&gt;
-&lt;/html&gt;</code></pre><h2 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h2><ul>
-<li><p>同一套页面可以兼容不同分辨率的设备。</p>
-</li>
-<li><p>实现：依赖于栅格系统：将一行平均分成12个格子，可以指定元素占几个格子</p>
-</li>
-<li><p>步骤：</p>
-<ol>
-<li>定义容器。相当于之前的table、<ul>
-<li>容器分类：<ol>
-<li>container：两边留白</li>
-<li>container-fluid：每一种设备都是100%宽度</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>定义行。相当于之前的tr   样式：row</li>
-<li>定义元素。指定该元素在不同的设备上，所占的格子数目。样式：col-设备代号-格子数目<ul>
-<li>设备代号：<ol>
-<li>xs：超小屏幕 手机 (&lt;768px)：col-xs-12</li>
-<li>sm：小屏幕 平板 (≥768px)</li>
-<li>md：中等屏幕 桌面显示器 (≥992px)</li>
-<li>lg：大屏幕 大桌面显示器 (≥1200px)</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>注意：<ol>
-<li>一行中如果格子数目超过12，则超出部分自动换行。</li>
-<li>栅格类属性可以向上兼容。栅格类适用于与屏幕宽度大于或等于分界点大小的设备。</li>
-<li>如果真实设备宽度小于了设置栅格类属性的设备代码的最小值，会一个元素沾满一整行。</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="CSS样式和JS插件"><a href="#CSS样式和JS插件" class="headerlink" title="CSS样式和JS插件"></a>CSS样式和JS插件</h2><ol>
-<li>全局CSS样式：<ul>
-<li>按钮：class=”btn btn-default”</li>
-<li>图片：<ul>
-<li>class=”img-responsive”：图片在任意尺寸都占100%</li>
-<li>图片形状</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"..."</span> <span class="attr">alt</span>=<span class="string">"..."</span> <span class="attr">class</span>=<span class="string">"img-rounded"</span>&gt;</span>：方形</span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"..."</span> <span class="attr">alt</span>=<span class="string">"..."</span> <span class="attr">class</span>=<span class="string">"img-circle"</span>&gt;</span> ： 圆形</span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"..."</span> <span class="attr">alt</span>=<span class="string">"..."</span> <span class="attr">class</span>=<span class="string">"img-thumbnail"</span>&gt;</span> ：相框</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>表格<pre><code>* table
-* table-bordered 边框
-* table-hover 悬浮效果</code></pre><ul>
-<li>表单<ul>
-<li>给表单项添加：class=”form-control” </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ol start="2">
-<li>组件：<ul>
-<li>导航条</li>
-<li>分页条</li>
-</ul>
-</li>
-<li>插件：<ul>
-<li>轮播图</li>
-</ul>
-</li>
-</ol>
-<p>​    </p>
-<p>​    </p>
-]]></content>
-      <categories>
-        <category>JavaWeb</category>
-      </categories>
-      <tags>
-        <tag>JavaWeb</tag>
-        <tag>Bootstrap</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JDBC</title>
-    <url>/2020/06/03/JDBC/</url>
-    <content><![CDATA[<h1 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
-<li>Java Database Connectivity Java数据库连接，Java语言操作数据库。</li>
-<li>定义一套操作所有关系型数据库的接口<a id="more"></a>
-
-</li>
-</ul>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
-<li><p>导入驱动jar包</p>
-</li>
-<li><p>注册驱动 </p>
-<p>Class.forName(“com.mysql.Driver”);</p>
-</li>
-<li><p>获取数据库的连接对象Connection</p>
-<p>Connection conn = DriverManager.getConnection(“jbdc:mysql://localhost:3306/数据库名称”,”root”,”password”);</p>
-</li>
-<li><p>定义sql</p>
-<p>String sql = “”;</p>
-</li>
-<li><p>获取执行sql语句的对象Statement</p>
-<p>Statement stmt = conn.createStatement();</p>
-</li>
-<li><p>执行sql，接收返回的结果</p>
-<p>int count = stmt.executeUpdate(sql); // 根据操作需求</p>
-</li>
-<li><p>处理结果</p>
-</li>
-<li><p>释放资源</p>
-<p>stmt.close();</p>
-<p>conn.close();</p>
-</li>
-</ol>
-<h2 id="详解各个对象"><a href="#详解各个对象" class="headerlink" title="详解各个对象"></a>详解各个对象</h2><ul>
-<li><p>DriverManager驱动管理对象</p>
-<ol>
-<li><p>注册驱动</p>
-<p>static void registerDirver(Dirver driver): 注册给定的驱动程序DriverManager</p>
-<p>写代码用Class.forName(“com.mysql.Driver”);</p>
-<p>mysql5之后的驱动jar包可以省略注册驱动的步骤</p>
-</li>
-<li><p>获取数据库连接</p>
-<p>方法：static Connection getConnection(String url, String user, String password)</p>
-<p>参数： url： 指定连接的路径 ： jbdc:mysql://ip地址:端口号/数据库名称</p>
-<p>​            user/password：用户名和密码</p>
-</li>
-</ol>
-</li>
-<li><p>Connection数据库连接对象</p>
-<ol>
-<li>获取执行sql的对象<ul>
-<li>Statement createStatement();</li>
-<li>PreparedStatement prepareStatement(String sql)</li>
-</ul>
-</li>
-<li>管理事务<ul>
-<li>开启事务： void setAutoCommit(boolean autoCommit): 调用该方法设置参数为false，即开启事务</li>
-<li>提交事务： void commit()</li>
-<li>回滚事务： rollback()</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>Statement执行sql对象</p>
-<ul>
-<li>执行sql<ol>
-<li>boolean execute(String sql): 可以执行任意的sql</li>
-<li>int executeUpdate(String sql): 执行DML(insert, update, delete)语句，DDL(create，alter，drop)语句</li>
-<li>ResultSet executeQuery(String sql): 执行DQL（Select）语句</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>ResultSet结果集对象</p>
-<ul>
-<li><p>next(): 游标向下移动一行</p>
-</li>
-<li><p>getXxx(): 获取数据 </p>
-<ul>
-<li><p>Xxx：代表数据类型</p>
-</li>
-<li><p>参数:</p>
-<ol>
-<li>int: 代表列的编号，编号从1开始</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<ol start="2">
-<li>String：列名称</li>
-</ol>
-<ul>
-<li>使用步骤<ol>
-<li>游标向下移动一行</li>
-<li>判断是否有数据</li>
-<li>获取数据</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>PrepareStatement执行sql对象</p>
-</li>
-</ul>
-<h2 id="抽取JDBC工具类："><a href="#抽取JDBC工具类：" class="headerlink" title="抽取JDBC工具类："></a>抽取JDBC工具类：</h2><ul>
-<li><p>配置文件</p>
-<pre><code>jdbc.properties
-    url=
-    user=
-    password=</code></pre></li>
-<li><p>代码实现</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JDBCUtils</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String url;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String user;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String password;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String driver;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 文件的读取，只需要读取一次即可拿到这些值。使用静态代码块</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        <span class="comment">//读取资源文件，获取值。</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//1. 创建Properties集合类。</span></span><br><span class="line">            Properties pro = <span class="keyword">new</span> Properties();</span><br><span class="line"></span><br><span class="line">            <span class="comment">//获取src路径下的文件的方式---&gt;ClassLoader 类加载器</span></span><br><span class="line">            ClassLoader classLoader = JDBCUtils<span class="class">.<span class="keyword">class</span>.<span class="title">getClassLoader</span>()</span>;</span><br><span class="line">            URL res  = classLoader.getResource(<span class="string">"jdbc.properties"</span>);</span><br><span class="line">            String path = res.getPath();</span><br><span class="line">            System.out.println(path);<span class="comment">///D:/IdeaProjects/itcast/out/production/day04_jdbc/jdbc.properties</span></span><br><span class="line">            <span class="comment">//2. 加载文件</span></span><br><span class="line">           <span class="comment">// pro.load(new FileReader("D:\\IdeaProjects\\itcast\\day04_jdbc\\src\\jdbc.properties"));</span></span><br><span class="line">            pro.load(<span class="keyword">new</span> FileReader(path));</span><br><span class="line"></span><br><span class="line">            <span class="comment">//3. 获取数据，赋值</span></span><br><span class="line">            url = pro.getProperty(<span class="string">"url"</span>);</span><br><span class="line">            user = pro.getProperty(<span class="string">"user"</span>);</span><br><span class="line">            password = pro.getProperty(<span class="string">"password"</span>);</span><br><span class="line">            driver = pro.getProperty(<span class="string">"driver"</span>);</span><br><span class="line">            <span class="comment">//4. 注册驱动</span></span><br><span class="line">            Class.forName(driver);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取连接</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 连接对象</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> DriverManager.getConnection(url, user, password);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 释放资源</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> stmt</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> conn</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">(Statement stmt,Connection conn)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>( stmt != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                stmt.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>( conn != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                conn.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaWeb</category>
-      </categories>
-      <tags>
-        <tag>JavaWeb</tag>
-        <tag>JDBC</tag>
       </tags>
   </entry>
 </search>
