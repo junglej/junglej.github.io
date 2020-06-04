@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-03T22:06:11.228Z</updated>
+  <updated>2020-06-04T12:23:08.167Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>June Leetcoding Challenge(6.4)</title>
+    <link href="http://yoursite.com/2020/06/04/LeetCodeJune4th/"/>
+    <id>http://yoursite.com/2020/06/04/LeetCodeJune4th/</id>
+    <published>2020-06-04T12:21:03.410Z</published>
+    <updated>2020-06-04T12:23:08.167Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Reverse-String"><a href="#Reverse-String" class="headerlink" title="Reverse String"></a>Reverse String</h1><ol><li><p>Write a function that reverses a string. The input string is given as an array of characters <code>char[]</code>.</p><p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener">in-place</a></strong> with O(1) extra memory.</p><p>You may assume all the characters consist of <a href="https://en.wikipedia.org/wiki/ASCII#Printable_characters" target="_blank" rel="noopener">printable ascii characters</a>.</p></li></ol><p>   <strong>Example 1:</strong></p>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;h&quot;,&quot;e&quot;,&quot;l&quot;,&quot;l&quot;,&quot;o&quot;]</span><br><span class="line">Output: [&quot;o&quot;,&quot;l&quot;,&quot;l&quot;,&quot;e&quot;,&quot;h&quot;]</span><br></pre></td></tr></table></figure><p>   <strong>Example 2:</strong></p>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;H&quot;,&quot;a&quot;,&quot;n&quot;,&quot;n&quot;,&quot;a&quot;,&quot;h&quot;]</span><br><span class="line">Output: [&quot;h&quot;,&quot;a&quot;,&quot;n&quot;,&quot;n&quot;,&quot;a&quot;,&quot;H&quot;]</span><br></pre></td></tr></table></figure>   <a id="more"></a><p>思路：</p><p>设置两个指针，一个指针指向首元素l，另一个指针指向末尾元素r，开始进行while循环，循环推出条件为l&lt;r。 通过移动l，r两个指针交换元素。</p><p>代码：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverseString</span><span class="params">(<span class="keyword">char</span>[] s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> r = s.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line">            <span class="keyword">char</span> tmp = s[r];</span><br><span class="line">            s[r] = s[l];</span><br><span class="line">            s[l] =tmp;</span><br><span class="line">            l++;</span><br><span class="line">            r--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Reverse-String&quot;&gt;&lt;a href=&quot;#Reverse-String&quot; class=&quot;headerlink&quot; title=&quot;Reverse String&quot;&gt;&lt;/a&gt;Reverse String&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Write a function that reverses a string. The input string is given as an array of characters &lt;code&gt;char[]&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Do not allocate extra space for another array, you must do this by &lt;strong&gt;modifying the input array &lt;a href=&quot;https://en.wikipedia.org/wiki/In-place_algorithm&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;in-place&lt;/a&gt;&lt;/strong&gt; with O(1) extra memory.&lt;/p&gt;
+&lt;p&gt;You may assume all the characters consist of &lt;a href=&quot;https://en.wikipedia.org/wiki/ASCII#Printable_characters&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;printable ascii characters&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;   &lt;strong&gt;Example 1:&lt;/strong&gt;&lt;/p&gt;
+   &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Input: [&amp;quot;h&amp;quot;,&amp;quot;e&amp;quot;,&amp;quot;l&amp;quot;,&amp;quot;l&amp;quot;,&amp;quot;o&amp;quot;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Output: [&amp;quot;o&amp;quot;,&amp;quot;l&amp;quot;,&amp;quot;l&amp;quot;,&amp;quot;e&amp;quot;,&amp;quot;h&amp;quot;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;   &lt;strong&gt;Example 2:&lt;/strong&gt;&lt;/p&gt;
+   &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Input: [&amp;quot;H&amp;quot;,&amp;quot;a&amp;quot;,&amp;quot;n&amp;quot;,&amp;quot;n&amp;quot;,&amp;quot;a&amp;quot;,&amp;quot;h&amp;quot;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Output: [&amp;quot;h&amp;quot;,&amp;quot;a&amp;quot;,&amp;quot;n&amp;quot;,&amp;quot;n&amp;quot;,&amp;quot;a&amp;quot;,&amp;quot;H&amp;quot;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+      <category term="June Leetcoding Challenge" scheme="http://yoursite.com/categories/LeetCode/June-Leetcoding-Challenge/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="June Leetcoding Challenge" scheme="http://yoursite.com/tags/June-Leetcoding-Challenge/"/>
+    
+  </entry>
   
   <entry>
     <title>XML</title>
@@ -576,32 +613,6 @@
     
       &lt;h1 id=&quot;原理图库的创建-89C51为例&quot;&gt;&lt;a href=&quot;#原理图库的创建-89C51为例&quot; class=&quot;headerlink&quot; title=&quot;原理图库的创建(89C51为例)&quot;&gt;&lt;/a&gt;原理图库的创建(89C51为例)&lt;/h1&gt;&lt;h2 id=&quot;本文概述：&quot;&gt;&lt;a href=&quot;#本文概述：&quot; class=&quot;headerlink&quot; title=&quot;本文概述：&quot;&gt;&lt;/a&gt;本文概述：&lt;/h2&gt;&lt;p&gt;使用Altium Designer绘制89C51的原理图库&lt;br&gt;本文以89C51原理图为例&lt;/p&gt;
 &lt;img src=&quot;/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG31.png&quot; class title=&quot;原理图&quot;&gt;
-&lt;h2 id=&quot;本文使用的工具&quot;&gt;&lt;a href=&quot;#本文使用的工具&quot; class=&quot;headerlink&quot; title=&quot;本文使用的工具&quot;&gt;&lt;/a&gt;本文使用的工具&lt;/h2&gt;&lt;p&gt;Altium Designer 20.1.8&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PCB学习笔记" scheme="http://yoursite.com/categories/PCB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="89C51" scheme="http://yoursite.com/categories/PCB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/89C51/"/>
-    
-    
-      <category term="PCB" scheme="http://yoursite.com/tags/PCB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PCB工程文件的创建</title>
-    <link href="http://yoursite.com/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/"/>
-    <id>http://yoursite.com/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/</id>
-    <published>2020-05-24T15:30:00.000Z</published>
-    <updated>2020-05-26T22:15:52.669Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="PCB工程文件的创建"><a href="#PCB工程文件的创建" class="headerlink" title="PCB工程文件的创建"></a>PCB工程文件的创建</h1><h2 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h2><p>如何使用Altium Designer建立PCB工程。</p><h2 id="本文使用的工具"><a href="#本文使用的工具" class="headerlink" title="本文使用的工具"></a>本文使用的工具</h2><p>Altium Designer 20.1.8</p><a id="more"></a><h2 id="Step1-创建新的工程：File-–-gt-New–-gt-Project"><a href="#Step1-创建新的工程：File-–-gt-New–-gt-Project" class="headerlink" title="Step1: 创建新的工程：File –&gt; New–&gt;Project"></a>Step1: 创建新的工程：File –&gt; New–&gt;Project</h2><img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/PCB%E5%88%9B%E5%BB%BA%E5%B7%A5%E7%A8%8B.png" class title="创建新的工程"><h2 id="Step2-选择Project-Type-这里选择默认的就好，Project-Name自定义就好。"><a href="#Step2-选择Project-Type-这里选择默认的就好，Project-Name自定义就好。" class="headerlink" title="Step2: 选择Project Type: 这里选择默认的就好，Project Name自定义就好。"></a>Step2: 选择Project Type: 这里选择默认的就好，Project Name自定义就好。</h2><img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E9%80%89%E6%8B%A9projecttype.png" class title="This is an example image"><h2 id="Step3-绘制PCB四个基本文件-原理图，原理图库，PCB，PCB库"><a href="#Step3-绘制PCB四个基本文件-原理图，原理图库，PCB，PCB库" class="headerlink" title="Step3: 绘制PCB四个基本文件(原理图，原理图库，PCB，PCB库)"></a>Step3: 绘制PCB四个基本文件(原理图，原理图库，PCB，PCB库)</h2><ol><li>原理图<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524151653.png" class title="原理图"></li><li>原理图库<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524151836.png" class title="原理图库"></li><li>PCB<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524151956.png" class title="PCB"></li><li>PCB图库<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524152118.png" class title="PCB图库"></li></ol><h2 id="此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例："><a href="#此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例：" class="headerlink" title="此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例："></a>此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例：</h2><img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/FInalResult.png" class title="最终效果图">]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;PCB工程文件的创建&quot;&gt;&lt;a href=&quot;#PCB工程文件的创建&quot; class=&quot;headerlink&quot; title=&quot;PCB工程文件的创建&quot;&gt;&lt;/a&gt;PCB工程文件的创建&lt;/h1&gt;&lt;h2 id=&quot;本文概述：&quot;&gt;&lt;a href=&quot;#本文概述：&quot; class=&quot;headerlink&quot; title=&quot;本文概述：&quot;&gt;&lt;/a&gt;本文概述：&lt;/h2&gt;&lt;p&gt;如何使用Altium Designer建立PCB工程。&lt;/p&gt;
 &lt;h2 id=&quot;本文使用的工具&quot;&gt;&lt;a href=&quot;#本文使用的工具&quot; class=&quot;headerlink&quot; title=&quot;本文使用的工具&quot;&gt;&lt;/a&gt;本文使用的工具&lt;/h2&gt;&lt;p&gt;Altium Designer 20.1.8&lt;/p&gt;
     
     </summary>

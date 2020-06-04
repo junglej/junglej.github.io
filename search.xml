@@ -3176,4 +3176,35 @@ where....</code></pre></li>
         <tag>XML</tag>
       </tags>
   </entry>
+  <entry>
+    <title>June Leetcoding Challenge(6.4)</title>
+    <url>/2020/06/04/LeetCodeJune4th/</url>
+    <content><![CDATA[<h1 id="Reverse-String"><a href="#Reverse-String" class="headerlink" title="Reverse String"></a>Reverse String</h1><ol>
+<li><p>Write a function that reverses a string. The input string is given as an array of characters <code>char[]</code>.</p>
+<p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener">in-place</a></strong> with O(1) extra memory.</p>
+<p>You may assume all the characters consist of <a href="https://en.wikipedia.org/wiki/ASCII#Printable_characters" target="_blank" rel="noopener">printable ascii characters</a>.</p>
+</li>
+</ol>
+<p>   <strong>Example 1:</strong></p>
+   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [&quot;h&quot;,&quot;e&quot;,&quot;l&quot;,&quot;l&quot;,&quot;o&quot;]</span><br><span class="line">Output: [&quot;o&quot;,&quot;l&quot;,&quot;l&quot;,&quot;e&quot;,&quot;h&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>   <strong>Example 2:</strong></p>
+   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [&quot;H&quot;,&quot;a&quot;,&quot;n&quot;,&quot;n&quot;,&quot;a&quot;,&quot;h&quot;]</span><br><span class="line">Output: [&quot;h&quot;,&quot;a&quot;,&quot;n&quot;,&quot;n&quot;,&quot;a&quot;,&quot;H&quot;]</span><br></pre></td></tr></table></figure>
+   <a id="more"></a>
+
+<p>思路：</p>
+<p>设置两个指针，一个指针指向首元素l，另一个指针指向末尾元素r，开始进行while循环，循环推出条件为l&lt;r。 通过移动l，r两个指针交换元素。</p>
+<p>代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverseString</span><span class="params">(<span class="keyword">char</span>[] s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> r = s.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line">            <span class="keyword">char</span> tmp = s[r];</span><br><span class="line">            s[r] = s[l];</span><br><span class="line">            s[l] =tmp;</span><br><span class="line">            l++;</span><br><span class="line">            r--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>June Leetcoding Challenge</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>June Leetcoding Challenge</tag>
+      </tags>
+  </entry>
 </search>
