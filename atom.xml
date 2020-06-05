@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-04T12:23:08.167Z</updated>
+  <updated>2020-06-05T12:41:09.418Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,47 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>June Leetcoding Challenge(6.5)</title>
+    <link href="http://yoursite.com/2020/06/05/LeetCodeJune5th/"/>
+    <id>http://yoursite.com/2020/06/05/LeetCodeJune5th/</id>
+    <published>2020-06-05T12:34:31.372Z</published>
+    <updated>2020-06-05T12:41:09.418Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Random-Pick-with-Weight"><a href="#Random-Pick-with-Weight" class="headerlink" title="Random Pick with Weight"></a>Random Pick with Weight</h1><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>Given an array <code>w</code> of positive integers, where <code>w[i]</code> describes the weight of index <code>i</code>, write a function <code>pickIndex</code> which randomly picks an index in proportion to its weight.</p><p>Note:</p><ol><li><code>1 &lt;= w.length &lt;= 10000</code></li><li><code>1 &lt;= w[i] &lt;= 10^5</code></li><li><code>pickIndex</code> will be called at most <code>10000</code> times.</li></ol><p><strong>Example 1:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line">[&quot;Solution&quot;,&quot;pickIndex&quot;]</span><br><span class="line">[[[1]],[]]</span><br><span class="line">Output: [null,0]</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line">[&quot;Solution&quot;,&quot;pickIndex&quot;,&quot;pickIndex&quot;,&quot;pickIndex&quot;,&quot;pickIndex&quot;,&quot;pickIndex&quot;]</span><br><span class="line">[[[1,3]],[],[],[],[],[]]</span><br><span class="line">Output: [null,0,1,1,1,0]</span><br></pre></td></tr></table></figure><p><strong>Explanation of Input Syntax:</strong></p><p>The input is two lists: the subroutines called and their arguments. <code>Solution</code>‘s constructor has one argument, the array <code>w</code>. <code>pickIndex</code> has no arguments. Arguments are always wrapped with a list, even if there aren’t any.<br>   <a id="more"></a></p><p>思路：</p><img src="/2020/06/05/LeetCodeJune5th/silu.png" class><p>代码：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] tmp;</span><br><span class="line">    Random rand;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Solution</span><span class="params">(<span class="keyword">int</span>[] w)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.tmp = w.clone();</span><br><span class="line">        <span class="keyword">this</span>.rand = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;w.length;i++)</span><br><span class="line">            tmp[i] +=tmp[i-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pickIndex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> x = rand.nextInt(tmp[tmp.length-<span class="number">1</span>])+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> index = Arrays.binarySearch(tmp,x);</span><br><span class="line">        <span class="keyword">if</span>(index&lt;<span class="number">0</span>)</span><br><span class="line">            index = -(index+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your Solution object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * Solution obj = new Solution(w);</span></span><br><span class="line"><span class="comment"> * int param_1 = obj.pickIndex();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Random-Pick-with-Weight&quot;&gt;&lt;a href=&quot;#Random-Pick-with-Weight&quot; class=&quot;headerlink&quot; title=&quot;Random Pick with Weight&quot;&gt;&lt;/a&gt;Random Pick with Weight&lt;/h1&gt;&lt;h2 id=&quot;Solution&quot;&gt;&lt;a href=&quot;#Solution&quot; class=&quot;headerlink&quot; title=&quot;Solution&quot;&gt;&lt;/a&gt;Solution&lt;/h2&gt;&lt;p&gt;Given an array &lt;code&gt;w&lt;/code&gt; of positive integers, where &lt;code&gt;w[i]&lt;/code&gt; describes the weight of index &lt;code&gt;i&lt;/code&gt;, write a function &lt;code&gt;pickIndex&lt;/code&gt; which randomly picks an index in proportion to its weight.&lt;/p&gt;
+&lt;p&gt;Note:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;1 &amp;lt;= w.length &amp;lt;= 10000&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;1 &amp;lt;= w[i] &amp;lt;= 10^5&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pickIndex&lt;/code&gt; will be called at most &lt;code&gt;10000&lt;/code&gt; times.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Example 1:&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Input: &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&amp;quot;Solution&amp;quot;,&amp;quot;pickIndex&amp;quot;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[[[1]],[]]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Output: [null,0]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;Example 2:&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Input: &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&amp;quot;Solution&amp;quot;,&amp;quot;pickIndex&amp;quot;,&amp;quot;pickIndex&amp;quot;,&amp;quot;pickIndex&amp;quot;,&amp;quot;pickIndex&amp;quot;,&amp;quot;pickIndex&amp;quot;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[[[1,3]],[],[],[],[],[]]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Output: [null,0,1,1,1,0]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;Explanation of Input Syntax:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The input is two lists: the subroutines called and their arguments. &lt;code&gt;Solution&lt;/code&gt;‘s constructor has one argument, the array &lt;code&gt;w&lt;/code&gt;. &lt;code&gt;pickIndex&lt;/code&gt; has no arguments. Arguments are always wrapped with a list, even if there aren’t any.&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/categories/LeetCode/"/>
+    
+      <category term="June Leetcoding Challenge" scheme="http://yoursite.com/categories/LeetCode/June-Leetcoding-Challenge/"/>
+    
+    
+      <category term="LeetCode" scheme="http://yoursite.com/tags/LeetCode/"/>
+    
+      <category term="June Leetcoding Challenge" scheme="http://yoursite.com/tags/June-Leetcoding-Challenge/"/>
+    
+  </entry>
   
   <entry>
     <title>June Leetcoding Challenge(6.4)</title>
@@ -587,33 +628,6 @@
       &lt;h1 id=&quot;PCB封装库的创建-89C51&quot;&gt;&lt;a href=&quot;#PCB封装库的创建-89C51&quot; class=&quot;headerlink&quot; title=&quot;PCB封装库的创建(89C51)&quot;&gt;&lt;/a&gt;PCB封装库的创建(89C51)&lt;/h1&gt;&lt;h2 id=&quot;本文概述：&quot;&gt;&lt;a href=&quot;#本文概述：&quot; class=&quot;headerlink&quot; title=&quot;本文概述：&quot;&gt;&lt;/a&gt;本文概述：&lt;/h2&gt;&lt;p&gt;使用Altium Designer绘制89C51的PCB封装库&lt;br&gt;本文以89C51芯片为例&lt;/p&gt;
 &lt;img src=&quot;/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG25.png&quot; class&gt;
 &lt;h2 id=&quot;本文使用的工具&quot;&gt;&lt;a href=&quot;#本文使用的工具&quot; class=&quot;headerlink&quot; title=&quot;本文使用的工具&quot;&gt;&lt;/a&gt;本文使用的工具&lt;/h2&gt;&lt;p&gt;Altium Designer 20.1.8&lt;br&gt;学习视频：凡亿PCB&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PCB学习笔记" scheme="http://yoursite.com/categories/PCB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="89C51" scheme="http://yoursite.com/categories/PCB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/89C51/"/>
-    
-    
-      <category term="PCB" scheme="http://yoursite.com/tags/PCB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>原理图库的创建(89C51为例)</title>
-    <link href="http://yoursite.com/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/"/>
-    <id>http://yoursite.com/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/</id>
-    <published>2020-05-24T23:43:00.000Z</published>
-    <updated>2020-05-26T22:15:47.569Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="原理图库的创建-89C51为例"><a href="#原理图库的创建-89C51为例" class="headerlink" title="原理图库的创建(89C51为例)"></a>原理图库的创建(89C51为例)</h1><h2 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h2><p>使用Altium Designer绘制89C51的原理图库<br>本文以89C51原理图为例</p><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG31.png" class title="原理图"><h2 id="本文使用的工具"><a href="#本文使用的工具" class="headerlink" title="本文使用的工具"></a>本文使用的工具</h2><p>Altium Designer 20.1.8</p><a id="more"></a><h2 id="Step1-打开文件PCB-SchLib"><a href="#Step1-打开文件PCB-SchLib" class="headerlink" title="Step1: 打开文件PCB.SchLib"></a>Step1: 打开文件PCB.SchLib</h2><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/FInalResult.png" class title="最终效果图"><h2 id="Step2-在SCH-Library-窗口中点击Add，新建Component"><a href="#Step2-在SCH-Library-窗口中点击Add，新建Component" class="headerlink" title="Step2: 在SCH Library 窗口中点击Add，新建Component"></a>Step2: 在SCH Library 窗口中点击Add，新建Component</h2><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG9.png" class title="Component"><p>我以89C51芯片为例：</p><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG10.png" class title="Component"><p>在下图位置更新Component信息</p><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG21.png" class title="Component"><p>效果图如下：</p><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG19.png" class title="Component"><h2 id="Step3-在Editor中绘制Component-以89C51为例）"><a href="#Step3-在Editor中绘制Component-以89C51为例）" class="headerlink" title="Step3: 在Editor中绘制Component (以89C51为例）"></a>Step3: 在Editor中绘制Component (以89C51为例）</h2><ol><li>首先绘制一个Rectangle<img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG17.png" class title="Rectangle"><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG18.png" class title="Rectangle"></li><li>按照图片，使用Place Pin放置管脚<img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG15.png" class title="原理图库"><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG20.png" class title="原理图库"></li><li>在图中位置根据芯片更改管脚标号和名称<img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG16.png" class title="PCB"></li></ol><h2 id="此时，89C51芯片就画好了，同样的方法画出剩下的器件："><a href="#此时，89C51芯片就画好了，同样的方法画出剩下的器件：" class="headerlink" title="此时，89C51芯片就画好了，同样的方法画出剩下的器件："></a>此时，89C51芯片就画好了，同样的方法画出剩下的器件：</h2><p>在绘制电容，电阻等器件时，可以使用工具Line，与Rectangle在同一个列表中</p><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG22.png" class title="Line"><h3 id="根据原理图，绘制其他的器件，效果图如下："><a href="#根据原理图，绘制其他的器件，效果图如下：" class="headerlink" title="根据原理图，绘制其他的器件，效果图如下："></a>根据原理图，绘制其他的器件，效果图如下：</h3><p>RES:</p><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG30.png" class><p>晶振：</p><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG29.png" class><p>CON11:</p><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG28.png" class><p>CON8:</p><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG27.png" class><p>电源端子CON2:</p><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG26.png" class><p>电源端子CON2_1:</p><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG25.png" class><p>CAP:</p><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG24.png" class><p>7805:</p><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG23.png" class>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;原理图库的创建-89C51为例&quot;&gt;&lt;a href=&quot;#原理图库的创建-89C51为例&quot; class=&quot;headerlink&quot; title=&quot;原理图库的创建(89C51为例)&quot;&gt;&lt;/a&gt;原理图库的创建(89C51为例)&lt;/h1&gt;&lt;h2 id=&quot;本文概述：&quot;&gt;&lt;a href=&quot;#本文概述：&quot; class=&quot;headerlink&quot; title=&quot;本文概述：&quot;&gt;&lt;/a&gt;本文概述：&lt;/h2&gt;&lt;p&gt;使用Altium Designer绘制89C51的原理图库&lt;br&gt;本文以89C51原理图为例&lt;/p&gt;
-&lt;img src=&quot;/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG31.png&quot; class title=&quot;原理图&quot;&gt;
-&lt;h2 id=&quot;本文使用的工具&quot;&gt;&lt;a href=&quot;#本文使用的工具&quot; class=&quot;headerlink&quot; title=&quot;本文使用的工具&quot;&gt;&lt;/a&gt;本文使用的工具&lt;/h2&gt;&lt;p&gt;Altium Designer 20.1.8&lt;/p&gt;
     
     </summary>
     

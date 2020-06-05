@@ -3207,4 +3207,39 @@ where....</code></pre></li>
         <tag>June Leetcoding Challenge</tag>
       </tags>
   </entry>
+  <entry>
+    <title>June Leetcoding Challenge(6.5)</title>
+    <url>/2020/06/05/LeetCodeJune5th/</url>
+    <content><![CDATA[<h1 id="Random-Pick-with-Weight"><a href="#Random-Pick-with-Weight" class="headerlink" title="Random Pick with Weight"></a>Random Pick with Weight</h1><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>Given an array <code>w</code> of positive integers, where <code>w[i]</code> describes the weight of index <code>i</code>, write a function <code>pickIndex</code> which randomly picks an index in proportion to its weight.</p>
+<p>Note:</p>
+<ol>
+<li><code>1 &lt;= w.length &lt;= 10000</code></li>
+<li><code>1 &lt;= w[i] &lt;= 10^5</code></li>
+<li><code>pickIndex</code> will be called at most <code>10000</code> times.</li>
+</ol>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: </span><br><span class="line">[&quot;Solution&quot;,&quot;pickIndex&quot;]</span><br><span class="line">[[[1]],[]]</span><br><span class="line">Output: [null,0]</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: </span><br><span class="line">[&quot;Solution&quot;,&quot;pickIndex&quot;,&quot;pickIndex&quot;,&quot;pickIndex&quot;,&quot;pickIndex&quot;,&quot;pickIndex&quot;]</span><br><span class="line">[[[1,3]],[],[],[],[],[]]</span><br><span class="line">Output: [null,0,1,1,1,0]</span><br></pre></td></tr></table></figure>
+
+<p><strong>Explanation of Input Syntax:</strong></p>
+<p>The input is two lists: the subroutines called and their arguments. <code>Solution</code>‘s constructor has one argument, the array <code>w</code>. <code>pickIndex</code> has no arguments. Arguments are always wrapped with a list, even if there aren’t any.<br>   <a id="more"></a></p>
+<p>思路：</p>
+<img src="/2020/06/05/LeetCodeJune5th/silu.png" class>
+
+
+<p>代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] tmp;</span><br><span class="line">    Random rand;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Solution</span><span class="params">(<span class="keyword">int</span>[] w)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.tmp = w.clone();</span><br><span class="line">        <span class="keyword">this</span>.rand = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;w.length;i++)</span><br><span class="line">            tmp[i] +=tmp[i-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pickIndex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> x = rand.nextInt(tmp[tmp.length-<span class="number">1</span>])+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> index = Arrays.binarySearch(tmp,x);</span><br><span class="line">        <span class="keyword">if</span>(index&lt;<span class="number">0</span>)</span><br><span class="line">            index = -(index+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your Solution object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * Solution obj = new Solution(w);</span></span><br><span class="line"><span class="comment"> * int param_1 = obj.pickIndex();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>June Leetcoding Challenge</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>June Leetcoding Challenge</tag>
+      </tags>
+  </entry>
 </search>
