@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="本文概述JavaWeb学习笔记之Servlet，HTTP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Servlet&amp;HTTP">
+<meta property="og:url" content="http://yoursite.com/2020/06/07/Servlet&HTTP/index.html">
+<meta property="og:site_name" content="Jungle">
+<meta property="og:description" content="本文概述JavaWeb学习笔记之Servlet，HTTP">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-07T14:36:04.076Z">
+<meta property="article:modified_time" content="2020-06-07T14:47:08.811Z">
+<meta property="article:author" content="Jungle">
+<meta property="article:tag" content="JavaWeb">
+<meta property="article:tag" content="Servlet">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/06/07/Servlet&HTTP/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Servlet&HTTP | Jungle</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Jungle" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/junglej/personal-project" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Jungle</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Try My Best</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/07/Servlet&HTTP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Jungle">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jungle">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Servlet&HTTP
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-06-07 10:36:04 / Modified: 10:47:08" itemprop="dateCreated datePublished" datetime="2020-06-07T10:36:04-04:00">2020-06-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaWeb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">JavaWeb学习笔记</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>4.9k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>4 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h2><p>JavaWeb学习笔记之Servlet，HTTP</p>
+<a id="more"></a>
+<h2 id="web服务器软件："><a href="#web服务器软件：" class="headerlink" title="web服务器软件："></a>web服务器软件：</h2><ul>
+<li><p>服务器：安装了服务器软件的计算机</p>
+</li>
+<li><p>服务器软件：接收用户的请求，处理请求，做出响应</p>
+</li>
+<li><p>web服务器软件：接收用户的请求，处理请求，做出响应。</p>
+<ul>
+<li>在web服务器软件中，可以部署web项目，让用户通过浏览器来访问这些项目</li>
+<li>web容器</li>
+</ul>
+</li>
+<li><p>常见的java相关的web服务器软件：</p>
+<ul>
+<li>webLogic：oracle公司，大型的JavaEE服务器，支持所有的JavaEE规范，收费的。</li>
+<li>webSphere：IBM公司，大型的JavaEE服务器，支持所有的JavaEE规范，收费的。</li>
+<li>JBOSS：JBOSS公司的，大型的JavaEE服务器，支持所有的JavaEE规范，收费的。</li>
+<li>Tomcat：Apache基金组织，中小型的JavaEE服务器，仅仅支持少量的JavaEE规范servlet/jsp。开源的，免费的。    </li>
+</ul>
+</li>
+</ul>
+<h2 id="Servlet：-server-applet"><a href="#Servlet：-server-applet" class="headerlink" title="Servlet：  server applet"></a>Servlet：  server applet</h2><ul>
+<li><p>概念：运行在服务器端的小程序</p>
+<ul>
+<li>Servlet就是一个接口，定义了Java类被浏览器访问到(tomcat识别)的规则。</li>
+<li>将来我们自定义一个类，实现Servlet接口，复写方法。</li>
+</ul>
+</li>
+<li><p>快速入门：</p>
+<ol>
+<li><p>创建JavaEE项目</p>
+</li>
+<li><p>定义一个类，实现Servlet接口</p>
+<ul>
+<li>public class ServletDemo1 implements Servlet</li>
+</ul>
+</li>
+<li><p>实现接口中的抽象方法，自动生成</p>
+</li>
+<li><p>配置Servlet<br> 在web.xml中配置：Java类映射</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--配置Servlet --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>Servlet起个名字<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>Java类的全类名<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span> <span class="comment">&lt;!--映射 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>Servlet起个名字<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/资源路径<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>执行原理：</p>
+<ol>
+<li>当服务器接受到客户端浏览器的请求后，会解析请求URL路径，获取访问的Servlet的资源路径</li>
+<li>查找web.xml文件，是否有对应的<url-pattern>标签体内容。</url-pattern></li>
+<li>如果有，则在找到对应的<servlet-class>全类名</servlet-class></li>
+<li>tomcat会将字节码文件加载进内存，并且创建其对象</li>
+<li>调用其方法</li>
+</ol>
+</li>
+<li><p>Servlet中的生命周期方法：</p>
+<ol>
+<li><p>被创建：执行init方法，只执行一次</p>
+<ul>
+<li><p>Servlet什么时候被创建？</p>
+<ul>
+<li>默认情况下，第一次被访问时，Servlet被创建</li>
+<li>可以配置执行Servlet的创建时机。<pre><code>* 在&lt;servlet&gt;标签下配置
+  1. 第一次被访问时，创建
+         * &lt;load-on-startup&gt;的值为负数</code></pre><ol start="2">
+<li>在服务器启动时，创建<ul>
+<li><load-on-startup>的值为0或正整数，一般是0-10之间</load-on-startup></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>Servlet的init方法，只执行一次，说明一个Servlet在内存中只存在一个对象，Servlet是单例的</p>
+<ol>
+<li>多个用户同时访问时，可能存在线程安全问题。</li>
+</ol>
+<ul>
+<li>解决：尽量不要在Servlet中定义成员变量。即使定义了成员变量，也不要对修改值</li>
+</ul>
+<ol start="2">
+<li>提供服务：执行service方法，执行多次<ul>
+<li>每次访问Servlet时，Service方法都会被调用一次。</li>
+</ul>
+</li>
+<li>被销毁：执行destroy方法，只执行一次<ul>
+<li>Servlet被销毁时执行。服务器关闭时，Servlet被销毁</li>
+<li>只有服务器正常关闭时，才会执行destroy方法。</li>
+<li>destroy方法在Servlet被销毁之前执行，一般用于释放资源</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>Servlet3.0：</p>
+<ul>
+<li><p>好处：</p>
+<ul>
+<li>支持注解配置。可以不需要web.xml了。</li>
+</ul>
+</li>
+<li><p>步骤：</p>
+<ol>
+<li>创建JavaEE项目，选择Servlet的版本3.0以上，可以不创建web.xml</li>
+<li>定义一个类，实现Servlet接口</li>
+<li>复写方法</li>
+<li>在类上使用@WebServlet注解，进行配置<ul>
+<li>@WebServlet(“资源路径”)</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">@Target(&#123;ElementType.TYPE&#125;)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Documented</span><br><span class="line">public @interface WebServlet &#123;</span><br><span class="line">    String name() default "";//相当于<span class="tag">&lt;<span class="name">Servlet-name</span>&gt;</span> 不需要配置，对应关系</span><br><span class="line"></span><br><span class="line">    String[] value() default &#123;&#125;;//代表urlPatterns()属性配置，最重要的</span><br><span class="line"></span><br><span class="line">    String[] urlPatterns() default &#123;&#125;;//相当于<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    int loadOnStartup() default -1;//相当于<span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    WebInitParam[] initParams() default &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    boolean asyncSupported() default false;</span><br><span class="line"></span><br><span class="line">    String smallIcon() default "";</span><br><span class="line"></span><br><span class="line">    String largeIcon() default "";</span><br><span class="line"></span><br><span class="line">    String description() default "";</span><br><span class="line"></span><br><span class="line">    String displayName() default "";</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Servlet的体系结构<br>Servlet – 接口</p>
+<pre><code>|</code></pre><p>GenericServlet – 抽象类</p>
+<pre><code>|</code></pre><p>HttpServlet  – 抽象类</p>
+<ul>
+<li><p>GenericServlet：将Servlet接口中其他的方法做了默认空实现，只将service()方法作为抽象</p>
+<ul>
+<li>将来定义Servlet类时，可以继承GenericServlet，实现service()方法即可</li>
+</ul>
+</li>
+<li><p>HttpServlet：对http协议的一种封装，简化操作</p>
+<ol>
+<li>定义类继承HttpServlet</li>
+<li>复写doGet/doPost方法</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>Servlet相关配置</p>
+<ol>
+<li>urlpartten:Servlet访问路径<ol>
+<li>一个Servlet可以定义多个访问路径 ： @WebServlet({“/d4”,”/dd4”,”/ddd4”})</li>
+<li>路径定义规则：<ol>
+<li>/xxx：路径匹配</li>
+<li>/xxx/xxx:多层路径，目录结构</li>
+<li>*.do：扩展名匹配<h2 id="HTTP："><a href="#HTTP：" class="headerlink" title="HTTP："></a>HTTP：</h2></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>概念：Hyper Text Transfer Protocol 超文本传输协议</p>
+<ul>
+<li><p>传输协议：定义了，客户端和服务器端通信时，发送数据的格式</p>
+</li>
+<li><p>特点：</p>
+<ol>
+<li>基于TCP/IP的高级协议</li>
+<li>默认端口号:80</li>
+<li>基于请求/响应模型的:一次请求对应一次响应</li>
+<li>无状态的：每次请求之间相互独立，不能交互数据</li>
+</ol>
+</li>
+<li><p>历史版本：</p>
+<ul>
+<li>1.0：每一次请求响应都会建立新的连接</li>
+<li>1.1：复用连接</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>请求消息数据格式</p>
+<ol>
+<li><p>请求行<br> 请求方式 请求url 请求协议/版本<br> GET /login.html    HTTP/1.1</p>
+<ul>
+<li>请求方式：<ul>
+<li>HTTP协议有7中请求方式，常用的有2种<ul>
+<li>GET：<ol>
+<li>请求参数在请求行中，在url后。</li>
+<li>请求的url长度有限制的</li>
+<li>不太安全</li>
+</ol>
+</li>
+<li>POST：<ol>
+<li>请求参数在请求体中</li>
+<li>请求的url长度没有限制的</li>
+<li>相对安全</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>请求头：客户端浏览器告诉服务器一些信息<br> 请求头名称: 请求头值键值对</p>
+<ul>
+<li><p>常见的请求头：</p>
+<ol>
+<li><p>User-Agent：浏览器告诉服务器，我访问你使用的浏览器版本信息</p>
+<ul>
+<li>可以在服务器端获取该头的信息，解决浏览器的兼容性问题</li>
+</ul>
+</li>
+<li><p>Referer：<a href="http://localhost/login.html" target="_blank" rel="noopener">http://localhost/login.html</a></p>
+<ul>
+<li>告诉服务器，我(当前请求)从哪里来？<ul>
+<li>作用：<ol>
+<li>防盗链：</li>
+<li>统计工作：</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>请求空行<br> 空行，就是用于分割POST请求的请求头，和请求体的。</p>
+</li>
+<li><p>请求体(正文)：</p>
+<ul>
+<li>封装POST请求消息的请求参数的    </li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="Request："><a href="#Request：" class="headerlink" title="Request："></a>Request：</h2><ol>
+<li><p>request对象和response对象的原理</p>
+<ol>
+<li>request和response对象是由服务器创建的。我们来使用它们</li>
+<li>request对象是来获取请求消息，response 象是来设置响应消息</li>
+</ol>
+</li>
+<li><p>request对象继承体系结构：<br> ServletRequest        –    接口</p>
+<pre><code>|    继承</code></pre><p> HttpServletRequest    – 接口</p>
+<pre><code>|    实现</code></pre><p> org.apache.catalina.connector.RequestFacade 类(tomcat)</p>
+</li>
+<li><p>request功能：</p>
+<ol>
+<li>获取请求消息数据<ol>
+<li>获取请求行数据<ul>
+<li>GET /day14/demo1?name=zhangsan HTTP/1.1</li>
+<li>方法：<ol>
+<li>获取请求方式 ：GET<ul>
+<li>String getMethod()  </li>
+</ul>
+</li>
+<li>(*)获取虚拟目录：/day14<ul>
+<li>String getContextPath()</li>
+</ul>
+</li>
+<li>获取Servlet路径: /demo1<ul>
+<li>String getServletPath()</li>
+</ul>
+</li>
+<li>获取get方式请求参数：<ul>
+<li>String getQueryString()</li>
+</ul>
+</li>
+<li>(*)获取请求URI：/day14/demo1<ul>
+<li>String getRequestURI():        </li>
+<li>StringBuffer getRequestURL() </li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li><p>URI是统一资源标识符</p>
+<pre><code>    * URL是统一资源定位符
+
+6. 获取协议及版本：HTTP/1.1
+    * String getProtocol()</code></pre></li>
+</ul>
+<ol start="7">
+<li>获取客户机的IP地址：<pre><code>* String getRemoteAddr()</code></pre></li>
+</ol>
+<pre><code>2.  获取请求头数据
+    * 方法：
+        * (*)String getHeader(String name):通过请求头的名称获取请求头的值
+        * Enumeration&lt;String&gt; getHeaderNames():获取所有的请求头名称
+
+
+3. 获取请求体数据:
+  * 请求体：只有POST请求方式，才有请求体，在请求体中封装了POST请求的请求参数
+  * 步骤：
+    1. 获取流对象
+        *  BufferedReader getReader()：获取字符输入流，只能操作字符数据
+        *  ServletInputStream getInputStream()：获取字节输入流，可以操作所有类型数据
+            * 在文件上传知识点后讲解
+  2. 再从流对象中拿数据
+
+4. 其他功能：
+
+   * 获取请求参数通用方式：不论get还是post请求方式都可以使用下列方法来获取请求参数
+
+   1. String getParameter(String name):根据参数名称获取参数值    username=zs&amp;password=123
+   2. String[] getParameterValues(String name):根据参数名称获取参数值的数组  hobby=xx&amp;hobby=game
+   3. Enumeration&lt;String&gt; getParameterNames():获取所有请求的参数名称
+   4. Map&lt;String,String[]&gt; getParameterMap():获取所有参数的map集合
+
+   * 中文乱码问题：
+    * get方式：tomcat 8 已经将get方式乱码问题解决了
+    * post方式：会乱码
+        * 解决：在获取参数前，设置request的编码request.setCharacterEncoding(&quot;utf-8&quot;);</code></pre><ol start="4">
+<li><p>请求转发：一种在服务器内部的资源跳转方式</p>
+<ol>
+<li><p>步骤：</p>
+<pre><code>1. 通过request对象获取请求转发器对象：RequestDispatcher getRequestDispatcher(String path)
+2. 使用RequestDispatcher对象来进行转发：forward(ServletRequest request, ServletResponse response) </code></pre><ol start="2">
+<li>特点：<ol>
+<li>浏览器地址栏路径不发生变化</li>
+<li>只能转发到当前服务器内部资源中。</li>
+<li>转发是一次请求</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>共享数据：</p>
+<pre><code>* 域对象：一个有作用范围的对象，可以在范围内共享数据
+* request域：代表一次请求的范围，一般用于请求转发的多个资源中共享数据
+* 方法：
+    1. void setAttribute(String name,Object obj):存储数据
+    2. Object getAttitude(String name):通过键获取值
+    3. void removeAttribute(String name):通过键移除键值对</code></pre></li>
+<li><p>获取ServletContext：  </p>
+<ul>
+<li>ServletContext getServletContext()        </li>
+</ul>
+</li>
+</ol>
+
+    </div>
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+      
+    </div>
+    
+    <div>
+          
+            
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2020/06/07/Servlet&HTTP/">Servlet&HTTP</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Jungle 的个人博客">Jungle</a></p>
+  <p><span>发布时间:</span>2020年06月07日 - 10:36</p>
+  <p><span>最后更新:</span>2020年06月07日 - 10:47</p>
+  <p><span>原始链接:</span><a href="/2020/06/07/Servlet&HTTP/" title="Servlet&HTTP">http://yoursite.com/2020/06/07/Servlet&HTTP/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2020/06/07/Servlet&HTTP/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
+</div>
+<script>
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({
+          title: "",
+          text: '复制成功',
+          icon: "success",
+          showConfirmButton: true
+          });
+    });
+    });
+</script>
+
+
+          
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>Welcome to my other publishing channels</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/images/wechat_channel.jpg">
+            <span class="icon">
+              <i class="fab fa-weixin"></i>
+            </span>
+
+            <span class="label">WeChat</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaWeb/" rel="tag"><i class="fa fa-tag"></i>JavaWeb</a>
+              <a href="/tags/Servlet/" rel="tag"><i class="fa fa-tag"></i>Servlet</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/06/LeetCodeJune6th/" rel="prev" title="June Leetcoding Challenge(6.6)">
+      <i class="fa fa-chevron-left"></i> June Leetcoding Challenge(6.6)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/07/LeetCodeJune7th/" rel="next" title="June Leetcoding Challenge(6.7)">
+      June Leetcoding Challenge(6.7) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81MDI2OS8yNjc1OQ=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#本文概述"><span class="nav-number">1.</span> <span class="nav-text">本文概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#web服务器软件："><span class="nav-number">2.</span> <span class="nav-text">web服务器软件：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet：-server-applet"><span class="nav-number">3.</span> <span class="nav-text">Servlet：  server applet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP："><span class="nav-number">4.</span> <span class="nav-text">HTTP：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Request："><span class="nav-number">5.</span> <span class="nav-text">Request：</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jungle"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Jungle</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/junglej" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;junglej" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/6388475948" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;6388475948" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+  </div>
+
+
+<script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.js?i=5idsqmb2ssh&amp;m=7&amp;c=007eff&amp;cr1=007eff&amp;f=tahoma&amp;l=33" async="async"></script>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jungle</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">85k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:17</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+<div class="weixin-box">
+  <div class="weixin-menu">
+    <div class="weixin-hover">
+      <div class="weixin-description">微信扫一扫，订阅本博客</div>
+    </div>
+  </div>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+<script type="text/javascript"
+color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+</html>
