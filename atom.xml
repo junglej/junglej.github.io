@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-07T14:55:30.647Z</updated>
+  <updated>2020-06-07T23:47:17.304Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>计算机网络自顶向下方法Character1补充</title>
+    <link href="http://yoursite.com/2020/06/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95Character1%E8%A1%A5%E5%85%85/"/>
+    <id>http://yoursite.com/2020/06/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95Character1%E8%A1%A5%E5%85%85/</id>
+    <published>2020-06-07T23:41:20.427Z</published>
+    <updated>2020-06-07T23:47:17.304Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="计算机网络自顶向下方法Character1补充"><a href="#计算机网络自顶向下方法Character1补充" class="headerlink" title="计算机网络自顶向下方法Character1补充"></a>计算机网络自顶向下方法Character1补充</h1><h1 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h1><p>本文主要补充计算机网络自顶向下方法第一章节的知识点。<br>学习书籍为：计算机网络自顶向下方法<br>学习视频为：国立清华大学黄能富教授讲解的计算机网络自顶向下方法，需要的可以点击 <a href="http://ocw.nthu.edu.tw/ocw/index.php?page=mobile&type=teacher&cid=13" target="_blank" rel="noopener">这里</a></p><a id="more"></a><ul><li><p>端系统通过通信链路和分组交换机（packet switch）连接到一起。链路的传输速率以比特/秒度量（bit/s或bps）。</p></li><li><p>当一台端系统要向另一台端系统发送数据时，发送端系统将数据分段，并为每段加上首部字节。由此形成的信息包用计算机网络的术语来说称为分组( packet)。这些分组通过网络发送到目的端系统，在那里被装配成初始数据。</p></li><li><p>分组交换机：路由器（router）和链路交换机（link-layer switch）。链路层交换机通常用于接入网中，而路由器通常用于网络核心中。从发送端系统到接收端系统给，一个分组所经历的一系列通信链路和分组交换机称为该网络的路径。</p></li><li><p>端系统通过ISP接入因特网，每个ISP是一个由多个分组交换机和多段通信链路组成的网络。各ISP为端系统提供了各种不同类型的网络接入。ISP也为内容提供者提供因特网接入服务，将Web站点直接接入因特网，因特网就是将端系统彼此互联，因此ISP也必须互联。</p></li><li><p>端系统，分组交换机和其他因特网部件都要运行一系列协议，这些协议控制因特网中信息的接受和发送。</p></li><li><p>IP协议定义了在路由器和端系统之间发送和接受的分组格式。</p></li><li><p>分组交换</p><ul><li>存储转发传输：是指在交换机能后开始输出链路传输分组的第一个比特之前，必须接受到整个分组。</li></ul></li><li><p>电路交换频分复用FDM或时分复用TDM：</p><ul><li>FDM: 链路的频谱由跨越链路创建的所有链接所共享，每条连接专用一个频段，4Hz的带宽</li><li>TDM： 时间被划分为固定区间的帧，并且每帧又被划分为固定数量的时隙</li></ul></li><li><p>分组交换网中的时延概述：</p><ul><li><p>分类：结点处理时延(nodal processing delay)，排队时延(queuing delay) ,传输时延(transmission delay)和传播时延(propagation on delay),时延总体累加起来是结点总时延</p></li><li><p>处理时延：检查分组首部和决定将该分组导向何处所需要的时间是处理时延的一部分。</p></li><li><p>排队时延：在队列中，当分组在链路上等待传输时，他经受排队时延。一个特定分组的排队时延长度取决于先期到达的正在排队等待像链路传输的分组数量</p></li><li><p>传输时延：假定分组以先到先服务方式传输，这在分组交换网中是常见的方式，仅当所有已经到达的分组被传输后，才能传输刚到达的分组</p></li><li><p>传播时延：一旦一个比特被推向链路，该比特需要向路由器B传播。从该链路的起点到路由器B传播所需要的时间时传播时延</p></li><li><p>排队时延和丢包：取决于流量到达改队列的速率，链路的传输速率和到达流量性质，即流量时周期性到达还是以突发形式到达.</p><p>由于排队容量是有限的，随着流量强度接近1，排队时延并不实际趋向无穷大，相反，到达的分组发现一个满的队列，由于没有地方存储这个分组，路由器将丢弃该分组，即丢包</p></li></ul></li><li><p>吞吐量： 从主机A到主机B跨越计算机网络传送一个大文件，在任何时间瞬间的瞬时吞吐量是主机B接受到该文件的速率。 如果该文件由F比特组成，主机B接受到所有F比特用去T秒，则文件传送的平均吞吐量是F/T bps。</p></li><li><p>协议分层，各层的所有协议被称为协议栈。由五个层次构成：物理层，链路层，网络层，运输层，应用层。自顶向下方法：</p><ol><li><p>应用层：</p><p>应用层是网络应用程序及它的应用层协议存留的地方。借助于特定的应用层协议即域名系统（DNS）完成。应用层协议分布在分布在多个端系统上，一个端系统中的应用程序使用协议与另一个端系统中的应用程序交换信息的分组。位于应用层的信息分组称为报文。</p></li><li><p>运输层：</p><p>因特网的运输层在应用程序端点之间传送应用层保温。TCP向它的应用程序提供了面向连接的服务。这种服务包括了应用层报文目的地的确保传递和流量控制。TCP将长报文转换为短报文，并提供拥塞控制机制，因此当网络拥塞时，源抑制其传输速率。UDP协议向它的应用程序提供无连接服务。</p></li><li><p>网络层：</p><p>负责将数据包的网络层分组从一台主机移动到另一台主机。在一台源主机中的因特网运输层协议向网络层递交运输层报文段和目的地址。IP协议定义了在数据包中的各个字段以及端系统和路由器如何作用与这些资源。仅有一个协议，所有具有网络层的因特网组件必须运行IP协议。</p></li><li><p>链路层： </p><p>为了将分组从一个结点（主机或路由器）移动到路径上的下一个结点，网络层必须依靠该链路层的服务。特别是在每个结点，网络层将数据报下传给链路层，链路层沿着路径将数据报传递给下一个结点。由链路层提供的服务取决于应用于该链路的特定链路协议</p></li><li><p>物理层：将帧中的一个一个比特从一个结点移动到下一个结点</p></li></ol></li><li><p>OSI模型：应用层，表示层，会话层，运输层，网络层，链路层，物理层</p><ol><li>应用层（数据）：确定进程之间通信的性质以满足用户需要以及提供网络与用户应用</li><li>表示层（数据）：主要解决拥护信息的语法表示问题，如加密解密</li><li>会话层（数据）：提供包括访问验证和会话管理在内的建立和维护应用之间通信的机<br>制，如服务器验证用户登录便是由会话层完成的</li><li>传输 层（段）：实现网络不同主机上用户进程之间的数据通信，可靠<br>与不可靠的传输，传输层的错误检测，流量控制等</li><li>网络层（包）：提供逻辑地址（ IP ）、选路，数据从源端到目的端的<br>传输</li><li>数据链路层 （帧）：将上层数据封装成帧，用 MAC 地址访问媒介，错误检测与修正</li><li>物理层（比特流）：设备之间比特流的传输，物理接口，电气特性等</li></ol></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;计算机网络自顶向下方法Character1补充&quot;&gt;&lt;a href=&quot;#计算机网络自顶向下方法Character1补充&quot; class=&quot;headerlink&quot; title=&quot;计算机网络自顶向下方法Character1补充&quot;&gt;&lt;/a&gt;计算机网络自顶向下方法Character1补充&lt;/h1&gt;&lt;h1 id=&quot;本文概述：&quot;&gt;&lt;a href=&quot;#本文概述：&quot; class=&quot;headerlink&quot; title=&quot;本文概述：&quot;&gt;&lt;/a&gt;本文概述：&lt;/h1&gt;&lt;p&gt;本文主要补充计算机网络自顶向下方法第一章节的知识点。&lt;br&gt;学习书籍为：计算机网络自顶向下方法&lt;br&gt;学习视频为：国立清华大学黄能富教授讲解的计算机网络自顶向下方法，需要的可以点击 &lt;a href=&quot;http://ocw.nthu.edu.tw/ocw/index.php?page=mobile&amp;type=teacher&amp;cid=13&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="计算机网络自顶向下方法学习笔记" scheme="http://yoursite.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="计算机网络自顶向下方法" scheme="http://yoursite.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>June Leetcoding Challenge(6.7)</title>
@@ -606,33 +629,6 @@
     
       &lt;h1 id=&quot;板块的绘制及布局处理-89C51为例&quot;&gt;&lt;a href=&quot;#板块的绘制及布局处理-89C51为例&quot; class=&quot;headerlink&quot; title=&quot;板块的绘制及布局处理(89C51为例)&quot;&gt;&lt;/a&gt;板块的绘制及布局处理(89C51为例)&lt;/h1&gt;&lt;h2 id=&quot;本文概述：&quot;&gt;&lt;a href=&quot;#本文概述：&quot; class=&quot;headerlink&quot; title=&quot;本文概述：&quot;&gt;&lt;/a&gt;本文概述：&lt;/h2&gt;&lt;p&gt;使用Altium Designer绘制89C51的PCB&lt;br&gt;本文以89C51原理图为例&lt;/p&gt;
 &lt;img src=&quot;/2020/05/27/%E6%9D%BF%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%8F%8A%E5%B8%83%E5%B1%80%E5%A4%84%E7%90%86(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG31.png&quot; class title=&quot;原理图&quot;&gt;
-&lt;h2 id=&quot;本文使用的工具&quot;&gt;&lt;a href=&quot;#本文使用的工具&quot; class=&quot;headerlink&quot; title=&quot;本文使用的工具&quot;&gt;&lt;/a&gt;本文使用的工具&lt;/h2&gt;&lt;p&gt;Altium Designer 20.1.8&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="PCB学习笔记" scheme="http://yoursite.com/categories/PCB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="89C51" scheme="http://yoursite.com/categories/PCB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/89C51/"/>
-    
-    
-      <category term="PCB" scheme="http://yoursite.com/tags/PCB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PCB的导入及前期处理</title>
-    <link href="http://yoursite.com/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/"/>
-    <id>http://yoursite.com/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/</id>
-    <published>2020-05-27T16:02:46.000Z</published>
-    <updated>2020-05-27T16:37:29.249Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="PCB的导入及前期处理"><a href="#PCB的导入及前期处理" class="headerlink" title="PCB的导入及前期处理"></a>PCB的导入及前期处理</h1><h2 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h2><p>使用Altium Designer将原理图导入PCB<br>本文以89C51原理图为例</p><img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG312.png" class title="原理图"><h2 id="本文使用的工具"><a href="#本文使用的工具" class="headerlink" title="本文使用的工具"></a>本文使用的工具</h2><p>Altium Designer 20.1.8</p><a id="more"></a><h1 id="1-对原理图的封装进行添加"><a href="#1-对原理图的封装进行添加" class="headerlink" title="1. 对原理图的封装进行添加"></a>1. 对原理图的封装进行添加</h1><h2 id="两种添加分装的方式（以7805为例）"><a href="#两种添加分装的方式（以7805为例）" class="headerlink" title="两种添加分装的方式（以7805为例）"></a>两种添加分装的方式（以7805为例）</h2><h3 id="1-双击器件，在Parameters窗口点击Add"><a href="#1-双击器件，在Parameters窗口点击Add" class="headerlink" title="1. 双击器件，在Parameters窗口点击Add"></a>1. 双击器件，在Parameters窗口点击Add</h3>   <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG22.png" class><p>   选中Add中的Footprint</p>   <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG23.png" class><p>   再打开的PCBModel中点击Browse，因为之前已经创建过PCB的封装库，这里直接浏览选择即可。找到7805对应的封装，即3P_7805。</p>   <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG24.png" class><h3 id="2-批量加入Footprint"><a href="#2-批量加入Footprint" class="headerlink" title="2. 批量加入Footprint"></a>2. 批量加入Footprint</h3><p>   在Tools中找到Footprint Manager…</p>   <p>   选中电容，然后点击add</p>   <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG30.png" class><p>  以同样的方式修改其他的器件，最后点击Accept Changes</p>  <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG31.png" class><p>  随后点击Exeute Changes</p>   <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG13.png" class><h1 id="2-将原理图导入PCB"><a href="#2-将原理图导入PCB" class="headerlink" title="2. 将原理图导入PCB"></a>2. 将原理图导入PCB</h1><p>在原理图界面中，点击Design，选中Update</p><img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG16.png" class><p>Room我们一般不需要导入，把前面的勾去掉就好</p><img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG19.png" class><p>下图中有两个按钮我们需要知道：第一个按钮为check状态，第二个按钮为执行更改。</p><img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG20.png" class><p>先check器件状态然后点击执行更改，最后得到下图</p><img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG4.png" class><p>为了确认器件，我们通常要导入两次，在PCB文件中，点击Design，然后点击Import Changes From 89C51.PrjPcb</p><img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG32.png" class><p>导入完全会有以下提示信息：</p><img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG33.png" class><p>我们可以将器件的名称放在器件的中心位置，选中器件，点击Find Similar，在String type中选中same，然后快捷键A，点击Position Component Text   </p><img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG34.png" class><img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG35.png" class><img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG36.png" class><h1 id="最后的效果图"><a href="#最后的效果图" class="headerlink" title="最后的效果图"></a>最后的效果图</h1><img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG37.png" class>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;PCB的导入及前期处理&quot;&gt;&lt;a href=&quot;#PCB的导入及前期处理&quot; class=&quot;headerlink&quot; title=&quot;PCB的导入及前期处理&quot;&gt;&lt;/a&gt;PCB的导入及前期处理&lt;/h1&gt;&lt;h2 id=&quot;本文概述：&quot;&gt;&lt;a href=&quot;#本文概述：&quot; class=&quot;headerlink&quot; title=&quot;本文概述：&quot;&gt;&lt;/a&gt;本文概述：&lt;/h2&gt;&lt;p&gt;使用Altium Designer将原理图导入PCB&lt;br&gt;本文以89C51原理图为例&lt;/p&gt;
-&lt;img src=&quot;/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG312.png&quot; class title=&quot;原理图&quot;&gt;
 &lt;h2 id=&quot;本文使用的工具&quot;&gt;&lt;a href=&quot;#本文使用的工具&quot; class=&quot;headerlink&quot; title=&quot;本文使用的工具&quot;&gt;&lt;/a&gt;本文使用的工具&lt;/h2&gt;&lt;p&gt;Altium Designer 20.1.8&lt;/p&gt;
     
     </summary>
