@@ -216,8 +216,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-06-07 10:52:33" itemprop="dateCreated datePublished" datetime="2020-06-07T10:52:33-04:00">2020-06-07</time>
+              <time title="Created: 2020-06-07 10:52:33 / Modified: 10:55:30" itemprop="dateCreated datePublished" datetime="2020-06-07T10:52:33-04:00">2020-06-07</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -239,7 +240,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>955</span>
+              <span>968</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -258,13 +259,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Coin-Change-2"><a href="#Coin-Change-2" class="headerlink" title="Coin Change 2"></a>Coin Change 2</h1><p>Solution<br>You are given coins of different denominations and a total amount of money. Write a function to compute the number of combinations that make up that amount. You may assume that you have infinite number of each kind of coin.</p>
+          <h1 id="Coin-Change-2-LeetCode518"><a href="#Coin-Change-2-LeetCode518" class="headerlink" title="Coin Change 2 (LeetCode518)"></a>Coin Change 2 (LeetCode518)</h1><p>Solution<br>You are given coins of different denominations and a total amount of money. Write a function to compute the number of combinations that make up that amount. You may assume that you have infinite number of each kind of coin.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: amount &#x3D; 5, coins &#x3D; [1, 2, 5]</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: there are four ways to make up the amount:</span><br><span class="line">5&#x3D;5</span><br><span class="line">5&#x3D;2+2+1</span><br><span class="line">5&#x3D;2+1+1+1</span><br><span class="line">5&#x3D;1+1+1+1+1</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: amount &#x3D; 3, coins &#x3D; [2]</span><br><span class="line">Output: 0</span><br><span class="line">Explanation: the amount of 3 cannot be made up just with coins of 2.</span><br><span class="line">Example 3:</span><br><span class="line"></span><br><span class="line">Input: amount &#x3D; 10, coins &#x3D; [10] </span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure>
-<h1 id="分析与思路"><a href="#分析与思路" class="headerlink" title="分析与思路"></a>分析与思路</h1><p>使用动态规划即可完成。以Example1为例，当只有一个1分钱硬币时，每个amount都有一种方式，当amount=2，有1分和2分钱两种硬币时，有两种情况，第一种只用1分钱硬币，那么就有1种情况，即d[0,2],，第二种情况就是，要用一个2分钱硬币，那么剩下部分2-2=0，0对应的有1种组合，那么当amount=2时，就会有1+1=2种组合。</p>
-<img src="/2020/06/07/LeetCodeJune7th/silu.png" class>
-
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> amount, <span class="keyword">int</span>[] coins)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[amount+<span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;amount+<span class="number">1</span>;j++)</span><br><span class="line">            dp[j]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> c: coins)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=c;i&lt;amount+<span class="number">1</span>;i++)</span><br><span class="line">                dp[i] +=dp[i-c];</span><br><span class="line">        <span class="keyword">return</span> dp[amount];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/07/LeetCodeJune7th/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
     
