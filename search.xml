@@ -3783,4 +3783,100 @@ where....</code></pre></li>
         <tag>June Leetcoding Challenge</tag>
       </tags>
   </entry>
+  <entry>
+    <title>NODEMCU搭建ArduinoIDE开发环境</title>
+    <url>/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<h1 id="NODEMCU驱动安装"><a href="#NODEMCU驱动安装" class="headerlink" title="NODEMCU驱动安装"></a>NODEMCU驱动安装</h1><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>使用windows系统<br>下载Arduino IDE，我直接从官网下载的，这里是<a href="https://www.arduino.cc/en/Main/Software" target="_blank" rel="noopener">传送门</a></p>
+<a id="more"></a>
+
+<h2 id="Step1-下载并安装Arduino"><a href="#Step1-下载并安装Arduino" class="headerlink" title="Step1 下载并安装Arduino"></a>Step1 下载并安装Arduino</h2><p>windows很简单，只需要下载zip文件解压，找到arduino.exe双击运行即可。</p>
+<p>Mac版本相对来说比较复杂，需要从在system preferences中设置一下。</p>
+<h3 id="将下载好的zip解压，然后将解压出来的文件拖到Application中"><a href="#将下载好的zip解压，然后将解压出来的文件拖到Application中" class="headerlink" title="将下载好的zip解压，然后将解压出来的文件拖到Application中"></a>将下载好的zip解压，然后将解压出来的文件拖到Application中</h3><img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG29.png" class>
+
+<p>这个时候的Arduino是不能用的，因为并未授权</p>
+<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG30.png" class>
+
+<p>这个时候我们可以打开System Preferences 即系统设置</p>
+<p>我们选择Sercurity &amp; Privacy，然后在General中点击Open Anyway</p>
+<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG31.png" class>
+
+<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG32.png" class>
+
+
+
+<p>这样我们就打开Arduino IDE了</p>
+
+
+<h2 id="Step2-打开ArduinoIDE-选择Preferences"><a href="#Step2-打开ArduinoIDE-选择Preferences" class="headerlink" title="Step2 打开ArduinoIDE 选择Preferences"></a>Step2 打开ArduinoIDE 选择Preferences</h2><img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG25.png" class title="驱动程序">
+
+<p>在下图位置填写以下内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;arduino.esp8266.com&#x2F;stable&#x2F;package_esp8266com_index.json</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG27.png" class>
+
+<h2 id="Step3-设置Board"><a href="#Step3-设置Board" class="headerlink" title="Step3 设置Board"></a>Step3 设置Board</h2><p>由于我已经设置过了，这里直接显示一下步骤和结果</p>
+<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG35.png" class>
+
+<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG36.png" class>
+
+
+<h2 id="Step4-选择NodeMCU开发版，并设置端口号"><a href="#Step4-选择NodeMCU开发版，并设置端口号" class="headerlink" title="Step4 选择NodeMCU开发版，并设置端口号"></a>Step4 选择NodeMCU开发版，并设置端口号</h2><p>我们可以从下图位置获取NodeMCU的端口号</p>
+<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG18.png" class>
+
+<p>选择NodeMCU开发版</p>
+<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG37.png" class>
+
+<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG38.png" class>
+
+<h2 id="Step5-打开Blink示例程序，编译上传"><a href="#Step5-打开Blink示例程序，编译上传" class="headerlink" title="Step5 打开Blink示例程序，编译上传"></a>Step5 打开Blink示例程序，编译上传</h2><img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG39.png" class>
+
+<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG40.png" class>
+
+<h2 id="当NODEMCU的蓝灯开始闪烁时，证明驱动程序已经成功安装"><a href="#当NODEMCU的蓝灯开始闪烁时，证明驱动程序已经成功安装" class="headerlink" title="当NODEMCU的蓝灯开始闪烁时，证明驱动程序已经成功安装"></a>当NODEMCU的蓝灯开始闪烁时，证明驱动程序已经成功安装</h2>
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>嵌入式</category>
+        <category>Esp8266</category>
+      </categories>
+      <tags>
+        <tag>物联网</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NODEMCU驱动安装</title>
+    <url>/2020/06/09/NODEMCU%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h1 id="NODEMCU驱动安装"><a href="#NODEMCU驱动安装" class="headerlink" title="NODEMCU驱动安装"></a>NODEMCU驱动安装</h1><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>使用windows系统<br>NodeMCU驱动，有需要的朋友可以<a href="https://pan.baidu.com/s/12ggA07vlViNCtL9nK0fAZg" target="_blank" rel="noopener">点击这里</a> 提取码: b63t </p>
+<h2 id="Step1-下载驱动"><a href="#Step1-下载驱动" class="headerlink" title="Step1 下载驱动"></a>Step1 下载驱动</h2><p>下载并打开驱动包，可以看到包中含有如下文件，我的电脑是64位的，所以我们选择x64.exe驱动。</p>
+<img src="/2020/06/09/NODEMCU%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/WechatIMG20.png" class title="驱动包">
+
+<a id="more"></a>
+
+<h2 id="Step2-打开驱动程序"><a href="#Step2-打开驱动程序" class="headerlink" title="Step2 打开驱动程序"></a>Step2 打开驱动程序</h2><p>点击next</p>
+<img src="/2020/06/09/NODEMCU%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/WechatIMG22.png" class title="驱动程序">
+
+<p>选择accept，然后点击next</p>
+<img src="/2020/06/09/NODEMCU%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/WechatIMG23.png" class>
+
+<h2 id="Step3-等待安装，安装成功后，Finish即可"><a href="#Step3-等待安装，安装成功后，Finish即可" class="headerlink" title="Step3 等待安装，安装成功后，Finish即可"></a>Step3 等待安装，安装成功后，Finish即可</h2><img src="/2020/06/09/NODEMCU%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/WechatIMG24.png" class>
+
+<h2 id="Step4-将NodeMCU与电脑连接，并查看端口号"><a href="#Step4-将NodeMCU与电脑连接，并查看端口号" class="headerlink" title="Step4 将NodeMCU与电脑连接，并查看端口号"></a>Step4 将NodeMCU与电脑连接，并查看端口号</h2><p>这里直接放图了</p>
+<img src="/2020/06/09/NODEMCU%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/WechatIMG18.png" class>
+
+
+
+]]></content>
+      <categories>
+        <category>嵌入式</category>
+        <category>Esp8266</category>
+      </categories>
+      <tags>
+        <tag>物联网</tag>
+      </tags>
+  </entry>
 </search>
