@@ -767,6 +767,68 @@
       </tags>
   </entry>
   <entry>
+    <title>June Leetcoding Challenge(6.1)</title>
+    <url>/2020/06/01/LeetCodeJune1st/</url>
+    <content><![CDATA[<h1 id="Invert-a-binary-tree"><a href="#Invert-a-binary-tree" class="headerlink" title="Invert a binary tree."></a>Invert a binary tree.</h1><p><strong>Example:</strong></p>
+<p>Input:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">     4</span><br><span class="line">   &#x2F;   \</span><br><span class="line">  2     7</span><br><span class="line"> &#x2F; \   &#x2F; \</span><br><span class="line">1   3 6   9</span><br></pre></td></tr></table></figure>
+
+<p>Output:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">     4</span><br><span class="line">   &#x2F;   \</span><br><span class="line">  7     2</span><br><span class="line"> &#x2F; \   &#x2F; \</span><br><span class="line">9   6 3   1</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>思路：</p>
+<p>递归查找左右子树，以题为例，当递归的左子树2的时候，将1和3交换，当递归到右子树7的时候，交换6和9。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">invertTree</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        invertTree(root.left);</span><br><span class="line">        invertTree(root.right);</span><br><span class="line">        </span><br><span class="line">        TreeNode tmp = root.left;</span><br><span class="line">        root.left = root.right;</span><br><span class="line">        root.right = tmp;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>June Leetcoding Challenge</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>June Leetcoding Challenge</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>June Leetcoding Challenge(6.2)</title>
+    <url>/2020/06/02/LeetCodeJune2nd/</url>
+    <content><![CDATA[<h1 id="Delete-Node-in-a-Linked-List"><a href="#Delete-Node-in-a-Linked-List" class="headerlink" title="Delete Node in a Linked List"></a>Delete Node in a Linked List</h1><p>Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.</p>
+<p>Given linked list – head = [4,5,1,9], which looks like following:</p>
+<p><img src="https://assets.leetcode.com/uploads/2018/12/28/237_example.png" alt="img"></p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: head &#x3D; [4,5,1,9], node &#x3D; 5</span><br><span class="line">Output: [4,1,9]</span><br><span class="line">Explanation: You are given the second node with value 5, the linked list should become 4 -&gt; 1 -&gt; 9 after calling your function.</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: head &#x3D; [4,5,1,9], node &#x3D; 1</span><br><span class="line">Output: [4,5,9]</span><br><span class="line">Explanation: You are given the third node with value 1, the linked list should become 4 -&gt; 5 -&gt; 9 after calling your function.</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>Note:</strong></p>
+<ul>
+<li>The linked list will have at least two elements.</li>
+<li>All of the nodes’ values will be unique.</li>
+<li>The given node will not be the tail and it will always be a valid node of the linked list.</li>
+<li>Do not return anything from your function.</li>
+</ul>
+<a id="more"></a>
+
+<p>思路：</p>
+<p>由于题中给出的方法的参数中只提供了要删除节点，因此，只要将当前节点的value值改为下一个节点的value，将当前节点的next指向下一个节点的next。即例子中删除node=5，将5节点的value值改为1，节点next值指向节点9。</p>
+<p>代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode node)</span> </span>&#123;</span><br><span class="line">        ListNode nnextNode = node.next.next;</span><br><span class="line">        ListNode nextNode = node.next;</span><br><span class="line">        node.val = nextNode.val;</span><br><span class="line">        node.next = nnextNode;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>June Leetcoding Challenge</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>June Leetcoding Challenge</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>June Leetcoding Challenge(6.3)</title>
     <url>/2020/06/03/LeetCodeJune3rd/</url>
     <content><![CDATA[<h1 id="Two-City-Scheduling"><a href="#Two-City-Scheduling" class="headerlink" title="Two City Scheduling"></a>Two City Scheduling</h1><p>Solution</p>
@@ -823,68 +885,6 @@
 <p>设置两个指针，一个指针指向首元素l，另一个指针指向末尾元素r，开始进行while循环，循环推出条件为l&lt;r。 通过移动l，r两个指针交换元素。</p>
 <p>代码：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverseString</span><span class="params">(<span class="keyword">char</span>[] s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> r = s.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line">            <span class="keyword">char</span> tmp = s[r];</span><br><span class="line">            s[r] = s[l];</span><br><span class="line">            s[l] =tmp;</span><br><span class="line">            l++;</span><br><span class="line">            r--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>June Leetcoding Challenge</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>June Leetcoding Challenge</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>June Leetcoding Challenge(6.1)</title>
-    <url>/2020/06/01/LeetCodeJune1st/</url>
-    <content><![CDATA[<h1 id="Invert-a-binary-tree"><a href="#Invert-a-binary-tree" class="headerlink" title="Invert a binary tree."></a>Invert a binary tree.</h1><p><strong>Example:</strong></p>
-<p>Input:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">     4</span><br><span class="line">   &#x2F;   \</span><br><span class="line">  2     7</span><br><span class="line"> &#x2F; \   &#x2F; \</span><br><span class="line">1   3 6   9</span><br></pre></td></tr></table></figure>
-
-<p>Output:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">     4</span><br><span class="line">   &#x2F;   \</span><br><span class="line">  7     2</span><br><span class="line"> &#x2F; \   &#x2F; \</span><br><span class="line">9   6 3   1</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>思路：</p>
-<p>递归查找左右子树，以题为例，当递归的左子树2的时候，将1和3交换，当递归到右子树7的时候，交换6和9。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">invertTree</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        invertTree(root.left);</span><br><span class="line">        invertTree(root.right);</span><br><span class="line">        </span><br><span class="line">        TreeNode tmp = root.left;</span><br><span class="line">        root.left = root.right;</span><br><span class="line">        root.right = tmp;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>June Leetcoding Challenge</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>June Leetcoding Challenge</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>June Leetcoding Challenge(6.2)</title>
-    <url>/2020/06/02/LeetCodeJune2nd/</url>
-    <content><![CDATA[<h1 id="Delete-Node-in-a-Linked-List"><a href="#Delete-Node-in-a-Linked-List" class="headerlink" title="Delete Node in a Linked List"></a>Delete Node in a Linked List</h1><p>Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.</p>
-<p>Given linked list – head = [4,5,1,9], which looks like following:</p>
-<p><img src="https://assets.leetcode.com/uploads/2018/12/28/237_example.png" alt="img"></p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: head &#x3D; [4,5,1,9], node &#x3D; 5</span><br><span class="line">Output: [4,1,9]</span><br><span class="line">Explanation: You are given the second node with value 5, the linked list should become 4 -&gt; 1 -&gt; 9 after calling your function.</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: head &#x3D; [4,5,1,9], node &#x3D; 1</span><br><span class="line">Output: [4,5,9]</span><br><span class="line">Explanation: You are given the third node with value 1, the linked list should become 4 -&gt; 5 -&gt; 9 after calling your function.</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>Note:</strong></p>
-<ul>
-<li>The linked list will have at least two elements.</li>
-<li>All of the nodes’ values will be unique.</li>
-<li>The given node will not be the tail and it will always be a valid node of the linked list.</li>
-<li>Do not return anything from your function.</li>
-</ul>
-<a id="more"></a>
-
-<p>思路：</p>
-<p>由于题中给出的方法的参数中只提供了要删除节点，因此，只要将当前节点的value值改为下一个节点的value，将当前节点的next指向下一个节点的next。即例子中删除node=5，将5节点的value值改为1，节点next值指向节点9。</p>
-<p>代码：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode node)</span> </span>&#123;</span><br><span class="line">        ListNode nnextNode = node.next.next;</span><br><span class="line">        ListNode nextNode = node.next;</span><br><span class="line">        node.val = nextNode.val;</span><br><span class="line">        node.next = nnextNode;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -976,25 +976,6 @@
       </tags>
   </entry>
   <entry>
-    <title>June Leetcoding Challenge(6.14)</title>
-    <url>/2020/06/13/LeetCodeJuneChallenge14th/</url>
-    <content><![CDATA[<h1 id="LeetCode六月挑战（6-14）-Cheapest-Flights-Within-K-Stops-LeetCode787解题报告"><a href="#LeetCode六月挑战（6-14）-Cheapest-Flights-Within-K-Stops-LeetCode787解题报告" class="headerlink" title="LeetCode六月挑战（6.14） Cheapest Flights Within K Stops LeetCode787解题报告"></a>LeetCode六月挑战（6.14） Cheapest Flights Within K Stops LeetCode787解题报告</h1><p>不知不觉半个月过去了，六月还有半个月哦，加油！</p>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>There are n cities connected by m flights. Each flight starts from city u and arrives at v with a price w.</p>
-<p>Now given all the cities and flights, together with starting city src and the destination dst, your task is to find the cheapest price from src to dst with up to k stops. If there is no such route, output -1.</p>
-<p>Example 1:<br>Input:<br>n = 3, edges = [[0,1,100],[1,2,100],[0,2,500]]<br>src = 0, dst = 2, k = 1<br>Output: 200<br>Explanation:<br>The graph looks like this:<br><img src="https://img-blog.csdnimg.cn/20200614223513304.png" alt="在这里插入图片描述"></p>
-<p>The cheapest price from city 0 to city 2 with at most 1 stop costs 200, as marked red in the picture.<br>Example 2:<br>Input:<br>n = 3, edges = [[0,1,100],[1,2,100],[0,2,500]]<br>src = 0, dst = 2, k = 0<br>Output: 500<br>Explanation:<br>The graph looks like this:<br>The cheapest price from city 0 to city 2 with at most 0 stop costs 500, as marked blue in the picture.<br><img src="https://img-blog.csdnimg.cn/2020061422352870.png" alt="在这里插入图片描述"></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>思路主要由三种：BFS，DFS，DP。BFS和DFS在做的过程中都需要做剪枝处理。Jungle这里采用了DP的方法，DP的方法的核心思想是Bellman-Ford 算法。当不可以转机时，到达目的地1和目的地2的花费分别为100和500，当最多可以转一次机时，直达是500，先转机到1再到2的花费为200。所以最少花费为200.由此得到DP公式dp[i][v] = min(dp[i][v], dp[i-1][u] + cost[u][v]) ，比较直接从i起始地到v目的地的花费和从上一站i-1起始站中转到达v目的地的花费，取两者间的较小的值作为该目的地的最小花费，以便后续作为起始站进行后续的计算。具体代码我们简化DP为一维数组，另设一个cost花费数组记录结果。<br><img src="https://img-blog.csdnimg.cn/20200614224624828.png" alt="在这里插入图片描述"></p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findCheapestPrice</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[][] flights, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> max_Cost = <span class="number">1</span>&lt;&lt;<span class="number">30</span>;</span><br><span class="line">        <span class="keyword">int</span>[] cost = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        Arrays.fill(cost,max_Cost);</span><br><span class="line">        cost[src] =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;K+<span class="number">1</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span>[] tran = cost.clone();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span>[] flight: flights)</span><br><span class="line">                tran[flight[<span class="number">1</span>]] = Math.min(tran[flight[<span class="number">1</span>]], cost[flight[<span class="number">0</span>]]+flight[<span class="number">2</span>]);</span><br><span class="line">            cost = tran;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cost[dst]&gt;= max_Cost ? -<span class="number">1</span> : cost[dst];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>June Leetcoding Challenge</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>June Leetcoding Challenge</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>June Leetcoding Challenge(6.8)</title>
     <url>/2020/06/08/LeetCodeJune8th/</url>
     <content><![CDATA[<h1 id="LeetCode六月挑战（6-8）Power-of-Two"><a href="#LeetCode六月挑战（6-8）Power-of-Two" class="headerlink" title="LeetCode六月挑战（6.8）Power of Two"></a>LeetCode六月挑战（6.8）Power of Two</h1><h1 id="Power-of-Two"><a href="#Power-of-Two" class="headerlink" title="Power of Two"></a>Power of Two</h1><p>Solution</p>
@@ -1050,6 +1031,49 @@
       </tags>
   </entry>
   <entry>
+    <title>June Leetcoding Challenge(6.13)</title>
+    <url>/2020/06/13/LeetCodeJuneChallenge13th/</url>
+    <content><![CDATA[<h1 id="LeetCode六月挑战-6-13-Largest-Divisible-Subset-Solution解题方案"><a href="#LeetCode六月挑战-6-13-Largest-Divisible-Subset-Solution解题方案" class="headerlink" title="LeetCode六月挑战(6.13)Largest Divisible Subset  Solution解题方案"></a>LeetCode六月挑战(6.13)Largest Divisible Subset  Solution解题方案</h1><p> Largest Divisible Subset</p>
+<p>Solution<br>Given a set of distinct positive integers, find the largest subset such that every pair (Si, Sj) of elements in this subset satisfies:</p>
+<p>Si % Sj = 0 or Sj % Si = 0.</p>
+<p>If there are multiple solutions, return any subset is fine.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: [1,2,3]</span><br><span class="line">Output: [1,2] (of course, [1,3] will also be ok)</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: [1,2,4,8]</span><br><span class="line">Output: [1,2,4,8]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>这道题有一个数学思路在里面<br>对于一个有序数组，插入的数如果能整除数组中最大的数，那么也可以整除数组中其他的数。<br>因此我们要先将数组排序，然后设置一个路径储存数组记录添加元素的路径。</p>
+<h1 id="Java代码"><a href="#Java代码" class="headerlink" title="Java代码"></a>Java代码</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">largestDivisibleSubset</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">int</span>[] count = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        <span class="keyword">int</span>[] road = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">0</span>, index = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            count[i] = <span class="number">1</span>;</span><br><span class="line">            road[i] = -<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[i] % nums[j] == <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (count[i] &lt; <span class="number">1</span> + count[j]) &#123;</span><br><span class="line">                        count[i] = count[j] + <span class="number">1</span>;</span><br><span class="line">                        road[i] = j;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (count[i] &gt; max) &#123;</span><br><span class="line">                max = count[i];</span><br><span class="line">                index = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span> (index != -<span class="number">1</span>) &#123;</span><br><span class="line">            result.add(nums[index]);</span><br><span class="line">            index = road[index];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>June Leetcoding Challenge</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>June Leetcoding Challenge</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>June Leetcoding Challenge(6.14)</title>
+    <url>/2020/06/13/LeetCodeJuneChallenge14th/</url>
+    <content><![CDATA[<a id="more"></a>
+
+<h1 id="LeetCode六月挑战（6-14）-Cheapest-Flights-Within-K-Stops-LeetCode787解题报告"><a href="#LeetCode六月挑战（6-14）-Cheapest-Flights-Within-K-Stops-LeetCode787解题报告" class="headerlink" title="LeetCode六月挑战（6.14） Cheapest Flights Within K Stops LeetCode787解题报告"></a>LeetCode六月挑战（6.14） Cheapest Flights Within K Stops LeetCode787解题报告</h1><p>不知不觉半个月过去了，六月还有半个月哦，加油！</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>There are n cities connected by m flights. Each flight starts from city u and arrives at v with a price w.</p>
+<p>Now given all the cities and flights, together with starting city src and the destination dst, your task is to find the cheapest price from src to dst with up to k stops. If there is no such route, output -1.</p>
+<p>Example 1:<br>Input:<br>n = 3, edges = [[0,1,100],[1,2,100],[0,2,500]]<br>src = 0, dst = 2, k = 1<br>Output: 200<br>Explanation:<br>The graph looks like this:<br><img src="https://img-blog.csdnimg.cn/20200614223513304.png" alt="在这里插入图片描述"></p>
+<p>The cheapest price from city 0 to city 2 with at most 1 stop costs 200, as marked red in the picture.<br>Example 2:<br>Input:<br>n = 3, edges = [[0,1,100],[1,2,100],[0,2,500]]<br>src = 0, dst = 2, k = 0<br>Output: 500<br>Explanation:<br>The graph looks like this:<br>The cheapest price from city 0 to city 2 with at most 0 stop costs 500, as marked blue in the picture.<br><img src="https://img-blog.csdnimg.cn/2020061422352870.png" alt="在这里插入图片描述"></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>思路主要由三种：BFS，DFS，DP。BFS和DFS在做的过程中都需要做剪枝处理。Jungle这里采用了DP的方法，DP的方法的核心思想是Bellman-Ford 算法。当不可以转机时，到达目的地1和目的地2的花费分别为100和500，当最多可以转一次机时，直达是500，先转机到1再到2的花费为200。所以最少花费为200.由此得到DP公式dp[i][v] = min(dp[i][v], dp[i-1][u] + cost[u][v]) ，比较直接从i起始地到v目的地的花费和从上一站i-1起始站中转到达v目的地的花费，取两者间的较小的值作为该目的地的最小花费，以便后续作为起始站进行后续的计算。具体代码我们简化DP为一维数组，另设一个cost花费数组记录结果。<br><img src="https://img-blog.csdnimg.cn/20200614224624828.png" alt="在这里插入图片描述"></p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findCheapestPrice</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[][] flights, <span class="keyword">int</span> src, <span class="keyword">int</span> dst, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> max_Cost = <span class="number">1</span>&lt;&lt;<span class="number">30</span>;</span><br><span class="line">        <span class="keyword">int</span>[] cost = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        Arrays.fill(cost,max_Cost);</span><br><span class="line">        cost[src] =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;K+<span class="number">1</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span>[] tran = cost.clone();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span>[] flight: flights)</span><br><span class="line">                tran[flight[<span class="number">1</span>]] = Math.min(tran[flight[<span class="number">1</span>]], cost[flight[<span class="number">0</span>]]+flight[<span class="number">2</span>]);</span><br><span class="line">            cost = tran;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cost[dst]&gt;= max_Cost ? -<span class="number">1</span> : cost[dst];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>June Leetcoding Challenge</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>June Leetcoding Challenge</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>June Leetcoding Challenge(6.11)</title>
     <url>/2020/06/11/LeetCode%E5%85%AD%E6%9C%88%E6%8C%91%E6%88%9811th/</url>
     <content><![CDATA[<h1 id="LeetCode六月挑战-6-11-Sort-Color"><a href="#LeetCode六月挑战-6-11-Sort-Color" class="headerlink" title="LeetCode六月挑战(6.11) Sort Color"></a>LeetCode六月挑战(6.11) Sort Color</h1><p>Solution<br>Given an array with n objects colored red, white or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white and blue.</p>
@@ -1077,16 +1101,15 @@
       </tags>
   </entry>
   <entry>
-    <title>June Leetcoding Challenge(6.13)</title>
-    <url>/2020/06/13/LeetCodeJuneChallenge13th/</url>
-    <content><![CDATA[<h1 id="LeetCode六月挑战-6-13-Largest-Divisible-Subset-Solution解题方案"><a href="#LeetCode六月挑战-6-13-Largest-Divisible-Subset-Solution解题方案" class="headerlink" title="LeetCode六月挑战(6.13)Largest Divisible Subset  Solution解题方案"></a>LeetCode六月挑战(6.13)Largest Divisible Subset  Solution解题方案</h1><p> Largest Divisible Subset</p>
-<p>Solution<br>Given a set of distinct positive integers, find the largest subset such that every pair (Si, Sj) of elements in this subset satisfies:</p>
-<p>Si % Sj = 0 or Sj % Si = 0.</p>
-<p>If there are multiple solutions, return any subset is fine.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: [1,2,3]</span><br><span class="line">Output: [1,2] (of course, [1,3] will also be ok)</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: [1,2,4,8]</span><br><span class="line">Output: [1,2,4,8]</span><br></pre></td></tr></table></figure>
+    <title>June Leetcoding Challenge(6.10)</title>
+    <url>/2020/06/10/LeetCode%E5%85%AD%E6%9C%88%E6%8C%91%E6%88%98%EF%BC%886.10%20)%20Search%20Insert%20Position%20LeetCode%2035/</url>
+    <content><![CDATA[<h1 id="LeetCode六月挑战（6-10-Search-Insert-Position-LeetCode-35"><a href="#LeetCode六月挑战（6-10-Search-Insert-Position-LeetCode-35" class="headerlink" title="LeetCode六月挑战（6.10 ) Search Insert Position LeetCode 35"></a>LeetCode六月挑战（6.10 ) Search Insert Position LeetCode 35</h1><p>Solution<br>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
+<p>You may assume no duplicates in the array.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: [1,3,5,6], 5</span><br><span class="line">Output: 2</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: [1,3,5,6], 2</span><br><span class="line">Output: 1</span><br><span class="line">Example 3:</span><br><span class="line"></span><br><span class="line">Input: [1,3,5,6], 7</span><br><span class="line">Output: 4</span><br><span class="line">Example 4:</span><br><span class="line"></span><br><span class="line">Input: [1,3,5,6], 0</span><br><span class="line">Output: 0</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>这道题有一个数学思路在里面<br>对于一个有序数组，插入的数如果能整除数组中最大的数，那么也可以整除数组中其他的数。<br>因此我们要先将数组排序，然后设置一个路径储存数组记录添加元素的路径。</p>
-<h1 id="Java代码"><a href="#Java代码" class="headerlink" title="Java代码"></a>Java代码</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">largestDivisibleSubset</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">int</span>[] count = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        <span class="keyword">int</span>[] road = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">0</span>, index = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            count[i] = <span class="number">1</span>;</span><br><span class="line">            road[i] = -<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[i] % nums[j] == <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (count[i] &lt; <span class="number">1</span> + count[j]) &#123;</span><br><span class="line">                        count[i] = count[j] + <span class="number">1</span>;</span><br><span class="line">                        road[i] = j;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (count[i] &gt; max) &#123;</span><br><span class="line">                max = count[i];</span><br><span class="line">                index = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span> (index != -<span class="number">1</span>) &#123;</span><br><span class="line">            result.add(nums[index]);</span><br><span class="line">            index = road[index];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>如果target在nums数组中存在，我们直接返回i的值，如果不存在，我们需要判断target的位置，如果他大于i却小于i+1，那么index为i+1.</p>
+<h1 id="Java代码"><a href="#Java代码" class="headerlink" title="Java代码"></a>Java代码</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> index =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(target == nums[i])</span><br><span class="line">                index = i;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(target&gt;nums[i])&#123;</span><br><span class="line">                <span class="keyword">if</span>(i==nums.length-<span class="number">1</span> &amp;&amp; target&gt;nums[i])</span><br><span class="line">                    index = nums.length;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(target&lt;nums[i+<span class="number">1</span>])</span><br><span class="line">                    index = i+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Python代码"><a href="#Python代码" class="headerlink" title="Python代码"></a>Python代码</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchInsert</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; int:</span></span><br><span class="line">        index =<span class="number">0</span>;</span><br><span class="line">        x = len(nums)<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range (<span class="number">-1</span>,x+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> nums[i] == target:</span><br><span class="line">                index = i;</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> i == x  <span class="keyword">and</span> nums[i] &lt; target:</span><br><span class="line">                    index = x+<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">if</span> target &gt; nums[i] <span class="keyword">and</span> target &lt; nums[i+<span class="number">1</span>]:</span><br><span class="line">                        index = i+<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> index;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>LeetCode</category>
@@ -1119,23 +1142,21 @@
       </tags>
   </entry>
   <entry>
-    <title>June Leetcoding Challenge(6.10)</title>
-    <url>/2020/06/10/LeetCode%E5%85%AD%E6%9C%88%E6%8C%91%E6%88%98%EF%BC%886.10%20)%20Search%20Insert%20Position%20LeetCode%2035/</url>
-    <content><![CDATA[<h1 id="LeetCode六月挑战（6-10-Search-Insert-Position-LeetCode-35"><a href="#LeetCode六月挑战（6-10-Search-Insert-Position-LeetCode-35" class="headerlink" title="LeetCode六月挑战（6.10 ) Search Insert Position LeetCode 35"></a>LeetCode六月挑战（6.10 ) Search Insert Position LeetCode 35</h1><p>Solution<br>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
-<p>You may assume no duplicates in the array.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: [1,3,5,6], 5</span><br><span class="line">Output: 2</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: [1,3,5,6], 2</span><br><span class="line">Output: 1</span><br><span class="line">Example 3:</span><br><span class="line"></span><br><span class="line">Input: [1,3,5,6], 7</span><br><span class="line">Output: 4</span><br><span class="line">Example 4:</span><br><span class="line"></span><br><span class="line">Input: [1,3,5,6], 0</span><br><span class="line">Output: 0</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>如果target在nums数组中存在，我们直接返回i的值，如果不存在，我们需要判断target的位置，如果他大于i却小于i+1，那么index为i+1.</p>
-<h1 id="Java代码"><a href="#Java代码" class="headerlink" title="Java代码"></a>Java代码</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> index =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(target == nums[i])</span><br><span class="line">                index = i;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(target&gt;nums[i])&#123;</span><br><span class="line">                <span class="keyword">if</span>(i==nums.length-<span class="number">1</span> &amp;&amp; target&gt;nums[i])</span><br><span class="line">                    index = nums.length;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(target&lt;nums[i+<span class="number">1</span>])</span><br><span class="line">                    index = i+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="Python代码"><a href="#Python代码" class="headerlink" title="Python代码"></a>Python代码</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchInsert</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; int:</span></span><br><span class="line">        index =<span class="number">0</span>;</span><br><span class="line">        x = len(nums)<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range (<span class="number">-1</span>,x+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> nums[i] == target:</span><br><span class="line">                index = i;</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> i == x  <span class="keyword">and</span> nums[i] &lt; target:</span><br><span class="line">                    index = x+<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">if</span> target &gt; nums[i] <span class="keyword">and</span> target &lt; nums[i+<span class="number">1</span>]:</span><br><span class="line">                        index = i+<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> index;</span><br></pre></td></tr></table></figure>
+    <title>Leetcode127. Ladder</title>
+    <url>/2020/05/23/Leetcode127/</url>
+    <content><![CDATA[<h1 id="Leetcode127-Ladder"><a href="#Leetcode127-Ladder" class="headerlink" title="Leetcode127. Ladder"></a>Leetcode127. Ladder</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given two words (beginWord and endWord), and a dictionary&#39;s word list, find the length of shortest transformation sequence from beginWord to endWord, such that:</span><br><span class="line"></span><br><span class="line">Only one letter can be changed at a time.</span><br><span class="line">Each transformed word must exist in the word list.</span><br><span class="line">Note:</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line">Return 0 if there is no such transformation sequence.</span><br><span class="line">All words have the same length.</span><br><span class="line">All words contain only lowercase alphabetic characters.</span><br><span class="line">You may assume no duplicates in the word list.</span><br><span class="line">You may assume beginWord and endWord are non-empty and are not the same.</span><br><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">beginWord &#x3D; &quot;hit&quot;,</span><br><span class="line">endWord &#x3D; &quot;cog&quot;,</span><br><span class="line">wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]</span><br><span class="line"></span><br><span class="line">Output: 5</span><br><span class="line"></span><br><span class="line">Explanation: As one shortest transformation is &quot;hit&quot; -&gt; &quot;hot&quot; -&gt; &quot;dot&quot; -&gt; &quot;dog&quot; -&gt; &quot;cog&quot;,</span><br><span class="line">return its length 5.</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">beginWord &#x3D; &quot;hit&quot;</span><br><span class="line">endWord &#x3D; &quot;cog&quot;</span><br><span class="line">wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;]</span><br><span class="line"></span><br><span class="line">Output: 0</span><br><span class="line"></span><br><span class="line">Explanation: The endWord &quot;cog&quot; is not in wordList, therefore no possible transformation.</span><br></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>两种方法：<br>BFS使用队列；使用双向BFS，使用HashSet<br>双向BFS:<br>将wordlist放入HashSet中，如果最后的endword不在wordlist中，直接返回0。将startword和endword放入HashSet中，设step为0，当start 和end不为空时进入循环，当进入到循环后，step++，为保证平衡，当start的size大于end的size，交换end和star。设定一个临时的hashset。根据start里的word，每个位置替换26个字母，如果新的word在endword当中存在，返回step+1.如果wordlist没有新的word，继续循环。否则代表还没到end且wordlist中含有新的word，则将wordlist中的该元素去除（如若重复使用，长度必将增大），result中加入新的word。最后将word改回原来的值并将暂时的result作为start开启下一轮循环。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//BFS使用队列</span></span><br><span class="line"><span class="comment">//使用双向BFS，使用HashSet</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">ladderLength</span><span class="params">(String beginWord, String endWord, List&lt;String&gt; wordList)</span> </span>&#123;</span><br><span class="line">        HashSet&lt;String&gt; wordlist= <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(String word: wordList)&#123;</span><br><span class="line">            wordlist.add(word);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!wordlist.contains(endWord))</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        HashSet&lt;String&gt; start = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">        HashSet&lt;String&gt; end = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">        <span class="keyword">int</span> step=<span class="number">0</span>;</span><br><span class="line">        start.add(beginWord);</span><br><span class="line">        end.add(endWord);</span><br><span class="line">        <span class="keyword">while</span>(!start.isEmpty()&amp;&amp;!end.isEmpty())&#123;</span><br><span class="line">            ++step;</span><br><span class="line">            <span class="keyword">if</span>(start.size()&gt;end.size())&#123;<span class="comment">//当start的大小比end大时，交换两个set以保证平衡</span></span><br><span class="line">                HashSet&lt;String&gt; cur = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">                cur = end;</span><br><span class="line">                end = start;</span><br><span class="line">                start = cur;</span><br><span class="line">            &#125;</span><br><span class="line">            HashSet&lt;String&gt; result = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">            <span class="keyword">for</span>(String word: start)&#123;</span><br><span class="line">                <span class="keyword">char</span>[] ch = word.toCharArray();</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;beginWord.length();i++)&#123;</span><br><span class="line">                    <span class="keyword">char</span> c = ch[i];</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">char</span> j=<span class="string">'a'</span>;j&lt;=<span class="string">'z'</span>;j++)&#123;</span><br><span class="line">                        ch[i]=j;</span><br><span class="line">                        String w = <span class="keyword">new</span> String(ch);</span><br><span class="line">                        <span class="keyword">if</span>(end.contains(w)) <span class="keyword">return</span> step+<span class="number">1</span>;</span><br><span class="line">                        <span class="keyword">if</span>(!wordlist.contains(w)) <span class="keyword">continue</span>;</span><br><span class="line">                        wordlist.remove(w);</span><br><span class="line">                        result.add(w);</span><br><span class="line">                    &#125;</span><br><span class="line">                    ch[i]=c;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            start = result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>LeetCode</category>
-        <category>June Leetcoding Challenge</category>
+        <category>Medium</category>
       </categories>
       <tags>
-        <tag>LeetCode</tag>
-        <tag>June Leetcoding Challenge</tag>
+        <tag>Medium</tag>
+        <tag>BFS</tag>
+        <tag>HashSet</tag>
       </tags>
   </entry>
   <entry>
@@ -1180,24 +1201,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode127. Ladder</title>
-    <url>/2020/05/23/Leetcode127/</url>
-    <content><![CDATA[<h1 id="Leetcode127-Ladder"><a href="#Leetcode127-Ladder" class="headerlink" title="Leetcode127. Ladder"></a>Leetcode127. Ladder</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Given two words (beginWord and endWord), and a dictionary&#39;s word list, find the length of shortest transformation sequence from beginWord to endWord, such that:</span><br><span class="line"></span><br><span class="line">Only one letter can be changed at a time.</span><br><span class="line">Each transformed word must exist in the word list.</span><br><span class="line">Note:</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line">Return 0 if there is no such transformation sequence.</span><br><span class="line">All words have the same length.</span><br><span class="line">All words contain only lowercase alphabetic characters.</span><br><span class="line">You may assume no duplicates in the word list.</span><br><span class="line">You may assume beginWord and endWord are non-empty and are not the same.</span><br><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">beginWord &#x3D; &quot;hit&quot;,</span><br><span class="line">endWord &#x3D; &quot;cog&quot;,</span><br><span class="line">wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]</span><br><span class="line"></span><br><span class="line">Output: 5</span><br><span class="line"></span><br><span class="line">Explanation: As one shortest transformation is &quot;hit&quot; -&gt; &quot;hot&quot; -&gt; &quot;dot&quot; -&gt; &quot;dog&quot; -&gt; &quot;cog&quot;,</span><br><span class="line">return its length 5.</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">beginWord &#x3D; &quot;hit&quot;</span><br><span class="line">endWord &#x3D; &quot;cog&quot;</span><br><span class="line">wordList &#x3D; [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;]</span><br><span class="line"></span><br><span class="line">Output: 0</span><br><span class="line"></span><br><span class="line">Explanation: The endWord &quot;cog&quot; is not in wordList, therefore no possible transformation.</span><br></pre></td></tr></table></figure>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>两种方法：<br>BFS使用队列；使用双向BFS，使用HashSet<br>双向BFS:<br>将wordlist放入HashSet中，如果最后的endword不在wordlist中，直接返回0。将startword和endword放入HashSet中，设step为0，当start 和end不为空时进入循环，当进入到循环后，step++，为保证平衡，当start的size大于end的size，交换end和star。设定一个临时的hashset。根据start里的word，每个位置替换26个字母，如果新的word在endword当中存在，返回step+1.如果wordlist没有新的word，继续循环。否则代表还没到end且wordlist中含有新的word，则将wordlist中的该元素去除（如若重复使用，长度必将增大），result中加入新的word。最后将word改回原来的值并将暂时的result作为start开启下一轮循环。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//BFS使用队列</span></span><br><span class="line"><span class="comment">//使用双向BFS，使用HashSet</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">ladderLength</span><span class="params">(String beginWord, String endWord, List&lt;String&gt; wordList)</span> </span>&#123;</span><br><span class="line">        HashSet&lt;String&gt; wordlist= <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(String word: wordList)&#123;</span><br><span class="line">            wordlist.add(word);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!wordlist.contains(endWord))</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        HashSet&lt;String&gt; start = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">        HashSet&lt;String&gt; end = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">        <span class="keyword">int</span> step=<span class="number">0</span>;</span><br><span class="line">        start.add(beginWord);</span><br><span class="line">        end.add(endWord);</span><br><span class="line">        <span class="keyword">while</span>(!start.isEmpty()&amp;&amp;!end.isEmpty())&#123;</span><br><span class="line">            ++step;</span><br><span class="line">            <span class="keyword">if</span>(start.size()&gt;end.size())&#123;<span class="comment">//当start的大小比end大时，交换两个set以保证平衡</span></span><br><span class="line">                HashSet&lt;String&gt; cur = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">                cur = end;</span><br><span class="line">                end = start;</span><br><span class="line">                start = cur;</span><br><span class="line">            &#125;</span><br><span class="line">            HashSet&lt;String&gt; result = <span class="keyword">new</span> HashSet&lt;&gt;(); </span><br><span class="line">            <span class="keyword">for</span>(String word: start)&#123;</span><br><span class="line">                <span class="keyword">char</span>[] ch = word.toCharArray();</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;beginWord.length();i++)&#123;</span><br><span class="line">                    <span class="keyword">char</span> c = ch[i];</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">char</span> j=<span class="string">'a'</span>;j&lt;=<span class="string">'z'</span>;j++)&#123;</span><br><span class="line">                        ch[i]=j;</span><br><span class="line">                        String w = <span class="keyword">new</span> String(ch);</span><br><span class="line">                        <span class="keyword">if</span>(end.contains(w)) <span class="keyword">return</span> step+<span class="number">1</span>;</span><br><span class="line">                        <span class="keyword">if</span>(!wordlist.contains(w)) <span class="keyword">continue</span>;</span><br><span class="line">                        wordlist.remove(w);</span><br><span class="line">                        result.add(w);</span><br><span class="line">                    &#125;</span><br><span class="line">                    ch[i]=c;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            start = result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Medium</category>
-      </categories>
-      <tags>
-        <tag>Medium</tag>
-        <tag>BFS</tag>
-        <tag>HashSet</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode139 WordBreak</title>
     <url>/2020/05/23/Leetcode139/</url>
     <content><![CDATA[<h1 id="Leetcode139-WordBreak"><a href="#Leetcode139-WordBreak" class="headerlink" title="Leetcode139 WordBreak"></a>Leetcode139 WordBreak</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given a <strong>non-empty</strong> string <em>s</em> and a dictionary <em>wordDict</em> containing a list of <strong>non-empty</strong> words, determine if <em>s</em> can be segmented into a space-separated sequence of one or more dictionary words.</p>
@@ -1229,24 +1232,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode21.Merge Two Sorted Lists</title>
-    <url>/2020/05/23/Leetcode21/</url>
-    <content><![CDATA[<h1 id="Leetcode21-Merge-Two-Sorted-Lists"><a href="#Leetcode21-Merge-Two-Sorted-Lists" class="headerlink" title="Leetcode21.Merge Two Sorted Lists"></a>Leetcode21.Merge Two Sorted Lists</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Merge two sorted linked lists and return it as a new list. </span><br><span class="line">The new list should be made by splicing together the nodes of the first two lists.</span><br><span class="line">Example:</span><br><span class="line">Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4</span><br><span class="line">Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>思路：两个指着（程序中直接使用ListNode）如果当前l1的value大于l2的value则将l2的值赋给result，<br>然后递归比较l1和l2.next。如果当前l1的value小于l2的value则将l1的值赋给result，然后递归比较l2和l1.next。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l1==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        <span class="keyword">if</span>(l2==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        ListNode result;</span><br><span class="line">         <span class="keyword">if</span>(l1.val&lt;l2.val)&#123;</span><br><span class="line">             result=l1;</span><br><span class="line">             result.next=mergeTwoLists(l1.next,l2);</span><br><span class="line">         &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">             result = l2;</span><br><span class="line">             result.next = mergeTwoLists(l1,l2.next);</span><br><span class="line">         &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Easy</category>
-      </categories>
-      <tags>
-        <tag>Easy</tag>
-        <tag>ListNode</tag>
-        <tag>Recursive</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode200 Number of Islands</title>
     <url>/2020/05/23/Leetcode200/</url>
     <content><![CDATA[<h1 id="Leetcode200-Number-of-Islands"><a href="#Leetcode200-Number-of-Islands" class="headerlink" title="Leetcode200 Number of Islands"></a>Leetcode200 Number of Islands</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Given a 2d grid map of <code>&#39;1&#39;</code>s (land) and <code>&#39;0&#39;</code>s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</p>
@@ -1267,6 +1252,24 @@
       <tags>
         <tag>Medium</tag>
         <tag>DFS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode21.Merge Two Sorted Lists</title>
+    <url>/2020/05/23/Leetcode21/</url>
+    <content><![CDATA[<h1 id="Leetcode21-Merge-Two-Sorted-Lists"><a href="#Leetcode21-Merge-Two-Sorted-Lists" class="headerlink" title="Leetcode21.Merge Two Sorted Lists"></a>Leetcode21.Merge Two Sorted Lists</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Merge two sorted linked lists and return it as a new list. </span><br><span class="line">The new list should be made by splicing together the nodes of the first two lists.</span><br><span class="line">Example:</span><br><span class="line">Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4</span><br><span class="line">Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>思路：两个指着（程序中直接使用ListNode）如果当前l1的value大于l2的value则将l2的值赋给result，<br>然后递归比较l1和l2.next。如果当前l1的value小于l2的value则将l1的值赋给result，然后递归比较l2和l1.next。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l1==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        <span class="keyword">if</span>(l2==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        ListNode result;</span><br><span class="line">         <span class="keyword">if</span>(l1.val&lt;l2.val)&#123;</span><br><span class="line">             result=l1;</span><br><span class="line">             result.next=mergeTwoLists(l1.next,l2);</span><br><span class="line">         &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">             result = l2;</span><br><span class="line">             result.next = mergeTwoLists(l1,l2.next);</span><br><span class="line">         &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Easy</category>
+      </categories>
+      <tags>
+        <tag>Easy</tag>
+        <tag>ListNode</tag>
+        <tag>Recursive</tag>
       </tags>
   </entry>
   <entry>
@@ -1385,18 +1388,19 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode54. Spiral Matrix</title>
-    <url>/2020/05/23/Leetcode54/</url>
-    <content><![CDATA[<h1 id="Leetcode54-Spiral-Matrix"><a href="#Leetcode54-Spiral-Matrix" class="headerlink" title="Leetcode54. Spiral Matrix"></a>Leetcode54. Spiral Matrix</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Input:</span><br><span class="line">[</span><br><span class="line"> [ 1, 2, 3 ],</span><br><span class="line"> [ 4, 5, 6 ],</span><br><span class="line"> [ 7, 8, 9 ]</span><br><span class="line">]</span><br><span class="line">Output: [1,2,3,6,9,8,7,4,5]</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>有四个方向right, left, top, bottom.</p>
+    <title>Leetcode380 Insert Delete GetRandom O(1)</title>
+    <url>/2020/05/23/Leetcode380/</url>
+    <content><![CDATA[<h1 id="Leetcode380-Insert-Delete-GetRandom-O-1"><a href="#Leetcode380-Insert-Delete-GetRandom-O-1" class="headerlink" title="Leetcode380 Insert Delete GetRandom O(1)"></a>Leetcode380 Insert Delete GetRandom O(1)</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Design a data structure that supports all following operations in <em>average</em> <strong>O(1)</strong> time.</p>
 <ol>
-<li>direction=”right”， 当到达最右边界时，代表本行输出结束，top++，</li>
-<li>direction=”bottom”，当到达最下边界时, right–, </li>
-<li>direction = “left”，当到达最左边界是 bottom–,</li>
-<li>direction=”top”，当到达top时候，left++，direction=”right”.</li>
+<li><code>insert(val)</code>: Inserts an item val to the set if not already present.</li>
+<li><code>remove(val)</code>: Removes an item val from the set if present.</li>
+<li><code>getRandom</code>: Returns a random element from current set of elements. Each element must have the <strong>same probability</strong> of being returned.<a id="more"></a></li>
 </ol>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">spiralOrder</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">         <span class="comment">//result</span></span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&amp;lt;&amp;gt;();</span><br><span class="line">        <span class="keyword">if</span> (matrix.length == <span class="number">0</span>) <span class="keyword">return</span> result;</span><br><span class="line">        <span class="comment">//获取行数---Y行</span></span><br><span class="line">        <span class="keyword">int</span> lenY =matrix.length;</span><br><span class="line">        <span class="comment">//获取列数---X列</span></span><br><span class="line">        <span class="keyword">int</span> lenX = matrix[<span class="number">0</span>].length;</span><br><span class="line">        String direction = &amp;quot;right&amp;quot;;</span><br><span class="line">        <span class="keyword">int</span> left=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = lenX-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> down =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> up = lenY-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left&amp;lt;=right &amp;amp;&amp;amp; down&amp;lt;=up)&#123;</span><br><span class="line">            <span class="keyword">if</span>(direction == &amp;quot;right&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=left;i&amp;lt;=right;i++)&#123;</span><br><span class="line">                    result.add(matrix[down][i]);</span><br><span class="line">                &#125;</span><br><span class="line">                down++;</span><br><span class="line">                direction = &amp;quot;down&amp;quot;;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(direction==&amp;quot;down&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=down;i&amp;lt;=up;i++)&#123;</span><br><span class="line">                    result.add(matrix[i][right]);</span><br><span class="line">                &#125;</span><br><span class="line">                right--;</span><br><span class="line">                direction = &amp;quot;left&amp;quot;;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(direction==&amp;quot;left&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=right;i&amp;gt;=left;i--)&#123;</span><br><span class="line">                    result.add(matrix[up][i]);</span><br><span class="line">                &#125;</span><br><span class="line">                up--;</span><br><span class="line">                direction =&amp;quot;up&amp;quot;;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(direction==&amp;quot;up&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=up;i&amp;gt;=down;i--)&#123;</span><br><span class="line">                    result.add(matrix[i][left]);</span><br><span class="line">                &#125;</span><br><span class="line">                left++;</span><br><span class="line">                direction = &amp;quot;right&amp;quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; Init an empty set.</span><br><span class="line">RandomizedSet randomSet &#x3D; new RandomizedSet();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Inserts 1 to the set. Returns true as 1 was inserted successfully.</span><br><span class="line">randomSet.insert(1);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Returns false as 2 does not exist in the set.</span><br><span class="line">randomSet.remove(2);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Inserts 2 to the set, returns true. Set now contains [1,2].</span><br><span class="line">randomSet.insert(2);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; getRandom should return either 1 or 2 randomly.</span><br><span class="line">randomSet.getRandom();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Removes 1 from the set, returns true. Set now contains [2].</span><br><span class="line">randomSet.remove(1);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 2 was already in the set, so return false.</span><br><span class="line">randomSet.insert(2);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Since 2 is the only number in the set, getRandom always return 2.</span><br><span class="line">randomSet.getRandom();</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>Hashmap存放加入的val和在list的位置，list中存储每一个val。则每一个val对应的index为map.get(val)。如果index为null或者list.get(index)为null则代表list中没有该元素，若调用insert加入并返回true, 若调用remove则返回false。定义一个random对象，随机获取index，若list.get(index)为空，则重新随机获取。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RandomizedSet</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    HashMap&lt;Integer,Integer&gt; map;</span><br><span class="line">    List&lt;Integer&gt; list;</span><br><span class="line">    Random rd = <span class="keyword">new</span> Random();</span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RandomizedSet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        map =  <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        list =  <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Inserts a value to the set. Returns true if the set did not already contain the specified element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        Integer index = map.get(val);</span><br><span class="line">        <span class="keyword">if</span>(index != <span class="keyword">null</span> &amp;&amp; list.get(index)!=<span class="keyword">null</span> )</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            list.add(val);</span><br><span class="line">            map.put(val,list.size()-<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Removes a value from the set. Returns true if the set contained the specified element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        Integer index = map.get(val);</span><br><span class="line">        <span class="keyword">if</span>(index!=<span class="keyword">null</span>&amp;&amp; list.get(index)!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            list.set(index,<span class="keyword">null</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Get a random element from the set. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getRandom</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Integer index = rd.nextInt(list.size());</span><br><span class="line">        <span class="keyword">while</span>(list.get(index)==<span class="keyword">null</span>)&#123;</span><br><span class="line">            index = rd.nextInt(list.size());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list.get(index);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your RandomizedSet object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * RandomizedSet obj = new RandomizedSet();</span></span><br><span class="line"><span class="comment"> * boolean param_1 = obj.insert(val);</span></span><br><span class="line"><span class="comment"> * boolean param_2 = obj.remove(val);</span></span><br><span class="line"><span class="comment"> * int param_3 = obj.getRandom();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>LeetCode</category>
@@ -1404,7 +1408,8 @@
       </categories>
       <tags>
         <tag>Medium</tag>
-        <tag>Simulation</tag>
+        <tag>Hashtable</tag>
+        <tag>Array</tag>
       </tags>
   </entry>
   <entry>
@@ -1431,19 +1436,18 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode380 Insert Delete GetRandom O(1)</title>
-    <url>/2020/05/23/Leetcode380/</url>
-    <content><![CDATA[<h1 id="Leetcode380-Insert-Delete-GetRandom-O-1"><a href="#Leetcode380-Insert-Delete-GetRandom-O-1" class="headerlink" title="Leetcode380 Insert Delete GetRandom O(1)"></a>Leetcode380 Insert Delete GetRandom O(1)</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Design a data structure that supports all following operations in <em>average</em> <strong>O(1)</strong> time.</p>
+    <title>Leetcode54. Spiral Matrix</title>
+    <url>/2020/05/23/Leetcode54/</url>
+    <content><![CDATA[<h1 id="Leetcode54-Spiral-Matrix"><a href="#Leetcode54-Spiral-Matrix" class="headerlink" title="Leetcode54. Spiral Matrix"></a>Leetcode54. Spiral Matrix</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Input:</span><br><span class="line">[</span><br><span class="line"> [ 1, 2, 3 ],</span><br><span class="line"> [ 4, 5, 6 ],</span><br><span class="line"> [ 7, 8, 9 ]</span><br><span class="line">]</span><br><span class="line">Output: [1,2,3,6,9,8,7,4,5]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>有四个方向right, left, top, bottom.</p>
 <ol>
-<li><code>insert(val)</code>: Inserts an item val to the set if not already present.</li>
-<li><code>remove(val)</code>: Removes an item val from the set if present.</li>
-<li><code>getRandom</code>: Returns a random element from current set of elements. Each element must have the <strong>same probability</strong> of being returned.<a id="more"></a></li>
+<li>direction=”right”， 当到达最右边界时，代表本行输出结束，top++，</li>
+<li>direction=”bottom”，当到达最下边界时, right–, </li>
+<li>direction = “left”，当到达最左边界是 bottom–,</li>
+<li>direction=”top”，当到达top时候，left++，direction=”right”.</li>
 </ol>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; Init an empty set.</span><br><span class="line">RandomizedSet randomSet &#x3D; new RandomizedSet();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Inserts 1 to the set. Returns true as 1 was inserted successfully.</span><br><span class="line">randomSet.insert(1);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Returns false as 2 does not exist in the set.</span><br><span class="line">randomSet.remove(2);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Inserts 2 to the set, returns true. Set now contains [1,2].</span><br><span class="line">randomSet.insert(2);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; getRandom should return either 1 or 2 randomly.</span><br><span class="line">randomSet.getRandom();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Removes 1 from the set, returns true. Set now contains [2].</span><br><span class="line">randomSet.remove(1);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 2 was already in the set, so return false.</span><br><span class="line">randomSet.insert(2);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Since 2 is the only number in the set, getRandom always return 2.</span><br><span class="line">randomSet.getRandom();</span><br></pre></td></tr></table></figure>
-
-<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>Hashmap存放加入的val和在list的位置，list中存储每一个val。则每一个val对应的index为map.get(val)。如果index为null或者list.get(index)为null则代表list中没有该元素，若调用insert加入并返回true, 若调用remove则返回false。定义一个random对象，随机获取index，若list.get(index)为空，则重新随机获取。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RandomizedSet</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    HashMap&lt;Integer,Integer&gt; map;</span><br><span class="line">    List&lt;Integer&gt; list;</span><br><span class="line">    Random rd = <span class="keyword">new</span> Random();</span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RandomizedSet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        map =  <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        list =  <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Inserts a value to the set. Returns true if the set did not already contain the specified element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        Integer index = map.get(val);</span><br><span class="line">        <span class="keyword">if</span>(index != <span class="keyword">null</span> &amp;&amp; list.get(index)!=<span class="keyword">null</span> )</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            list.add(val);</span><br><span class="line">            map.put(val,list.size()-<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Removes a value from the set. Returns true if the set contained the specified element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        Integer index = map.get(val);</span><br><span class="line">        <span class="keyword">if</span>(index!=<span class="keyword">null</span>&amp;&amp; list.get(index)!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            list.set(index,<span class="keyword">null</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Get a random element from the set. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getRandom</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Integer index = rd.nextInt(list.size());</span><br><span class="line">        <span class="keyword">while</span>(list.get(index)==<span class="keyword">null</span>)&#123;</span><br><span class="line">            index = rd.nextInt(list.size());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list.get(index);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your RandomizedSet object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * RandomizedSet obj = new RandomizedSet();</span></span><br><span class="line"><span class="comment"> * boolean param_1 = obj.insert(val);</span></span><br><span class="line"><span class="comment"> * boolean param_2 = obj.remove(val);</span></span><br><span class="line"><span class="comment"> * int param_3 = obj.getRandom();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">spiralOrder</span><span class="params">(<span class="keyword">int</span>[][] matrix)</span> </span>&#123;</span><br><span class="line">         <span class="comment">//result</span></span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&amp;lt;&amp;gt;();</span><br><span class="line">        <span class="keyword">if</span> (matrix.length == <span class="number">0</span>) <span class="keyword">return</span> result;</span><br><span class="line">        <span class="comment">//获取行数---Y行</span></span><br><span class="line">        <span class="keyword">int</span> lenY =matrix.length;</span><br><span class="line">        <span class="comment">//获取列数---X列</span></span><br><span class="line">        <span class="keyword">int</span> lenX = matrix[<span class="number">0</span>].length;</span><br><span class="line">        String direction = &amp;quot;right&amp;quot;;</span><br><span class="line">        <span class="keyword">int</span> left=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = lenX-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> down =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> up = lenY-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left&amp;lt;=right &amp;amp;&amp;amp; down&amp;lt;=up)&#123;</span><br><span class="line">            <span class="keyword">if</span>(direction == &amp;quot;right&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=left;i&amp;lt;=right;i++)&#123;</span><br><span class="line">                    result.add(matrix[down][i]);</span><br><span class="line">                &#125;</span><br><span class="line">                down++;</span><br><span class="line">                direction = &amp;quot;down&amp;quot;;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(direction==&amp;quot;down&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=down;i&amp;lt;=up;i++)&#123;</span><br><span class="line">                    result.add(matrix[i][right]);</span><br><span class="line">                &#125;</span><br><span class="line">                right--;</span><br><span class="line">                direction = &amp;quot;left&amp;quot;;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(direction==&amp;quot;left&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=right;i&amp;gt;=left;i--)&#123;</span><br><span class="line">                    result.add(matrix[up][i]);</span><br><span class="line">                &#125;</span><br><span class="line">                up--;</span><br><span class="line">                direction =&amp;quot;up&amp;quot;;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(direction==&amp;quot;up&amp;quot;)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=up;i&amp;gt;=down;i--)&#123;</span><br><span class="line">                    result.add(matrix[i][left]);</span><br><span class="line">                &#125;</span><br><span class="line">                left++;</span><br><span class="line">                direction = &amp;quot;right&amp;quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>LeetCode</category>
@@ -1451,52 +1455,7 @@
       </categories>
       <tags>
         <tag>Medium</tag>
-        <tag>Hashtable</tag>
-        <tag>Array</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode692 Top K Frequent Words</title>
-    <url>/2020/05/23/Leetcode692/</url>
-    <content><![CDATA[<h1 id="Leetcode692-Top-K-Frequent-Words"><a href="#Leetcode692-Top-K-Frequent-Words" class="headerlink" title="Leetcode692 Top K Frequent Words"></a>Leetcode692 Top K Frequent Words</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>example:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [&quot;i&quot;, &quot;love&quot;, &quot;leetcode&quot;, &quot;i&quot;, &quot;love&quot;, &quot;coding&quot;], k &#x3D; 2</span><br><span class="line">Output: [&quot;i&quot;, &quot;love&quot;]</span><br><span class="line">Explanation: &quot;i&quot; and &quot;love&quot; are the two most frequent words.</span><br><span class="line">    Note that &quot;i&quot; comes before &quot;love&quot; due to a lower alphabetical order.</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [&quot;the&quot;, &quot;day&quot;, &quot;is&quot;, &quot;sunny&quot;, &quot;the&quot;, &quot;the&quot;, &quot;the&quot;, &quot;sunny&quot;, &quot;is&quot;, &quot;is&quot;], k &#x3D; 4</span><br><span class="line">Output: [&quot;the&quot;, &quot;is&quot;, &quot;sunny&quot;, &quot;day&quot;]</span><br><span class="line">Explanation: &quot;the&quot;, &quot;is&quot;, &quot;sunny&quot; and &quot;day&quot; are the four most frequent words,</span><br><span class="line">    with the number of occurrence being 4, 3, 2 and 1 respectively.</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h2><h4 id="Step1-统计词频："><a href="#Step1-统计词频：" class="headerlink" title="Step1:  统计词频："></a>Step1:  统计词频：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">	Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line">    <span class="keyword">for</span> (String word: words) &#123;</span><br><span class="line">        map.put(word, map.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">或：</span><br><span class="line">    HashMap&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span>(String word: words)&#123;</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(word))&#123;</span><br><span class="line">            map.put(word,map.get(word)+<span class="number">1</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">            map.put(word,<span class="number">1</span>); </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Step2-比较："><a href="#Step2-比较：" class="headerlink" title="Step2: 比较："></a>Step2: 比较：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span>(String key : map.keySet())&#123;</span><br><span class="line">   result.add(key);</span><br><span class="line">&#125;</span><br><span class="line">Collections.sort(result,(word1,word2)-&gt;map.get(word1).equals(map.get(word2))?</span><br><span class="line">                 word1.compareTo(word2):map.get(word2)-map.get(word1));</span><br></pre></td></tr></table></figure>
-<h4 id="Step3-输出："><a href="#Step3-输出：" class="headerlink" title="Step3: 输出："></a>Step3: 输出：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> result.subList(<span class="number">0</span>,k);</span><br></pre></td></tr></table></figure>
-<h2 id="最优解：Heap"><a href="#最优解：Heap" class="headerlink" title="最优解：Heap"></a>最优解：Heap</h2><h4 id="Step1-统计词频：-1"><a href="#Step1-统计词频：-1" class="headerlink" title="Step1: 统计词频："></a>Step1: 统计词频：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line"><span class="keyword">for</span> (String word: words) &#123;</span><br><span class="line">    map.put(word, map.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Step2-PriorityQueue"><a href="#Step2-PriorityQueue" class="headerlink" title="Step2: PriorityQueue:"></a>Step2: PriorityQueue:</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">PriorityQueue&lt;String&gt; heap = <span class="keyword">new</span> PriorityQueue&lt;String&gt;(</span><br><span class="line">                (w1, w2) -&gt; count.get(w1).equals(count.get(w2)) ?</span><br><span class="line">                w2.compareTo(w1) : count.get(w1) - count.get(w2) );</span><br></pre></td></tr></table></figure>
-
-<h4 id="Step3-从heap提取前k个值，然后倒序输出"><a href="#Step3-从heap提取前k个值，然后倒序输出" class="headerlink" title="Step3: 从heap提取前k个值，然后倒序输出"></a>Step3: 从heap提取前k个值，然后倒序输出</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (String word: count.keySet()) &#123;</span><br><span class="line">           heap.offer(word);</span><br><span class="line">           <span class="keyword">if</span> (heap.size() &gt; k) heap.poll();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       List&lt;String&gt; ans = <span class="keyword">new</span> ArrayList();</span><br><span class="line">       <span class="keyword">while</span> (!heap.isEmpty()) ans.add(heap.poll());</span><br><span class="line">       Collections.reverse(ans);</span><br><span class="line">       <span class="keyword">return</span> ans;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Medium</category>
-      </categories>
-      <tags>
-        <tag>Medium</tag>
-        <tag>Hash</tag>
-        <tag>Heap</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode79 Word Search</title>
-    <url>/2020/05/23/Leetcode79/</url>
-    <content><![CDATA[<h1 id="Leetcode79-Word-Search"><a href="#Leetcode79-Word-Search" class="headerlink" title="Leetcode79 Word Search"></a>Leetcode79 Word Search</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">board =[  [<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'E'</span>],  </span><br><span class="line">          [<span class="string">'S'</span>,<span class="string">'F'</span>,<span class="string">'C'</span>,<span class="string">'S'</span>],  </span><br><span class="line">          [<span class="string">'A'</span>,<span class="string">'D'</span>,<span class="string">'E'</span>,<span class="string">'E'</span>]]​</span><br><span class="line">Given word = <span class="string">"ABCCED"</span>, <span class="built_in">return</span> <span class="literal">true</span>.</span><br><span class="line">Given word = <span class="string">"SEE"</span>, <span class="built_in">return</span> <span class="literal">true</span>.</span><br><span class="line">Given word = <span class="string">"ABCB"</span>, <span class="built_in">return</span> <span class="literal">false</span>.</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>根据word的第一个字符(d=0)在二维char数组中匹配，找到起始位置。找到起始位置后，在该位置的左右上下search, 直到找到与word.charAt(d+1)相同的元素。当到达边界以后（即到达最后一行或最后一列）时返回false，当没有找到word.charAt(d+1)匹配的board元素时，返回false. 当d到达word的最后一个元素后，返回true. 设定boolean型变量flag, flag的值为上下左右search或的结果。<br><strong>keep in mind</strong>：search过的board元素应当暂时改为0.</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">exist</span><span class="params">(<span class="keyword">char</span>[][] board, String word)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(board.length==<span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>;x&lt;board.length;x++)&#123;<span class="comment">//row</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> y=<span class="number">0</span>;y&lt;board[<span class="number">0</span>].length;y++)&#123;<span class="comment">//columns</span></span><br><span class="line">                <span class="keyword">if</span>(search(board,word,x,y,<span class="number">0</span>))</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">search</span><span class="params">(<span class="keyword">char</span>[][] board, String word, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> d)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x&lt;<span class="number">0</span>||x&gt;=board.length||y&lt;<span class="number">0</span>||y&gt;=board[<span class="number">0</span>].length)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(word.charAt(d)!=board[x][y])</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(d==word.length()-<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">char</span> pre = board[x][y];</span><br><span class="line">        board[x][y]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">boolean</span> flag = search(board,word,x+<span class="number">1</span>,y,d+<span class="number">1</span>)||search(board,word,x-<span class="number">1</span>,y,d+<span class="number">1</span>)</span><br><span class="line">            ||search(board,word,x,y+<span class="number">1</span>,d+<span class="number">1</span>)||search(board,word,x,y-<span class="number">1</span>,d+<span class="number">1</span>);</span><br><span class="line">        board[x][y]=pre;</span><br><span class="line">        <span class="keyword">return</span> flag;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Medium</category>
-      </categories>
-      <tags>
-        <tag>Medium</tag>
-        <tag>Recursive</tag>
+        <tag>Simulation</tag>
       </tags>
   </entry>
   <entry>
@@ -1532,6 +1491,32 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode692 Top K Frequent Words</title>
+    <url>/2020/05/23/Leetcode692/</url>
+    <content><![CDATA[<h1 id="Leetcode692-Top-K-Frequent-Words"><a href="#Leetcode692-Top-K-Frequent-Words" class="headerlink" title="Leetcode692 Top K Frequent Words"></a>Leetcode692 Top K Frequent Words</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>example:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [&quot;i&quot;, &quot;love&quot;, &quot;leetcode&quot;, &quot;i&quot;, &quot;love&quot;, &quot;coding&quot;], k &#x3D; 2</span><br><span class="line">Output: [&quot;i&quot;, &quot;love&quot;]</span><br><span class="line">Explanation: &quot;i&quot; and &quot;love&quot; are the two most frequent words.</span><br><span class="line">    Note that &quot;i&quot; comes before &quot;love&quot; due to a lower alphabetical order.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: [&quot;the&quot;, &quot;day&quot;, &quot;is&quot;, &quot;sunny&quot;, &quot;the&quot;, &quot;the&quot;, &quot;the&quot;, &quot;sunny&quot;, &quot;is&quot;, &quot;is&quot;], k &#x3D; 4</span><br><span class="line">Output: [&quot;the&quot;, &quot;is&quot;, &quot;sunny&quot;, &quot;day&quot;]</span><br><span class="line">Explanation: &quot;the&quot;, &quot;is&quot;, &quot;sunny&quot; and &quot;day&quot; are the four most frequent words,</span><br><span class="line">    with the number of occurrence being 4, 3, 2 and 1 respectively.</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h2><h4 id="Step1-统计词频："><a href="#Step1-统计词频：" class="headerlink" title="Step1:  统计词频："></a>Step1:  统计词频：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">	Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line">    <span class="keyword">for</span> (String word: words) &#123;</span><br><span class="line">        map.put(word, map.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">或：</span><br><span class="line">    HashMap&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span>(String word: words)&#123;</span><br><span class="line">        <span class="keyword">if</span>(map.containsKey(word))&#123;</span><br><span class="line">            map.put(word,map.get(word)+<span class="number">1</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">            map.put(word,<span class="number">1</span>); </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Step2-比较："><a href="#Step2-比较：" class="headerlink" title="Step2: 比较："></a>Step2: 比较：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span>(String key : map.keySet())&#123;</span><br><span class="line">   result.add(key);</span><br><span class="line">&#125;</span><br><span class="line">Collections.sort(result,(word1,word2)-&gt;map.get(word1).equals(map.get(word2))?</span><br><span class="line">                 word1.compareTo(word2):map.get(word2)-map.get(word1));</span><br></pre></td></tr></table></figure>
+<h4 id="Step3-输出："><a href="#Step3-输出：" class="headerlink" title="Step3: 输出："></a>Step3: 输出：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> result.subList(<span class="number">0</span>,k);</span><br></pre></td></tr></table></figure>
+<h2 id="最优解：Heap"><a href="#最优解：Heap" class="headerlink" title="最优解：Heap"></a>最优解：Heap</h2><h4 id="Step1-统计词频：-1"><a href="#Step1-统计词频：-1" class="headerlink" title="Step1: 统计词频："></a>Step1: 统计词频：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line"><span class="keyword">for</span> (String word: words) &#123;</span><br><span class="line">    map.put(word, map.getOrDefault(word, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Step2-PriorityQueue"><a href="#Step2-PriorityQueue" class="headerlink" title="Step2: PriorityQueue:"></a>Step2: PriorityQueue:</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">PriorityQueue&lt;String&gt; heap = <span class="keyword">new</span> PriorityQueue&lt;String&gt;(</span><br><span class="line">                (w1, w2) -&gt; count.get(w1).equals(count.get(w2)) ?</span><br><span class="line">                w2.compareTo(w1) : count.get(w1) - count.get(w2) );</span><br></pre></td></tr></table></figure>
+
+<h4 id="Step3-从heap提取前k个值，然后倒序输出"><a href="#Step3-从heap提取前k个值，然后倒序输出" class="headerlink" title="Step3: 从heap提取前k个值，然后倒序输出"></a>Step3: 从heap提取前k个值，然后倒序输出</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (String word: count.keySet()) &#123;</span><br><span class="line">           heap.offer(word);</span><br><span class="line">           <span class="keyword">if</span> (heap.size() &gt; k) heap.poll();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       List&lt;String&gt; ans = <span class="keyword">new</span> ArrayList();</span><br><span class="line">       <span class="keyword">while</span> (!heap.isEmpty()) ans.add(heap.poll());</span><br><span class="line">       Collections.reverse(ans);</span><br><span class="line">       <span class="keyword">return</span> ans;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Medium</category>
+      </categories>
+      <tags>
+        <tag>Medium</tag>
+        <tag>Hash</tag>
+        <tag>Heap</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode763 Partition Labels</title>
     <url>/2020/05/23/Leetcode763/</url>
     <content><![CDATA[<h1 id="Leetcode763-Partition-Labels"><a href="#Leetcode763-Partition-Labels" class="headerlink" title="Leetcode763 Partition Labels"></a>Leetcode763 Partition Labels</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>A string <code>S</code> of lowercase letters is given. We want to partition this string into as many parts as possible so that each letter appears in at most one part, and return a list of integers representing the size of these parts.</p>
@@ -1557,6 +1542,55 @@
         <tag>Easy</tag>
         <tag>Hashtable</tag>
         <tag>Greedy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode79 Word Search</title>
+    <url>/2020/05/23/Leetcode79/</url>
+    <content><![CDATA[<h1 id="Leetcode79-Word-Search"><a href="#Leetcode79-Word-Search" class="headerlink" title="Leetcode79 Word Search"></a>Leetcode79 Word Search</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">board =[  [<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'E'</span>],  </span><br><span class="line">          [<span class="string">'S'</span>,<span class="string">'F'</span>,<span class="string">'C'</span>,<span class="string">'S'</span>],  </span><br><span class="line">          [<span class="string">'A'</span>,<span class="string">'D'</span>,<span class="string">'E'</span>,<span class="string">'E'</span>]]​</span><br><span class="line">Given word = <span class="string">"ABCCED"</span>, <span class="built_in">return</span> <span class="literal">true</span>.</span><br><span class="line">Given word = <span class="string">"SEE"</span>, <span class="built_in">return</span> <span class="literal">true</span>.</span><br><span class="line">Given word = <span class="string">"ABCB"</span>, <span class="built_in">return</span> <span class="literal">false</span>.</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>根据word的第一个字符(d=0)在二维char数组中匹配，找到起始位置。找到起始位置后，在该位置的左右上下search, 直到找到与word.charAt(d+1)相同的元素。当到达边界以后（即到达最后一行或最后一列）时返回false，当没有找到word.charAt(d+1)匹配的board元素时，返回false. 当d到达word的最后一个元素后，返回true. 设定boolean型变量flag, flag的值为上下左右search或的结果。<br><strong>keep in mind</strong>：search过的board元素应当暂时改为0.</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">exist</span><span class="params">(<span class="keyword">char</span>[][] board, String word)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(board.length==<span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>;x&lt;board.length;x++)&#123;<span class="comment">//row</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> y=<span class="number">0</span>;y&lt;board[<span class="number">0</span>].length;y++)&#123;<span class="comment">//columns</span></span><br><span class="line">                <span class="keyword">if</span>(search(board,word,x,y,<span class="number">0</span>))</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">search</span><span class="params">(<span class="keyword">char</span>[][] board, String word, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> d)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x&lt;<span class="number">0</span>||x&gt;=board.length||y&lt;<span class="number">0</span>||y&gt;=board[<span class="number">0</span>].length)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(word.charAt(d)!=board[x][y])</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(d==word.length()-<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">char</span> pre = board[x][y];</span><br><span class="line">        board[x][y]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">boolean</span> flag = search(board,word,x+<span class="number">1</span>,y,d+<span class="number">1</span>)||search(board,word,x-<span class="number">1</span>,y,d+<span class="number">1</span>)</span><br><span class="line">            ||search(board,word,x,y+<span class="number">1</span>,d+<span class="number">1</span>)||search(board,word,x,y-<span class="number">1</span>,d+<span class="number">1</span>);</span><br><span class="line">        board[x][y]=pre;</span><br><span class="line">        <span class="keyword">return</span> flag;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Medium</category>
+      </categories>
+      <tags>
+        <tag>Medium</tag>
+        <tag>Recursive</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode993 Cousins in Binary Tree</title>
+    <url>/2020/05/23/Leetcode993/</url>
+    <content><![CDATA[<h1 id="Leetcode993-Cousins-in-Binary-Tree"><a href="#Leetcode993-Cousins-in-Binary-Tree" class="headerlink" title="Leetcode993 Cousins in Binary Tree"></a>Leetcode993 Cousins in Binary Tree</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>In a binary tree, the root node is at depth <code>0</code>, and children of each depth <code>k</code> node are at depth <code>k+1</code>.</p>
+<p>Two nodes of a binary tree are <em>cousins</em> if they have the same depth, but have <strong>different parents</strong>.</p>
+<p>We are given the <code>root</code> of a binary tree with unique values, and the values <code>x</code> and <code>y</code> of two different nodes in the tree.</p>
+<p>Return <code>true</code> if and only if the nodes corresponding to the values <code>x</code> and <code>y</code> are cousins.</p>
+<a id="more"></a>
+<p><strong>Example 1:<br><img src="https://assets.leetcode.com/uploads/2019/02/12/q1248-01.png" alt="img"></strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,4], x &#x3D; 4, y &#x3D; 3</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2:<br><img src="https://assets.leetcode.com/uploads/2019/02/12/q1248-02.png" alt="img"></strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,null,4,null,5], x &#x3D; 5, y &#x3D; 4</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 3:</strong></p>
+<p><strong><img src="https://assets.leetcode.com/uploads/2019/02/13/q1248-03.png" alt="img"></strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,null,4], x &#x3D; 2, y &#x3D; 3</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>判断条件：亲代不是同一个节点且深度相同。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> j;</span><br><span class="line">    <span class="keyword">static</span> TreeNode dx;</span><br><span class="line">    <span class="keyword">static</span> TreeNode dy;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isCousins</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        preorder(root,x, y, <span class="keyword">null</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> dx!=dy&amp;&amp;i==j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">preorder</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> y, TreeNode p, <span class="keyword">int</span> d)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(root.val==x)&#123;</span><br><span class="line">            dx=p;</span><br><span class="line">            i=d;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root.val==y)&#123;</span><br><span class="line">            dy=p;</span><br><span class="line">            j=d;</span><br><span class="line">        &#125;</span><br><span class="line">        preorder(root.left,x,y,root,d+<span class="number">1</span>);</span><br><span class="line">        preorder(root.right,x,y,root,d+<span class="number">1</span>);</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>Easy</category>
+      </categories>
+      <tags>
+        <tag>Easy</tag>
+        <tag>Preorder traversal</tag>
       </tags>
   </entry>
   <entry>
@@ -1622,133 +1656,6 @@
       <tags>
         <tag>LeetCode</tag>
         <tag>June Leetcoding Challenge</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode993 Cousins in Binary Tree</title>
-    <url>/2020/05/23/Leetcode993/</url>
-    <content><![CDATA[<h1 id="Leetcode993-Cousins-in-Binary-Tree"><a href="#Leetcode993-Cousins-in-Binary-Tree" class="headerlink" title="Leetcode993 Cousins in Binary Tree"></a>Leetcode993 Cousins in Binary Tree</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>In a binary tree, the root node is at depth <code>0</code>, and children of each depth <code>k</code> node are at depth <code>k+1</code>.</p>
-<p>Two nodes of a binary tree are <em>cousins</em> if they have the same depth, but have <strong>different parents</strong>.</p>
-<p>We are given the <code>root</code> of a binary tree with unique values, and the values <code>x</code> and <code>y</code> of two different nodes in the tree.</p>
-<p>Return <code>true</code> if and only if the nodes corresponding to the values <code>x</code> and <code>y</code> are cousins.</p>
-<a id="more"></a>
-<p><strong>Example 1:<br><img src="https://assets.leetcode.com/uploads/2019/02/12/q1248-01.png" alt="img"></strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,4], x &#x3D; 4, y &#x3D; 3</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2:<br><img src="https://assets.leetcode.com/uploads/2019/02/12/q1248-02.png" alt="img"></strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,null,4,null,5], x &#x3D; 5, y &#x3D; 4</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 3:</strong></p>
-<p><strong><img src="https://assets.leetcode.com/uploads/2019/02/13/q1248-03.png" alt="img"></strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input: root &#x3D; [1,2,3,null,4], x &#x3D; 2, y &#x3D; 3</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>判断条件：亲代不是同一个节点且深度相同。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * public class TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode left;</span></span><br><span class="line"><span class="comment"> *     TreeNode right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span></span><br><span class="line"><span class="comment"> *         this.val = val;</span></span><br><span class="line"><span class="comment"> *         this.left = left;</span></span><br><span class="line"><span class="comment"> *         this.right = right;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> j;</span><br><span class="line">    <span class="keyword">static</span> TreeNode dx;</span><br><span class="line">    <span class="keyword">static</span> TreeNode dy;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isCousins</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        preorder(root,x, y, <span class="keyword">null</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> dx!=dy&amp;&amp;i==j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">preorder</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> y, TreeNode p, <span class="keyword">int</span> d)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(root.val==x)&#123;</span><br><span class="line">            dx=p;</span><br><span class="line">            i=d;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root.val==y)&#123;</span><br><span class="line">            dy=p;</span><br><span class="line">            j=d;</span><br><span class="line">        &#125;</span><br><span class="line">        preorder(root.left,x,y,root,d+<span class="number">1</span>);</span><br><span class="line">        preorder(root.right,x,y,root,d+<span class="number">1</span>);</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>Easy</category>
-      </categories>
-      <tags>
-        <tag>Easy</tag>
-        <tag>Preorder traversal</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>NODEMCU驱动安装</title>
-    <url>/2020/06/09/NODEMCU%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<h1 id="NODEMCU驱动安装"><a href="#NODEMCU驱动安装" class="headerlink" title="NODEMCU驱动安装"></a>NODEMCU驱动安装</h1><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>使用windows系统<br>NodeMCU驱动，有需要的朋友可以<a href="https://pan.baidu.com/s/12ggA07vlViNCtL9nK0fAZg" target="_blank" rel="noopener">点击这里</a> 提取码: b63t </p>
-<h2 id="Step1-下载驱动"><a href="#Step1-下载驱动" class="headerlink" title="Step1 下载驱动"></a>Step1 下载驱动</h2><p>下载并打开驱动包，可以看到包中含有如下文件，我的电脑是64位的，所以我们选择x64.exe驱动。</p>
-<img src="/2020/06/09/NODEMCU%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/WechatIMG20.png" class title="驱动包">
-
-<a id="more"></a>
-
-<h2 id="Step2-打开驱动程序"><a href="#Step2-打开驱动程序" class="headerlink" title="Step2 打开驱动程序"></a>Step2 打开驱动程序</h2><p>点击next</p>
-<img src="/2020/06/09/NODEMCU%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/WechatIMG22.png" class title="驱动程序">
-
-<p>选择accept，然后点击next</p>
-<img src="/2020/06/09/NODEMCU%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/WechatIMG23.png" class>
-
-<h2 id="Step3-等待安装，安装成功后，Finish即可"><a href="#Step3-等待安装，安装成功后，Finish即可" class="headerlink" title="Step3 等待安装，安装成功后，Finish即可"></a>Step3 等待安装，安装成功后，Finish即可</h2><img src="/2020/06/09/NODEMCU%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/WechatIMG24.png" class>
-
-<h2 id="Step4-将NodeMCU与电脑连接，并查看端口号"><a href="#Step4-将NodeMCU与电脑连接，并查看端口号" class="headerlink" title="Step4 将NodeMCU与电脑连接，并查看端口号"></a>Step4 将NodeMCU与电脑连接，并查看端口号</h2><p>这里直接放图了</p>
-<img src="/2020/06/09/NODEMCU%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/WechatIMG18.png" class>
-
-
-
-]]></content>
-      <categories>
-        <category>嵌入式</category>
-        <category>Esp8266</category>
-      </categories>
-      <tags>
-        <tag>物联网</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>NODEMCU搭建ArduinoIDE开发环境</title>
-    <url>/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</url>
-    <content><![CDATA[<h1 id="NODEMCU驱动安装"><a href="#NODEMCU驱动安装" class="headerlink" title="NODEMCU驱动安装"></a>NODEMCU驱动安装</h1><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>使用windows系统<br>下载Arduino IDE，我直接从官网下载的，这里是<a href="https://www.arduino.cc/en/Main/Software" target="_blank" rel="noopener">传送门</a></p>
-<a id="more"></a>
-
-<h2 id="Step1-下载并安装Arduino"><a href="#Step1-下载并安装Arduino" class="headerlink" title="Step1 下载并安装Arduino"></a>Step1 下载并安装Arduino</h2><p>windows很简单，只需要下载zip文件解压，找到arduino.exe双击运行即可。</p>
-<p>Mac版本相对来说比较复杂，需要从在system preferences中设置一下。</p>
-<h3 id="将下载好的zip解压，然后将解压出来的文件拖到Application中"><a href="#将下载好的zip解压，然后将解压出来的文件拖到Application中" class="headerlink" title="将下载好的zip解压，然后将解压出来的文件拖到Application中"></a>将下载好的zip解压，然后将解压出来的文件拖到Application中</h3><img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG29.png" class>
-
-<p>这个时候的Arduino是不能用的，因为并未授权</p>
-<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG30.png" class>
-
-<p>这个时候我们可以打开System Preferences 即系统设置</p>
-<p>我们选择Sercurity &amp; Privacy，然后在General中点击Open Anyway</p>
-<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG31.png" class>
-
-<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG32.png" class>
-
-
-
-<p>这样我们就打开Arduino IDE了</p>
-
-
-<h2 id="Step2-打开ArduinoIDE-选择Preferences"><a href="#Step2-打开ArduinoIDE-选择Preferences" class="headerlink" title="Step2 打开ArduinoIDE 选择Preferences"></a>Step2 打开ArduinoIDE 选择Preferences</h2><img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG25.png" class title="驱动程序">
-
-<p>在下图位置填写以下内容</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;arduino.esp8266.com&#x2F;stable&#x2F;package_esp8266com_index.json</span><br></pre></td></tr></table></figure>
-
-<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG27.png" class>
-
-<h2 id="Step3-设置Board"><a href="#Step3-设置Board" class="headerlink" title="Step3 设置Board"></a>Step3 设置Board</h2><p>由于我已经设置过了，这里直接显示一下步骤和结果</p>
-<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG35.png" class>
-
-<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG36.png" class>
-
-
-<h2 id="Step4-选择NodeMCU开发版，并设置端口号"><a href="#Step4-选择NodeMCU开发版，并设置端口号" class="headerlink" title="Step4 选择NodeMCU开发版，并设置端口号"></a>Step4 选择NodeMCU开发版，并设置端口号</h2><p>我们可以从下图位置获取NodeMCU的端口号</p>
-<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG18.png" class>
-
-<p>选择NodeMCU开发版</p>
-<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG37.png" class>
-
-<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG38.png" class>
-
-<h2 id="Step5-打开Blink示例程序，编译上传"><a href="#Step5-打开Blink示例程序，编译上传" class="headerlink" title="Step5 打开Blink示例程序，编译上传"></a>Step5 打开Blink示例程序，编译上传</h2><img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG39.png" class>
-
-<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG40.png" class>
-
-<h2 id="当NODEMCU的蓝灯开始闪烁时，证明驱动程序已经成功安装"><a href="#当NODEMCU的蓝灯开始闪烁时，证明驱动程序已经成功安装" class="headerlink" title="当NODEMCU的蓝灯开始闪烁时，证明驱动程序已经成功安装"></a>当NODEMCU的蓝灯开始闪烁时，证明驱动程序已经成功安装</h2><img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG41.jpeg" class>
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>嵌入式</category>
-        <category>Esp8266</category>
-      </categories>
-      <tags>
-        <tag>物联网</tag>
       </tags>
   </entry>
   <entry>
@@ -2205,30 +2112,99 @@ where....</code></pre></li>
       </tags>
   </entry>
   <entry>
-    <title>PCB工程文件的创建</title>
-    <url>/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/</url>
-    <content><![CDATA[<h1 id="PCB工程文件的创建"><a href="#PCB工程文件的创建" class="headerlink" title="PCB工程文件的创建"></a>PCB工程文件的创建</h1><h2 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h2><p>如何使用Altium Designer建立PCB工程。</p>
-<h2 id="本文使用的工具"><a href="#本文使用的工具" class="headerlink" title="本文使用的工具"></a>本文使用的工具</h2><p>Altium Designer 20.1.8</p>
+    <title>NODEMCU搭建ArduinoIDE开发环境</title>
+    <url>/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<h1 id="NODEMCU驱动安装"><a href="#NODEMCU驱动安装" class="headerlink" title="NODEMCU驱动安装"></a>NODEMCU驱动安装</h1><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>使用windows系统<br>下载Arduino IDE，我直接从官网下载的，这里是<a href="https://www.arduino.cc/en/Main/Software" target="_blank" rel="noopener">传送门</a></p>
 <a id="more"></a>
-<h2 id="Step1-创建新的工程：File-–-gt-New–-gt-Project"><a href="#Step1-创建新的工程：File-–-gt-New–-gt-Project" class="headerlink" title="Step1: 创建新的工程：File –&gt; New–&gt;Project"></a>Step1: 创建新的工程：File –&gt; New–&gt;Project</h2><img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/PCB%E5%88%9B%E5%BB%BA%E5%B7%A5%E7%A8%8B.png" class title="创建新的工程">
 
-<h2 id="Step2-选择Project-Type-这里选择默认的就好，Project-Name自定义就好。"><a href="#Step2-选择Project-Type-这里选择默认的就好，Project-Name自定义就好。" class="headerlink" title="Step2: 选择Project Type: 这里选择默认的就好，Project Name自定义就好。"></a>Step2: 选择Project Type: 这里选择默认的就好，Project Name自定义就好。</h2><img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E9%80%89%E6%8B%A9projecttype.png" class title="This is an example image">
-<h2 id="Step3-绘制PCB四个基本文件-原理图，原理图库，PCB，PCB库"><a href="#Step3-绘制PCB四个基本文件-原理图，原理图库，PCB，PCB库" class="headerlink" title="Step3: 绘制PCB四个基本文件(原理图，原理图库，PCB，PCB库)"></a>Step3: 绘制PCB四个基本文件(原理图，原理图库，PCB，PCB库)</h2><ol>
-<li>原理图<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524151653.png" class title="原理图"></li>
-<li>原理图库<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524151836.png" class title="原理图库"></li>
-<li>PCB<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524151956.png" class title="PCB"></li>
-<li>PCB图库<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524152118.png" class title="PCB图库">
+<h2 id="Step1-下载并安装Arduino"><a href="#Step1-下载并安装Arduino" class="headerlink" title="Step1 下载并安装Arduino"></a>Step1 下载并安装Arduino</h2><p>windows很简单，只需要下载zip文件解压，找到arduino.exe双击运行即可。</p>
+<p>Mac版本相对来说比较复杂，需要从在system preferences中设置一下。</p>
+<h3 id="将下载好的zip解压，然后将解压出来的文件拖到Application中"><a href="#将下载好的zip解压，然后将解压出来的文件拖到Application中" class="headerlink" title="将下载好的zip解压，然后将解压出来的文件拖到Application中"></a>将下载好的zip解压，然后将解压出来的文件拖到Application中</h3><img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG29.png" class>
 
-</li>
-</ol>
-<h2 id="此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例："><a href="#此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例：" class="headerlink" title="此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例："></a>此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例：</h2><img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/FInalResult.png" class title="最终效果图">
+<p>这个时候的Arduino是不能用的，因为并未授权</p>
+<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG30.png" class>
+
+<p>这个时候我们可以打开System Preferences 即系统设置</p>
+<p>我们选择Sercurity &amp; Privacy，然后在General中点击Open Anyway</p>
+<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG31.png" class>
+
+<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG32.png" class>
+
+
+
+<p>这样我们就打开Arduino IDE了</p>
+
+
+<h2 id="Step2-打开ArduinoIDE-选择Preferences"><a href="#Step2-打开ArduinoIDE-选择Preferences" class="headerlink" title="Step2 打开ArduinoIDE 选择Preferences"></a>Step2 打开ArduinoIDE 选择Preferences</h2><img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG25.png" class title="驱动程序">
+
+<p>在下图位置填写以下内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;arduino.esp8266.com&#x2F;stable&#x2F;package_esp8266com_index.json</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG27.png" class>
+
+<h2 id="Step3-设置Board"><a href="#Step3-设置Board" class="headerlink" title="Step3 设置Board"></a>Step3 设置Board</h2><p>由于我已经设置过了，这里直接显示一下步骤和结果</p>
+<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG35.png" class>
+
+<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG36.png" class>
+
+
+<h2 id="Step4-选择NodeMCU开发版，并设置端口号"><a href="#Step4-选择NodeMCU开发版，并设置端口号" class="headerlink" title="Step4 选择NodeMCU开发版，并设置端口号"></a>Step4 选择NodeMCU开发版，并设置端口号</h2><p>我们可以从下图位置获取NodeMCU的端口号</p>
+<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG18.png" class>
+
+<p>选择NodeMCU开发版</p>
+<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG37.png" class>
+
+<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG38.png" class>
+
+<h2 id="Step5-打开Blink示例程序，编译上传"><a href="#Step5-打开Blink示例程序，编译上传" class="headerlink" title="Step5 打开Blink示例程序，编译上传"></a>Step5 打开Blink示例程序，编译上传</h2><img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG39.png" class>
+
+<img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG40.png" class>
+
+<h2 id="当NODEMCU的蓝灯开始闪烁时，证明驱动程序已经成功安装"><a href="#当NODEMCU的蓝灯开始闪烁时，证明驱动程序已经成功安装" class="headerlink" title="当NODEMCU的蓝灯开始闪烁时，证明驱动程序已经成功安装"></a>当NODEMCU的蓝灯开始闪烁时，证明驱动程序已经成功安装</h2><img src="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/WechatIMG41.jpeg" class>
+
+
+
+
+
+
 ]]></content>
       <categories>
-        <category>PCB学习笔记</category>
-        <category>89C51</category>
+        <category>嵌入式</category>
+        <category>Esp8266</category>
       </categories>
       <tags>
-        <tag>PCB</tag>
+        <tag>物联网</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NODEMCU驱动安装</title>
+    <url>/2020/06/09/NODEMCU%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h1 id="NODEMCU驱动安装"><a href="#NODEMCU驱动安装" class="headerlink" title="NODEMCU驱动安装"></a>NODEMCU驱动安装</h1><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>使用windows系统<br>NodeMCU驱动，有需要的朋友可以<a href="https://pan.baidu.com/s/12ggA07vlViNCtL9nK0fAZg" target="_blank" rel="noopener">点击这里</a> 提取码: b63t </p>
+<h2 id="Step1-下载驱动"><a href="#Step1-下载驱动" class="headerlink" title="Step1 下载驱动"></a>Step1 下载驱动</h2><p>下载并打开驱动包，可以看到包中含有如下文件，我的电脑是64位的，所以我们选择x64.exe驱动。</p>
+<img src="/2020/06/09/NODEMCU%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/WechatIMG20.png" class title="驱动包">
+
+<a id="more"></a>
+
+<h2 id="Step2-打开驱动程序"><a href="#Step2-打开驱动程序" class="headerlink" title="Step2 打开驱动程序"></a>Step2 打开驱动程序</h2><p>点击next</p>
+<img src="/2020/06/09/NODEMCU%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/WechatIMG22.png" class title="驱动程序">
+
+<p>选择accept，然后点击next</p>
+<img src="/2020/06/09/NODEMCU%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/WechatIMG23.png" class>
+
+<h2 id="Step3-等待安装，安装成功后，Finish即可"><a href="#Step3-等待安装，安装成功后，Finish即可" class="headerlink" title="Step3 等待安装，安装成功后，Finish即可"></a>Step3 等待安装，安装成功后，Finish即可</h2><img src="/2020/06/09/NODEMCU%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/WechatIMG24.png" class>
+
+<h2 id="Step4-将NodeMCU与电脑连接，并查看端口号"><a href="#Step4-将NodeMCU与电脑连接，并查看端口号" class="headerlink" title="Step4 将NodeMCU与电脑连接，并查看端口号"></a>Step4 将NodeMCU与电脑连接，并查看端口号</h2><p>这里直接放图了</p>
+<img src="/2020/06/09/NODEMCU%E9%A9%B1%E5%8A%A8%E5%AE%89%E8%A3%85/WechatIMG18.png" class>
+
+
+
+]]></content>
+      <categories>
+        <category>嵌入式</category>
+        <category>Esp8266</category>
+      </categories>
+      <tags>
+        <tag>物联网</tag>
       </tags>
   </entry>
   <entry>
@@ -2325,6 +2301,97 @@ where....</code></pre></li>
 <img src="/2020/05/24/PCB%E5%B0%81%E8%A3%85%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51)/WechatIMG60.png" class>
 
 <p>这里也可以直接复制已经画好的封装到自己的工程中，需要的可以点击<a href="https://pan.baidu.com/s/1FptFn88xGNhajm-9BqdOFg" target="_blank" rel="noopener">这里</a> 提取码为rtej</p>
+]]></content>
+      <categories>
+        <category>PCB学习笔记</category>
+        <category>89C51</category>
+      </categories>
+      <tags>
+        <tag>PCB</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PCB工程文件的创建</title>
+    <url>/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/</url>
+    <content><![CDATA[<h1 id="PCB工程文件的创建"><a href="#PCB工程文件的创建" class="headerlink" title="PCB工程文件的创建"></a>PCB工程文件的创建</h1><h2 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h2><p>如何使用Altium Designer建立PCB工程。</p>
+<h2 id="本文使用的工具"><a href="#本文使用的工具" class="headerlink" title="本文使用的工具"></a>本文使用的工具</h2><p>Altium Designer 20.1.8</p>
+<a id="more"></a>
+<h2 id="Step1-创建新的工程：File-–-gt-New–-gt-Project"><a href="#Step1-创建新的工程：File-–-gt-New–-gt-Project" class="headerlink" title="Step1: 创建新的工程：File –&gt; New–&gt;Project"></a>Step1: 创建新的工程：File –&gt; New–&gt;Project</h2><img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/PCB%E5%88%9B%E5%BB%BA%E5%B7%A5%E7%A8%8B.png" class title="创建新的工程">
+
+<h2 id="Step2-选择Project-Type-这里选择默认的就好，Project-Name自定义就好。"><a href="#Step2-选择Project-Type-这里选择默认的就好，Project-Name自定义就好。" class="headerlink" title="Step2: 选择Project Type: 这里选择默认的就好，Project Name自定义就好。"></a>Step2: 选择Project Type: 这里选择默认的就好，Project Name自定义就好。</h2><img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E9%80%89%E6%8B%A9projecttype.png" class title="This is an example image">
+<h2 id="Step3-绘制PCB四个基本文件-原理图，原理图库，PCB，PCB库"><a href="#Step3-绘制PCB四个基本文件-原理图，原理图库，PCB，PCB库" class="headerlink" title="Step3: 绘制PCB四个基本文件(原理图，原理图库，PCB，PCB库)"></a>Step3: 绘制PCB四个基本文件(原理图，原理图库，PCB，PCB库)</h2><ol>
+<li>原理图<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524151653.png" class title="原理图"></li>
+<li>原理图库<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524151836.png" class title="原理图库"></li>
+<li>PCB<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524151956.png" class title="PCB"></li>
+<li>PCB图库<img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200524152118.png" class title="PCB图库">
+
+</li>
+</ol>
+<h2 id="此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例："><a href="#此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例：" class="headerlink" title="此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例："></a>此时，一个完整的PCB工程文件就创建好了，效果如图，我以89C51开发板绘制为例：</h2><img src="/2020/05/24/PCB%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6%E7%9A%84%E5%88%9B%E5%BB%BA/FInalResult.png" class title="最终效果图">
+]]></content>
+      <categories>
+        <category>PCB学习笔记</category>
+        <category>89C51</category>
+      </categories>
+      <tags>
+        <tag>PCB</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PCB的导入及前期处理</title>
+    <url>/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/</url>
+    <content><![CDATA[<h1 id="PCB的导入及前期处理"><a href="#PCB的导入及前期处理" class="headerlink" title="PCB的导入及前期处理"></a>PCB的导入及前期处理</h1><h2 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h2><p>使用Altium Designer将原理图导入PCB<br>本文以89C51原理图为例</p>
+<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG312.png" class title="原理图">
+<h2 id="本文使用的工具"><a href="#本文使用的工具" class="headerlink" title="本文使用的工具"></a>本文使用的工具</h2><p>Altium Designer 20.1.8</p>
+<a id="more"></a>
+
+<h1 id="1-对原理图的封装进行添加"><a href="#1-对原理图的封装进行添加" class="headerlink" title="1. 对原理图的封装进行添加"></a>1. 对原理图的封装进行添加</h1><h2 id="两种添加分装的方式（以7805为例）"><a href="#两种添加分装的方式（以7805为例）" class="headerlink" title="两种添加分装的方式（以7805为例）"></a>两种添加分装的方式（以7805为例）</h2><h3 id="1-双击器件，在Parameters窗口点击Add"><a href="#1-双击器件，在Parameters窗口点击Add" class="headerlink" title="1. 双击器件，在Parameters窗口点击Add"></a>1. 双击器件，在Parameters窗口点击Add</h3>   <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG22.png" class>
+
+<p>   选中Add中的Footprint</p>
+   <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG23.png" class>
+
+<p>   再打开的PCBModel中点击Browse，因为之前已经创建过PCB的封装库，这里直接浏览选择即可。找到7805对应的封装，即3P_7805。</p>
+   <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG24.png" class>
+
+<h3 id="2-批量加入Footprint"><a href="#2-批量加入Footprint" class="headerlink" title="2. 批量加入Footprint"></a>2. 批量加入Footprint</h3><p>   在Tools中找到Footprint Manager…</p>
+   
+
+<p>   选中电容，然后点击add</p>
+   <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG30.png" class>
+
+<p>  以同样的方式修改其他的器件，最后点击Accept Changes</p>
+  <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG31.png" class>
+
+<p>  随后点击Exeute Changes</p>
+   <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG13.png" class>
+
+<h1 id="2-将原理图导入PCB"><a href="#2-将原理图导入PCB" class="headerlink" title="2. 将原理图导入PCB"></a>2. 将原理图导入PCB</h1><p>在原理图界面中，点击Design，选中Update</p>
+<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG16.png" class>
+
+<p>Room我们一般不需要导入，把前面的勾去掉就好</p>
+<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG19.png" class>
+
+<p>下图中有两个按钮我们需要知道：第一个按钮为check状态，第二个按钮为执行更改。</p>
+<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG20.png" class>
+
+<p>先check器件状态然后点击执行更改，最后得到下图</p>
+<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG4.png" class>
+
+<p>为了确认器件，我们通常要导入两次，在PCB文件中，点击Design，然后点击Import Changes From 89C51.PrjPcb</p>
+<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG32.png" class>
+
+<p>导入完全会有以下提示信息：</p>
+<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG33.png" class>
+
+<p>我们可以将器件的名称放在器件的中心位置，选中器件，点击Find Similar，在String type中选中same，然后快捷键A，点击Position Component Text   </p>
+<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG34.png" class>
+
+<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG35.png" class>
+
+<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG36.png" class>
+
+<h1 id="最后的效果图"><a href="#最后的效果图" class="headerlink" title="最后的效果图"></a>最后的效果图</h1><img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG37.png" class>
+
 ]]></content>
       <categories>
         <category>PCB学习笔记</category>
@@ -2690,70 +2757,6 @@ where....</code></pre></li>
       </tags>
   </entry>
   <entry>
-    <title>PCB的导入及前期处理</title>
-    <url>/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/</url>
-    <content><![CDATA[<h1 id="PCB的导入及前期处理"><a href="#PCB的导入及前期处理" class="headerlink" title="PCB的导入及前期处理"></a>PCB的导入及前期处理</h1><h2 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h2><p>使用Altium Designer将原理图导入PCB<br>本文以89C51原理图为例</p>
-<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG312.png" class title="原理图">
-<h2 id="本文使用的工具"><a href="#本文使用的工具" class="headerlink" title="本文使用的工具"></a>本文使用的工具</h2><p>Altium Designer 20.1.8</p>
-<a id="more"></a>
-
-<h1 id="1-对原理图的封装进行添加"><a href="#1-对原理图的封装进行添加" class="headerlink" title="1. 对原理图的封装进行添加"></a>1. 对原理图的封装进行添加</h1><h2 id="两种添加分装的方式（以7805为例）"><a href="#两种添加分装的方式（以7805为例）" class="headerlink" title="两种添加分装的方式（以7805为例）"></a>两种添加分装的方式（以7805为例）</h2><h3 id="1-双击器件，在Parameters窗口点击Add"><a href="#1-双击器件，在Parameters窗口点击Add" class="headerlink" title="1. 双击器件，在Parameters窗口点击Add"></a>1. 双击器件，在Parameters窗口点击Add</h3>   <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG22.png" class>
-
-<p>   选中Add中的Footprint</p>
-   <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG23.png" class>
-
-<p>   再打开的PCBModel中点击Browse，因为之前已经创建过PCB的封装库，这里直接浏览选择即可。找到7805对应的封装，即3P_7805。</p>
-   <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG24.png" class>
-
-<h3 id="2-批量加入Footprint"><a href="#2-批量加入Footprint" class="headerlink" title="2. 批量加入Footprint"></a>2. 批量加入Footprint</h3><p>   在Tools中找到Footprint Manager…</p>
-   
-
-<p>   选中电容，然后点击add</p>
-   <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG30.png" class>
-
-<p>  以同样的方式修改其他的器件，最后点击Accept Changes</p>
-  <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG31.png" class>
-
-<p>  随后点击Exeute Changes</p>
-   <img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG13.png" class>
-
-<h1 id="2-将原理图导入PCB"><a href="#2-将原理图导入PCB" class="headerlink" title="2. 将原理图导入PCB"></a>2. 将原理图导入PCB</h1><p>在原理图界面中，点击Design，选中Update</p>
-<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG16.png" class>
-
-<p>Room我们一般不需要导入，把前面的勾去掉就好</p>
-<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG19.png" class>
-
-<p>下图中有两个按钮我们需要知道：第一个按钮为check状态，第二个按钮为执行更改。</p>
-<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG20.png" class>
-
-<p>先check器件状态然后点击执行更改，最后得到下图</p>
-<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG4.png" class>
-
-<p>为了确认器件，我们通常要导入两次，在PCB文件中，点击Design，然后点击Import Changes From 89C51.PrjPcb</p>
-<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG32.png" class>
-
-<p>导入完全会有以下提示信息：</p>
-<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG33.png" class>
-
-<p>我们可以将器件的名称放在器件的中心位置，选中器件，点击Find Similar，在String type中选中same，然后快捷键A，点击Position Component Text   </p>
-<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG34.png" class>
-
-<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG35.png" class>
-
-<img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG36.png" class>
-
-<h1 id="最后的效果图"><a href="#最后的效果图" class="headerlink" title="最后的效果图"></a>最后的效果图</h1><img src="/2020/05/27/PCB%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%89%8D%E6%9C%9F%E5%A4%84%E7%90%86/WechatIMG37.png" class>
-
-]]></content>
-      <categories>
-        <category>PCB学习笔记</category>
-        <category>89C51</category>
-      </categories>
-      <tags>
-        <tag>PCB</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JVM</title>
     <url>/2020/05/30/jvm/</url>
     <content><![CDATA[<h1 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h1><p>Java虚拟机JVM总结</p>
@@ -2898,47 +2901,6 @@ where....</code></pre></li>
       <tags>
         <tag>Java</tag>
         <tag>JVM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>创建新的线程</title>
-    <url>/2020/05/30/%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E7%BA%BF%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h1><p>Java多线程基础知识，如何创建一个线程</p>
-<a id="more"></a>
-
-<h2 id="创建新的线程"><a href="#创建新的线程" class="headerlink" title="创建新的线程"></a>创建新的线程</h2><p>Java语言设置了多线程支持。当Java程序启动的时候，实际上是启动了一个JVM进程，然后，JVM启动住线程来执行main()方法。在main()方法中国呢，可以启动其他线程。</p>
-<h2 id="创建：实例化一个Thread实例，然后调用star-方法："><a href="#创建：实例化一个Thread实例，然后调用star-方法：" class="headerlink" title="创建：实例化一个Thread实例，然后调用star()方法："></a>创建：实例化一个Thread实例，然后调用star()方法：</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		Thread t = <span class="keyword">new</span> Thread();</span><br><span class="line">		t.star(); <span class="comment">//启动多线程</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="新线程能执行指定的代码"><a href="#新线程能执行指定的代码" class="headerlink" title="新线程能执行指定的代码"></a>新线程能执行指定的代码</h2><ul>
-<li>从Thread派生一个自定义类，然后覆盖run()方法</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Thread t = <span class="keyword">new</span> MyThread();</span><br><span class="line">       t.start(); <span class="comment">// 启动新线程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"start new thread!"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>创建Thread实例是，传入一个Runnable实例：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread t = <span class="keyword">new</span> Thread(<span class="keyword">new</span> MyRunnable());</span><br><span class="line">        t.start(); <span class="comment">// 启动新线程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"start new thread!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Lambda语法：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread t = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">"start new thread!"</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">        t.start(); <span class="comment">// 启动新线程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="线程的优先级："><a href="#线程的优先级：" class="headerlink" title="线程的优先级："></a>线程的优先级：</h2><ul>
-<li>设定优先级：<br>Thread.setPriority(int n) // 1~10, 默认值5<br>优先级高的线程被操作系统调度的优先级较高，操作系统对高优先级线程可能调度更频繁，但我们决不能通过设置优先级来确保</li>
-</ul>
-<h2 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h2><ol>
-<li>Java用Thread对象表示一个线程，通过调用start()启动一个新线程；</li>
-<li>一个线程对象只能调用一次start()方法；</li>
-<li>线程的执行代码写在run()方法中；</li>
-<li>线程调度由操作系统决定，程序本身无法决定调度顺序；</li>
-<li>Thread.sleep()可以把当前线程暂停一段时间。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java多线程</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>多线程</tag>
       </tags>
   </entry>
   <entry>
@@ -3196,6 +3158,47 @@ where....</code></pre></li>
       </tags>
   </entry>
   <entry>
+    <title>创建新的线程</title>
+    <url>/2020/05/30/%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E7%BA%BF%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="本文概述"><a href="#本文概述" class="headerlink" title="本文概述"></a>本文概述</h1><p>Java多线程基础知识，如何创建一个线程</p>
+<a id="more"></a>
+
+<h2 id="创建新的线程"><a href="#创建新的线程" class="headerlink" title="创建新的线程"></a>创建新的线程</h2><p>Java语言设置了多线程支持。当Java程序启动的时候，实际上是启动了一个JVM进程，然后，JVM启动住线程来执行main()方法。在main()方法中国呢，可以启动其他线程。</p>
+<h2 id="创建：实例化一个Thread实例，然后调用star-方法："><a href="#创建：实例化一个Thread实例，然后调用star-方法：" class="headerlink" title="创建：实例化一个Thread实例，然后调用star()方法："></a>创建：实例化一个Thread实例，然后调用star()方法：</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		Thread t = <span class="keyword">new</span> Thread();</span><br><span class="line">		t.star(); <span class="comment">//启动多线程</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="新线程能执行指定的代码"><a href="#新线程能执行指定的代码" class="headerlink" title="新线程能执行指定的代码"></a>新线程能执行指定的代码</h2><ul>
+<li>从Thread派生一个自定义类，然后覆盖run()方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Thread t = <span class="keyword">new</span> MyThread();</span><br><span class="line">       t.start(); <span class="comment">// 启动新线程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"start new thread!"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建Thread实例是，传入一个Runnable实例：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread t = <span class="keyword">new</span> Thread(<span class="keyword">new</span> MyRunnable());</span><br><span class="line">        t.start(); <span class="comment">// 启动新线程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"start new thread!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Lambda语法：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread t = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">"start new thread!"</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">        t.start(); <span class="comment">// 启动新线程</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="线程的优先级："><a href="#线程的优先级：" class="headerlink" title="线程的优先级："></a>线程的优先级：</h2><ul>
+<li>设定优先级：<br>Thread.setPriority(int n) // 1~10, 默认值5<br>优先级高的线程被操作系统调度的优先级较高，操作系统对高优先级线程可能调度更频繁，但我们决不能通过设置优先级来确保</li>
+</ul>
+<h2 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h2><ol>
+<li>Java用Thread对象表示一个线程，通过调用start()启动一个新线程；</li>
+<li>一个线程对象只能调用一次start()方法；</li>
+<li>线程的执行代码写在run()方法中；</li>
+<li>线程调度由操作系统决定，程序本身无法决定调度顺序；</li>
+<li>Thread.sleep()可以把当前线程暂停一段时间。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java多线程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>原理图库的创建(89C51为例)</title>
     <url>/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/</url>
     <content><![CDATA[<h1 id="原理图库的创建-89C51为例"><a href="#原理图库的创建-89C51为例" class="headerlink" title="原理图库的创建(89C51为例)"></a>原理图库的创建(89C51为例)</h1><h2 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h2><p>使用Altium Designer绘制89C51的原理图库<br>本文以89C51原理图为例</p>
@@ -3241,6 +3244,40 @@ where....</code></pre></li>
 <p>7805:</p>
 <img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%BA%93%E7%9A%84%E5%88%9B%E5%BB%BA(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG23.png" class>
 
+]]></content>
+      <categories>
+        <category>PCB学习笔记</category>
+        <category>89C51</category>
+      </categories>
+      <tags>
+        <tag>PCB</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>原理图的绘制(89C51为例)</title>
+    <url>/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/</url>
+    <content><![CDATA[<h1 id="原理图的绘制-89C51为例"><a href="#原理图的绘制-89C51为例" class="headerlink" title="原理图的绘制(89C51为例)"></a>原理图的绘制(89C51为例)</h1><h2 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h2><p>使用Altium Designer绘制89C51的原理图<br>本文以89C51原理图为例</p>
+<img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG31.png" class title="原理图">
+<h2 id="本文使用的工具"><a href="#本文使用的工具" class="headerlink" title="本文使用的工具"></a>本文使用的工具</h2><p>Altium Designer 20.1.8</p>
+<a id="more"></a>
+<h2 id="Step1-分析原理图"><a href="#Step1-分析原理图" class="headerlink" title="Step1: 分析原理图"></a>Step1: 分析原理图</h2><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG31.png" class title="原理图">
+<p>左半部分，电源端子为电源的入口，随之进入LDO。<br><strong>LDO</strong>：<br>在当所设计的电路对分路电源有以下要求时，设计电路时使用LDO作为电源芯片：</p>
+<ol>
+<li>高的噪音和纹波抑制</li>
+<li>占用PCB板面积小</li>
+<li>电路电源不允许使用电感器</li>
+<li>电源需要具有瞬时校准和输出状态自检功能</li>
+<li>要求稳压器低压降，自身功耗低；</li>
+<li>要求线路成本低和方案简单；</li>
+</ol>
+<p><strong>DC/DC</strong>: 在升压场合中，使用DC/DC。因为LDO只使用降压场合。</p>
+<h2 id="Step2-使用原理图库绘制好的Component放置到原理图中-89C51-SchDoc"><a href="#Step2-使用原理图库绘制好的Component放置到原理图中-89C51-SchDoc" class="headerlink" title="Step2: 使用原理图库绘制好的Component放置到原理图中(89C51.SchDoc)"></a>Step2: 使用原理图库绘制好的Component放置到原理图中(89C51.SchDoc)</h2><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG5.png" class title="摆放图">
+
+<h2 id="Step3-使用Place-Wire工具将器件按照电路连接起来"><a href="#Step3-使用Place-Wire工具将器件按照电路连接起来" class="headerlink" title="Step3: 使用Place Wire工具将器件按照电路连接起来"></a>Step3: 使用Place Wire工具将器件按照电路连接起来</h2><p>这里使用Wire就可以了</p>
+<img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG36.png" class title="Component">
+<img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG38.png" class title="Component">
+
+<h2 id="此时，原理图就画好了："><a href="#此时，原理图就画好了：" class="headerlink" title="此时，原理图就画好了："></a>此时，原理图就画好了：</h2><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG31.png" class title="Line">
 ]]></content>
       <categories>
         <category>PCB学习笔记</category>
@@ -3406,127 +3443,6 @@ where....</code></pre></li>
       </categories>
       <tags>
         <tag>PCB</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>原理图的绘制(89C51为例)</title>
-    <url>/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/</url>
-    <content><![CDATA[<h1 id="原理图的绘制-89C51为例"><a href="#原理图的绘制-89C51为例" class="headerlink" title="原理图的绘制(89C51为例)"></a>原理图的绘制(89C51为例)</h1><h2 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h2><p>使用Altium Designer绘制89C51的原理图<br>本文以89C51原理图为例</p>
-<img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG31.png" class title="原理图">
-<h2 id="本文使用的工具"><a href="#本文使用的工具" class="headerlink" title="本文使用的工具"></a>本文使用的工具</h2><p>Altium Designer 20.1.8</p>
-<a id="more"></a>
-<h2 id="Step1-分析原理图"><a href="#Step1-分析原理图" class="headerlink" title="Step1: 分析原理图"></a>Step1: 分析原理图</h2><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG31.png" class title="原理图">
-<p>左半部分，电源端子为电源的入口，随之进入LDO。<br><strong>LDO</strong>：<br>在当所设计的电路对分路电源有以下要求时，设计电路时使用LDO作为电源芯片：</p>
-<ol>
-<li>高的噪音和纹波抑制</li>
-<li>占用PCB板面积小</li>
-<li>电路电源不允许使用电感器</li>
-<li>电源需要具有瞬时校准和输出状态自检功能</li>
-<li>要求稳压器低压降，自身功耗低；</li>
-<li>要求线路成本低和方案简单；</li>
-</ol>
-<p><strong>DC/DC</strong>: 在升压场合中，使用DC/DC。因为LDO只使用降压场合。</p>
-<h2 id="Step2-使用原理图库绘制好的Component放置到原理图中-89C51-SchDoc"><a href="#Step2-使用原理图库绘制好的Component放置到原理图中-89C51-SchDoc" class="headerlink" title="Step2: 使用原理图库绘制好的Component放置到原理图中(89C51.SchDoc)"></a>Step2: 使用原理图库绘制好的Component放置到原理图中(89C51.SchDoc)</h2><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG5.png" class title="摆放图">
-
-<h2 id="Step3-使用Place-Wire工具将器件按照电路连接起来"><a href="#Step3-使用Place-Wire工具将器件按照电路连接起来" class="headerlink" title="Step3: 使用Place Wire工具将器件按照电路连接起来"></a>Step3: 使用Place Wire工具将器件按照电路连接起来</h2><p>这里使用Wire就可以了</p>
-<img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG36.png" class title="Component">
-<img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG38.png" class title="Component">
-
-<h2 id="此时，原理图就画好了："><a href="#此时，原理图就画好了：" class="headerlink" title="此时，原理图就画好了："></a>此时，原理图就画好了：</h2><img src="/2020/05/24/%E5%8E%9F%E7%90%86%E5%9B%BE%E7%9A%84%E7%BB%98%E5%88%B6(89C51%E4%B8%BA%E4%BE%8B)/WechatIMG31.png" class title="Line">
-]]></content>
-      <categories>
-        <category>PCB学习笔记</category>
-        <category>89C51</category>
-      </categories>
-      <tags>
-        <tag>PCB</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机网络自顶向下方法Character1补充</title>
-    <url>/2020/06/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95Character1%E8%A1%A5%E5%85%85/</url>
-    <content><![CDATA[<h1 id="计算机网络自顶向下方法Character1补充"><a href="#计算机网络自顶向下方法Character1补充" class="headerlink" title="计算机网络自顶向下方法Character1补充"></a>计算机网络自顶向下方法Character1补充</h1><h1 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h1><p>本文主要补充计算机网络自顶向下方法第一章节的知识点。<br>学习书籍为：计算机网络自顶向下方法<br>学习视频为：国立清华大学黄能富教授讲解的计算机网络自顶向下方法，需要的可以点击 <a href="http://ocw.nthu.edu.tw/ocw/index.php?page=mobile&type=teacher&cid=13" target="_blank" rel="noopener">这里</a></p>
-<a id="more"></a>
-
-<ul>
-<li><p>端系统通过通信链路和分组交换机（packet switch）连接到一起。链路的传输速率以比特/秒度量（bit/s或bps）。</p>
-</li>
-<li><p>当一台端系统要向另一台端系统发送数据时，发送端系统将数据分段，并为每段加上首部字节。由此形成的信息包用计算机网络的术语来说称为分组( packet)。这些分组通过网络发送到目的端系统，在那里被装配成初始数据。</p>
-</li>
-<li><p>分组交换机：路由器（router）和链路交换机（link-layer switch）。链路层交换机通常用于接入网中，而路由器通常用于网络核心中。从发送端系统到接收端系统给，一个分组所经历的一系列通信链路和分组交换机称为该网络的路径。</p>
-</li>
-<li><p>端系统通过ISP接入因特网，每个ISP是一个由多个分组交换机和多段通信链路组成的网络。各ISP为端系统提供了各种不同类型的网络接入。ISP也为内容提供者提供因特网接入服务，将Web站点直接接入因特网，因特网就是将端系统彼此互联，因此ISP也必须互联。</p>
-</li>
-<li><p>端系统，分组交换机和其他因特网部件都要运行一系列协议，这些协议控制因特网中信息的接受和发送。</p>
-</li>
-<li><p>IP协议定义了在路由器和端系统之间发送和接受的分组格式。</p>
-</li>
-<li><p>分组交换</p>
-<ul>
-<li>存储转发传输：是指在交换机能后开始输出链路传输分组的第一个比特之前，必须接受到整个分组。</li>
-</ul>
-</li>
-<li><p>电路交换频分复用FDM或时分复用TDM：</p>
-<ul>
-<li>FDM: 链路的频谱由跨越链路创建的所有链接所共享，每条连接专用一个频段，4Hz的带宽</li>
-<li>TDM： 时间被划分为固定区间的帧，并且每帧又被划分为固定数量的时隙</li>
-</ul>
-</li>
-<li><p>分组交换网中的时延概述：</p>
-<ul>
-<li><p>分类：结点处理时延(nodal processing delay)，排队时延(queuing delay) ,传输时延(transmission delay)和传播时延(propagation on delay),时延总体累加起来是结点总时延</p>
-</li>
-<li><p>处理时延：检查分组首部和决定将该分组导向何处所需要的时间是处理时延的一部分。</p>
-</li>
-<li><p>排队时延：在队列中，当分组在链路上等待传输时，他经受排队时延。一个特定分组的排队时延长度取决于先期到达的正在排队等待像链路传输的分组数量</p>
-</li>
-<li><p>传输时延：假定分组以先到先服务方式传输，这在分组交换网中是常见的方式，仅当所有已经到达的分组被传输后，才能传输刚到达的分组</p>
-</li>
-<li><p>传播时延：一旦一个比特被推向链路，该比特需要向路由器B传播。从该链路的起点到路由器B传播所需要的时间时传播时延</p>
-</li>
-<li><p>排队时延和丢包：取决于流量到达改队列的速率，链路的传输速率和到达流量性质，即流量时周期性到达还是以突发形式到达.</p>
-<p>由于排队容量是有限的，随着流量强度接近1，排队时延并不实际趋向无穷大，相反，到达的分组发现一个满的队列，由于没有地方存储这个分组，路由器将丢弃该分组，即丢包</p>
-</li>
-</ul>
-</li>
-<li><p>吞吐量： 从主机A到主机B跨越计算机网络传送一个大文件，在任何时间瞬间的瞬时吞吐量是主机B接受到该文件的速率。 如果该文件由F比特组成，主机B接受到所有F比特用去T秒，则文件传送的平均吞吐量是F/T bps。</p>
-</li>
-<li><p>协议分层，各层的所有协议被称为协议栈。由五个层次构成：物理层，链路层，网络层，运输层，应用层。自顶向下方法：</p>
-<ol>
-<li><p>应用层：</p>
-<p>应用层是网络应用程序及它的应用层协议存留的地方。借助于特定的应用层协议即域名系统（DNS）完成。应用层协议分布在分布在多个端系统上，一个端系统中的应用程序使用协议与另一个端系统中的应用程序交换信息的分组。位于应用层的信息分组称为报文。</p>
-</li>
-<li><p>运输层：</p>
-<p>因特网的运输层在应用程序端点之间传送应用层保温。TCP向它的应用程序提供了面向连接的服务。这种服务包括了应用层报文目的地的确保传递和流量控制。TCP将长报文转换为短报文，并提供拥塞控制机制，因此当网络拥塞时，源抑制其传输速率。UDP协议向它的应用程序提供无连接服务。</p>
-</li>
-<li><p>网络层：</p>
-<p>负责将数据包的网络层分组从一台主机移动到另一台主机。在一台源主机中的因特网运输层协议向网络层递交运输层报文段和目的地址。IP协议定义了在数据包中的各个字段以及端系统和路由器如何作用与这些资源。仅有一个协议，所有具有网络层的因特网组件必须运行IP协议。</p>
-</li>
-<li><p>链路层： </p>
-<p>为了将分组从一个结点（主机或路由器）移动到路径上的下一个结点，网络层必须依靠该链路层的服务。特别是在每个结点，网络层将数据报下传给链路层，链路层沿着路径将数据报传递给下一个结点。由链路层提供的服务取决于应用于该链路的特定链路协议</p>
-</li>
-<li><p>物理层：将帧中的一个一个比特从一个结点移动到下一个结点</p>
-</li>
-</ol>
-</li>
-<li><p>OSI模型：应用层，表示层，会话层，运输层，网络层，链路层，物理层</p>
-<ol>
-<li>应用层（数据）：确定进程之间通信的性质以满足用户需要以及提供网络与用户应用</li>
-<li>表示层（数据）：主要解决拥护信息的语法表示问题，如加密解密</li>
-<li>会话层（数据）：提供包括访问验证和会话管理在内的建立和维护应用之间通信的机<br>制，如服务器验证用户登录便是由会话层完成的</li>
-<li>传输 层（段）：实现网络不同主机上用户进程之间的数据通信，可靠<br>与不可靠的传输，传输层的错误检测，流量控制等</li>
-<li>网络层（包）：提供逻辑地址（ IP ）、选路，数据从源端到目的端的<br>传输</li>
-<li>数据链路层 （帧）：将上层数据封装成帧，用 MAC 地址访问媒介，错误检测与修正</li>
-<li>物理层（比特流）：设备之间比特流的传输，物理接口，电气特性等</li>
-</ol>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>计算机网络自顶向下方法学习笔记</category>
-      </categories>
-      <tags>
-        <tag>计算机网络自顶向下方法</tag>
       </tags>
   </entry>
   <entry>
@@ -3984,6 +3900,93 @@ where....</code></pre></li>
   <img src="/2020/05/25/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95Character1/WechatIMG52.png" class>
 
 <p>如上图所示，当Hn放入source address 和 destination address, router会解析Hn；上一层交付的东西，整体为传输的data；HI中存储着网卡的位置和发送包的位置。</p>
+]]></content>
+      <categories>
+        <category>计算机网络自顶向下方法学习笔记</category>
+      </categories>
+      <tags>
+        <tag>计算机网络自顶向下方法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机网络自顶向下方法Character1补充</title>
+    <url>/2020/06/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95Character1%E8%A1%A5%E5%85%85/</url>
+    <content><![CDATA[<h1 id="计算机网络自顶向下方法Character1补充"><a href="#计算机网络自顶向下方法Character1补充" class="headerlink" title="计算机网络自顶向下方法Character1补充"></a>计算机网络自顶向下方法Character1补充</h1><h1 id="本文概述："><a href="#本文概述：" class="headerlink" title="本文概述："></a>本文概述：</h1><p>本文主要补充计算机网络自顶向下方法第一章节的知识点。<br>学习书籍为：计算机网络自顶向下方法<br>学习视频为：国立清华大学黄能富教授讲解的计算机网络自顶向下方法，需要的可以点击 <a href="http://ocw.nthu.edu.tw/ocw/index.php?page=mobile&type=teacher&cid=13" target="_blank" rel="noopener">这里</a></p>
+<a id="more"></a>
+
+<ul>
+<li><p>端系统通过通信链路和分组交换机（packet switch）连接到一起。链路的传输速率以比特/秒度量（bit/s或bps）。</p>
+</li>
+<li><p>当一台端系统要向另一台端系统发送数据时，发送端系统将数据分段，并为每段加上首部字节。由此形成的信息包用计算机网络的术语来说称为分组( packet)。这些分组通过网络发送到目的端系统，在那里被装配成初始数据。</p>
+</li>
+<li><p>分组交换机：路由器（router）和链路交换机（link-layer switch）。链路层交换机通常用于接入网中，而路由器通常用于网络核心中。从发送端系统到接收端系统给，一个分组所经历的一系列通信链路和分组交换机称为该网络的路径。</p>
+</li>
+<li><p>端系统通过ISP接入因特网，每个ISP是一个由多个分组交换机和多段通信链路组成的网络。各ISP为端系统提供了各种不同类型的网络接入。ISP也为内容提供者提供因特网接入服务，将Web站点直接接入因特网，因特网就是将端系统彼此互联，因此ISP也必须互联。</p>
+</li>
+<li><p>端系统，分组交换机和其他因特网部件都要运行一系列协议，这些协议控制因特网中信息的接受和发送。</p>
+</li>
+<li><p>IP协议定义了在路由器和端系统之间发送和接受的分组格式。</p>
+</li>
+<li><p>分组交换</p>
+<ul>
+<li>存储转发传输：是指在交换机能后开始输出链路传输分组的第一个比特之前，必须接受到整个分组。</li>
+</ul>
+</li>
+<li><p>电路交换频分复用FDM或时分复用TDM：</p>
+<ul>
+<li>FDM: 链路的频谱由跨越链路创建的所有链接所共享，每条连接专用一个频段，4Hz的带宽</li>
+<li>TDM： 时间被划分为固定区间的帧，并且每帧又被划分为固定数量的时隙</li>
+</ul>
+</li>
+<li><p>分组交换网中的时延概述：</p>
+<ul>
+<li><p>分类：结点处理时延(nodal processing delay)，排队时延(queuing delay) ,传输时延(transmission delay)和传播时延(propagation on delay),时延总体累加起来是结点总时延</p>
+</li>
+<li><p>处理时延：检查分组首部和决定将该分组导向何处所需要的时间是处理时延的一部分。</p>
+</li>
+<li><p>排队时延：在队列中，当分组在链路上等待传输时，他经受排队时延。一个特定分组的排队时延长度取决于先期到达的正在排队等待像链路传输的分组数量</p>
+</li>
+<li><p>传输时延：假定分组以先到先服务方式传输，这在分组交换网中是常见的方式，仅当所有已经到达的分组被传输后，才能传输刚到达的分组</p>
+</li>
+<li><p>传播时延：一旦一个比特被推向链路，该比特需要向路由器B传播。从该链路的起点到路由器B传播所需要的时间时传播时延</p>
+</li>
+<li><p>排队时延和丢包：取决于流量到达改队列的速率，链路的传输速率和到达流量性质，即流量时周期性到达还是以突发形式到达.</p>
+<p>由于排队容量是有限的，随着流量强度接近1，排队时延并不实际趋向无穷大，相反，到达的分组发现一个满的队列，由于没有地方存储这个分组，路由器将丢弃该分组，即丢包</p>
+</li>
+</ul>
+</li>
+<li><p>吞吐量： 从主机A到主机B跨越计算机网络传送一个大文件，在任何时间瞬间的瞬时吞吐量是主机B接受到该文件的速率。 如果该文件由F比特组成，主机B接受到所有F比特用去T秒，则文件传送的平均吞吐量是F/T bps。</p>
+</li>
+<li><p>协议分层，各层的所有协议被称为协议栈。由五个层次构成：物理层，链路层，网络层，运输层，应用层。自顶向下方法：</p>
+<ol>
+<li><p>应用层：</p>
+<p>应用层是网络应用程序及它的应用层协议存留的地方。借助于特定的应用层协议即域名系统（DNS）完成。应用层协议分布在分布在多个端系统上，一个端系统中的应用程序使用协议与另一个端系统中的应用程序交换信息的分组。位于应用层的信息分组称为报文。</p>
+</li>
+<li><p>运输层：</p>
+<p>因特网的运输层在应用程序端点之间传送应用层保温。TCP向它的应用程序提供了面向连接的服务。这种服务包括了应用层报文目的地的确保传递和流量控制。TCP将长报文转换为短报文，并提供拥塞控制机制，因此当网络拥塞时，源抑制其传输速率。UDP协议向它的应用程序提供无连接服务。</p>
+</li>
+<li><p>网络层：</p>
+<p>负责将数据包的网络层分组从一台主机移动到另一台主机。在一台源主机中的因特网运输层协议向网络层递交运输层报文段和目的地址。IP协议定义了在数据包中的各个字段以及端系统和路由器如何作用与这些资源。仅有一个协议，所有具有网络层的因特网组件必须运行IP协议。</p>
+</li>
+<li><p>链路层： </p>
+<p>为了将分组从一个结点（主机或路由器）移动到路径上的下一个结点，网络层必须依靠该链路层的服务。特别是在每个结点，网络层将数据报下传给链路层，链路层沿着路径将数据报传递给下一个结点。由链路层提供的服务取决于应用于该链路的特定链路协议</p>
+</li>
+<li><p>物理层：将帧中的一个一个比特从一个结点移动到下一个结点</p>
+</li>
+</ol>
+</li>
+<li><p>OSI模型：应用层，表示层，会话层，运输层，网络层，链路层，物理层</p>
+<ol>
+<li>应用层（数据）：确定进程之间通信的性质以满足用户需要以及提供网络与用户应用</li>
+<li>表示层（数据）：主要解决拥护信息的语法表示问题，如加密解密</li>
+<li>会话层（数据）：提供包括访问验证和会话管理在内的建立和维护应用之间通信的机<br>制，如服务器验证用户登录便是由会话层完成的</li>
+<li>传输 层（段）：实现网络不同主机上用户进程之间的数据通信，可靠<br>与不可靠的传输，传输层的错误检测，流量控制等</li>
+<li>网络层（包）：提供逻辑地址（ IP ）、选路，数据从源端到目的端的<br>传输</li>
+<li>数据链路层 （帧）：将上层数据封装成帧，用 MAC 地址访问媒介，错误检测与修正</li>
+<li>物理层（比特流）：设备之间比特流的传输，物理接口，电气特性等</li>
+</ol>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>计算机网络自顶向下方法学习笔记</category>
