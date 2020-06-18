@@ -25,21 +25,21 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="LeetCode六月挑战 Is Subsequence　LeetCode 392SolutionGiven a string s and a string t, check if s is subsequence of t. A subsequence of a string is a new string which is formed from the original string by d">
+  <meta name="description" content="LeetCode六月挑战（6.18） H-Index II LeetCode275 解题报告今天的题很简单哦！ 题目描述SolutionGiven an array of citations sorted in ascending order (each citation is a non-negative integer) of a researcher, write a function to">
 <meta property="og:type" content="article">
-<meta property="og:title" content="June Leetcoding Challenge(6.9)">
-<meta property="og:url" content="http://yoursite.com/2020/06/09/LeetCodeJune9th/index.html">
+<meta property="og:title" content="June Leetcoding Challenge(6.18)">
+<meta property="og:url" content="http://yoursite.com/2020/06/18/LeetCodeJuneChallenge18th/index.html">
 <meta property="og:site_name" content="Jungle">
-<meta property="og:description" content="LeetCode六月挑战 Is Subsequence　LeetCode 392SolutionGiven a string s and a string t, check if s is subsequence of t. A subsequence of a string is a new string which is formed from the original string by d">
+<meta property="og:description" content="LeetCode六月挑战（6.18） H-Index II LeetCode275 解题报告今天的题很简单哦！ 题目描述SolutionGiven an array of citations sorted in ascending order (each citation is a non-negative integer) of a researcher, write a function to">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-06-09T14:43:03.603Z">
-<meta property="article:modified_time" content="2020-06-09T14:50:14.994Z">
+<meta property="article:published_time" content="2020-06-18T12:35:00.000Z">
+<meta property="article:modified_time" content="2020-06-18T11:55:47.192Z">
 <meta property="article:author" content="Jungle">
 <meta property="article:tag" content="LeetCode">
 <meta property="article:tag" content="June Leetcoding Challenge">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/06/09/LeetCodeJune9th/">
+<link rel="canonical" href="http://yoursite.com/2020/06/18/LeetCodeJuneChallenge18th/">
 
 
 <script id="page-configurations">
@@ -52,7 +52,7 @@
   };
 </script>
 
-  <title>June Leetcoding Challenge(6.9) | Jungle</title>
+  <title>June Leetcoding Challenge(6.18) | Jungle</title>
   
 
 
@@ -200,7 +200,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/09/LeetCodeJune9th/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/18/LeetCodeJuneChallenge18th/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -213,7 +213,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          June Leetcoding Challenge(6.9)
+          June Leetcoding Challenge(6.18)
         </h1>
 
         <div class="post-meta">
@@ -224,7 +224,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-06-09 10:43:03 / Modified: 10:50:14" itemprop="dateCreated datePublished" datetime="2020-06-09T10:43:03-04:00">2020-06-09</time>
+              <time title="Created: 2020-06-18 08:35:00 / Modified: 07:55:47" itemprop="dateCreated datePublished" datetime="2020-06-18T08:35:00-04:00">2020-06-18</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -246,7 +246,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>1.5k</span>
+              <span>1.1k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -265,23 +265,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="LeetCode六月挑战-Is-Subsequence-LeetCode-392"><a href="#LeetCode六月挑战-Is-Subsequence-LeetCode-392" class="headerlink" title="LeetCode六月挑战 Is Subsequence　LeetCode 392"></a>LeetCode六月挑战 Is Subsequence　LeetCode 392</h1><p>Solution<br>Given a string s and a string t, check if s is subsequence of t.</p>
-<p>A subsequence of a string is a new string which is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (ie, “ace” is a subsequence of “abcde” while “aec” is not).</p>
-<p>Follow up:<br>If there are lots of incoming S, say S1, S2, … , Sk where k &gt;= 1B, and you want to check one by one to see if T has its subsequence. In this scenario, how would you change your code?</p>
-<p>Credits:<br>Special thanks to @pbrother for adding this problem and creating all test cases.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: s &#x3D; &quot;abc&quot;, t &#x3D; &quot;ahbgdc&quot;</span><br><span class="line">Output: true</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: s &#x3D; &quot;axc&quot;, t &#x3D; &quot;ahbgdc&quot;</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
-<p>Constraints:</p>
-<p>0 &lt;= s.length &lt;= 100<br>0 &lt;= t.length &lt;= 10^4<br>Both strings consists only of lowercase characters.</p>
-   <a id="more"></a>
+        <h1 id="LeetCode六月挑战（6-18）-H-Index-II-LeetCode275-解题报告"><a href="#LeetCode六月挑战（6-18）-H-Index-II-LeetCode275-解题报告" class="headerlink" title="LeetCode六月挑战（6.18） H-Index II LeetCode275 解题报告"></a>LeetCode六月挑战（6.18） H-Index II LeetCode275 解题报告</h1><p>今天的题很简单哦！</p>
+<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>Solution<br>Given an array of citations sorted in ascending order (each citation is a non-negative integer) of a researcher, write a function to compute the researcher’s h-index.</p>
+<p>According to the definition of h-index on Wikipedia: “A scientist has index h if h of his/her N papers have at least h citations each, and the other N − h papers have no more than h citations each.”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line"></span><br><span class="line">Input: citations &#x3D; [0,1,3,5,6]</span><br><span class="line">Output: 3 </span><br><span class="line">Explanation: [0,1,3,5,6] means the researcher has 5 papers in total and each of them had </span><br><span class="line">             received 0, 1, 3, 5, 6 citations respectively. </span><br><span class="line">             Since the researcher has 3 papers with at least 3 citations each and the remaining </span><br><span class="line">             two with no more than 3 citations each, her h-index is 3.</span><br><span class="line">Note:</span><br><span class="line"></span><br><span class="line">If there are several possible values for h, the maximum one is taken as the h-index.</span><br><span class="line"></span><br><span class="line">Follow up:</span><br><span class="line"></span><br><span class="line">This is a follow up problem to H-Index, where citations is now guaranteed to be sorted in ascending order.</span><br><span class="line">Could you solve it in logarithmic time complexity?</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><ul>
-<li>Java做法： 采用两个指针，当匹配到相同的，s和t的指针移动到下一位，如果不匹配，将t的指针移动到下一位继续匹配。</li>
-<li>python做法：将s转换为list  q，如果q本身为空，返回true。如果q不为空，不断匹配，如果匹配到相同的字符，就把他从list q中删除。匹配到t的最后一位，如果q为空，返回true。</li>
-</ul>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="java"><a href="#java" class="headerlink" title="java"></a>java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSubsequence</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length() ==<span class="number">0</span>&amp;&amp; t.length() !=<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">char</span> c1[]= s.toCharArray();</span><br><span class="line">        <span class="keyword">char</span> c2[]= t.toCharArray();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;c1.length &amp;&amp; j&lt;c2.length)&#123;</span><br><span class="line">            <span class="keyword">if</span>(c1[i] == c2[j])&#123;</span><br><span class="line">                i++;</span><br><span class="line">                j++;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                j++;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i==(c1.length);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isSubsequence</span><span class="params">(self, s: str, t: str)</span> -&gt; bool:</span></span><br><span class="line">        q = list(s);</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> t:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> q:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">True</span>;</span><br><span class="line">            <span class="keyword">if</span> c == q[<span class="number">0</span>]:</span><br><span class="line">                q.pop(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">not</span> q;</span><br></pre></td></tr></table></figure>
-
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>对与第i篇文章，引用次数是citations[i]，那么就有n-i篇文章的引用次数大于等于citations[i]</p>
+<h1 id="Java-代码"><a href="#Java-代码" class="headerlink" title="Java 代码"></a>Java 代码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hIndex</span><span class="params">(<span class="keyword">int</span>[] citations)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = citations.length;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> N_h = n-i;</span><br><span class="line">            <span class="keyword">if</span>(citations[i]&gt;=N_h)</span><br><span class="line">                <span class="keyword">return</span> N_h;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
     
@@ -305,12 +296,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2020/06/09/LeetCodeJune9th/">June Leetcoding Challenge(6.9)</a></p>
+  <p><span>本文标题:</span><a href="/2020/06/18/LeetCodeJuneChallenge18th/">June Leetcoding Challenge(6.18)</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Jungle 的个人博客">Jungle</a></p>
-  <p><span>发布时间:</span>2020年06月09日 - 10:43</p>
-  <p><span>最后更新:</span>2020年06月09日 - 10:50</p>
-  <p><span>原始链接:</span><a href="/2020/06/09/LeetCodeJune9th/" title="June Leetcoding Challenge(6.9)">http://yoursite.com/2020/06/09/LeetCodeJune9th/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2020/06/09/LeetCodeJune9th/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2020年06月18日 - 08:35</p>
+  <p><span>最后更新:</span>2020年06月18日 - 07:55</p>
+  <p><span>原始链接:</span><a href="/2020/06/18/LeetCodeJuneChallenge18th/" title="June Leetcoding Challenge(6.18)">http://yoursite.com/2020/06/18/LeetCodeJuneChallenge18th/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2020/06/18/LeetCodeJuneChallenge18th/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
 </div>
@@ -367,13 +358,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/06/08/LeetCodeJune8th/" rel="prev" title="June Leetcoding Challenge(6.8)">
-      <i class="fa fa-chevron-left"></i> June Leetcoding Challenge(6.8)
+    <a href="/2020/06/17/LeetCodeJuneChallenge17th/" rel="prev" title="June Leetcoding Challenge(6.17)">
+      <i class="fa fa-chevron-left"></i> June Leetcoding Challenge(6.17)
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/06/09/NODEMCU%E6%90%AD%E5%BB%BAArduinoIDE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="next" title="NODEMCU搭建ArduinoIDE开发环境">
-      NODEMCU搭建ArduinoIDE开发环境 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -437,7 +425,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LeetCode六月挑战-Is-Subsequence-LeetCode-392"><span class="nav-number">1.</span> <span class="nav-text">LeetCode六月挑战 Is Subsequence　LeetCode 392</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#java"><span class="nav-number">3.1.</span> <span class="nav-text">java</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python"><span class="nav-number">3.2.</span> <span class="nav-text">python</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LeetCode六月挑战（6-18）-H-Index-II-LeetCode275-解题报告"><span class="nav-number">1.</span> <span class="nav-text">LeetCode六月挑战（6.18） H-Index II LeetCode275 解题报告</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">2.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思路"><span class="nav-number">3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-代码"><span class="nav-number">4.</span> <span class="nav-text">Java 代码</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
