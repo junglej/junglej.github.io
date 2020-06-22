@@ -34,7 +34,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200621212041700.png">
 <meta property="article:published_time" content="2020-06-21T12:35:00.000Z">
-<meta property="article:modified_time" content="2020-06-22T17:59:17.537Z">
+<meta property="article:modified_time" content="2020-06-22T18:00:10.647Z">
 <meta property="article:author" content="Jungle">
 <meta property="article:tag" content="LeetCode">
 <meta property="article:tag" content="June Leetcoding Challenge">
@@ -232,7 +232,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-22 13:59:17" itemprop="dateModified" datetime="2020-06-22T13:59:17-04:00">2020-06-22</time>
+                <time title="Modified: 2020-06-22 14:00:10" itemprop="dateModified" datetime="2020-06-22T14:00:10-04:00">2020-06-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -281,6 +281,8 @@
 <p>For example, given the dungeon below, the initial health of the knight must be at least 7 if he follows the optimal path RIGHT-&gt; RIGHT -&gt; DOWN -&gt; DOWN.</p>
 <p><img src="https://img-blog.csdnimg.cn/20200621212041700.png" alt><br>Note:</p>
 <p>The knight’s health has no upper bound.<br>Any room can contain threats or power-ups, even the first room the knight enters and the bottom-right room where the princess is imprisoned.</p>
+<a id="more"></a>
+
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>该题使用动态规划解法。设骑士的初始血量为dp[0][0]=x，我们的目的就是求x，根据题意，骑士只可以往右走或者往下走，因此存在dp[i+1][j]和dp[i][j+1],如果是dungeon为负数，则dp[i+1][j]或dp[i][j+1]的值应为当前血量+下一步扣除的血量即dp[i+1][j] = dp[i][j] -dungeon[i+1][j]或dp[i][j+1] = dp[i][j] -dungeon[i][j+1]，直到判断到最后公主在的位置血量大于0即可。我们可以从公主所在位置往回推理求x,即将dp[i][j]设置在</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][j] &#x3D; max(1, min(dp[i + 1][j], dp[i][j + 1]) - dungeon[i][j]);</span><br></pre></td></tr></table></figure>
 <p>同时我们也需要考虑数组边界问题。</p>
@@ -311,7 +313,7 @@
   <p><span>本文标题:</span><a href="/2020/06/21/LeetCodeJuneChallenge21th/">June Leetcoding Challenge(6.21)</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Jungle 的个人博客">Jungle</a></p>
   <p><span>发布时间:</span>2020年06月21日 - 08:35</p>
-  <p><span>最后更新:</span>2020年06月22日 - 13:59</p>
+  <p><span>最后更新:</span>2020年06月22日 - 14:00</p>
   <p><span>原始链接:</span><a href="/2020/06/21/LeetCodeJuneChallenge21th/" title="June Leetcoding Challenge(6.21)">http://yoursite.com/2020/06/21/LeetCodeJuneChallenge21th/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yoursite.com/2020/06/21/LeetCodeJuneChallenge21th/"  aria-label="复制成功！"></i></span>
   </p>

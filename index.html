@@ -328,7 +328,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-06-22 13:59:17" itemprop="dateModified" datetime="2020-06-22T13:59:17-04:00">2020-06-22</time>
+                <time title="Modified: 2020-06-22 14:00:10" itemprop="dateModified" datetime="2020-06-22T14:00:10-04:00">2020-06-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -377,11 +377,14 @@
 <p>For example, given the dungeon below, the initial health of the knight must be at least 7 if he follows the optimal path RIGHT-&gt; RIGHT -&gt; DOWN -&gt; DOWN.</p>
 <p><img src="https://img-blog.csdnimg.cn/20200621212041700.png" alt><br>Note:</p>
 <p>The knight’s health has no upper bound.<br>Any room can contain threats or power-ups, even the first room the knight enters and the bottom-right room where the princess is imprisoned.</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>该题使用动态规划解法。设骑士的初始血量为dp[0][0]=x，我们的目的就是求x，根据题意，骑士只可以往右走或者往下走，因此存在dp[i+1][j]和dp[i][j+1],如果是dungeon为负数，则dp[i+1][j]或dp[i][j+1]的值应为当前血量+下一步扣除的血量即dp[i+1][j] = dp[i][j] -dungeon[i+1][j]或dp[i][j+1] = dp[i][j] -dungeon[i][j+1]，直到判断到最后公主在的位置血量大于0即可。我们可以从公主所在位置往回推理求x,即将dp[i][j]设置在</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][j] &#x3D; max(1, min(dp[i + 1][j], dp[i][j + 1]) - dungeon[i][j]);</span><br></pre></td></tr></table></figure>
-<p>同时我们也需要考虑数组边界问题。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="java"><a href="#java" class="headerlink" title="java"></a>java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">calculateMinimumHP</span><span class="params">(<span class="keyword">int</span>[][] dungeon)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = dungeon.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> j = dungeon[<span class="number">0</span>].length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[i+<span class="number">1</span>][j+<span class="number">1</span>];</span><br><span class="line">        dp[i][j] = dungeon[i][j] &gt; <span class="number">0</span>? <span class="number">1</span>: Math.abs(dungeon[i][j]) + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(i=dungeon.length-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">            <span class="keyword">for</span>(j=dungeon[<span class="number">0</span>].length-<span class="number">1</span>;j&gt;=<span class="number">0</span>;j--)&#123;</span><br><span class="line">                <span class="keyword">if</span> (i == dungeon.length - <span class="number">1</span> &amp;&amp; j == dungeon[<span class="number">0</span>].length - <span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                dp[i][j] = Math.max(<span class="number">1</span>, Math.min(i + <span class="number">1</span> &gt;= dungeon.length ? Integer.MAX_VALUE : dp[i + <span class="number">1</span>][j],</span><br><span class="line">                    j + <span class="number">1</span> &gt;= dungeon[<span class="number">0</span>].length ? Integer.MAX_VALUE : dp[i][j + <span class="number">1</span>]) - dungeon[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/21/LeetCodeJuneChallenge21th/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
     
