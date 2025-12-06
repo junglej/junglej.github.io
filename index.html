@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qijia Wang - Academic Homepage</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 { color: #000; margin-bottom: 10px; }
+        h1 { font-size: 2.2em; border-bottom: none; }
+        h2 { border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 30px; }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .header { display: flex; align-items: center; gap: 20px; margin-bottom: 40px; }
+        .header img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .info { flex: 1; }
+        .info p { margin: 5px 0; }
+        .section-item { margin-bottom: 15px; }
+        .date { color: #666; font-size: 0.9em; min-width: 120px; display: inline-block; }
+        .tag { background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.8em; margin-right: 5px; }
+        
+        /* Mobile Layout */
+        @media (max-width: 600px) {
+            .header { flex-direction: column; text-align: center; }
+            .date { display: block; margin-bottom: 2px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 个人信息头部 -->
+    <div class="header">
+        <!-- 这里的图片稍后替换，目前用占位符 -->
+        <img src="https://github.com/junglej.png" alt="Qijia Wang"> 
+        <div class="info">
+            <h1>Qijia Wang (王其嘉)</h1>
+            <p>Incoming Ph.D. Student @ <strong>The Chinese University of Hong Kong (CUHK)</strong></p>
+            <p>Department of Information Engineering</p>
+            <p>Email: <a href="mailto:wq025@ie.cuhk.edu.hk">wq025@ie.cuhk.edu.hk</a></p>
+            <p>
+                <a href="files/cv.pdf">CV</a> / 
+                <a href="https://github.com/junglej">GitHub</a> / 
+                <a href="https://linkedin.com/in/qijiawang/">LinkedIn</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- 简介 -->
+    <section>
+        <h2>About Me</h2>
+        <p>
+            I am an incoming Ph.D. student (Starting Aug. 2025) at CUHK, focusing on Wireless Network Transmission and AI for 5G. 
+            Previously, I received my M.S. degree from <strong>Northeastern University</strong> and B.S. degree from <strong>The North University of China</strong>.
+        </p>
+        <p>I have experience working as a Research Assistant at the <strong>WiNS LAB (CUHK)</strong> and Harbin Institute of Technology.</p>
+    </section>
+
+    <!-- 新闻 -->
+    <section>
+        <h2>News</h2>
+        <div class="section-item">
+            <span class="date">Aug. 2025</span>
+            Starting my Ph.D. journey at CUHK!
+        </div>
+        <div class="section-item">
+            <span class="date">2025</span>
+            Paper "TeleAgent" accepted to <strong>IROS 2025 (HEAI Workshop)</strong>.
+        </div>
+    </section>
+
+    <!-- 发表论文 -->
+    <section>
+        <h2>Publications</h2>
+        <div class="section-item">
+            <strong>TeleAgent: Agent-Based Network Status Dialogue and Autonomous Recovery for Telepresence Human-Robot Interaction</strong><br>
+            Han Hu, <strong>Qijia Wang</strong>, He Chen.<br>
+            <em>Workshop on Human-aware Embodied AI (HEAI), IROS 2025.</em><br>
+            <!-- 稍后有了PDF链接可以在这里加上 <a href="#">[PDF]</a> -->
+        </div>
+    </section>
+
+    <!-- 教育经历 -->
+    <section>
+        <h2>Education</h2>
+        <div class="section-item">
+            <span class="date">2025 - Present</span> <strong>Ph.D. in Information Engineering</strong>, CUHK
+        </div>
+        <div class="section-item">
+            <span class="date">2019 - 2021</span> <strong>M.S. in Cyber-Physical Systems</strong>, Northeastern University
+        </div>
+        <div class="section-item">
+            <span class="date">2015 - 2019</span> <strong>B.S. in Communication Engineering</strong>, The North University of China
+        </div>
+    </section>
+
+    <!-- 技能 -->
+    <section>
+        <h2>Technical Skills</h2>
+        <p>
+            <span class="tag">Java</span>
+            <span class="tag">C/C++</span>
+            <span class="tag">Python</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Hadoop</span>
+            <span class="tag">STM32/Arduino</span>
+            <span class="tag">PyTorch</span>
+        </p>
+    </section>
+
+</body>
+</html>
